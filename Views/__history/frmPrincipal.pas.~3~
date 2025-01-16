@@ -1,0 +1,42 @@
+unit frmPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, dmGerenciadorConexao, frmLogin,
+  frmConfigurarBanco;
+
+type
+  TFrm_Principal = class(TForm)
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Frm_Principal: TFrm_Principal;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrm_Principal.FormCreate(Sender: TObject);
+begin
+  if GerenciadorConexao.ConexaoBanco.ConectarAoBancoDeDados then
+  begin
+    Frm_Login := TFrm_Login.Create(nil);
+    Frm_Login.ShowModal;
+  end
+  else
+    ShowMessage
+      ('Conexão ao banco de dados não realizada, verifique o arquivo INI.');
+      FrmConfigBanco := TFrmConfigBanco.Create(nil);
+      FrmConfigBanco.ShowModal;
+
+end;
+
+end.

@@ -1,0 +1,77 @@
+unit frmLogin;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Vcl.ButtonStylesAttributes, Vcl.StyledButton, Vcl.Mask, Vcl.Imaging.pngimage,
+  System.ImageList, Vcl.ImgList, Vcl.Buttons, Usuario, dmUsuario;
+
+type
+  TFrm_Login = class(TForm)
+    img32x32: TImageList;
+    pnlAzul: TPanel;
+    imgLogo: TImage;
+    lbLogo: TLabel;
+    lbVersao: TLabel;
+    spdFechar: TSpeedButton;
+    pnlLogin: TPanel;
+    edtLogin: TEdit;
+    pnlSenha: TPanel;
+    edtSenha: TEdit;
+    btnLogin: TStyledButton;
+    spdIconSenha: TSpeedButton;
+    spdIconUser: TSpeedButton;
+    procedure spdFecharClick(Sender: TObject);
+    procedure btnLoginClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Frm_Login: TFrm_Login;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrm_Login.btnLoginClick(Sender: TObject);
+var
+  LoginValido: Boolean;
+begin
+  LoginValido := UsuarioDataModule.VerificarCredenciais(edtLogin.Text,
+    edtSenha.Text);
+  if LoginValido then
+    ShowMessage('Login válido!')
+  else
+    ShowMessage('Credenciais inválidas.');
+
+end;
+
+procedure TFrm_Login.FormCreate(Sender: TObject);
+begin
+  if not Assigned(UsuarioDataModule) then
+    UsuarioDataModule := TUsuarioDataModule.Create(Self);
+end;
+
+procedure TFrm_Login.spdFecharClick(Sender: TObject);
+begin
+  if MessageDlg('A aplicação será fechada, deseja continuar?', mtConfirmation,
+    [mbYes, mbNo], 0) = mrYes then
+  begin
+    Halt;
+  end
+  else
+  begin
+
+  end;
+
+end;
+
+end.

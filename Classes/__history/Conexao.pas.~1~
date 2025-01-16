@@ -1,0 +1,74 @@
+unit Conexao;
+
+interface
+
+uses
+  FireDAC.Comp.Client, FireDAC.Stan.Intf, System.SysUtils;
+
+type
+  TConexao = class
+  private
+    FServidor: String;
+    FSenha: String;
+    FBase: String;
+    FLogin: String;
+    FPorta: String;
+    FDBConnection: TFDConnection;
+    FDriverId: String;
+  public
+    constructor Create(NomeConexao: TFDConnection);
+    destructor Destroy; override;
+
+    function ConectarAoBancoDeDados: Boolean;
+
+    property DBConnection: TFDConnection read FDBConnection write FDBConnection;
+    property Servidor:String read FServidor write FServidor;
+    property Base:    String read FBase write FBase;
+    property Login:   String read FLogin write FLogin;
+    property Senha:   String read FSenha write FSenha;
+    property Porta:   String read FPorta write FPorta;
+    property DriverId:String read FDriverId write FDriverId;
+
+  end;
+
+implementation
+
+constructor TConexao.Create(NomeConexao: TFDConnection);
+begin
+  FDBConnection := NomeConexao;
+end;
+
+function TConexao.ConectarAoBancoDeDados: Boolean;
+begin
+  Result := False;
+
+  FDBConnection.Params.Clear;
+  FDBConnection.Params.Add('DriverID=' + 'PG');
+  FDBConnection.Params.Add('Server='   + FServidor);
+  FDBConnection.Params.Add('Database=' + FBase);
+  FDBConnection.Params.Add('User_Name='+ FLogin);
+  FDBConnection.Params.Add('Password=' + FSenha);
+  FDBConnection.Params.Add('Port='     + FPorta);
+  FDBConnection.Params.Add('MonitorBy=FlatFile');
+  FDBConnection.Params.Add('TraceFile=FireDAC_Trace.log');
+
+
+
+  try
+    FDBConnection.Connected := True;
+    Result := FDBConnection.Connected;
+  except
+    on E: Exception do
+      raise Exception.Create('Erro ao conectar ao banco de dados: ' + E.Message);
+  end;
+end;
+
+destructor TConexao.Destroy;
+begin
+  if FDBConnection.Connected then
+    FDBConnection.Connected := False;
+  inherited;
+end;
+
+end.
+

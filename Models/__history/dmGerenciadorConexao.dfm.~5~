@@ -1,0 +1,15 @@
+object GerenciadorConexao: TGerenciadorConexao
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
+  Height = 480
+  Width = 640
+  object fdConn: TFDConnection
+    Left = 304
+    Top = 224
+  end
+  object pgDriver: TFDPhysPgDriverLink
+    VendorLib = 'C:\Zeus\Versions\libpq.dll'
+    Left = 432
+    Top = 256
+  end
+end

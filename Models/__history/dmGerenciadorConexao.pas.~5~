@@ -1,0 +1,46 @@
+unit dmGerenciadorConexao;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
+  FireDAC.Phys.PGDef, FireDAC.Phys.PG, Data.DB, FireDAC.Comp.Client, Conexao,
+  FireDAC.Moni.Base, FireDAC.Moni.FlatFile;
+
+type
+  TGerenciadorConexao = class(TDataModule)
+    fdConn: TFDConnection;
+    pgDriver: TFDPhysPgDriverLink;
+    procedure DataModuleCreate(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    ConexaoBanco: TConexao;
+  end;
+
+var
+  GerenciadorConexao: TGerenciadorConexao;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TGerenciadorConexao.DataModuleCreate(Sender: TObject);
+begin
+  if Assigned(fdConn) then
+    ConexaoBanco := TConexao.Create(fdConn)
+end;
+
+procedure TGerenciadorConexao.DataModuleDestroy(Sender: TObject);
+begin
+   ConexaoBanco.Free;
+end;
+
+end.
+

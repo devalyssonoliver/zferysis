@@ -1,0 +1,37 @@
+program FerySis;
+
+uses
+  Vcl.Forms,
+  Conexao in '..\Classes\Conexao.pas',
+  frmLogin in '..\Views\frmLogin.pas' {Frm_Login},
+  frmConfigurarBanco in '..\Views\frmConfigurarBanco.pas' {FrmConfigBanco},
+  frmPrincipal in '..\Views\frmPrincipal.pas' {Frm_Principal},
+  dmGerenciadorConexao in '..\Models\dmGerenciadorConexao.pas' {GerenciadorConexao: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TGerenciadorConexao, GerenciadorConexao);
+  if GerenciadorConexao.ConexaoBanco.ConectarAoBancoDeDados then
+  begin
+    Frm_Login := TFrm_Login.Create(nil);
+    try
+      Frm_Login.ShowModal;
+    finally
+      Frm_Login.Free;
+    end;
+  end
+  else
+  begin
+    FrmConfigBanco := TFrmConfigBanco.Create(nil);
+    try
+      FrmConfigBanco.ShowModal;
+    finally
+      FrmConfigBanco.Free;
+    end;
+  end;
+  Application.Run;
+
+end.

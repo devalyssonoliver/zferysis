@@ -1,0 +1,62 @@
+unit frmConfigurarBanco;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ButtonStylesAttributes,
+  Vcl.StyledButton, Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls, Vcl.Imaging.pngimage;
+
+type
+  TFrmConfigBanco = class(TForm)
+    pnlPrincipal: TPanel;
+    imgSGBD: TImage;
+    lbBancoDeDados: TLabel;
+    pnlBottom: TPanel;
+    edtUsuario: TLabeledEdit;
+    edtSenha: TLabeledEdit;
+    btnTestar: TStyledButton;
+    pnlTop: TPanel;
+    edtServidor: TLabeledEdit;
+    edtPorta: TLabeledEdit;
+    edtBase: TLabeledEdit;
+    btnSalvar: TStyledButton;
+    btnCancelar: TStyledButton;
+    pnlSeparador2: TPanel;
+    pnlSeparador1: TPanel;
+    Panel1: TPanel;
+    Image1: TImage;
+    Label1: TLabel;
+    Panel2: TPanel;
+    LabeledEdit1: TLabeledEdit;
+    LabeledEdit2: TLabeledEdit;
+    StyledButton1: TStyledButton;
+    Panel3: TPanel;
+    LabeledEdit3: TLabeledEdit;
+    LabeledEdit4: TLabeledEdit;
+    StyledButton2: TStyledButton;
+    StyledButton3: TStyledButton;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    procedure FormCanResize(Sender: TObject; var NewWidth, NewHeight: Integer;
+      var Resize: Boolean);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmConfigBanco: TFrmConfigBanco;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmConfigBanco.FormCanResize(Sender: TObject; var NewWidth,
+  NewHeight: Integer; var Resize: Boolean);
+begin
+   Resize := False;
+end;
+
+end.
