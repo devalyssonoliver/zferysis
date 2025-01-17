@@ -7,7 +7,7 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls,
   Vcl.ButtonStylesAttributes, Vcl.StyledButton, Vcl.StdCtrls, Vcl.Mask,
-  Vcl.Imaging.pngimage, uArquivoIni, uFuncoes;
+  Vcl.Imaging.pngimage, uArquivoIni, uFuncoes, Conexao;
 
 type
   TFrmConfigBanco = class(TForm)
@@ -16,10 +16,8 @@ type
     Label1: TLabel;
     pnlImgServidor: TPanel;
     imgServidor: TImage;
-    edtUsuario: TLabeledEdit;
     edtBase: TLabeledEdit;
     edtServidor: TLabeledEdit;
-    edtSenha: TLabeledEdit;
     btnSalvar: TStyledButton;
     btnCancelar: TStyledButton;
     edtPorta: TLabeledEdit;
@@ -46,19 +44,19 @@ end;
 procedure TFrmConfigBanco.btnSalvarClick(Sender: TObject);
 begin
 
-  if CampoVazio(edtBase) or CampoVazio(edtServidor) or CampoVazio(edtPorta) or
-    CampoVazio(edtUsuario) or CampoVazio(edtSenha) then
+  if CampoVazio(edtBase) or CampoVazio(edtServidor) or CampoVazio(edtPorta) then
   begin
     ShowMessage('Todos os campos devem ser preenchidos.');
     Exit;
   end;
 
   try
-    EscreverArquivoIni(edtBase.Text, edtServidor.Text, edtPorta.Text,
-      edtUsuario.Text, edtSenha.Text);
-    AlterarEstadoCampos([edtBase, edtServidor, edtPorta, edtUsuario,
-      edtSenha], False);
+    EscreverArquivoIni(edtBase.Text, edtServidor.Text, edtPorta.Text);
+
+    DesabilitarCampos([edtBase, edtServidor, edtPorta]);
     ShowMessage('Configuração salva com sucesso.');
+
+
   except
     on E: Exception do
     begin

@@ -51,14 +51,18 @@ begin
     FDBConnection.Params.Add('Port=' + FPorta);
 
     FDBConnection.Connected := True;
-    Result := FDBConnection.Connected;
+    if FDBConnection.Connected then
+      Result := True
+    else
+      raise Exception.Create('A conexão foi configurada, mas não está ativa.');
   except
     on E: Exception do
+    begin
+
       raise Exception.Create('Erro ao conectar ao banco de dados: ' +
         E.Message);
-
+    end;
   end;
-
 end;
 
 destructor TConexao.Destroy;

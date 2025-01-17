@@ -19,31 +19,36 @@
     <Transaction>2025/01/14 12:18:18.000.112,C:\FeriSys_1.0\Project\Unit1.dfm=C:\FeriSys_1.0\Views\frmConfigurarBanco.dfm</Transaction>
     <Transaction>2025/01/14 12:18:18.000.112,C:\FeriSys_1.0\Project\Unit1.pas=C:\FeriSys_1.0\Views\frmConfigurarBanco.pas</Transaction>
     <Transaction>2025/01/14 12:24:05.000.061,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
-    <Transaction>2025/01/14 12:24:15.000.149,C:\FeriSys_1.0\Project\Unit1.pas=C:\FeriSys_1.0\Views\frmPrincipal.pas</Transaction>
     <Transaction>2025/01/14 12:24:15.000.149,C:\FeriSys_1.0\Project\Unit1.dfm=C:\FeriSys_1.0\Views\frmPrincipal.dfm</Transaction>
+    <Transaction>2025/01/14 12:24:15.000.149,C:\FeriSys_1.0\Project\Unit1.pas=C:\FeriSys_1.0\Views\frmPrincipal.pas</Transaction>
     <Transaction>2025/01/14 12:27:42.000.898,C:\FeriSys_1.0\Models\dmGerenciadorConexao.pas=</Transaction>
     <Transaction>2025/01/14 12:27:47.000.029,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
     <Transaction>2025/01/14 12:28:02.000.425,C:\FeriSys_1.0\Project\Unit1.pas=C:\FeriSys_1.0\Models\dmGerenciadorConexao.pas</Transaction>
     <Transaction>2025/01/14 12:28:41.000.411,C:\FeriSys_1.0\Models\dmGerenciadorConexao.pas=</Transaction>
     <Transaction>2025/01/14 12:28:45.000.126,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
-    <Transaction>2025/01/14 12:30:47.000.197,C:\FeriSys_1.0\Project\Unit1.dfm=C:\FeriSys_1.0\Models\dmGerenciadorConexao.dfm</Transaction>
     <Transaction>2025/01/14 12:30:47.000.197,C:\FeriSys_1.0\Project\Unit1.pas=C:\FeriSys_1.0\Models\dmGerenciadorConexao.pas</Transaction>
+    <Transaction>2025/01/14 12:30:47.000.197,C:\FeriSys_1.0\Project\Unit1.dfm=C:\FeriSys_1.0\Models\dmGerenciadorConexao.dfm</Transaction>
     <Transaction>2025/01/14 12:51:28.000.088,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
     <Transaction>2025/01/14 12:51:46.000.799,C:\FeriSys_1.0\Project\Unit1.pas=C:\FeriSys_1.0\Models\uGerenciadorApp.pas</Transaction>
     <Transaction>2025/01/15 13:27:12.000.577,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
     <Transaction>2025/01/15 13:27:21.000.231,C:\FeriSys_1.0\Project\Unit1.pas=C:\FeriSys_1.0\Classes\Usuario.pas</Transaction>
     <Transaction>2025/01/15 13:46:33.000.583,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
     <Transaction>2025/01/15 13:50:32.000.760,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
-    <Transaction>2025/01/15 13:50:41.000.102,C:\FeriSys_1.0\Project\Unit1.pas=C:\FeriSys_1.0\Models\dmUsuario.pas</Transaction>
     <Transaction>2025/01/15 13:50:41.000.102,C:\FeriSys_1.0\Project\Unit1.dfm=C:\FeriSys_1.0\Models\dmUsuario.dfm</Transaction>
+    <Transaction>2025/01/15 13:50:41.000.102,C:\FeriSys_1.0\Project\Unit1.pas=C:\FeriSys_1.0\Models\dmUsuario.pas</Transaction>
     <Transaction>2025/01/16 13:06:31.000.317,C:\FeriSys_1.0\Views\frmConfigurarBanco.pas=</Transaction>
     <Transaction>2025/01/16 13:06:44.000.914,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
     <Transaction>2025/01/16 13:07:23.000.773,C:\FeriSys_1.0\Project\Unit1.pas=C:\FeriSys_1.0\Views\frmConfigurarBanco.pas</Transaction>
     <Transaction>2025/01/16 13:07:23.000.773,C:\FeriSys_1.0\Project\Unit1.dfm=C:\FeriSys_1.0\Views\frmConfigurarBanco.dfm</Transaction>
     <Transaction>2025/01/16 13:26:44.000.717,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
     <Transaction>2025/01/16 13:40:59.000.532,C:\FeriSys_1.0\Project\Unit1.pas=C:\FeriSys_1.0\Units\uArquivoIni.pas</Transaction>
-    <Transaction>2025/01/16 16:52:15.111,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
-    <Transaction>2025/01/16 16:58:49.369,C:\FeriSys_1.0\Units\uFuncoes.pas=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/16 16:52:15.000.111,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/16 16:58:49.000.369,C:\FeriSys_1.0\Units\uFuncoes.pas=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/17 12:12:04.000.785,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/17 12:40:34.000.875,C:\FeriSys_1.0\Project\Unit1.pas=C:\FeriSys_1.0\Units\uArquivoIni.pas</Transaction>
+    <Transaction>2025/01/17 14:07:50.000.759,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/17 14:13:09.000.596,C:\FeriSys_1.0\Project\Unit1.pas=C:\FeriSys_1.0\Units\uFuncoes.pas</Transaction>
+    <Transaction>2025/01/17 15:48:00.000.266,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="C:\FeriSys_1.0"/>
@@ -64,7 +69,6 @@
     <File Path="..\Views\frmLogin.dfm"/>
     <File Path="..\Views\frmPrincipal.pas"/>
     <File Path="..\Views\frmPrincipal.dfm"/>
-    <File Path="..\Views\frmConfigurarBanco.pas"/>
-    <File Path="..\Views\frmConfigurarBanco.dfm"/>
+    <File Path="..\frmConfigurarBanco.pas"/>
   </ProjectSortOrder>
 </BorlandProject>

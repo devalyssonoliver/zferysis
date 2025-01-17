@@ -3,8 +3,8 @@ object FrmConfigBanco: TFrmConfigBanco
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  ClientHeight = 450
-  ClientWidth = 404
+  ClientHeight = 343
+  ClientWidth = 408
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -28,8 +28,8 @@ object FrmConfigBanco: TFrmConfigBanco
   object Panel1: TPanel
     AlignWithMargins = True
     Left = 0
-    Top = 9
-    Width = 410
+    Top = 8
+    Width = 422
     Height = 446
     BevelOuter = bvNone
     Color = clWhite
@@ -57,7 +57,7 @@ object FrmConfigBanco: TFrmConfigBanco
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
-      TabOrder = 7
+      TabOrder = 5
       object imgServidor: TImage
         Left = 160
         Top = 8
@@ -200,17 +200,6 @@ object FrmConfigBanco: TFrmConfigBanco
           9EBFF0EA73410000000049454E44AE426082}
       end
     end
-    object edtUsuario: TLabeledEdit
-      Left = 56
-      Top = 320
-      Width = 293
-      Height = 23
-      EditLabel.Width = 46
-      EditLabel.Height = 15
-      EditLabel.Caption = 'Usu'#225'rio: '
-      TabOrder = 3
-      Text = ''
-    end
     object edtBase: TLabeledEdit
       Left = 56
       Top = 184
@@ -233,36 +222,25 @@ object FrmConfigBanco: TFrmConfigBanco
       TabOrder = 1
       Text = ''
     end
-    object edtSenha: TLabeledEdit
-      Left = 56
-      Top = 368
-      Width = 293
-      Height = 23
-      EditLabel.Width = 35
-      EditLabel.Height = 15
-      EditLabel.Caption = 'Senha:'
-      TabOrder = 4
-      Text = ''
-    end
     object btnSalvar: TStyledButton
-      Left = 192
-      Top = 397
+      Left = 182
+      Top = 301
       Width = 75
       Height = 25
       Caption = 'Salvar'
-      TabOrder = 5
+      TabOrder = 3
       OnClick = btnSalvarClick
       StyleRadius = 1
       StyleFamily = 'Bootstrap'
     end
     object btnCancelar: TStyledButton
-      Left = 273
-      Top = 397
+      Left = 274
+      Top = 301
       Width = 75
       Height = 25
       Cancel = True
       Caption = 'Cancelar'
-      TabOrder = 6
+      TabOrder = 4
       StyleRadius = 1
       StyleFamily = 'Bootstrap'
       StyleClass = 'Dark'

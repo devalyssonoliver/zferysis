@@ -128,27 +128,22 @@
         <DCCReference Include="..\Classes\Conexao.pas"/>
         <DCCReference Include="..\Views\frmLogin.pas">
             <Form>Frm_Login</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\Views\frmPrincipal.pas">
             <Form>Frm_Principal</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\Models\dmGerenciadorConexao.pas">
             <Form>GerenciadorConexao</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="..\Models\uGerenciadorApp.pas"/>
         <DCCReference Include="..\Classes\Usuario.pas"/>
         <DCCReference Include="..\Models\dmUsuario.pas">
             <Form>UsuarioDataModule</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="..\Views\frmConfigurarBanco.pas">
             <Form>FrmConfigBanco</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\Units\uArquivoIni.pas"/>
         <DCCReference Include="..\Units\uFuncoes.pas"/>

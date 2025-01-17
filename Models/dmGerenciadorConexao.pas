@@ -7,7 +7,7 @@ uses
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
   FireDAC.Phys.PGDef, FireDAC.Phys.PG, Data.DB, FireDAC.Comp.Client, Conexao,
-  FireDAC.Moni.Base, FireDAC.Moni.FlatFile, uArquivoIni;
+  FireDAC.Moni.Base, FireDAC.Moni.FlatFile, uArquivoIni, Vcl.Dialogs;
 
 type
   TGerenciadorConexao = class(TDataModule)
@@ -15,7 +15,7 @@ type
     pgDriver: TFDPhysPgDriverLink;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
-    procedure ConfigurarConexao(const Base, Servidor, Porta, Login,
+    procedure ConfigurarConexao(const Base, Servidor, Porta, Usuario,
       Senha: String);
 
   private
@@ -34,23 +34,29 @@ implementation
 {$R *.dfm}
 
 procedure TGerenciadorConexao.ConfigurarConexao(const Base, Servidor, Porta,
-  Login, Senha: String);
+  Usuario, Senha: String);
 begin
   Conexao.Base := Base;
   Conexao.Servidor := Servidor;
   Conexao.Porta := Porta;
-  Conexao.Login := Login;
+  Conexao.Login := Usuario;
   Conexao.Senha := Senha;
 
 end;
 
 procedure TGerenciadorConexao.DataModuleCreate(Sender: TObject);
 var
-  Base, Servidor, Porta, Login, Senha: String;
+  Base, Servidor, Porta, Usuario, Senha: String;
 begin
+  Usuario := 'postgres';
+  Senha   := 'postzeus2011';
   Conexao := TConexao.Create(fdConn);
-  LerArquivoIni(Base, Servidor, Porta, Login, Senha);
-  ConfigurarConexao(Base, Servidor, Porta, Login, Senha);
+  try
+    LerArquivoIni(Base, Servidor, Porta);
+    ConfigurarConexao(Base, Servidor, Porta, Usuario, Senha);
+  finally
+
+  end;
 
 end;
 

@@ -7,7 +7,8 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
   Vcl.ButtonStylesAttributes, Vcl.StyledButton, Vcl.Mask, Vcl.Imaging.pngimage,
-  System.ImageList, Vcl.ImgList, Vcl.Buttons, Usuario, dmUsuario, frmPrincipal;
+  System.ImageList, Vcl.ImgList, Vcl.Buttons, Usuario, dmUsuario, frmPrincipal,
+  Vcl.StyledTaskDialog;
 
 type
   TFrm_Login = class(TForm)
@@ -24,7 +25,7 @@ type
     btnLogin: TStyledButton;
     spdIconSenha: TSpeedButton;
     spdIconUser: TSpeedButton;
-    procedure spdFecharClick(Sender: TObject);
+    MessageINFO: TStyledTaskDialog;
     procedure btnLoginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RealizarLogin;
@@ -57,16 +58,6 @@ procedure TFrm_Login.FormCreate(Sender: TObject);
 begin
   if not Assigned(UsuarioDataModule) then
     UsuarioDataModule := TUsuarioDataModule.Create(Self);
-end;
-
-procedure TFrm_Login.spdFecharClick(Sender: TObject);
-begin
-  if MessageDlg('A aplicação será fechada, deseja continuar?', mtConfirmation,
-    [mbYes, mbNo], 0) = mrYes then
-  begin
-    Halt;
-  end
-  else
 end;
 
 procedure TFrm_Login.ExibirErroLogin;

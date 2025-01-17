@@ -4771,7 +4771,6 @@ object Frm_Login: TFrm_Login
       ImageIndex = 2
       Images = img32x32
       Flat = True
-      OnClick = spdFecharClick
     end
     object pnlLogin: TPanel
       Left = 40
@@ -5434,5 +5433,17 @@ object Frm_Login: TFrm_Login
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000}
+  end
+  object MessageINFO: TStyledTaskDialog
+    Buttons = <>
+    CommonButtons = [tcbOk, tcbYes]
+    DefaultButton = tcbYes
+    RadioButtons = <>
+    Text = 'A aplica'#231#227'o ser'#225' fechada, deseja continuar?'
+    Title = 'FerySIS '
+    AutoClick = True
+    UseAnimations = True
+    Left = 239
+    Top = 168
   end
 end

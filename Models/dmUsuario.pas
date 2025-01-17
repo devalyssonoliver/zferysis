@@ -7,7 +7,7 @@ uses
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
-  dmGerenciadorConexao;
+  dmGerenciadorConexao, uArquivoIni, Conexao;
 
 type
   TUsuarioDataModule = class(TDataModule)
@@ -30,6 +30,7 @@ var
   Usuario: TUsuario;
 begin
   Result := nil;
+
   FDQuery.Connection := GerenciadorConexao.fdConn;
   FDQuery.SQL.Text :=
     'SELECT codigo, nome, login, ativo FROM usuarios WHERE login = :login';
@@ -49,6 +50,7 @@ end;
 
 function TUsuarioDataModule.VerificarCredenciais(const Login,
   Senha: String): Boolean;
+
 begin
   FDQuery.Connection := GerenciadorConexao.fdConn;
   FDQuery.SQL.Text :=

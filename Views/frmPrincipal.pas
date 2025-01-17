@@ -5,8 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, dmGerenciadorConexao,
-  frmConfigurarBanco;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, dmGerenciadorConexao;
 
 type
   TFrm_Principal = class(TForm)
