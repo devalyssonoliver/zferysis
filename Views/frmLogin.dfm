@@ -4763,15 +4763,6 @@ object Frm_Login: TFrm_Login
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object spdFechar: TSpeedButton
-      Left = 287
-      Top = 1
-      Width = 36
-      Height = 32
-      ImageIndex = 2
-      Images = img32x32
-      Flat = True
-    end
     object pnlLogin: TPanel
       Left = 40
       Top = 233
@@ -4889,6 +4880,21 @@ object Frm_Login: TFrm_Login
       OnClick = btnLoginClick
       StyleFamily = 'Bootstrap'
       StyleClass = 'Dark'
+    end
+    object btnFechar: TStyledButton
+      Left = 283
+      Top = 1
+      Width = 40
+      Height = 33
+      ImageIndex = 2
+      Images = img32x32
+      TabOrder = 3
+      OnClick = btnFecharClick
+      Flat = True
+      Kind = bkClose
+      StyleFamily = 'Bootstrap'
+      StyleClass = 'Dark'
+      StyleAppearance = 'Outline'
     end
   end
   object img32x32: TImageList
@@ -5434,16 +5440,14 @@ object Frm_Login: TFrm_Login
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000}
   end
-  object MessageINFO: TStyledTaskDialog
+  object StyledTaskDialog1: TStyledTaskDialog
     Buttons = <>
-    CommonButtons = [tcbOk, tcbYes]
+    Caption = 'teste'
+    CommonButtons = [tcbYes, tcbCancel]
     DefaultButton = tcbYes
     RadioButtons = <>
-    Text = 'A aplica'#231#227'o ser'#225' fechada, deseja continuar?'
-    Title = 'FerySIS '
-    AutoClick = True
-    UseAnimations = True
-    Left = 239
-    Top = 168
+    VerificationText = 'teste'
+    Left = 192
+    Top = 144
   end
 end

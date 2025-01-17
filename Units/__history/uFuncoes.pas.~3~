@@ -33,13 +33,13 @@ begin
   try
     TaskDialog.Caption := 'FerySIS';
     TaskDialog.Title := 'Confirmar Fechamento';
-    TaskDialog.Text := 'VocÃª tem certeza que deseja fechar a aplicaÃ§Ã£o?';
+    TaskDialog.Text := 'Você tem certeza que deseja fechar a aplicação?';
 
     TaskDialog.CommonButtons := [tcbYes, tcbNo];
     TaskDialog.DefaultButton := tcbNo;
 
 
-    if TaskDialog. then
+    if TaskDialog.Execute = mrYes then
     begin
       Result := True;
     end else

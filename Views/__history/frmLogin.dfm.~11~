@@ -3,20 +3,24 @@ object Frm_Login: TFrm_Login
   Top = 0
   BorderStyle = bsNone
   Caption = 'Frm_Login'
-  ClientHeight = 381
-  ClientWidth = 328
+  ClientHeight = 369
+  ClientWidth = 323
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poDesktopCenter
+  PrintScale = poNone
+  Scaled = False
+  OnCreate = FormCreate
   TextHeight = 15
   object pnlAzul: TPanel
     Left = 0
     Top = 0
     Width = 400
-    Height = 381
+    Height = 369
     Align = alLeft
     BevelOuter = bvNone
     Color = clRoyalblue
@@ -24,11 +28,9 @@ object Frm_Login: TFrm_Login
     ParentBackground = False
     ParentCtl3D = False
     TabOrder = 0
-    ExplicitLeft = -26
-    ExplicitHeight = 374
     DesignSize = (
       400
-      381)
+      369)
     object imgLogo: TImage
       Left = 70
       Top = 1
@@ -4749,8 +4751,8 @@ object Frm_Login: TFrm_Login
       ParentFont = False
     end
     object lbVersao: TLabel
-      Left = 270
-      Top = 188
+      Left = 258
+      Top = 183
       Width = 18
       Height = 17
       Caption = '1.0'
@@ -4762,10 +4764,10 @@ object Frm_Login: TFrm_Login
       ParentFont = False
     end
     object spdFechar: TSpeedButton
-      Left = 319
+      Left = 287
       Top = 1
-      Width = 41
-      Height = 40
+      Width = 36
+      Height = 32
       ImageIndex = 2
       Images = img32x32
       Flat = True
@@ -4844,7 +4846,7 @@ object Frm_Login: TFrm_Login
         Images = img32x32
         Flat = True
         StyleName = 'Windows'
-        ExplicitLeft = 8
+        ExplicitHeight = 25
       end
       object edtSenha: TEdit
         AlignWithMargins = True
@@ -4871,6 +4873,7 @@ object Frm_Login: TFrm_Login
         MaxLength = 10
         ParentCtl3D = False
         ParentFont = False
+        PasswordChar = '*'
         TabOrder = 0
         TextHint = 'Senha'
         StyleName = 'Windows'
@@ -4883,6 +4886,7 @@ object Frm_Login: TFrm_Login
       Height = 25
       Caption = 'Login'
       TabOrder = 2
+      OnClick = btnLoginClick
       StyleFamily = 'Bootstrap'
       StyleClass = 'Dark'
     end
@@ -5429,5 +5433,17 @@ object Frm_Login: TFrm_Login
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000}
+  end
+  object MessageINFO: TStyledTaskDialog
+    Buttons = <>
+    CommonButtons = [tcbOk, tcbYes]
+    DefaultButton = tcbYes
+    RadioButtons = <>
+    Text = 'A aplica'#231#227'o ser'#225' fechada, deseja continuar?'
+    Title = 'FerySIS '
+    AutoClick = True
+    UseAnimations = True
+    Left = 239
+    Top = 168
   end
 end

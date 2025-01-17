@@ -8,7 +8,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
   Vcl.ButtonStylesAttributes, Vcl.StyledButton, Vcl.Mask, Vcl.Imaging.pngimage,
   System.ImageList, Vcl.ImgList, Vcl.Buttons, Usuario, dmUsuario, frmPrincipal,
-  Vcl.StyledTaskDialog, uFuncoes;
+  Vcl.StyledTaskDialog;
 
 type
   TFrm_Login = class(TForm)
@@ -17,6 +17,7 @@ type
     imgLogo: TImage;
     lbLogo: TLabel;
     lbVersao: TLabel;
+    spdFechar: TSpeedButton;
     pnlLogin: TPanel;
     edtLogin: TEdit;
     pnlSenha: TPanel;
@@ -24,13 +25,11 @@ type
     btnLogin: TStyledButton;
     spdIconSenha: TSpeedButton;
     spdIconUser: TSpeedButton;
-    btnFechar: TStyledButton;
-    StyledTaskDialog1: TStyledTaskDialog;
+    MessageINFO: TStyledTaskDialog;
     procedure btnLoginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RealizarLogin;
     procedure ExibirErroLogin;
-    procedure btnFecharClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -47,7 +46,7 @@ implementation
 
 procedure TFrm_Login.RealizarLogin;
 begin
-  ShowMessage('Login v√°lido!');
+  ShowMessage('Login v·lido!');
   Close;
   Hide;
   Application.CreateForm(TFrm_Principal, Frm_Principal);
@@ -63,13 +62,7 @@ end;
 
 procedure TFrm_Login.ExibirErroLogin;
 begin
-  ShowMessage('Credenciais inv√°lidas.');
-end;
-
-procedure TFrm_Login.btnFecharClick(Sender: TObject);
-begin
-  if ConfirmarFechamento then
-    Application.Terminate;
+  ShowMessage('Credenciais inv·lidas.');
 end;
 
 procedure TFrm_Login.btnLoginClick(Sender: TObject);

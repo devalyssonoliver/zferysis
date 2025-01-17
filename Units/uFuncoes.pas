@@ -38,16 +38,9 @@ begin
     TaskDialog.CommonButtons := [tcbYes, tcbNo];
     TaskDialog.DefaultButton := tcbNo;
 
-
-    if TaskDialog.Execute = mrYes then
-    begin
-      Result := True;
-    end else
-    begin
-      Result := False;
-    end;
   finally
     TaskDialog.Free;
   end;
 end;
+
 end.

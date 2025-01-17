@@ -8,7 +8,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
   Vcl.ButtonStylesAttributes, Vcl.StyledButton, Vcl.Mask, Vcl.Imaging.pngimage,
   System.ImageList, Vcl.ImgList, Vcl.Buttons, Usuario, dmUsuario, frmPrincipal,
-  Vcl.StyledTaskDialog;
+  Vcl.StyledTaskDialog, uFuncoes;
 
 type
   TFrm_Login = class(TForm)
@@ -17,7 +17,6 @@ type
     imgLogo: TImage;
     lbLogo: TLabel;
     lbVersao: TLabel;
-    spdFechar: TSpeedButton;
     pnlLogin: TPanel;
     edtLogin: TEdit;
     pnlSenha: TPanel;
@@ -25,11 +24,13 @@ type
     btnLogin: TStyledButton;
     spdIconSenha: TSpeedButton;
     spdIconUser: TSpeedButton;
-    MessageINFO: TStyledTaskDialog;
+    btnFechar: TStyledButton;
+    StyledTaskDialog1: TStyledTaskDialog;
     procedure btnLoginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RealizarLogin;
     procedure ExibirErroLogin;
+    procedure btnFecharClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -63,6 +64,12 @@ end;
 procedure TFrm_Login.ExibirErroLogin;
 begin
   ShowMessage('Credenciais inválidas.');
+end;
+
+procedure TFrm_Login.btnFecharClick(Sender: TObject);
+begin
+  if ConfirmarFechamento then
+    Application.Terminate;
 end;
 
 procedure TFrm_Login.btnLoginClick(Sender: TObject);
