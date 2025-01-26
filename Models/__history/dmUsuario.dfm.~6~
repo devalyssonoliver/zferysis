@@ -1,0 +1,39 @@
+object UsuarioDataModule: TUsuarioDataModule
+  Height = 480
+  Width = 640
+  object FDQuery: TFDQuery
+    ActiveStoredUsage = [auRunTime]
+    Active = True
+    Connection = GerenciadorConexao.fdConn
+    SQL.Strings = (
+      'SELECT * FROM (SELECT * FROM vusuarios)F')
+    Left = 512
+    Top = 280
+    object FDQuerycodigo: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'codigo'
+      Origin = 'codigo'
+    end
+    object FDQuerynome: TWideStringField
+      DisplayLabel = 'Nome'
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 100
+    end
+    object FDQuerylogin: TWideStringField
+      DisplayLabel = 'Login'
+      FieldName = 'login'
+      Origin = '"login"'
+    end
+    object FDQuerydata_cadastro: TDateField
+      DisplayLabel = 'Data Cadastro'
+      FieldName = 'data_cadastro'
+      Origin = 'data_cadastro'
+    end
+    object FDQueryativo: TBooleanField
+      DisplayLabel = 'Ativo'
+      FieldName = 'ativo'
+      Origin = 'ativo'
+    end
+  end
+end

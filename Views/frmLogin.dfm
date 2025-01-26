@@ -4738,15 +4738,15 @@ object Frm_Login: TFrm_Login
       Proportional = True
     end
     object lbLogo: TLabel
-      Left = 70
+      Left = 94
       Top = 183
-      Width = 182
-      Height = 44
-      Caption = 'FeriSYS'
+      Width = 147
+      Height = 40
+      Caption = 'FerySIS'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clInfoText
-      Font.Height = -33
-      Font.Name = 'Ravie'
+      Font.Height = -40
+      Font.Name = 'MingLiU_HKSCS-ExtB'
       Font.Style = [fsBold]
       ParentFont = False
     end
@@ -4882,18 +4882,17 @@ object Frm_Login: TFrm_Login
       StyleClass = 'Dark'
     end
     object btnFechar: TStyledButton
-      Left = 283
+      Left = 285
       Top = 1
-      Width = 40
-      Height = 33
+      Width = 38
+      Height = 32
       ImageIndex = 2
       Images = img32x32
       TabOrder = 3
       OnClick = btnFecharClick
       Flat = True
-      Kind = bkClose
       StyleFamily = 'Bootstrap'
-      StyleClass = 'Dark'
+      StyleClass = 'Light'
       StyleAppearance = 'Outline'
     end
   end
@@ -5441,13 +5440,21 @@ object Frm_Login: TFrm_Login
       000000000000}
   end
   object StyledTaskDialog1: TStyledTaskDialog
-    Buttons = <>
-    Caption = 'teste'
-    CommonButtons = [tcbYes, tcbCancel]
-    DefaultButton = tcbYes
+    Buttons = <
+      item
+        Caption = 'Sim'
+        ModalResult = 100
+      end
+      item
+        Caption = 'N'#227'o'
+        ModalResult = 101
+      end>
+    DefaultButton = tcbClose
+    Flags = [tfAllowDialogCancellation]
     RadioButtons = <>
-    VerificationText = 'teste'
-    Left = 192
+    DialogButtonsFamily = 'Bootstrap'
+    ButtonsWidth = 40
+    Left = 168
     Top = 144
   end
 end

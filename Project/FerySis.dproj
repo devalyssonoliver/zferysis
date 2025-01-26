@@ -136,7 +136,6 @@
             <Form>GerenciadorConexao</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="..\Models\uGerenciadorApp.pas"/>
         <DCCReference Include="..\Classes\Usuario.pas"/>
         <DCCReference Include="..\Models\dmUsuario.pas">
             <Form>UsuarioDataModule</Form>
@@ -147,6 +146,15 @@
         </DCCReference>
         <DCCReference Include="..\Units\uArquivoIni.pas"/>
         <DCCReference Include="..\Units\uFuncoes.pas"/>
+        <DCCReference Include="..\Classes\Colaborador.pas"/>
+        <DCCReference Include="..\Views\FrmCadastro\frmCadastroUsuario.pas">
+            <Form>Frm_Cad_Usuario</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Views\FrmLocalização\frmLocalizacaoUsuario.pas">
+            <Form>Form_Loc_Usuarios</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -1146,6 +1154,7 @@
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">True</Platform>
             </Platforms>
+            <ModelSupport>False</ModelSupport>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>

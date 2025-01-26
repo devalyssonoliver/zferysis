@@ -1,0 +1,93 @@
+unit uFuncoes;
+
+interface
+
+uses
+  Vcl.Forms, Vcl.Controls, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Dialogs,
+  Vcl.Graphics,
+  Vcl.StyledTaskDialog, Vcl.StyledAnimatedTaskDialog,
+  Vcl.ComCtrls, System.SysUtils, Vcl.StyledButton;
+
+procedure DesabilitarCamposTLabelEdit(const Campos: array of TLabeledEdit);
+procedure DesabilitarCamposEdit(const Campos: array of TEdit);
+procedure DesabilitarButtons(const Buttons: array of TStyledButton);
+function ConfirmarFechamento: Boolean;
+procedure MsgBox(Titulo, Text: String; Buttons: Boolean);
+
+implementation
+
+procedure DesabilitarCamposTLabelEdit(const Campos: array of TLabeledEdit);
+var
+  i: Integer;
+begin
+  for i := 0 to High(Campos) do
+  begin
+    Campos[i].Enabled := False;
+  end;
+end;
+
+function ConfirmarFechamento: Boolean;
+var
+  TaskDialog: TStyledTaskDialog;
+begin
+  Result := False;
+
+  TaskDialog := TStyledTaskDialog.Create(nil);
+  try
+
+    TaskDialog.Caption := 'FerySIS';
+    TaskDialog.Title := 'Confirmar Fechamento';
+    TaskDialog.Text := 'Você tem certeza que deseja fechar a aplicação?';
+    TaskDialog.UseAnimations := True;
+    TaskDialog.CommonButtons := [tcbYes, tcbNo];
+    TaskDialog.DefaultButton := tcbNo;
+
+    if TaskDialog.Execute then
+      Result := TaskDialog.ModalResult = mrYes;
+
+  finally
+    TaskDialog.Free;
+  end;
+end;
+
+procedure DesabilitarCamposEdit(const Campos: array of TEdit);
+var
+  i: Integer;
+begin
+  for i := 0 to High(Campos) do
+  begin
+    Campos[i].Enabled := False;
+  end;
+end;
+procedure DesabilitarButtons(const Buttons: array of TStyledButton);
+var
+  i: Integer;
+begin
+  for i := 0 to High(Buttons) do
+  begin
+    Buttons[i].Enabled := False;
+  end;
+
+
+end;
+
+procedure MsgBox(Titulo, Text: String; Buttons: Boolean);
+var
+  TaskDialog: TStyledTaskDialog;
+begin
+  TaskDialog := TStyledTaskDialog.Create(nil);
+  TaskDialog.Title := Titulo;
+  TaskDialog.Text := Text;
+  if Buttons then
+  begin
+    TaskDialog.CommonButtons := [tcbYes, tcbNo];
+  end
+  else
+  begin
+    TaskDialog.CommonButtons := [tcbOk];
+  end;
+  TaskDialog.Execute;
+
+end;
+
+end.

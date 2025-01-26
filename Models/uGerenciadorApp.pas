@@ -3,8 +3,7 @@ unit uGerenciadorApp;
 interface
 
 uses
-  Vcl.Forms, Vcl.Dialogs, dmGerenciadorConexao, frmLogin, frmConfigurarBanco,
-  frmPrincipal;
+  Vcl.Forms, Vcl.Dialogs, dmGerenciadorConexao, frmLogin, frmConfigurarBanco;
 
 procedure IniciarAplicacao;
 
@@ -18,7 +17,6 @@ begin
   begin
     Application.CreateForm(TFrm_Login, Frm_Login);
     Frm_Login.ShowModal;
-    Application.CreateForm(TFrm_Principal, Frm_Principal);
     Frm_Login.Hide;
     Frm_Login.Free;
   end
@@ -30,3 +28,4 @@ begin
 end;
 
 end.
+

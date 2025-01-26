@@ -53,7 +53,7 @@ begin
   try
     EscreverArquivoIni(edtBase.Text, edtServidor.Text, edtPorta.Text);
 
-    DesabilitarCampos([edtBase, edtServidor, edtPorta]);
+    GerenciarCamposTLabelEdit([edtBase, edtServidor, edtPorta], False);
     ShowMessage('Configuração salva com sucesso.');
 
 

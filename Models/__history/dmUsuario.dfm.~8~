@@ -1,0 +1,11 @@
+object UsuarioDataModule: TUsuarioDataModule
+  Height = 480
+  Width = 640
+  object FDQuery: TFDQuery
+    Connection = GerenciadorConexao.fdConn
+    SQL.Strings = (
+      'SELECT * FROM (SELECT * FROM vusuarios)F')
+    Left = 512
+    Top = 280
+  end
+end

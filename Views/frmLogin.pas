@@ -24,8 +24,8 @@ type
     btnLogin: TStyledButton;
     spdIconSenha: TSpeedButton;
     spdIconUser: TSpeedButton;
-    btnFechar: TStyledButton;
     StyledTaskDialog1: TStyledTaskDialog;
+    btnFechar: TStyledButton;
     procedure btnLoginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RealizarLogin;
@@ -47,7 +47,6 @@ implementation
 
 procedure TFrm_Login.RealizarLogin;
 begin
-  ShowMessage('Login válido!');
   Close;
   Hide;
   Application.CreateForm(TFrm_Principal, Frm_Principal);
@@ -63,7 +62,8 @@ end;
 
 procedure TFrm_Login.ExibirErroLogin;
 begin
-  ShowMessage('Credenciais inválidas.');
+  MsgBox('Aviso', 'Login ou senha incorretas, verifique.', False, 1);
+
 end;
 
 procedure TFrm_Login.btnFecharClick(Sender: TObject);

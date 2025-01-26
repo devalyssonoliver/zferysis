@@ -7,8 +7,8 @@
     <Transaction>2025/01/14 11:08:59.000.837,=C:\Users\USUARIO\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
     <Transaction>2025/01/14 11:13:37.000.757,=C:\Users\USUARIO\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
     <Transaction>2025/01/14 11:15:23.000.984,C:\FeriSys_1.0\Classes\Conexao.pas=C:\Users\USUARIO\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>2025/01/14 11:27:01.000.920,C:\FeriSys_1.0\Models\dmConexao.pas=C:\Users\USUARIO\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
     <Transaction>2025/01/14 11:27:01.000.920,C:\FeriSys_1.0\Models\dmConexao.dfm=C:\Users\USUARIO\Documents\Embarcadero\Studio\Projects\Unit3.dfm</Transaction>
+    <Transaction>2025/01/14 11:27:01.000.920,C:\FeriSys_1.0\Models\dmConexao.pas=C:\Users\USUARIO\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
     <Transaction>2025/01/14 11:29:07.000.996,C:\FeriSys_1.0\Models\dmGerenciadorConexao.pas=C:\FeriSys_1.0\Models\dmConexao.pas</Transaction>
     <Transaction>2025/01/14 11:29:07.000.996,C:\FeriSys_1.0\Models\dmGerenciadorConexao.dfm=C:\FeriSys_1.0\Models\dmConexao.dfm</Transaction>
     <Transaction>2025/01/14 11:31:16.000.323,=C:\Users\USUARIO\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
@@ -16,8 +16,8 @@
     <Transaction>2025/01/14 11:48:27.000.532,C:\FeriSys_1.0\Views\frmLogin.dfm=C:\Users\USUARIO\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
     <Transaction>2025/01/14 11:56:45.000.318,C:\FeriSys_1.0\Project\FerySis.dproj=C:\Users\USUARIO\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
     <Transaction>2025/01/14 12:09:09.000.907,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
-    <Transaction>2025/01/14 12:18:18.000.112,C:\FeriSys_1.0\Project\Unit1.dfm=C:\FeriSys_1.0\Views\frmConfigurarBanco.dfm</Transaction>
     <Transaction>2025/01/14 12:18:18.000.112,C:\FeriSys_1.0\Project\Unit1.pas=C:\FeriSys_1.0\Views\frmConfigurarBanco.pas</Transaction>
+    <Transaction>2025/01/14 12:18:18.000.112,C:\FeriSys_1.0\Project\Unit1.dfm=C:\FeriSys_1.0\Views\frmConfigurarBanco.dfm</Transaction>
     <Transaction>2025/01/14 12:24:05.000.061,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
     <Transaction>2025/01/14 12:24:15.000.149,C:\FeriSys_1.0\Project\Unit1.dfm=C:\FeriSys_1.0\Views\frmPrincipal.dfm</Transaction>
     <Transaction>2025/01/14 12:24:15.000.149,C:\FeriSys_1.0\Project\Unit1.pas=C:\FeriSys_1.0\Views\frmPrincipal.pas</Transaction>
@@ -49,26 +49,43 @@
     <Transaction>2025/01/17 14:07:50.000.759,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
     <Transaction>2025/01/17 14:13:09.000.596,C:\FeriSys_1.0\Project\Unit1.pas=C:\FeriSys_1.0\Units\uFuncoes.pas</Transaction>
     <Transaction>2025/01/17 15:48:00.000.266,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/17 23:41:01.000.200,=D:\Repositório\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/17 23:44:27.000.984,D:\Repositório\Classes\Colaborador.pas=D:\Repositório\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/17 23:58:05.000.448,=D:\Repositório\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/18 00:19:58.000.819,D:\Repositório\Views\FrmCadastro\frmCadastroUsuario.dfm=D:\Repositório\Project\Unit1.dfm</Transaction>
+    <Transaction>2025/01/18 00:19:58.000.819,D:\Repositório\Views\FrmCadastro\frmCadastroUsuario.pas=D:\Repositório\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/20 13:50:51.000.198,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/20 13:59:03.000.063,C:\FeriSys_1.0\Views\FrmLocalização\frmLocalizacaoUsuario.dfm=C:\FeriSys_1.0\Project\Unit1.dfm</Transaction>
+    <Transaction>2025/01/20 13:59:03.000.063,C:\FeriSys_1.0\Views\FrmLocalização\frmLocalizacaoUsuario.pas=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/21 07:03:07.000.171,=C:\FeriSys_1.0\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/23 07:43:13.000.019,C:\FeriSys_1.0\Models\uGerenciadorApp.pas=</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
-    <File Path="C:\FeriSys_1.0"/>
+    <File Path="D:\Repositório"/>
     <File Path="..\Classes"/>
     <File Path="..\Classes\Conexao.pas"/>
     <File Path="..\Classes\Usuario.pas"/>
+    <File Path="..\Classes\Colaborador.pas"/>
     <File Path="..\Models"/>
     <File Path="..\Models\dmGerenciadorConexao.pas"/>
     <File Path="..\Models\dmGerenciadorConexao.dfm"/>
     <File Path="..\Models\dmUsuario.pas"/>
     <File Path="..\Models\dmUsuario.dfm"/>
-    <File Path="..\Models\uGerenciadorApp.pas"/>
     <File Path="..\Units"/>
     <File Path="..\Units\uArquivoIni.pas"/>
     <File Path="..\Units\uFuncoes.pas"/>
     <File Path="..\Views"/>
+    <File Path="..\Views\FrmCadastro"/>
+    <File Path="..\Views\FrmCadastro\frmCadastroUsuario.pas"/>
+    <File Path="..\Views\FrmCadastro\frmCadastroUsuario.dfm"/>
+    <File Path="..\Views\FrmLocalização"/>
+    <File Path="..\Views\FrmLocalização\frmLocalizacaoUsuario.pas"/>
+    <File Path="..\Views\FrmLocalização\frmLocalizacaoUsuario.dfm"/>
     <File Path="..\Views\frmLogin.pas"/>
     <File Path="..\Views\frmLogin.dfm"/>
     <File Path="..\Views\frmPrincipal.pas"/>
     <File Path="..\Views\frmPrincipal.dfm"/>
-    <File Path="..\frmConfigurarBanco.pas"/>
+    <File Path="..\Views\frmConfigurarBanco.pas"/>
+    <File Path="..\Views\frmConfigurarBanco.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>
