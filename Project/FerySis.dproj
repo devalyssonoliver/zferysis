@@ -155,6 +155,8 @@
             <Form>Form_Loc_Usuarios</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\Interfaces\IUsuarioRepositorio.pas"/>
+        <DCCReference Include="..\Models\UsuarioRepositorio.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

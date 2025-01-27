@@ -31,18 +31,19 @@ type
     Panel2: TPanel;
     tgsTodos: TToggleSwitch;
     Label1: TLabel;
+    OnTimer: TTimer;
     procedure cmbCriteriosdePesquisaSelect(Sender: TObject);
     procedure dbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure edtPesquisarCodigoExit(Sender: TObject);
     procedure edtPesquisarLoginExit(Sender: TObject);
-    procedure edtPesquisarNomeExit(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure btnExibirClick(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure tgsTodosClick(Sender: TObject);
     procedure btnRelatorioClick(Sender: TObject);
+    procedure edtPesquisarNomeExit(Sender: TObject);
   private
     procedure BuscarUsuarioPorCriterio(const Criterio: TCriterioPesquisa;
       const Valor: string);
@@ -141,16 +142,26 @@ end;
 procedure TForm_Loc_Usuarios.edtPesquisarCodigoExit(Sender: TObject);
 begin
   BuscarUsuarioPorCriterio(cpCodigo, edtPesquisarCodigo.Text);
+  dbGrid.DataSource := UsuarioDataModule.dsUsuarios;
 end;
 
 procedure TForm_Loc_Usuarios.edtPesquisarLoginExit(Sender: TObject);
 begin
   BuscarUsuarioPorCriterio(cpLogin, edtPesquisarLogin.Text);
+  dbGrid.DataSource := UsuarioDataModule.dsUsuarios;
 end;
 
 procedure TForm_Loc_Usuarios.edtPesquisarNomeExit(Sender: TObject);
 begin
-  BuscarUsuarioPorCriterio(cpNome, edtPesquisarNome.Text);
+  if VerificarCampoPesquisar(edtPesquisarNome) then
+  begin
+    BuscarUsuarioPorCriterio(cpNome, edtPesquisarNome.Text);
+    dbGrid.DataSource := UsuarioDataModule.dsUsuarios;
+  end
+  else
+  begin
+    dbGrid.DataSource := nil;
+  end;
 end;
 
 procedure TForm_Loc_Usuarios.FormShow(Sender: TObject);
@@ -164,8 +175,8 @@ begin
   if tgsTodos.State = tssOn then
   begin
     UsuarioDataModule.ListarTodos;
-    dbGrid.DataSource := UsuarioDataModule.dsUsuarios;
     GerenciarBotoes([btnRelatorio, btnExibir], True);
+    dbGrid.DataSource := UsuarioDataModule.dsUsuarios;
   end
   else
   begin

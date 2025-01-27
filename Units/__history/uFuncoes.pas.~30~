@@ -1,0 +1,155 @@
+unit uFuncoes;
+
+interface
+
+uses
+  Vcl.Forms, Vcl.Controls, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Dialogs,
+  Vcl.Graphics,
+  Vcl.StyledTaskDialog, Vcl.StyledAnimatedTaskDialog,
+  Vcl.ComCtrls, System.SysUtils, Vcl.StyledButton;
+
+procedure GerenciarCamposTLabelEdit(const Campos: array of TLabeledEdit;
+  Ativo: Boolean);
+procedure GerenciarCamposEdit(const Campos: array of TEdit; Ativo: Boolean);
+procedure GerenciarBotoes(const Buttons: array of TStyledButton;
+  Ativo: Boolean);
+procedure VisibilidadeTEdit(const Edits: array of TEdit; Ativo: Boolean);
+function confirmarFechamento: Boolean;
+procedure MsgBox(Titulo, Text: String; Buttons: Boolean; Tipo: Integer);
+function validarCamposObrigatorios(const Edits: array of TEdit): Boolean;
+function verificarCampoPesquisar(const Edits: array of TEdit): Boolean;
+
+implementation
+
+function verificarCampoPesquisar(const Edits: array of TEdit): Boolean;
+var
+  i: Integer;
+begin
+  Result := True;
+  for i := 0 to High(Edits) do
+  begin
+    if Trim(Edits[i].Text) = '' then
+    begin
+      Result := False;
+      Exit;
+    end;
+  end;
+end;
+
+function validarCamposObrigatorios(const Edits: array of TEdit): Boolean;
+var
+  i: Integer;
+begin
+  Result := True;
+  for i := 0 to High(Edits) do
+  begin
+    if Trim(Edits[i].Text) = '' then
+    begin
+      MsgBox('Erro!', 'Todos os campos precisam ser preenchidos.', False, 1);
+      Result := False;
+      Exit;
+    end;
+  end;
+end;
+
+procedure gerenciarCamposTLabelEdit(const Campos: array of TLabeledEdit;
+  Ativo: Boolean);
+var
+  i: Integer;
+begin
+  for i := 0 to High(Campos) do
+  begin
+    Campos[i].Enabled := Ativo;
+  end;
+end;
+
+procedure gerenciarCamposEdit(const Campos: array of TEdit; Ativo: Boolean);
+var
+  i: Integer;
+begin
+  for i := 0 to High(Campos) do
+  begin
+    if Assigned(Campos[i]) then
+      Campos[i].Enabled := Ativo;
+  end;
+end;
+
+procedure gerenciarBotoes(const Buttons: array of TStyledButton;
+  Ativo: Boolean);
+var
+  i: Integer;
+begin
+  for i := 0 to High(Buttons) do
+  begin
+    Buttons[i].Enabled := Ativo;
+  end;
+end;
+
+procedure visibilidadeTEdit(const Edits: array of TEdit; Ativo: Boolean);
+var
+  i: Integer;
+begin
+  for i := 0 to High(Edits) do
+  begin
+    Edits[i].Visible := Ativo;
+  end;
+end;
+
+function confirmarFechamento: Boolean;
+var
+  TaskDialog: TStyledTaskDialog;
+begin
+  Result := False;
+
+  TaskDialog := TStyledTaskDialog.Create(nil);
+  try
+    TaskDialog.Caption := 'FerySIS';
+    TaskDialog.Title := 'Confirmar Fechamento';
+    TaskDialog.Text := 'Você tem certeza que deseja fechar a aplicação?';
+    TaskDialog.UseAnimations := True;
+    TaskDialog.CommonButtons := [tcbYes, tcbNo];
+    TaskDialog.DefaultButton := tcbNo;
+
+    if TaskDialog.Execute then
+      Result := TaskDialog.ModalResult = mrYes;
+
+  finally
+    TaskDialog.Free;
+  end;
+end;
+
+procedure msgBox(Titulo, Text: String; Buttons: Boolean; Tipo: Integer);
+var
+  taskDialog: TStyledTaskDialog;
+begin
+  taskDialog := TStyledTaskDialog.Create(nil);
+  try
+    taskDialog.Title := Titulo;
+    taskDialog.Text := Text;
+    case Tipo of
+      1:
+        taskDialog.FooterIcon := tdiWarning;
+      2:
+        taskDialog.FooterIcon := tdiError;
+      3:
+        taskDialog.FooterIcon := tdiInformation;
+      4:
+        taskDialog.FooterIcon := tdiShield;
+      5:
+        taskDialog.FooterIcon := tdiQuestion;
+    else
+      taskDialog.FooterIcon := tdiNone;
+    end;
+
+    if Buttons then
+      taskDialog.CommonButtons := [tcbYes, tcbNo]
+    else
+      taskDialog.CommonButtons := [tcbOk];
+
+    taskDialog.Execute;
+  finally
+    TaskDialog.Free;
+  end;
+end;
+
+end.

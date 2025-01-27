@@ -62,7 +62,6 @@ begin
   lbBase.Caption := Base;
   lbPorta.Caption := Porta;
   lbDataAtual.Caption := DatetimeToStr(Now);
-  lbUsuario.Caption := IntToStr(UsuarioDataModule.UsuarioLogado.Codigo);
 
 end;
 

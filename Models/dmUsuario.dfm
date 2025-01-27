@@ -372,7 +372,6 @@ object UsuarioDataModule: TUsuarioDataModule
     end
   end
   object fdqUsuariosRelatorio: TFDQuery
-    Active = True
     Connection = GerenciadorConexao.fdConn
     SQL.Strings = (
       'SELECT * FROM vusuarios'
@@ -409,32 +408,10 @@ object UsuarioDataModule: TUsuarioDataModule
   object frxDBUsuarios: TfrxDBDataset
     UserName = 'frxDBUsuarios'
     CloseDataSource = False
-    DataSource = dsUsuariosRelatorio
+    DataSource = dsUsuarios
     BCDToCurrency = False
     DataSetOptions = []
     Left = 120
     Top = 272
-    FieldDefs = <
-      item
-        FieldName = 'codigo'
-      end
-      item
-        FieldName = 'nome'
-        FieldType = fftString
-        Size = 100
-      end
-      item
-        FieldName = 'login'
-        FieldType = fftString
-        Size = 20
-      end
-      item
-        FieldName = 'data_cadastro'
-        FieldType = fftDateTime
-      end
-      item
-        FieldName = 'ativo'
-        FieldType = fftBoolean
-      end>
   end
 end

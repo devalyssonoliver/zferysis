@@ -11,7 +11,6 @@ object GerenciadorConexao: TGerenciadorConexao
       'Password=postzeus2011'
       'DriverID=pG')
     ConnectedStoredUsage = [auDesignTime]
-    Connected = True
     LoginPrompt = False
     Left = 304
     Top = 224

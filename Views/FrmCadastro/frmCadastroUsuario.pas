@@ -131,7 +131,7 @@ begin
       end;
     mfNovo:
       begin
-        if VerificarPreenchimento([edtNome, edtSenha, edtLogin]) then
+        if validarCamposObrigatorios([edtNome, edtSenha, edtLogin]) then
 
           if UsuarioDataModule.Inserir(0, Nome, Login, Senha, Ativo) then
           begin

@@ -14,13 +14,29 @@ procedure GerenciarCamposEdit(const Campos: array of TEdit; Ativo: Boolean);
 procedure GerenciarBotoes(const Buttons: array of TStyledButton;
   Ativo: Boolean);
 procedure VisibilidadeTEdit(const Edits: array of TEdit; Ativo: Boolean);
-function ConfirmarFechamento: Boolean;
+function confirmarFechamento: Boolean;
 procedure MsgBox(Titulo, Text: String; Buttons: Boolean; Tipo: Integer);
-function VerificarPreenchimento(const Edits: array of TEdit): Boolean;
+function validarCamposObrigatorios(const Edits: array of TEdit): Boolean;
+function verificarCampoPesquisar(const Edits: array of TEdit): Boolean;
 
 implementation
 
-function VerificarPreenchimento(const Edits: array of TEdit): Boolean;
+function verificarCampoPesquisar(const Edits: array of TEdit): Boolean;
+var
+  i: Integer;
+begin
+  Result := True;
+  for i := 0 to High(Edits) do
+  begin
+    if Trim(Edits[i].Text) = '' then
+    begin
+      Result := False;
+      Exit;
+    end;
+  end;
+end;
+
+function validarCamposObrigatorios(const Edits: array of TEdit): Boolean;
 var
   i: Integer;
 begin
@@ -36,7 +52,7 @@ begin
   end;
 end;
 
-procedure GerenciarCamposTLabelEdit(const Campos: array of TLabeledEdit;
+procedure gerenciarCamposTLabelEdit(const Campos: array of TLabeledEdit;
   Ativo: Boolean);
 var
   i: Integer;
@@ -47,7 +63,7 @@ begin
   end;
 end;
 
-procedure GerenciarCamposEdit(const Campos: array of TEdit; Ativo: Boolean);
+procedure gerenciarCamposEdit(const Campos: array of TEdit; Ativo: Boolean);
 var
   i: Integer;
 begin
@@ -58,7 +74,7 @@ begin
   end;
 end;
 
-procedure GerenciarBotoes(const Buttons: array of TStyledButton;
+procedure gerenciarBotoes(const Buttons: array of TStyledButton;
   Ativo: Boolean);
 var
   i: Integer;
@@ -69,7 +85,7 @@ begin
   end;
 end;
 
-procedure VisibilidadeTEdit(const Edits: array of TEdit; Ativo: Boolean);
+procedure visibilidadeTEdit(const Edits: array of TEdit; Ativo: Boolean);
 var
   i: Integer;
 begin
@@ -79,7 +95,7 @@ begin
   end;
 end;
 
-function ConfirmarFechamento: Boolean;
+function confirmarFechamento: Boolean;
 var
   TaskDialog: TStyledTaskDialog;
 begin
@@ -102,37 +118,37 @@ begin
   end;
 end;
 
-procedure MsgBox(Titulo, Text: String; Buttons: Boolean; Tipo: Integer);
+procedure msgBox(Titulo, Text: String; Buttons: Boolean; Tipo: Integer);
 var
-  TaskDialog: TStyledTaskDialog;
+  taskDialog: TStyledTaskDialog;
 begin
-  TaskDialog := TStyledTaskDialog.Create(nil);
+  taskDialog := TStyledTaskDialog.Create(nil);
   try
-    TaskDialog.Title := Titulo;
-    TaskDialog.Text := Text;
+    taskDialog.Title := Titulo;
+    taskDialog.Text := Text;
     case Tipo of
       1:
-        TaskDialog.FooterIcon := tdiWarning;
+        taskDialog.FooterIcon := tdiWarning;
       2:
-        TaskDialog.FooterIcon := tdiError;
+        taskDialog.FooterIcon := tdiError;
       3:
-        TaskDialog.FooterIcon := tdiInformation;
+        taskDialog.FooterIcon := tdiInformation;
       4:
-        TaskDialog.FooterIcon := tdiShield;
+        taskDialog.FooterIcon := tdiShield;
       5:
-        TaskDialog.FooterIcon := tdiQuestion;
+        taskDialog.FooterIcon := tdiQuestion;
     else
-      TaskDialog.FooterIcon := tdiNone;
+      taskDialog.FooterIcon := tdiNone;
     end;
 
     if Buttons then
-      TaskDialog.CommonButtons := [tcbYes, tcbNo]
+      taskDialog.CommonButtons := [tcbYes, tcbNo]
     else
-      TaskDialog.CommonButtons := [tcbOk];
+      taskDialog.CommonButtons := [tcbOk];
 
-    TaskDialog.Execute;
+    taskDialog.Execute;
   finally
-    TaskDialog.Free;
+    taskDialog.Free;
   end;
 end;
 

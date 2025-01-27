@@ -185,9 +185,9 @@ object Frm_Cad_Usuario: TFrm_Cad_Usuario
       TabOrder = 6
       object lbCodigo: TLabel
         AlignWithMargins = True
-        Left = 17
+        Left = 174
         Top = 3
-        Width = 161
+        Width = 4
         Height = 35
         Margins.Right = 7
         Align = alRight
@@ -197,9 +197,8 @@ object Frm_Cad_Usuario: TFrm_Cad_Usuario
         Font.Name = 'Segoe UI'
         Font.Style = [fsBold]
         ParentFont = False
-        ExplicitLeft = 24
-        ExplicitTop = 0
-        ExplicitHeight = 41
+        ExplicitLeft = 17
+        ExplicitHeight = 21
       end
     end
   end
