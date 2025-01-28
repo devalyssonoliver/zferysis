@@ -7,7 +7,8 @@ uses
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
   FireDAC.Phys.PGDef, FireDAC.Phys.PG, Data.DB, FireDAC.Comp.Client, Conexao,
-  FireDAC.Moni.Base, FireDAC.Moni.FlatFile, uArquivoIni, Vcl.Dialogs;
+  FireDAC.Moni.Base, FireDAC.Moni.FlatFile, uArquivoIni, Vcl.Dialogs,
+  Vcl.Forms;
 
 type
   TGerenciadorConexao = class(TDataModule)
@@ -48,6 +49,9 @@ procedure TGerenciadorConexao.DataModuleCreate(Sender: TObject);
 var
   Base, Servidor, Porta, Usuario, Senha: String;
 begin
+
+  pgDriver.VendorLib := IncludeTrailingPathDelimiter
+    (ExtractFilePath(Application.ExeName)) + 'lib\libpq.dll';
   Usuario := 'postgres';
   Senha := 'postzeus2011';
   Conexao := TConexao.Create(fdConn);

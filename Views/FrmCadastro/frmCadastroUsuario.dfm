@@ -197,7 +197,6 @@ object Frm_Cad_Usuario: TFrm_Cad_Usuario
         Font.Name = 'Segoe UI'
         Font.Style = [fsBold]
         ParentFont = False
-        ExplicitLeft = 17
         ExplicitHeight = 21
       end
     end

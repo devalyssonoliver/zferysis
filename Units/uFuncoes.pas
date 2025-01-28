@@ -17,11 +17,11 @@ procedure VisibilidadeTEdit(const Edits: array of TEdit; Ativo: Boolean);
 function confirmarFechamento: Boolean;
 procedure MsgBox(Titulo, Text: String; Buttons: Boolean; Tipo: Integer);
 function validarCamposObrigatorios(const Edits: array of TEdit): Boolean;
-function verificarCampoPesquisar(const Edits: array of TEdit): Boolean;
+function verificarCampoPreenchido(const Edits: array of TEdit): Boolean;
 
 implementation
 
-function verificarCampoPesquisar(const Edits: array of TEdit): Boolean;
+function verificarCampoPreenchido(const Edits: array of TEdit): Boolean;
 var
   i: Integer;
 begin

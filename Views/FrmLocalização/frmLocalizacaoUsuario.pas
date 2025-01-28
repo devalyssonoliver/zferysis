@@ -31,7 +31,6 @@ type
     Panel2: TPanel;
     tgsTodos: TToggleSwitch;
     Label1: TLabel;
-    OnTimer: TTimer;
     procedure cmbCriteriosdePesquisaSelect(Sender: TObject);
     procedure dbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
@@ -48,6 +47,7 @@ type
     procedure BuscarUsuarioPorCriterio(const Criterio: TCriterioPesquisa;
       const Valor: string);
     procedure AlterarVisibilidadeCamposPesquisa;
+    procedure DesativarBotoesELimparGrade;
 
   public
   end;
@@ -105,6 +105,12 @@ begin
   dbGrid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
+procedure TForm_Loc_Usuarios.DesativarBotoesELimparGrade;
+begin
+  dbGrid.DataSource := nil;
+  GerenciarBotoes([btnRelatorio, btnExibir], False);
+end;
+
 procedure TForm_Loc_Usuarios.btnExibirClick(Sender: TObject);
 var
   Usuario: TUsuario;
@@ -141,26 +147,40 @@ end;
 
 procedure TForm_Loc_Usuarios.edtPesquisarCodigoExit(Sender: TObject);
 begin
-  BuscarUsuarioPorCriterio(cpCodigo, edtPesquisarCodigo.Text);
-  dbGrid.DataSource := UsuarioDataModule.dsUsuarios;
+  if verificarCampoPreenchido(edtPesquisarCodigo) then
+  begin
+    BuscarUsuarioPorCriterio(cpCodigo, edtPesquisarCodigo.Text);
+    dbGrid.DataSource := UsuarioDataModule.dsUsuarios;
+  end
+  else
+  begin
+    DesativarBotoesELimparGrade;
+  end;
 end;
 
 procedure TForm_Loc_Usuarios.edtPesquisarLoginExit(Sender: TObject);
 begin
-  BuscarUsuarioPorCriterio(cpLogin, edtPesquisarLogin.Text);
-  dbGrid.DataSource := UsuarioDataModule.dsUsuarios;
+  if verificarCampoPreenchido(edtPesquisarLogin) then
+  begin
+    BuscarUsuarioPorCriterio(cpLogin, edtPesquisarLogin.Text);
+    dbGrid.DataSource := UsuarioDataModule.dsUsuarios;
+  end
+  else
+  begin
+    DesativarBotoesELimparGrade;
+  end;
 end;
 
 procedure TForm_Loc_Usuarios.edtPesquisarNomeExit(Sender: TObject);
 begin
-  if VerificarCampoPesquisar(edtPesquisarNome) then
+  if verificarCampoPreenchido(edtPesquisarNome) then
   begin
     BuscarUsuarioPorCriterio(cpNome, edtPesquisarNome.Text);
     dbGrid.DataSource := UsuarioDataModule.dsUsuarios;
   end
   else
   begin
-    dbGrid.DataSource := nil;
+    DesativarBotoesELimparGrade;
   end;
 end;
 
@@ -180,9 +200,7 @@ begin
   end
   else
   begin
-    dbGrid.DataSource := nil;
-    GerenciarBotoes([btnRelatorio, btnExibir], False);
-
+    DesativarBotoesELimparGrade
   end;
 end;
 
@@ -218,7 +236,9 @@ begin
     UsuarioDataModule.frxUsuarios.ShowPreparedReport;
   end
   else
-    MsgBox('Atenção!', 'Erro', False, 1);
+    MsgBox('Atenção!',
+      'Não foi possível visualizar o relatório de listagem de usuários.',
+      False, 1);
 
 end;
 

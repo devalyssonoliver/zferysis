@@ -17,10 +17,9 @@ type
     property Login: String read FLogin write FLogin;
     property Senha: String read FSenha write FSenha;
     property Ativo: Boolean read FAtivo write FAtivo;
-    property DataCadastro : TDateTime read FDataCadastro write FDataCadastro;
+    property DataCadastro: TDateTime read FDataCadastro write FDataCadastro;
   end;
 
 implementation
 
 end.
-

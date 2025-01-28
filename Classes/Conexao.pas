@@ -28,6 +28,7 @@ type
     property Senha: String read FSenha write FSenha;
     property Porta: String read FPorta write FPorta;
     property DriverId: String read FDriverId write FDriverId;
+
   end;
 
 implementation
@@ -38,9 +39,9 @@ begin
 end;
 
 function TConexao.ConectarAoBancoDeDados: Boolean;
+var
+  LibPath: string;
 begin
-  Result := False;
-
   try
     FDBConnection.Params.Clear;
     FDBConnection.Params.Add('DriverID=' + 'PG');

@@ -1,0 +1,8 @@
+object ColaboradorDataModule: TColaboradorDataModule
+  Height = 482
+  Width = 537
+  object qryColaborador: TFDQuery
+    Left = 288
+    Top = 280
+  end
+end

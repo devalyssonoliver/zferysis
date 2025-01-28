@@ -1,0 +1,42 @@
+unit dmColaborador;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, iColaborador, Colaborador;
+
+type
+  TColaboradorDataModule = class(TDataModule)
+    fdQueryColaborador: TFDQuery;
+    dsColaborador: TDataSource;
+  private
+    { Private declarations }
+    FColaboradorRepository: IColaboradorRepository;
+  public
+    constructor Create(AOwner: TComponent); override;
+
+    function Inserir(const Codigo, CodSetor: Integer; Nome, Matricula: String;
+      DataContrato, DataCadastro, PeriodoAquisitivo, PeriodoConsessivo: TDate;
+      Ativo: Boolean): Boolean;
+    function Deletar(const Codigo: Integer): Boolean;
+    function Editar(const Codigo, CodSetor: Integer; Nome, Matricula: String;
+      DataContrato, PeriodoAquisitivo, PeriodoConsessivo: TDate;
+      Ativo: Boolean): Boolean;
+    procedure BuscarUsuario(const CriterioIndex: Integer; const Valor: Variant;
+      ADataSet: TDataSet);
+    procedure ListarTodos(ADataSet: TDataSet);
+    function CarregarColaborador(const Codigo: Integer): TColaborador;
+  end;
+
+var
+  ColaboradorDataModule: TColaboradorDataModule;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+{$R *.dfm}
+
+end.

@@ -4,7 +4,7 @@
         <ProjectVersion>20.1</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win64</Platform>
         <ProjectName Condition="'$(ProjectName)'==''">FerySis</ProjectName>
         <TargetedPlatforms>3</TargetedPlatforms>
@@ -137,7 +137,7 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="..\Classes\Usuario.pas"/>
-        <DCCReference Include="..\Models\dmUsuario.pas">
+        <DCCReference Include="..\Models\DataModules\dmUsuario.pas">
             <Form>UsuarioDataModule</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
@@ -155,8 +155,15 @@
             <Form>Form_Loc_Usuarios</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\Interfaces\IUsuarioRepositorio.pas"/>
-        <DCCReference Include="..\Models\UsuarioRepositorio.pas"/>
+        <DCCReference Include="..\Interfaces\iUsuario.pas"/>
+        <DCCReference Include="..\Models\Repositórios\iUsuarioRepositorio.pas"/>
+        <DCCReference Include="..\Interfaces\iColaborador.pas"/>
+        <DCCReference Include="..\Models\Repositórios\iColaboradorRepositorio.pas"/>
+        <DCCReference Include="..\Models\DataModules\dmColaborador.pas">
+            <Form>ColaboradorDataModule</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

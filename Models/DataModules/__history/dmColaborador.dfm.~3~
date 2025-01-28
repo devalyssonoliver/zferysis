@@ -1,0 +1,4 @@
+object ColaboradorDataModule: TColaboradorDataModule
+  Height = 482
+  Width = 537
+end
