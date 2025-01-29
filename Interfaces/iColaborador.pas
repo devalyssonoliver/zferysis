@@ -14,7 +14,7 @@ type
     function Editar(const Codigo, CodSetor: Integer; Nome, Matricula: String;
       DataContrato, PeriodoAquisitivo, PeriodoConsessivo: TDate;
       Ativo: Boolean): Boolean;
-    procedure BuscarUsuario(const CriterioIndex: Integer; const Valor: Variant;
+    procedure BuscarColaborador(const CriterioIndex: Integer; const Valor: Variant;
       ADataSet: TDataSet);
     procedure ListarTodos(ADataSet: TDataSet);
     function CarregarColaborador(const Codigo: Integer): TColaborador;

@@ -2,6 +2,9 @@ object ColaboradorDataModule: TColaboradorDataModule
   Height = 482
   Width = 537
   object fdQueryColaborador: TFDQuery
+    Connection = GerenciadorConexao.fdConn
+    SQL.Strings = (
+      '')
     Left = 288
     Top = 280
   end

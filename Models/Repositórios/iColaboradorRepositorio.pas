@@ -4,7 +4,7 @@ interface
 
 uses
   iColaborador, Data.DB, FireDAC.Comp.Client, dmGerenciadorConexao,
-  System.SysUtils, uFuncoes, Colaborador, System.Variants;
+  System.SysUtils, uFuncoes, Colaborador, System.Variants, FireDAC.Stan.Param;
 
 type
   TColaboradorRepository = class(TInterfacedObject, IColaboradorRepository)
@@ -23,7 +23,7 @@ type
     function Editar(const Codigo, CodSetor: Integer; Nome, Matricula: String;
       DataContrato, PeriodoAquisitivo, PeriodoConsessivo: TDate;
       Ativo: Boolean): Boolean;
-    procedure BuscarUsuario(const CriterioIndex: Integer; const Valor: Variant;
+    procedure BuscarColaborador(const CriterioIndex: Integer; const Valor: Variant;
       ADataSet: TDataSet);
     procedure ListarTodos(ADataSet: TDataSet);
     function CarregarColaborador(const Codigo: Integer): TColaborador;
@@ -42,9 +42,10 @@ function TColaboradorRepository.CarregarColaborador(const Codigo: Integer)
 var
   Colaborador: TColaborador;
 begin
+  Result := nil;
   SetUpQuery
     ('SELECT codigo, nome, matricula, codigo_setor, data_contrato, periodo_aquisitivo, periodo_concessivo, data_cadastro FROM colaboradores WHERE codigo :codigo;');
-  FQuery.ParamByName('codigo').AsInteger := Codigo;
+  FQuery.Params.ParamByName('codigo').AsInteger := Codigo;
   FQuery.Open;
 
   if not FQuery.IsEmpty then
@@ -166,7 +167,7 @@ begin
   end;
 end;
 
-procedure TColaboradorRepository.BuscarUsuario(const CriterioIndex: Integer;
+procedure TColaboradorRepository.BuscarColaborador(const CriterioIndex: Integer;
   const Valor: Variant; ADataSet: TDataSet);
 begin
   if VarIsNull(Valor) or (Trim(VarToStr(Valor)) = '') then
@@ -214,13 +215,8 @@ procedure TColaboradorRepository.ListarTodos(ADataSet: TDataSet);
 begin
   if ADataSet is TFDQuery then
   begin
-    try
-      SetUpQuery('SELECT * FROM vcolaboradores');
-      FQuery.Open;
-    except
-      on E: Exception do
-        MsgBox('Erro ao listar colaboradores.', E.Message, False, 2);
-    end;
+    TFDQuery(ADataSet).SQL.Text := 'SELECT * FROM vcolaboradores';
+    TFDQuery(ADataSet).Open;
   end;
 end;
 

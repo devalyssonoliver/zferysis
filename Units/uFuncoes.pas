@@ -46,13 +46,14 @@ begin
     if Trim(Edits[i].Text) = '' then
     begin
       MsgBox('Erro!', 'Todos os campos precisam ser preenchidos.', False, 1);
+      Edits[i].SetFocus;
       Result := False;
       Exit;
     end;
   end;
 end;
 
-procedure gerenciarCamposTLabelEdit(const Campos: array of TLabeledEdit;
+procedure GerenciarCamposTLabelEdit(const Campos: array of TLabeledEdit;
   Ativo: Boolean);
 var
   i: Integer;
@@ -63,7 +64,7 @@ begin
   end;
 end;
 
-procedure gerenciarCamposEdit(const Campos: array of TEdit; Ativo: Boolean);
+procedure GerenciarCamposEdit(const Campos: array of TEdit; Ativo: Boolean);
 var
   i: Integer;
 begin
@@ -74,7 +75,7 @@ begin
   end;
 end;
 
-procedure gerenciarBotoes(const Buttons: array of TStyledButton;
+procedure GerenciarBotoes(const Buttons: array of TStyledButton;
   Ativo: Boolean);
 var
   i: Integer;
@@ -85,7 +86,7 @@ begin
   end;
 end;
 
-procedure visibilidadeTEdit(const Edits: array of TEdit; Ativo: Boolean);
+procedure VisibilidadeTEdit(const Edits: array of TEdit; Ativo: Boolean);
 var
   i: Integer;
 begin
@@ -118,37 +119,37 @@ begin
   end;
 end;
 
-procedure msgBox(Titulo, Text: String; Buttons: Boolean; Tipo: Integer);
+procedure MsgBox(Titulo, Text: String; Buttons: Boolean; Tipo: Integer);
 var
-  taskDialog: TStyledTaskDialog;
+  TaskDialog: TStyledTaskDialog;
 begin
-  taskDialog := TStyledTaskDialog.Create(nil);
+  TaskDialog := TStyledTaskDialog.Create(nil);
   try
-    taskDialog.Title := Titulo;
-    taskDialog.Text := Text;
+    TaskDialog.Title := Titulo;
+    TaskDialog.Text := Text;
     case Tipo of
       1:
-        taskDialog.FooterIcon := tdiWarning;
+        TaskDialog.FooterIcon := tdiWarning;
       2:
-        taskDialog.FooterIcon := tdiError;
+        TaskDialog.FooterIcon := tdiError;
       3:
-        taskDialog.FooterIcon := tdiInformation;
+        TaskDialog.FooterIcon := tdiInformation;
       4:
-        taskDialog.FooterIcon := tdiShield;
+        TaskDialog.FooterIcon := tdiShield;
       5:
-        taskDialog.FooterIcon := tdiQuestion;
+        TaskDialog.FooterIcon := tdiQuestion;
     else
-      taskDialog.FooterIcon := tdiNone;
+      TaskDialog.FooterIcon := tdiNone;
     end;
 
     if Buttons then
-      taskDialog.CommonButtons := [tcbYes, tcbNo]
+      TaskDialog.CommonButtons := [tcbYes, tcbNo]
     else
-      taskDialog.CommonButtons := [tcbOk];
+      TaskDialog.CommonButtons := [tcbOk];
 
-    taskDialog.Execute;
+    TaskDialog.Execute;
   finally
-    taskDialog.Free;
+    TaskDialog.Free;
   end;
 end;
 

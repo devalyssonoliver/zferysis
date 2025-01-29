@@ -7,12 +7,13 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, iColaborador, Colaborador,
-  iColaboradorRepositorio;
+  iColaboradorRepositorio, dmGerenciadorConexao;
 
 type
   TColaboradorDataModule = class(TDataModule)
     fdQueryColaborador: TFDQuery;
     dsColaborador: TDataSource;
+
   private
     { Private declarations }
     FColaboradorRepository: IColaboradorRepository;
@@ -26,9 +27,8 @@ type
     function Editar(const Codigo, CodSetor: Integer; Nome, Matricula: String;
       DataContrato, PeriodoAquisitivo, PeriodoConsessivo: TDate;
       Ativo: Boolean): Boolean;
-    procedure BuscarUsuario(const CriterioIndex: Integer; const Valor: Variant;
-      ADataSet: TDataSet);
-    procedure ListarTodos(ADataSet: TDataSet);
+    procedure BuscarColaborador(const CriterioIndex: Integer; const Valor: Variant);
+    procedure ListarTodos;
     function CarregarColaborador(const Codigo: Integer): TColaborador;
   end;
 
@@ -41,10 +41,10 @@ implementation
 {$R *.dfm}
 { TColaboradorDataModule }
 
-procedure TColaboradorDataModule.BuscarUsuario(const CriterioIndex: Integer;
-  const Valor: Variant; ADataSet: TDataSet);
+procedure TColaboradorDataModule.BuscarColaborador(const CriterioIndex: Integer;
+  const Valor: Variant);
 begin
-  FColaboradorRepository.BuscarUsuario(CriterioIndex, Valor,
+  FColaboradorRepository.BuscarColaborador(CriterioIndex, Valor,
     fdQueryColaborador);
 end;
 
@@ -80,9 +80,10 @@ begin
     DataContrato, DataCadastro, PeriodoAquisitivo, PeriodoConsessivo, Ativo);
 end;
 
-procedure TColaboradorDataModule.ListarTodos(ADataSet: TDataSet);
+procedure TColaboradorDataModule.ListarTodos;
 begin
-   FColaboradorRepository.ListarTodos(fdQueryColaborador);
+  FColaboradorRepository.ListarTodos(fdQueryColaborador);
+  dsColaborador.DataSet := fdQueryColaborador;
 end;
 
 end.

@@ -19,7 +19,8 @@ uses
   iUsuarioRepositorio in '..\Models\Repositórios\iUsuarioRepositorio.pas',
   iColaborador in '..\Interfaces\iColaborador.pas',
   iColaboradorRepositorio in '..\Models\Repositórios\iColaboradorRepositorio.pas',
-  dmColaborador in '..\Models\DataModules\dmColaborador.pas' {ColaboradorDataModule: TDataModule};
+  dmColaborador in '..\Models\DataModules\dmColaborador.pas' {ColaboradorDataModule: TDataModule},
+  frmLocalizacaoColaborador in '..\Views\FrmLocalização\frmLocalizacaoColaborador.pas' {Form_Loc_Colaborador};
 
 {$R *.res}
 
@@ -28,21 +29,25 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TGerenciadorConexao, GerenciadorConexao);
   Application.CreateForm(TColaboradorDataModule, ColaboradorDataModule);
-  if GerenciadorConexao.Conexao.ConectarAoBancoDeDados then
-  begin
-    Application.CreateForm(TFrm_Login, Frm_Login);
-    Frm_Login.ShowModal;
-    Frm_Login.Free;
+  Application.CreateForm(TForm_Loc_Colaborador, Form_Loc_Colaborador);
+  try
+    if GerenciadorConexao.Conexao.ConectarAoBancoDeDados then
+    begin
+      Application.CreateForm(TFrm_Login, Frm_Login);
+      Frm_Login.ShowModal;
+      Frm_Login.Free;
 
-    Application.CreateForm(TFrm_Principal, Frm_Principal);
-    Application.Run;
-
-  end
-
-  else
-  begin
-    Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);
-    FrmConfigBanco.ShowModal;
+      Application.CreateForm(TFrm_Principal, Frm_Principal);
+      Application.Run;
+    end
+    else
+      raise Exception.Create('Não foi possível conectar ao banco.');
+  except
+    on E: Exception do
+    begin
+      Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);
+      FrmConfigBanco.ShowModal;
+    end;
   end;
 
 end.

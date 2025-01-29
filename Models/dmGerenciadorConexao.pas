@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
   FireDAC.Phys.PGDef, FireDAC.Phys.PG, Data.DB, FireDAC.Comp.Client, Conexao,
   FireDAC.Moni.Base, FireDAC.Moni.FlatFile, uArquivoIni, Vcl.Dialogs,
-  Vcl.Forms;
+  Vcl.Forms, uFuncoes;
 
 type
   TGerenciadorConexao = class(TDataModule)
@@ -49,19 +49,22 @@ procedure TGerenciadorConexao.DataModuleCreate(Sender: TObject);
 var
   Base, Servidor, Porta, Usuario, Senha: String;
 begin
-
   pgDriver.VendorLib := IncludeTrailingPathDelimiter
     (ExtractFilePath(Application.ExeName)) + 'lib\libpq.dll';
   Usuario := 'postgres';
   Senha := 'postzeus2011';
+
   Conexao := TConexao.Create(fdConn);
   try
     LerArquivoIni(Base, Servidor, Porta);
     ConfigurarConexao(Base, Servidor, Porta, Usuario, Senha);
-  finally
 
+    if not Conexao.ConectarAoBancoDeDados then
+      raise Exception.Create('Não foi possível conectar ao banco de dados.');
+  except
+    on E: Exception do
+      MsgBox('Erro ao conectar ao banco de dados!', E.Message, False, 2);
   end;
-
 end;
 
 procedure TGerenciadorConexao.DataModuleDestroy(Sender: TObject);

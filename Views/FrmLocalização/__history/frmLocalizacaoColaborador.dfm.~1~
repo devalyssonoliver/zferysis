@@ -1,0 +1,239 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 605
+  ClientWidth = 972
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  StyleName = 'Windows'
+  TextHeight = 15
+  object pnlGrid: TPanel
+    Left = 0
+    Top = 0
+    Width = 972
+    Height = 605
+    Align = alClient
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitTop = 3
+    ExplicitWidth = 767
+    ExplicitHeight = 520
+    object lbTitulo: TLabel
+      Left = 1
+      Top = 1
+      Width = 970
+      Height = 37
+      Align = alTop
+      Alignment = taCenter
+      Caption = 'Localiza'#231#227'o de Colaborador'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -27
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      ExplicitWidth = 331
+    end
+    object Panel1: TPanel
+      Left = 1
+      Top = 38
+      Width = 970
+      Height = 56
+      Align = alTop
+      BevelOuter = bvNone
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 0
+      ExplicitWidth = 765
+      object cmbCriteriosdePesquisa: TComboBox
+        Left = 9
+        Top = 21
+        Width = 145
+        Height = 29
+        BevelInner = bvNone
+        BevelOuter = bvNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 0
+        TextHint = 'Modo de Busca'
+        StyleName = 'Windows'
+        Items.Strings = (
+          'C'#243'digo'
+          'Nome'
+          'M'#225'tricula'
+          '')
+      end
+      object edtPesquisarCodigo: TEdit
+        Left = 160
+        Top = 21
+        Width = 121
+        Height = 29
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        NumbersOnly = True
+        ParentFont = False
+        TabOrder = 1
+        TextHint = 'C'#243'digo'
+      end
+      object edtPesquisarNome: TEdit
+        Left = 160
+        Top = 21
+        Width = 121
+        Height = 29
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 2
+        TextHint = 'Nome'
+        Visible = False
+      end
+      object edtPesquisarMatricula: TEdit
+        Left = 160
+        Top = 21
+        Width = 121
+        Height = 29
+        BevelInner = bvNone
+        BevelOuter = bvNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 3
+        TextHint = 'Login'
+        Visible = False
+      end
+      object Panel2: TPanel
+        Left = 287
+        Top = 6
+        Width = 50
+        Height = 44
+        BevelOuter = bvNone
+        TabOrder = 4
+        object Label1: TLabel
+          Left = 8
+          Top = 8
+          Width = 31
+          Height = 12
+          Caption = 'TODOS'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clHotLight
+          Font.Height = -9
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object tgsTodos: TToggleSwitch
+          Left = 0
+          Top = 22
+          Width = 74
+          Height = 20
+          FrameColor = clHotLight
+          StateCaptions.CaptionOn = 'yes'
+          StateCaptions.CaptionOff = 'not'
+          TabOrder = 0
+          ThumbColor = clHotLight
+        end
+      end
+    end
+    object pnlBotoes: TPanel
+      Left = 1
+      Top = 555
+      Width = 970
+      Height = 49
+      Align = alBottom
+      ParentBackground = False
+      TabOrder = 1
+      ExplicitLeft = 2
+      ExplicitTop = 534
+      ExplicitWidth = 966
+      object btnFechar: TStyledButton
+        Left = 893
+        Top = 6
+        Width = 89
+        Height = 33
+        Caption = '&Fechar'
+        TabOrder = 0
+        StyleRadius = 1
+        StyleFamily = 'Bootstrap'
+        StyleClass = 'Danger'
+      end
+      object btnExibir: TStyledButton
+        Left = 104
+        Top = 6
+        Width = 89
+        Height = 33
+        Caption = '&Exibir'
+        TabOrder = 1
+        StyleRadius = 1
+        StyleFamily = 'Bootstrap'
+        StyleClass = 'Dark'
+      end
+      object btnRelatorio: TStyledButton
+        Left = 798
+        Top = 6
+        Width = 89
+        Height = 33
+        Caption = '&Relat'#243'rio'
+        TabOrder = 2
+        StyleRadius = 1
+        StyleFamily = 'Bootstrap'
+        StyleClass = 'Dark'
+      end
+      object btnNovo: TStyledButton
+        Left = 9
+        Top = 6
+        Width = 89
+        Height = 33
+        Caption = '&Novo'
+        TabOrder = 3
+        StyleRadius = 1
+        StyleFamily = 'Bootstrap'
+      end
+    end
+    object dbGrid: TDBGrid
+      Left = 1
+      Top = 94
+      Width = 970
+      Height = 461
+      Align = alClient
+      BorderStyle = bsNone
+      Ctl3D = True
+      DataSource = ColaboradorDataModule.dsColaborador
+      DefaultDrawing = False
+      DrawingStyle = gdsGradient
+      FixedColor = clBtnHighlight
+      GradientEndColor = clSlategray
+      GradientStartColor = clSlategray
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
+      ParentCtl3D = False
+      ReadOnly = True
+      TabOrder = 2
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -12
+      TitleFont.Name = 'Segoe UI'
+      TitleFont.Style = []
+      StyleName = 'Windows'
+    end
+  end
+end

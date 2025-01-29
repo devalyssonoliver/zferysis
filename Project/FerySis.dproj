@@ -4,7 +4,7 @@
         <ProjectVersion>20.1</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win64</Platform>
         <ProjectName Condition="'$(ProjectName)'==''">FerySis</ProjectName>
         <TargetedPlatforms>3</TargetedPlatforms>
@@ -149,11 +149,9 @@
         <DCCReference Include="..\Classes\Colaborador.pas"/>
         <DCCReference Include="..\Views\FrmCadastro\frmCadastroUsuario.pas">
             <Form>Frm_Cad_Usuario</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\Views\FrmLocalização\frmLocalizacaoUsuario.pas">
             <Form>Form_Loc_Usuarios</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\Interfaces\iUsuario.pas"/>
         <DCCReference Include="..\Models\Repositórios\iUsuarioRepositorio.pas"/>
@@ -161,8 +159,11 @@
         <DCCReference Include="..\Models\Repositórios\iColaboradorRepositorio.pas"/>
         <DCCReference Include="..\Models\DataModules\dmColaborador.pas">
             <Form>ColaboradorDataModule</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\Views\FrmLocalização\frmLocalizacaoColaborador.pas">
+            <Form>Form_Loc_Colaborador</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

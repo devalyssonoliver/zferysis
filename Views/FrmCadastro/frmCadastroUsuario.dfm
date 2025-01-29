@@ -3,7 +3,7 @@ object Frm_Cad_Usuario: TFrm_Cad_Usuario
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Cadastro de Usu'#225'rio'
-  ClientHeight = 400
+  ClientHeight = 386
   ClientWidth = 417
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,11 +19,13 @@ object Frm_Cad_Usuario: TFrm_Cad_Usuario
     Left = 0
     Top = 9
     Width = 417
-    Height = 391
+    Height = 377
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
+    ExplicitTop = 8
+    ExplicitHeight = 385
     object lbTitulo: TLabel
       Left = 24
       Top = 48
@@ -77,8 +79,8 @@ object Frm_Cad_Usuario: TFrm_Cad_Usuario
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 198
-      Top = 303
+      Left = 201
+      Top = 293
       Width = 65
       Height = 21
       Caption = 'Cadastro:'
@@ -91,12 +93,13 @@ object Frm_Cad_Usuario: TFrm_Cad_Usuario
     end
     object pnlBotoes: TPanel
       Left = 1
-      Top = 341
+      Top = 328
       Width = 415
-      Height = 49
+      Height = 48
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 0
+      ExplicitTop = 336
       object btnSalvar: TStyledButton
         Left = 8
         Top = 8
@@ -135,7 +138,7 @@ object Frm_Cad_Usuario: TFrm_Cad_Usuario
     end
     object edtCadastro: TEdit
       Left = 272
-      Top = 301
+      Top = 293
       Width = 121
       Height = 23
       Color = clInfoBk
@@ -143,8 +146,8 @@ object Frm_Cad_Usuario: TFrm_Cad_Usuario
       TabOrder = 1
     end
     object ckbAtivo: TCheckBox
-      Left = 24
-      Top = 304
+      Left = 336
+      Top = 129
       Width = 57
       Height = 17
       Caption = 'Ativo'

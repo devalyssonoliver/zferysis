@@ -11,7 +11,7 @@ implementation
 procedure EscreverArquivoIni(const Servidor, Base, Porta: String);
 var
   arquivoConfig: TIniFile;
-  caminhoArquivo, userCript, passCript: String;
+  caminhoArquivo: String;
 begin
 
   caminhoArquivo := IncludeTrailingPathDelimiter
@@ -32,7 +32,7 @@ end;
 procedure LerArquivoIni(out Servidor, Base, Porta: String);
 var
   arquivoConfig: TIniFile;
-  caminhoArquivo, userCript, passCript: String;
+  caminhoArquivo: String;
 begin
 
   caminhoArquivo := IncludeTrailingPathDelimiter
