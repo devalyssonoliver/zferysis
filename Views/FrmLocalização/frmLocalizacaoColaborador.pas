@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
-  Vcl.ButtonStylesAttributes, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.StyledButton,
+  Data.DB, Vcl.Grids, Vcl.DBGrids,
   Vcl.WinXCtrls, dmColaborador, System.ImageList, Vcl.ImgList, uFuncoes;
 
 type
@@ -21,16 +21,16 @@ type
     edtPesquisarNome: TEdit;
     edtPesquisarMatricula: TEdit;
     pnlBotoes: TPanel;
-    btnFechar: TStyledButton;
-    btnExibir: TStyledButton;
-    btnRelatorio: TStyledButton;
-    btnNovo: TStyledButton;
     dbGrid: TDBGrid;
     imgListAtivo: TImageList;
     pnlListTop: TPanel;
     Panel2: TPanel;
     Label1: TLabel;
     tgsTodos: TToggleSwitch;
+    btnNovo: TButton;
+    btnExibir: TButton;
+    btnFechar: TButton;
+    btnRelatorio: TButton;
     procedure dbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure DesativarBotoesELimparGrade;
@@ -39,6 +39,7 @@ type
       const Valor: string);
     procedure AlterarVisibilidadeCamposPesquisa;
     procedure edtPesquisarCodigoExit(Sender: TObject);
+    procedure cmbCriteriosdePesquisaSelect(Sender: TObject);
 
   private
     { Private declarations }
@@ -76,6 +77,11 @@ begin
         MsgBox('Erro!', E.Message, False, 2);
     end;
   end;
+end;
+
+procedure TForm_Loc_Colaborador.cmbCriteriosdePesquisaSelect(Sender: TObject);
+begin
+  AlterarVisibilidadeCamposPesquisa;
 end;
 
 procedure TForm_Loc_Colaborador.dbGridDrawColumnCell(Sender: TObject;

@@ -6,8 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, uFuncoes,
-  dmUsuario, System.ImageList, Vcl.ImgList, Vcl.ButtonStylesAttributes,
-  Vcl.StyledButton, frmCadastroUsuario, Usuario, Vcl.WinXCtrls;
+  dmUsuario, System.ImageList, Vcl.ImgList, frmCadastroUsuario, Usuario,
+  Vcl.WinXCtrls;
 
 type
   TCriterioPesquisa = (cpCodigo, cpNome, cpLogin);
@@ -17,20 +17,20 @@ type
     pnlGrid: TPanel;
     lbTitulo: TLabel;
     Panel1: TPanel;
-    pnlBotoes: TPanel;
     dbGrid: TDBGrid;
     cmbCriteriosdePesquisa: TComboBox;
     edtPesquisarCodigo: TEdit;
     edtPesquisarNome: TEdit;
     edtPesquisarLogin: TEdit;
     imgListAtivo: TImageList;
-    btnFechar: TStyledButton;
-    btnExibir: TStyledButton;
-    btnRelatorio: TStyledButton;
-    btnNovo: TStyledButton;
     Panel2: TPanel;
     tgsTodos: TToggleSwitch;
     Label1: TLabel;
+    pnlBotoes: TPanel;
+    btnNovo: TButton;
+    btnExibir: TButton;
+    btnFechar: TButton;
+    btnRelatorio: TButton;
     procedure cmbCriteriosdePesquisaSelect(Sender: TObject);
     procedure dbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
@@ -43,6 +43,7 @@ type
     procedure tgsTodosClick(Sender: TObject);
     procedure btnRelatorioClick(Sender: TObject);
     procedure edtPesquisarNomeExit(Sender: TObject);
+
   private
     procedure BuscarUsuarioPorCriterio(const Criterio: TCriterioPesquisa;
       const Valor: string);

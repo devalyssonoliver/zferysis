@@ -39,9 +39,8 @@ begin
     (ExtractFilePath(Application.ExeName)) + 'FerySis.ini';
 
   if not FileExists(caminhoArquivo) then
-    raise Exception.Create
-      ('Arquivo FerySis.ini não encontrado no diretório da aplicação.');
-  arquivoConfig := TIniFile.Create(caminhoArquivo);
+
+    arquivoConfig := TIniFile.Create(caminhoArquivo);
   try
     Servidor := arquivoConfig.ReadString('DATABASE_CONFIG', 'SERVIDOR',
       Servidor);

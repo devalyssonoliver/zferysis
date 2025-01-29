@@ -23,8 +23,8 @@ type
     function Editar(const Codigo, CodSetor: Integer; Nome, Matricula: String;
       DataContrato, PeriodoAquisitivo, PeriodoConsessivo: TDate;
       Ativo: Boolean): Boolean;
-    procedure BuscarColaborador(const CriterioIndex: Integer; const Valor: Variant;
-      ADataSet: TDataSet);
+    procedure BuscarColaborador(const CriterioIndex: Integer;
+      const Valor: Variant; ADataSet: TDataSet);
     procedure ListarTodos(ADataSet: TDataSet);
     function CarregarColaborador(const Codigo: Integer): TColaborador;
 
@@ -215,7 +215,8 @@ procedure TColaboradorRepository.ListarTodos(ADataSet: TDataSet);
 begin
   if ADataSet is TFDQuery then
   begin
-    TFDQuery(ADataSet).SQL.Text := 'SELECT * FROM vcolaboradores';
+    TFDQuery(ADataSet).SQL.Text :=
+      'SELECT nome, matricula, codigo_setor, data_contrato, periodo_aquisitivo, periodo_concessivo, data_cadastro, ativo FROM vcolaboradores';
     TFDQuery(ADataSet).Open;
   end;
 end;

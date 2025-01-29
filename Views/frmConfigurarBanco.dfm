@@ -3,8 +3,8 @@ object FrmConfigBanco: TFrmConfigBanco
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  ClientHeight = 390
-  ClientWidth = 352
+  ClientHeight = 379
+  ClientWidth = 348
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,12 +13,11 @@ object FrmConfigBanco: TFrmConfigBanco
   Font.Style = []
   Position = poDesktopCenter
   Scaled = False
-  OnCreate = FormCreate
   TextHeight = 15
   object pnlTopDetail: TPanel
     Left = 0
     Top = 0
-    Width = 352
+    Width = 348
     Height = 9
     Align = alTop
     BevelOuter = bvNone
@@ -26,20 +25,18 @@ object FrmConfigBanco: TFrmConfigBanco
     ParentBackground = False
     TabOrder = 0
     VerticalAlignment = taAlignTop
-    ExplicitWidth = 350
   end
   object Panel1: TPanel
     Left = 0
     Top = 9
-    Width = 352
-    Height = 381
+    Width = 348
+    Height = 370
     Align = alClient
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
     VerticalAlignment = taAlignTop
-    ExplicitTop = 1
     object Label1: TLabel
       Left = 24
       Top = 119
@@ -265,30 +262,25 @@ object FrmConfigBanco: TFrmConfigBanco
       NumbersOnly = True
       TabOrder = 3
     end
-    object btnSalvar: TStyledButton
+    object btnSalvar: TButton
       Left = 153
-      Top = 343
+      Top = 336
       Width = 75
       Height = 25
       Caption = 'Salvar'
       TabOrder = 4
+      StyleName = 'Windows'
       OnClick = btnSalvarClick
-      StyleRadius = 1
-      StyleFamily = 'Bootstrap'
     end
-    object btnCancelar: TStyledButton
+    object btnCancelar: TButton
       Left = 234
-      Top = 343
+      Top = 336
       Width = 75
       Height = 25
-      Cancel = True
       Caption = 'Cancelar'
       TabOrder = 5
+      StyleName = 'Windows'
       OnClick = btnCancelarClick
-      StyleRadius = 1
-      StyleFamily = 'Bootstrap'
-      StyleClass = 'Dark'
-      StyleAppearance = 'Outline'
     end
   end
 end

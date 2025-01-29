@@ -5,7 +5,7 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
   BorderStyle = bsDialog
   Caption = 'Localiza'#231#227'o de Usu'#225'rios'
   ClientHeight = 523
-  ClientWidth = 767
+  ClientWidth = 784
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,7 +14,7 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
   Font.Style = []
   FormStyle = fsStayOnTop
   PopupMode = pmExplicit
-  Position = poOwnerFormCenter
+  Position = poDesktopCenter
   PrintScale = poNone
   Scaled = False
   StyleName = 'Windows'
@@ -23,7 +23,7 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
   object pnlListTop: TPanel
     Left = 0
     Top = 0
-    Width = 767
+    Width = 784
     Height = 3
     Align = alTop
     BevelOuter = bvNone
@@ -34,7 +34,7 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
   object pnlGrid: TPanel
     Left = 0
     Top = 3
-    Width = 767
+    Width = 784
     Height = 520
     Align = alClient
     Color = clWhite
@@ -43,7 +43,7 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
     object lbTitulo: TLabel
       Left = 1
       Top = 1
-      Width = 765
+      Width = 782
       Height = 37
       Align = alTop
       Alignment = taCenter
@@ -59,7 +59,7 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
     object Panel1: TPanel
       Left = 1
       Top = 38
-      Width = 765
+      Width = 782
       Height = 56
       Align = alTop
       BevelOuter = bvNone
@@ -174,67 +174,11 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
         end
       end
     end
-    object pnlBotoes: TPanel
-      Left = 1
-      Top = 470
-      Width = 765
-      Height = 49
-      Align = alBottom
-      ParentBackground = False
-      TabOrder = 1
-      object btnFechar: TStyledButton
-        Left = 672
-        Top = 6
-        Width = 89
-        Height = 33
-        Caption = '&Fechar'
-        TabOrder = 0
-        OnClick = btnFecharClick
-        StyleRadius = 1
-        StyleFamily = 'Bootstrap'
-        StyleClass = 'Danger'
-      end
-      object btnExibir: TStyledButton
-        Left = 104
-        Top = 6
-        Width = 89
-        Height = 33
-        Caption = '&Exibir'
-        TabOrder = 1
-        OnClick = btnExibirClick
-        StyleRadius = 1
-        StyleFamily = 'Bootstrap'
-        StyleClass = 'Dark'
-      end
-      object btnRelatorio: TStyledButton
-        Left = 577
-        Top = 6
-        Width = 89
-        Height = 33
-        Caption = '&Relat'#243'rio'
-        TabOrder = 2
-        OnClick = btnRelatorioClick
-        StyleRadius = 1
-        StyleFamily = 'Bootstrap'
-        StyleClass = 'Dark'
-      end
-      object btnNovo: TStyledButton
-        Left = 9
-        Top = 6
-        Width = 89
-        Height = 33
-        Caption = '&Novo'
-        TabOrder = 3
-        OnClick = btnNovoClick
-        StyleRadius = 1
-        StyleFamily = 'Bootstrap'
-      end
-    end
     object dbGrid: TDBGrid
       Left = 1
       Top = 94
-      Width = 765
-      Height = 376
+      Width = 782
+      Height = 389
       Align = alClient
       BorderStyle = bsNone
       Ctl3D = True
@@ -246,7 +190,7 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
       Options = [dgTitles, dgIndicator, dgColumnResize, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
       ParentCtl3D = False
       ReadOnly = True
-      TabOrder = 2
+      TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -12
@@ -313,6 +257,51 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
           Title.Font.Style = [fsBold]
           Visible = True
         end>
+    end
+    object pnlBotoes: TPanel
+      Left = 1
+      Top = 483
+      Width = 782
+      Height = 36
+      Align = alBottom
+      ParentBackground = False
+      TabOrder = 2
+      object btnNovo: TButton
+        Left = 16
+        Top = 6
+        Width = 75
+        Height = 25
+        Caption = 'Novo'
+        TabOrder = 0
+        OnClick = btnNovoClick
+      end
+      object btnExibir: TButton
+        Left = 97
+        Top = 6
+        Width = 75
+        Height = 25
+        Caption = 'Exibir'
+        TabOrder = 1
+        OnClick = btnExibirClick
+      end
+      object btnFechar: TButton
+        Left = 689
+        Top = 6
+        Width = 75
+        Height = 25
+        Caption = 'Fechar'
+        TabOrder = 2
+        OnClick = btnFecharClick
+      end
+      object btnRelatorio: TButton
+        Left = 608
+        Top = 6
+        Width = 75
+        Height = 25
+        Caption = 'Relat'#243'rio'
+        TabOrder = 3
+        OnClick = btnRelatorioClick
+      end
     end
   end
   object imgListAtivo: TImageList

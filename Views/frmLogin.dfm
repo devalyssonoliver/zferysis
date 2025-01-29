@@ -1,10 +1,11 @@
 object Frm_Login: TFrm_Login
   Left = 0
   Top = 0
-  BorderStyle = bsNone
-  Caption = 'Frm_Login'
-  ClientHeight = 369
-  ClientWidth = 323
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Login'
+  ClientHeight = 374
+  ClientWidth = 322
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,22 +21,26 @@ object Frm_Login: TFrm_Login
     Left = 0
     Top = 0
     Width = 400
-    Height = 369
+    Height = 374
     Align = alLeft
     BevelOuter = bvNone
-    Color = clRoyalblue
+    BorderStyle = bsSingle
+    Color = clSlategray
     Ctl3D = True
     ParentBackground = False
     ParentCtl3D = False
     TabOrder = 0
+    ExplicitLeft = 8
+    ExplicitTop = 136
+    ExplicitHeight = 369
     DesignSize = (
-      400
-      369)
+      396
+      370)
     object imgLogo: TImage
-      Left = 70
+      Left = 78
       Top = 1
-      Width = 182
-      Height = 176
+      Width = 179
+      Height = 160
       Anchors = [akLeft, akTop, akRight]
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000001F40000
@@ -4738,8 +4743,8 @@ object Frm_Login: TFrm_Login
       Proportional = True
     end
     object lbLogo: TLabel
-      Left = 94
-      Top = 183
+      Left = 86
+      Top = 167
       Width = 147
       Height = 40
       Caption = 'FerySIS'
@@ -4751,8 +4756,8 @@ object Frm_Login: TFrm_Login
       ParentFont = False
     end
     object lbVersao: TLabel
-      Left = 258
-      Top = 183
+      Left = 239
+      Top = 175
       Width = 18
       Height = 17
       Caption = '1.0'
@@ -4801,7 +4806,7 @@ object Frm_Login: TFrm_Login
         BevelInner = bvNone
         BevelOuter = bvNone
         BorderStyle = bsNone
-        Color = clRoyalblue
+        Color = clSlategray
         Ctl3D = True
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clDefault
@@ -4854,7 +4859,7 @@ object Frm_Login: TFrm_Login
         BevelInner = bvNone
         BevelOuter = bvNone
         BorderStyle = bsNone
-        Color = clRoyalblue
+        Color = clSlategray
         Ctl3D = True
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clDefault
@@ -4870,30 +4875,15 @@ object Frm_Login: TFrm_Login
         StyleName = 'Windows'
       end
     end
-    object btnLogin: TStyledButton
+    object btnLogin: TButton
       Left = 40
-      Top = 328
+      Top = 319
       Width = 249
       Height = 25
       Caption = 'Login'
       TabOrder = 2
+      StyleName = 'Windows'
       OnClick = btnLoginClick
-      StyleFamily = 'Bootstrap'
-      StyleClass = 'Dark'
-    end
-    object btnFechar: TStyledButton
-      Left = 285
-      Top = 1
-      Width = 38
-      Height = 32
-      ImageIndex = 2
-      Images = img32x32
-      TabOrder = 3
-      OnClick = btnFecharClick
-      Flat = True
-      StyleFamily = 'Bootstrap'
-      StyleClass = 'Light'
-      StyleAppearance = 'Outline'
     end
   end
   object img32x32: TImageList
@@ -5438,23 +5428,5 @@ object Frm_Login: TFrm_Login
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000}
-  end
-  object StyledTaskDialog1: TStyledTaskDialog
-    Buttons = <
-      item
-        Caption = 'Sim'
-        ModalResult = 100
-      end
-      item
-        Caption = 'N'#227'o'
-        ModalResult = 101
-      end>
-    DefaultButton = tcbClose
-    Flags = [tfAllowDialogCancellation]
-    RadioButtons = <>
-    DialogButtonsFamily = 'Bootstrap'
-    ButtonsWidth = 40
-    Left = 168
-    Top = 144
   end
 end

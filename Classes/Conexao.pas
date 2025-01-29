@@ -39,9 +39,8 @@ begin
 end;
 
 function TConexao.ConectarAoBancoDeDados: Boolean;
-var
-  LibPath: string;
 begin
+  Result := False;
   try
     FDBConnection.Params.Clear;
     FDBConnection.Params.Add('DriverID=' + 'PG');

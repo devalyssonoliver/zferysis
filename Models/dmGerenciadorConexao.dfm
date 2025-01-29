@@ -12,7 +12,6 @@ object GerenciadorConexao: TGerenciadorConexao
       'Port=5433'
       'DriverID=pG')
     ConnectedStoredUsage = [auDesignTime]
-    Connected = True
     LoginPrompt = False
     Left = 304
     Top = 224

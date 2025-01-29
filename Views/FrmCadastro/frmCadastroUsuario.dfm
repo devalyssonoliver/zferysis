@@ -24,8 +24,6 @@ object Frm_Cad_Usuario: TFrm_Cad_Usuario
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 8
-    ExplicitHeight = 385
     object lbTitulo: TLabel
       Left = 24
       Top = 48
@@ -93,47 +91,41 @@ object Frm_Cad_Usuario: TFrm_Cad_Usuario
     end
     object pnlBotoes: TPanel
       Left = 1
-      Top = 328
+      Top = 336
       Width = 415
-      Height = 48
+      Height = 40
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitTop = 336
-      object btnSalvar: TStyledButton
-        Left = 8
+      object btnSalvar: TButton
+        Left = 23
         Top = 8
-        Width = 89
-        Height = 33
-        Caption = '&Salvar'
+        Width = 75
+        Height = 25
+        Caption = 'Salvar'
         TabOrder = 0
+        StyleName = 'Windows'
         OnClick = btnSalvarClick
-        StyleRadius = 1
-        StyleFamily = 'Bootstrap'
       end
-      object btnEditar: TStyledButton
-        Left = 103
+      object btnEditar: TButton
+        Left = 104
         Top = 8
-        Width = 89
-        Height = 33
-        Caption = '&Editar'
+        Width = 75
+        Height = 25
+        Caption = 'Editar'
         TabOrder = 1
+        StyleName = 'Windows'
         OnClick = btnEditarClick
-        StyleRadius = 1
-        StyleFamily = 'Bootstrap'
-        StyleClass = 'Dark'
       end
-      object btnFechar: TStyledButton
-        Left = 319
+      object btnFechar: TButton
+        Left = 317
         Top = 8
-        Width = 89
-        Height = 33
-        Caption = '&Fechar'
+        Width = 75
+        Height = 25
+        Caption = 'Fechar'
         TabOrder = 2
+        StyleName = 'Windows'
         OnClick = btnFecharClick
-        StyleRadius = 1
-        StyleFamily = 'Bootstrap'
-        StyleClass = 'Danger'
       end
     end
     object edtCadastro: TEdit

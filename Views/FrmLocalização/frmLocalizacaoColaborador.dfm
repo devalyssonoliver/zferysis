@@ -23,9 +23,6 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 3
-    ExplicitWidth = 767
-    ExplicitHeight = 520
     object lbTitulo: TLabel
       Left = 1
       Top = 4
@@ -40,8 +37,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      ExplicitLeft = 33
-      ExplicitTop = 12
+      ExplicitWidth = 331
     end
     object Panel1: TPanel
       Left = 1
@@ -53,8 +49,6 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 10
-      ExplicitTop = 35
       object edtPesquisarNome: TEdit
         Left = 160
         Top = 21
@@ -105,6 +99,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
         TabOrder = 0
         TextHint = 'Modo de Busca'
         StyleName = 'Windows'
+        OnSelect = cmbCriteriosdePesquisaSelect
         Items.Strings = (
           'C'#243'digo'
           'Nome'
@@ -163,64 +158,50 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
     end
     object pnlBotoes: TPanel
       Left = 1
-      Top = 555
+      Top = 568
       Width = 952
-      Height = 49
+      Height = 36
       Align = alBottom
       ParentBackground = False
       TabOrder = 1
-      ExplicitLeft = 2
-      ExplicitTop = 534
-      ExplicitWidth = 966
-      object btnFechar: TStyledButton
-        Left = 853
+      object btnNovo: TButton
+        Left = 16
         Top = 6
-        Width = 89
-        Height = 33
-        Caption = '&Fechar'
+        Width = 75
+        Height = 25
+        Caption = 'Novo'
         TabOrder = 0
-        StyleRadius = 1
-        StyleFamily = 'Bootstrap'
-        StyleClass = 'Danger'
       end
-      object btnExibir: TStyledButton
-        Left = 104
+      object btnExibir: TButton
+        Left = 97
         Top = 6
-        Width = 89
-        Height = 33
-        Caption = '&Exibir'
+        Width = 75
+        Height = 25
+        Caption = 'Exibir'
         TabOrder = 1
-        StyleRadius = 1
-        StyleFamily = 'Bootstrap'
-        StyleClass = 'Dark'
       end
-      object btnRelatorio: TStyledButton
-        Left = 758
+      object btnFechar: TButton
+        Left = 857
         Top = 6
-        Width = 89
-        Height = 33
-        Caption = '&Relat'#243'rio'
+        Width = 75
+        Height = 25
+        Caption = 'Fechar'
         TabOrder = 2
-        StyleRadius = 1
-        StyleFamily = 'Bootstrap'
-        StyleClass = 'Dark'
       end
-      object btnNovo: TStyledButton
-        Left = 9
+      object btnRelatorio: TButton
+        Left = 776
         Top = 6
-        Width = 89
-        Height = 33
-        Caption = '&Novo'
+        Width = 75
+        Height = 25
+        Caption = 'Relat'#243'rio'
         TabOrder = 3
-        StyleRadius = 1
-        StyleFamily = 'Bootstrap'
       end
     end
     object dbGrid: TDBGrid
       Left = 1
       Top = 97
       Width = 952
-      Height = 458
+      Height = 471
       Align = alClient
       BorderStyle = bsNone
       Ctl3D = False
@@ -274,6 +255,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
           Title.Font.Height = -12
           Title.Font.Name = 'Segoe UI'
           Title.Font.Style = [fsBold]
+          Width = 72
           Visible = True
         end
         item
@@ -347,9 +329,6 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
       Color = clHotLight
       ParentBackground = False
       TabOrder = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 767
     end
   end
   object imgListAtivo: TImageList

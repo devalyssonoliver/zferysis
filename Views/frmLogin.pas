@@ -5,10 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
-  Vcl.ButtonStylesAttributes, Vcl.StyledButton, Vcl.Mask, Vcl.Imaging.pngimage,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,
+  Vcl.Imaging.pngimage,
   System.ImageList, Vcl.ImgList, Vcl.Buttons, Usuario, dmUsuario, frmPrincipal,
-  Vcl.StyledTaskDialog, uFuncoes;
+  uFuncoes;
 
 type
   TFrm_Login = class(TForm)
@@ -21,11 +21,11 @@ type
     edtLogin: TEdit;
     pnlSenha: TPanel;
     edtSenha: TEdit;
-    btnLogin: TStyledButton;
+
     spdIconSenha: TSpeedButton;
     spdIconUser: TSpeedButton;
-    StyledTaskDialog1: TStyledTaskDialog;
-    btnFechar: TStyledButton;
+    btnLogin: TButton;
+
     procedure btnLoginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RealizarLogin;
