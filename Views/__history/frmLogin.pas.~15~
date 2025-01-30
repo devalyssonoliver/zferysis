@@ -5,9 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
-  Vcl.ButtonStylesAttributes, Vcl.StyledButton, Vcl.Mask, Vcl.Imaging.pngimage,
-  System.ImageList, Vcl.ImgList, Vcl.Buttons, Usuario, dmUsuario, frmPrincipal;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,
+  Vcl.Imaging.pngimage,
+  System.ImageList, Vcl.ImgList, Vcl.Buttons, Usuario, dmUsuario, frmPrincipal,
+  uFuncoes;
 
 type
   TFrm_Login = class(TForm)
@@ -16,19 +17,20 @@ type
     imgLogo: TImage;
     lbLogo: TLabel;
     lbVersao: TLabel;
-    spdFechar: TSpeedButton;
     pnlLogin: TPanel;
     edtLogin: TEdit;
     pnlSenha: TPanel;
     edtSenha: TEdit;
-    btnLogin: TStyledButton;
+
     spdIconSenha: TSpeedButton;
     spdIconUser: TSpeedButton;
-    procedure spdFecharClick(Sender: TObject);
+    btnLogin: TButton;
+
     procedure btnLoginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure RealizarLogin;
     procedure ExibirErroLogin;
+    procedure btnFecharClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -45,7 +47,6 @@ implementation
 
 procedure TFrm_Login.RealizarLogin;
 begin
-  ShowMessage('Login válido!');
   Close;
   Hide;
   Application.CreateForm(TFrm_Principal, Frm_Principal);
@@ -59,19 +60,16 @@ begin
     UsuarioDataModule := TUsuarioDataModule.Create(Self);
 end;
 
-procedure TFrm_Login.spdFecharClick(Sender: TObject);
-begin
-  if MessageDlg('A aplicação será fechada, deseja continuar?', mtConfirmation,
-    [mbYes, mbNo], 0) = mrYes then
-  begin
-    Halt;
-  end
-  else
-end;
-
 procedure TFrm_Login.ExibirErroLogin;
 begin
-  ShowMessage('Credenciais inválidas.');
+  MsgBox('Aviso', 'Login ou senha incorretas, verifique.', False, 1);
+
+end;
+
+procedure TFrm_Login.btnFecharClick(Sender: TObject);
+begin
+  if ConfirmarFechamento then
+    Application.Terminate;
 end;
 
 procedure TFrm_Login.btnLoginClick(Sender: TObject);

@@ -30,9 +30,6 @@ object Frm_Login: TFrm_Login
     ParentBackground = False
     ParentCtl3D = False
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 136
-    ExplicitHeight = 369
     DesignSize = (
       396
       370)

@@ -7,7 +7,8 @@ uses
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
   FireDAC.Phys.PGDef, FireDAC.Phys.PG, Data.DB, FireDAC.Comp.Client, Conexao,
-  FireDAC.Moni.Base, FireDAC.Moni.FlatFile, uArquivoIni;
+  FireDAC.Moni.Base, FireDAC.Moni.FlatFile, uArquivoIni, Vcl.Dialogs,
+  Vcl.Forms, uFuncoes;
 
 type
   TGerenciadorConexao = class(TDataModule)
@@ -17,6 +18,7 @@ type
     procedure DataModuleDestroy(Sender: TObject);
     procedure ConfigurarConexao(const Base, Servidor, Porta, Usuario,
       Senha: String);
+    function ValidarConexao: Boolean;
 
   private
     { Private declarations }
@@ -41,17 +43,36 @@ begin
   Conexao.Porta := Porta;
   Conexao.Login := Usuario;
   Conexao.Senha := Senha;
-
 end;
 
-procedure TGerenciadorConexao.DataModuleCreate(Sender: TObject);
+function TGerenciadorConexao.ValidarConexao: Boolean;
 var
   Base, Servidor, Porta, Usuario, Senha: String;
 begin
-  Conexao := TConexao.Create(fdConn);
+  Result := False;
 
-  LerArquivoIni(Servidor, Base, Porta, Usuario, Senha);
-  ConfigurarConexao(Base, Servidor, Porta, Usuario, Senha);
+  pgDriver.VendorLib := IncludeTrailingPathDelimiter
+    (ExtractFilePath(Application.ExeName)) + 'lib\libpq.dll';
+  Usuario := 'postgres';
+  Senha := 'postzeus2011';
+
+  try
+    LerArquivoIni(Servidor, Base, Porta);
+    ConfigurarConexao(Servidor, Base, Porta, Usuario, Senha);
+
+    if not Conexao.ConectarAoBancoDeDados then
+      raise Exception.Create('Não foi possível conectar ao banco de dados.');
+
+    Result := True;
+  except
+    on E: Exception do
+      MsgBox('Erro ao conectar ao banco de dados!', E.Message, False, 2);
+  end;
+end;
+
+procedure TGerenciadorConexao.DataModuleCreate(Sender: TObject);
+begin
+  Conexao := TConexao.Create(fdConn);
 end;
 
 procedure TGerenciadorConexao.DataModuleDestroy(Sender: TObject);

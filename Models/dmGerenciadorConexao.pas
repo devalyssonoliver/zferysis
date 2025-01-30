@@ -16,8 +16,9 @@ type
     pgDriver: TFDPhysPgDriverLink;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
-    procedure ConfigurarConexao(const Base, Servidor, Porta, Usuario,
+    procedure ConfigurarConexao(const Servidor, Base, Porta, Usuario,
       Senha: String);
+    function ValidarConexao: Boolean;
 
   private
     { Private declarations }
@@ -34,37 +35,45 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 {$R *.dfm}
 
-procedure TGerenciadorConexao.ConfigurarConexao(const Base, Servidor, Porta,
+procedure TGerenciadorConexao.ConfigurarConexao(const Servidor, Base, Porta,
   Usuario, Senha: String);
 begin
   Conexao.Base := Base;
   Conexao.Servidor := Servidor;
+  Conexao.Base := Base;
   Conexao.Porta := Porta;
   Conexao.Login := Usuario;
   Conexao.Senha := Senha;
-
 end;
 
-procedure TGerenciadorConexao.DataModuleCreate(Sender: TObject);
+function TGerenciadorConexao.ValidarConexao: Boolean;
 var
-  Base, Servidor, Porta, Usuario, Senha: String;
+  Servidor, Base, Porta, Usuario, Senha: String;
 begin
+  Result := False;
+
   pgDriver.VendorLib := IncludeTrailingPathDelimiter
     (ExtractFilePath(Application.ExeName)) + 'lib\libpq.dll';
   Usuario := 'postgres';
   Senha := 'postzeus2011';
 
-  Conexao := TConexao.Create(fdConn);
   try
-    LerArquivoIni(Base, Servidor, Porta);
-    ConfigurarConexao(Base, Servidor, Porta, Usuario, Senha);
+    LerArquivoIni(Servidor, Base, Porta);
+    ConfigurarConexao(Servidor, Base, Porta, Usuario, Senha);
 
     if not Conexao.ConectarAoBancoDeDados then
       raise Exception.Create('Não foi possível conectar ao banco de dados.');
+
+    Result := True;
   except
     on E: Exception do
       MsgBox('Erro ao conectar ao banco de dados!', E.Message, False, 2);
   end;
+end;
+
+procedure TGerenciadorConexao.DataModuleCreate(Sender: TObject);
+begin
+  Conexao := TConexao.Create(fdConn);
 end;
 
 procedure TGerenciadorConexao.DataModuleDestroy(Sender: TObject);

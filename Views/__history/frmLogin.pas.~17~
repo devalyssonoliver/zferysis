@@ -7,7 +7,7 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,
   Vcl.Imaging.pngimage,
-  System.ImageList, Vcl.ImgList, Vcl.Buttons, Usuario, dmUsuario,
+  System.ImageList, Vcl.ImgList, Vcl.Buttons, Usuario, dmUsuario, frmPrincipal,
   uFuncoes, uInicializacao, dmGerenciadorConexao;
 
 type
@@ -47,14 +47,19 @@ implementation
 
 procedure TFrm_Login.RealizarLogin;
 begin
-  ModalResult := mrOk;
   Close;
+  Hide;
+  Application.CreateForm(TFrm_Principal, Frm_Principal);
+  Frm_Principal.ShowModal;
+
 end;
 
 procedure TFrm_Login.FormCreate(Sender: TObject);
 begin
   if not Assigned(UsuarioDataModule) then
     UsuarioDataModule := TUsuarioDataModule.Create(Self);
+  if not GerenciadorConexao.ValidarConexao then
+    verificarConfiguracaoInicial;
 end;
 
 procedure TFrm_Login.ExibirErroLogin;
@@ -83,9 +88,7 @@ begin
   LoginValido := UsuarioDataModule.VerificarCredenciais(edtLogin.Text,
     edtSenha.Text);
   if LoginValido then
-  begin
-    RealizarLogin;
-  end
+    RealizarLogin
   else
     ExibirErroLogin;
 end;

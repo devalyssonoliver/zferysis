@@ -15,6 +15,7 @@ object Frm_Principal: TFrm_Principal
   WindowState = wsMaximized
   StyleName = 'Windows'
   OnClose = FormClose
+  OnShow = FormShow
   TextHeight = 15
   object Ribbon1: TRibbon
     Left = 0

@@ -24,7 +24,6 @@ type
     procedure sbtnFormUserClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure sbtnFormColaboradorClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
 
   private
     { Private declarations }
@@ -42,14 +41,6 @@ implementation
 procedure TFrm_Principal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Application.Terminate;
-end;
-
-procedure TFrm_Principal.FormShow(Sender: TObject);
-begin
-  Application.CreateForm(TFrm_Login, Frm_Login);
-
-  Frm_Login.ShowModal;
-
 end;
 
 procedure TFrm_Principal.sbtnFormColaboradorClick(Sender: TObject);

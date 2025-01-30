@@ -54,10 +54,7 @@ begin
   try
     EscreverArquivoIni(edtServidor.Text, edtBase.Text, edtPorta.Text);
 
-    gerenciarCamposEdit([edtBase, edtServidor, edtPorta], False);
-    MsgBox('Sucesso!', 'Reinicialize a aplicação para acessar o sistema.',
-      False, 3);
-
+    Close;
   except
     on E: Exception do
     begin

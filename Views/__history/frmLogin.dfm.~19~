@@ -1,10 +1,11 @@
 object Frm_Login: TFrm_Login
   Left = 0
   Top = 0
-  BorderStyle = bsNone
-  Caption = 'Frm_Login'
-  ClientHeight = 369
-  ClientWidth = 323
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Login'
+  ClientHeight = 374
+  ClientWidth = 322
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,28 +15,32 @@ object Frm_Login: TFrm_Login
   Position = poDesktopCenter
   PrintScale = poNone
   Scaled = False
+  OnCreate = FormCreate
   TextHeight = 15
   object pnlAzul: TPanel
     Left = 0
     Top = 0
     Width = 400
-    Height = 369
+    Height = 374
     Align = alLeft
     BevelOuter = bvNone
-    Color = clRoyalblue
+    BorderStyle = bsSingle
+    Color = clSlategray
     Ctl3D = True
     ParentBackground = False
     ParentCtl3D = False
     TabOrder = 0
-    ExplicitHeight = 381
+    ExplicitLeft = 8
+    ExplicitTop = 136
+    ExplicitHeight = 369
     DesignSize = (
-      400
-      369)
+      396
+      370)
     object imgLogo: TImage
-      Left = 70
+      Left = 78
       Top = 1
-      Width = 182
-      Height = 176
+      Width = 179
+      Height = 160
       Anchors = [akLeft, akTop, akRight]
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000001F40000
@@ -4738,21 +4743,21 @@ object Frm_Login: TFrm_Login
       Proportional = True
     end
     object lbLogo: TLabel
-      Left = 70
-      Top = 183
-      Width = 182
-      Height = 44
-      Caption = 'FeriSYS'
+      Left = 86
+      Top = 167
+      Width = 147
+      Height = 40
+      Caption = 'FerySIS'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clInfoText
-      Font.Height = -33
-      Font.Name = 'Ravie'
+      Font.Height = -40
+      Font.Name = 'MingLiU_HKSCS-ExtB'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object lbVersao: TLabel
-      Left = 258
-      Top = 183
+      Left = 239
+      Top = 175
       Width = 18
       Height = 17
       Caption = '1.0'
@@ -4762,16 +4767,6 @@ object Frm_Login: TFrm_Login
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-    end
-    object spdFechar: TSpeedButton
-      Left = 287
-      Top = 1
-      Width = 36
-      Height = 32
-      ImageIndex = 2
-      Images = img32x32
-      Flat = True
-      OnClick = spdFecharClick
     end
     object pnlLogin: TPanel
       Left = 40
@@ -4811,7 +4806,7 @@ object Frm_Login: TFrm_Login
         BevelInner = bvNone
         BevelOuter = bvNone
         BorderStyle = bsNone
-        Color = clRoyalblue
+        Color = clSlategray
         Ctl3D = True
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clDefault
@@ -4847,7 +4842,7 @@ object Frm_Login: TFrm_Login
         Images = img32x32
         Flat = True
         StyleName = 'Windows'
-        ExplicitLeft = 8
+        ExplicitHeight = 25
       end
       object edtSenha: TEdit
         AlignWithMargins = True
@@ -4864,7 +4859,7 @@ object Frm_Login: TFrm_Login
         BevelInner = bvNone
         BevelOuter = bvNone
         BorderStyle = bsNone
-        Color = clRoyalblue
+        Color = clSlategray
         Ctl3D = True
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clDefault
@@ -4874,20 +4869,21 @@ object Frm_Login: TFrm_Login
         MaxLength = 10
         ParentCtl3D = False
         ParentFont = False
+        PasswordChar = '*'
         TabOrder = 0
         TextHint = 'Senha'
         StyleName = 'Windows'
       end
     end
-    object btnLogin: TStyledButton
+    object btnLogin: TButton
       Left = 40
-      Top = 328
+      Top = 319
       Width = 249
       Height = 25
       Caption = 'Login'
       TabOrder = 2
-      StyleFamily = 'Bootstrap'
-      StyleClass = 'Dark'
+      StyleName = 'Windows'
+      OnClick = btnLoginClick
     end
   end
   object img32x32: TImageList

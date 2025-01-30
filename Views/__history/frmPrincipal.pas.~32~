@@ -5,33 +5,25 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, dmGerenciadorConexao,
-  Vcl.ButtonStylesAttributes, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.StyledToolbar,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, dmGerenciadorConexao, Vcl.StdCtrls,
+  Vcl.ExtCtrls,
   uArquivoIni, frmCadastroUsuario, frmLocalizacaoUsuario, System.ImageList,
-  Vcl.ImgList, Vcl.StyledButton, Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls,
+  Vcl.ImgList, Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls,
   Vcl.Ribbon, System.Actions, Vcl.ActnList, Vcl.RibbonSilverStyleActnCtrls,
-  Vcl.Buttons, frmConfigurarBanco;
+  Vcl.Buttons, frmConfigurarBanco, frmLocalizacaoColaborador;
 
 type
   TFrm_Principal = class(TForm)
-    StyledToolbar1: TStyledToolbar;
-    lbRotuloServidor: TLabel;
-    lbServidor: TLabel;
-    lbRotuloBase: TLabel;
-    lbBase: TLabel;
-    lbRotuloPorta: TLabel;
-    lbPorta: TLabel;
-    lbDataAtual: TLabel;
-    lbUsuario: TLabel;
     Ribbon1: TRibbon;
     actionManager: TActionManager;
     RibbonPage1: TRibbonPage;
     RibbonGroup1: TRibbonGroup;
     ImageList: TImageList;
     sbtnFormUser: TSpeedButton;
-    procedure FormCreate(Sender: TObject);
+    sbtnFormColaborador: TSpeedButton;
     procedure sbtnFormUserClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure sbtnFormColaboradorClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -53,17 +45,10 @@ begin
   Application.Terminate;
 end;
 
-procedure TFrm_Principal.FormCreate(Sender: TObject);
-var
-  Base, Servidor, Porta: String;
+procedure TFrm_Principal.sbtnFormColaboradorClick(Sender: TObject);
 begin
-  LerArquivoIni(Base, Servidor, Porta);
-  lbServidor.Caption := Servidor;
-  lbBase.Caption := Base;
-  lbPorta.Caption := Porta;
-  lbDataAtual.Caption := DatetimeToStr(Now);
-  lbUsuario.Caption := IntToStr(UsuarioDataModule.UsuarioLogado.Codigo);
-
+  Application.CreateForm(TForm_Loc_Colaborador, Form_Loc_Colaborador);
+  Form_Loc_Colaborador.Show;
 end;
 
 procedure TFrm_Principal.sbtnFormUserClick(Sender: TObject);
