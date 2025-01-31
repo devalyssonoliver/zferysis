@@ -13,21 +13,22 @@ type
   TColaboradorDataModule = class(TDataModule)
     fdQueryColaborador: TFDQuery;
     dsColaborador: TDataSource;
+    procedure DataModuleCreate(Sender: TObject);
 
   private
     { Private declarations }
     FColaboradorRepository: IColaboradorRepository;
   public
-    constructor Create(AOwner: TComponent); override;
 
     function Inserir(const Codigo, CodSetor: Integer; Nome, Matricula: String;
-      DataContrato, DataCadastro, PeriodoAquisitivo, PeriodoConsessivo: TDate;
+      DataContrato, PeriodoAquisitivo, PeriodoConsessivo: TDate;
       Ativo: Boolean): Boolean;
     function Deletar(const Codigo: Integer): Boolean;
     function Editar(const Codigo, CodSetor: Integer; Nome, Matricula: String;
       DataContrato, PeriodoAquisitivo, PeriodoConsessivo: TDate;
       Ativo: Boolean): Boolean;
-    procedure BuscarColaborador(const CriterioIndex: Integer; const Valor: Variant);
+    procedure BuscarColaborador(const CriterioIndex: Integer;
+      const Valor: Variant);
     procedure ListarTodos;
     function CarregarColaborador(const Codigo: Integer): TColaborador;
   end;
@@ -54,9 +55,8 @@ begin
   Result := FColaboradorRepository.CarregarColaborador(Codigo);
 end;
 
-constructor TColaboradorDataModule.Create(AOwner: TComponent);
+procedure TColaboradorDataModule.DataModuleCreate(Sender: TObject);
 begin
-  inherited;
   FColaboradorRepository := TColaboradorRepository.Create;
 end;
 
@@ -73,11 +73,11 @@ begin
 end;
 
 function TColaboradorDataModule.Inserir(const Codigo, CodSetor: Integer;
-  Nome, Matricula: String; DataContrato, DataCadastro, PeriodoAquisitivo,
-  PeriodoConsessivo: TDate; Ativo: Boolean): Boolean;
+  Nome, Matricula: String; DataContrato, PeriodoAquisitivo, PeriodoConsessivo
+  : TDate; Ativo: Boolean): Boolean;
 begin
   Result := FColaboradorRepository.Inserir(Codigo, CodSetor, Nome, Matricula,
-    DataContrato, DataCadastro, PeriodoAquisitivo, PeriodoConsessivo, Ativo);
+    DataContrato, PeriodoAquisitivo, PeriodoConsessivo, Ativo);
 end;
 
 procedure TColaboradorDataModule.ListarTodos;

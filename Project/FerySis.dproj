@@ -59,7 +59,7 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <DCC_DcuOutput>D:\zFeriSys\Project\Compilado\</DCC_DcuOutput>
+        <DCC_DcuOutput>$(Platform)\$(Config)</DCC_DcuOutput>
         <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_E>false</DCC_E>
         <DCC_N>false</DCC_N>
@@ -73,7 +73,7 @@
         <SanitizedProjectName>FerySis</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_UsePackage>vclwinx;fs29;fmx;FMXfrLanguageSlovak29;vclie;DbxCommonDriver;bindengine;IndyIPCommon;VCLRESTComponents;FireDACCommonODBC;FMXfrCoreLibrary29;appanalytics;IndyProtocols;vclx;Skia.Package.RTL;frxADOQueryBuilder29;dbxcds;vcledge;fcxp29;frLanguageSlovak29;frLanguageHungarian29;FMXfrLanguageLatvian29;FMXfrLanguageUkrainian29;FMXfrLanguageDutch29;vclribbon;FireDACSqliteDriver;DbxClientDriver;soapmidas;frLanguageArabic29;frCoreLibrary29;dbexpress;frLanguageCatalon29;frxFDQueryBuilder29;frLanguageBrazil29;frLanguageCzech29;FMXfrxDBX29;FMXfrLanguageSwiss29;inet;vcltouch;fmxdae;FMXfrLanguageTurkish29;CustomIPTransport;FMXfrLanguageBrazil129;FMXfrLanguageCzech29;frLanguageItalian29;FMXfsDB29;frxPDF29;fqbFD29;frLanguageSwiss29;IndySystem;FMXfsADO29;frxe29;frLanguageSwedish29;FMXfrLanguagePolish29;frLanguageUkrainian29;fsDB29;vclFireDAC;FireDACCommon;frLanguageDanish29;bindcompdbx;fcx29;FMXfrLanguageLithuanian29;rtl;FireDACMySQLDriver;FMXfrLanguageGerman29;fqb29;frLanguageLithuanian29;frce;DBXSqliteDriver;frLanguageFrench29;frLanguageRussian29;frxSM29;vclimg;FMXfrLanguageBrazil229;inetdbxpress;FireDAC;xmlrtl;dsnap;frFDDataLibrary29;frLanguageSerbian29;FMXfrLanguageRussian29;frLanguageFarsi29;FMXfrLanguageFrench29;fmxobj;bindcompvclsmp;frx29;FMXfrLanguageHebrew29;FMXfrLanguageCroatian29;frLanguageChinese29;frControlsLibrary29;frxQueryBuilder29;FMXfrxADO29;frxIntIOIndy29;frLanguageHebrew29;fqbADO29;FMXfrLanguageBulgarian29;FMXfrxCDS29;frxDB29;fqbDBX29;frLocalizationLibrary29;FireDACCommonDriver;FMXfcxd29;IndyIPClient;frxHTML29;bindcompvclwinx;frLanguageTaiwan29;FMXfrLanguageArabic29;bindcompfmx;frxDBXQueryBuilder29;frLanguageRomanian29;frLanguageGerman29;inetdb;FMXfrLanguageItalian29;frLanguageIndonesian29;FMXfrLanguageSpanish29;FMXfcxed29;frLanguageBrazil229;vclactnband;FMXfrxDB29;fmxFireDAC;frLanguageCroatian29;DBXMySQLDriver;FMXfs29;fsADO29;VclSmp;FMXfrxFD29;fmxase;FMXfrLanguageFarsi29;FMXfrLanguageTaiwan29;dbrtl;Skia.Package.FMX;FMXfrLanguageChinese29;FMXfrLanguagePortuguese29;FireDACMSAccDriver;frxcs29;FMXfrLanguageJapanese29;frLanguageSlovene29;frADODataLibrary29;frLanguageTurkish29;vcldsnap;DBXInterBaseDriver;fcxe29;frLanguageGreek29;Skia.Package.VCL;frLanguageBrazil129;vcldb;FMXfrLanguageCatalon29;FMXfrLanguageHungarian29;bindcomp;frLanguageLatvian29;IndyCore;RESTBackendComponents;frLanguageSpanish29;frxIntIO29;FMXfrx29;frLanguageJapanese29;frSmartMemo29;FireDACADSDriver;frxFD29;RESTComponents;FMXfrLanguageDanish29;IndyIPServer;vcl;dsnapxml;adortl;dsnapcon;FMXfrLanguageSlovene29;fsFD29;FMXfrLanguageSerbian29;FMXfrxe29;frxADO29;FMXfrLanguageIndonesian29;FMXfrLanguageSwedish29;frLanguageDutch29;FireDACPgDriver;fqbSM29;frLanguagePortuguese29;tethering;frLanguageBulgarian29;frLanguagePolish29;bindcompvcl;frxDBX29;FMXfrLanguageBrazil29;CloudService;FMXfrLanguageGreek29;FMXfcxpd29;FMXfrLocalizationLibrary29;frGraphicsLibrary29;soaprtl;FMXfrLanguageRomanian29;soapserver;FireDACIBDriver;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>vclwinx;fs29;fmx;FMXfrLanguageSlovak29;vclie;DbxCommonDriver;bindengine;IndyIPCommon;VCLRESTComponents;FireDACCommonODBC;FMXfrCoreLibrary29;appanalytics;IndyProtocols;vclx;Skia.Package.RTL;frxADOQueryBuilder29;dbxcds;vcledge;fcxp29;frLanguageSlovak29;frLanguageHungarian29;FMXfrLanguageLatvian29;FMXfrLanguageUkrainian29;FMXfrLanguageDutch29;vclribbon;FireDACSqliteDriver;DbxClientDriver;soapmidas;frLanguageArabic29;frCoreLibrary29;dbexpress;frLanguageCatalon29;frxFDQueryBuilder29;frLanguageBrazil29;frLanguageCzech29;FMXfrxDBX29;FMXfrLanguageSwiss29;inet;vcltouch;fmxdae;FMXfrLanguageTurkish29;CustomIPTransport;FMXfrLanguageBrazil129;FMXfrLanguageCzech29;frLanguageItalian29;FMXfsDB29;frxPDF29;fqbFD29;frLanguageSwiss29;IndySystem;FMXfsADO29;frxe29;frLanguageSwedish29;FMXfrLanguagePolish29;frLanguageUkrainian29;fsDB29;vclFireDAC;FireDACCommon;frLanguageDanish29;bindcompdbx;fcx29;FMXfrLanguageLithuanian29;rtl;FireDACMySQLDriver;FMXfrLanguageGerman29;fqb29;frLanguageLithuanian29;frce;DBXSqliteDriver;frLanguageFrench29;frLanguageRussian29;frxSM29;vclimg;FMXfrLanguageBrazil229;inetdbxpress;FireDAC;xmlrtl;dsnap;frFDDataLibrary29;frLanguageSerbian29;FMXfrLanguageRussian29;frLanguageFarsi29;FMXfrLanguageFrench29;fmxobj;bindcompvclsmp;frx29;FMXfrLanguageHebrew29;FMXfrLanguageCroatian29;frLanguageChinese29;frControlsLibrary29;frxQueryBuilder29;FMXfrxADO29;frxIntIOIndy29;frLanguageHebrew29;fqbADO29;FMXfrLanguageBulgarian29;FMXfrxCDS29;frxDB29;fqbDBX29;frLocalizationLibrary29;FireDACCommonDriver;FMXfcxd29;IndyIPClient;frxHTML29;bindcompvclwinx;frLanguageTaiwan29;FMXfrLanguageArabic29;bindcompfmx;frxDBXQueryBuilder29;frLanguageRomanian29;frLanguageGerman29;inetdb;FMXfrLanguageItalian29;frLanguageIndonesian29;FMXfrLanguageSpanish29;FMXfcxed29;frLanguageBrazil229;vclactnband;FMXfrxDB29;fmxFireDAC;frLanguageCroatian29;DBXMySQLDriver;FMXfs29;fsADO29;VclSmp;FMXfrxFD29;fmxase;FMXfrLanguageFarsi29;FMXfrLanguageTaiwan29;dbrtl;Skia.Package.FMX;FMXfrLanguageChinese29;FMXfrLanguagePortuguese29;FireDACMSAccDriver;frxcs29;FMXfrLanguageJapanese29;frLanguageSlovene29;frADODataLibrary29;frLanguageTurkish29;vcldsnap;DBXInterBaseDriver;fcxe29;frLanguageGreek29;Skia.Package.VCL;frLanguageBrazil129;vcldb;FMXfrLanguageCatalon29;FMXfrLanguageHungarian29;bindcomp;frLanguageLatvian29;IndyCore;RESTBackendComponents;frLanguageSpanish29;frxIntIO29;FMXfrx29;frLanguageJapanese29;frSmartMemo29;FireDACADSDriver;frxFD29;RESTComponents;FMXfrLanguageDanish29;IndyIPServer;vcl;dsnapxml;adortl;dsnapcon;FMXfrLanguageSlovene29;fsFD29;FMXfrLanguageSerbian29;FMXfrxe29;frxADO29;FMXfrLanguageIndonesian29;FMXfrLanguageSwedish29;frLanguageDutch29;FireDACPgDriver;fqbSM29;frLanguagePortuguese29;tethering;frLanguageBulgarian29;frLanguagePolish29;bindcompvcl;frxDBX29;FMXfrLanguageBrazil29;CloudService;FMXfrLanguageGreek29;FMXfcxpd29;FMXfrLocalizationLibrary29;frGraphicsLibrary29;soaprtl;FMXfrLanguageRomanian29;soapserver;FireDACIBDriver;dxSkinBasicRS29;dxSkinBlackRS29;dxSkinBlueprintRS29;dxSkinBlueRS29;dxSkinCaramelRS29;dxSkinCoffeeRS29;dxSkinDarkRoomRS29;dxSkinDarkSideRS29;dxSkinDevExpressDarkStyleRS29;dxSkinDevExpressStyleRS29;dxSkinFoggyRS29;dxSkinGlassOceansRS29;dxSkinHighContrastRS29;dxSkiniMaginaryRS29;dxSkinLilianRS29;dxSkinLiquidSkyRS29;dxSkinLondonLiquidSkyRS29;dxSkinMcSkinRS29;dxSkinMetropolisDarkRS29;dxSkinMetropolisRS29;dxSkinMoneyTwinsRS29;dxSkinOffice2007BlackRS29;dxSkinOffice2007BlueRS29;dxSkinOffice2007GreenRS29;dxSkinOffice2007PinkRS29;dxSkinOffice2007SilverRS29;dxSkinOffice2010BlackRS29;dxSkinOffice2010BlueRS29;dxSkinOffice2010SilverRS29;dxSkinOffice2013DarkGrayRS29;dxSkinOffice2013LightGrayRS29;dxSkinOffice2013WhiteRS29;dxSkinOffice2016ColorfulRS29;dxSkinOffice2016DarkRS29;dxSkinOffice2019BlackRS29;dxSkinOffice2019ColorfulRS29;dxSkinOffice2019DarkGrayRS29;dxSkinOffice2019WhiteRS29;dxSkinPumpkinRS29;dxSkinSevenClassicRS29;dxSkinSevenRS29;dxSkinSharpPlusRS29;dxSkinSharpRS29;dxSkinSilverRS29;dxSkinSpringTimeRS29;dxSkinStardustRS29;dxSkinSummer2008RS29;dxSkinTheAsphaltWorldRS29;dxSkinTheBezierRS29;dxSkinValentineRS29;dxSkinVisualStudio2013BlueRS29;dxSkinVisualStudio2013DarkRS29;dxSkinVisualStudio2013LightRS29;dxSkinVS2010RS29;dxSkinWhiteprintRS29;dxSkinWXIRS29;dxSkinXmas2008BlueRS29;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
@@ -121,10 +121,10 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1046</VerInfo_Locale>
-        <DCC_ExeOutput>.\</DCC_ExeOutput>
+        <DCC_ExeOutput>$(Platform)\$(Config)</DCC_ExeOutput>
         <UWP_DelphiLogo44>..\Assets\Logo.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>..\Assets\Logo.png</UWP_DelphiLogo150>
-        <DCC_DcuOutput>D:\zFeriSys\Project\Compilado\</DCC_DcuOutput>
+        <UsePackages>true</UsePackages>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -171,6 +171,12 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\Units\uInicializacao.pas"/>
+        <DCCReference Include="..\Threads\uThreadUsuarioDataModule.pas"/>
+        <DCCReference Include="..\Threads\uThreadColaboradorDataModule.pas"/>
+        <DCCReference Include="..\Views\FrmCadastro\frmCadastroColaborador.pas">
+            <Form>Form_Cadastro_Colaborador</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -218,12 +224,6 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="FerySis.exe" Configuration="Release" Class="ProjectOutput">
-                    <Platform Name="Win64">
-                        <RemoteName>FerySis.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\FerySis.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>FerySis.exe</RemoteName>
@@ -231,6 +231,12 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Win64\Debug\FerySis.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win64">
+                        <RemoteName>FerySis.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win64\Release\FerySis.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win64">
                         <RemoteName>FerySis.exe</RemoteName>
                         <Overwrite>true</Overwrite>

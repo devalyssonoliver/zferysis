@@ -3,167 +3,165 @@ unit iColaboradorRepositorio;
 interface
 
 uses
-  iColaborador, Data.DB, FireDAC.Comp.Client, dmGerenciadorConexao,
-  System.SysUtils, uFuncoes, Colaborador, System.Variants, FireDAC.Stan.Param;
+  System.SysUtils, iColaborador, Colaborador, FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet, FireDAC.Stan.Param, dmGerenciadorConexao, Data.DB,
+  System.Variants, uFuncoes, Vcl.Dialogs;
 
 type
   TColaboradorRepository = class(TInterfacedObject, IColaboradorRepository)
-  private
-    FQuery: TFDQuery;
-    procedure SetUpQuery(const SQLText: string);
-    procedure ExecuteSQL;
   public
-    constructor Create;
-    destructor Destroy; override;
-
     function Inserir(const Codigo, CodSetor: Integer; Nome, Matricula: String;
-      DataContrato, DataCadastro, PeriodoAquisitivo, PeriodoConsessivo: TDate;
+      DataContrato, PeriodoAquisitivo, PeriodoConcessivo: TDate;
+      Ativo: Boolean): Boolean;
+    function Editar(const Codigo, CodSetor: Integer; Nome, Matricula: String;
+      DataContrato, PeriodoAquisitivo, PeriodoConcessivo: TDate;
       Ativo: Boolean): Boolean;
     function Deletar(const Codigo: Integer): Boolean;
-    function Editar(const Codigo, CodSetor: Integer; Nome, Matricula: String;
-      DataContrato, PeriodoAquisitivo, PeriodoConsessivo: TDate;
-      Ativo: Boolean): Boolean;
+    function CarregarColaborador(const Codigo: Integer): TColaborador;
     procedure BuscarColaborador(const CriterioIndex: Integer;
       const Valor: Variant; ADataSet: TDataSet);
     procedure ListarTodos(ADataSet: TDataSet);
-    function CarregarColaborador(const Codigo: Integer): TColaborador;
 
   const
     CRITERIO_CODIGO = 0;
     CRITERIO_NOME = 1;
     CRITERIO_MATRICULA = 2;
-
   end;
 
 implementation
 
-function TColaboradorRepository.CarregarColaborador(const Codigo: Integer)
-  : TColaborador;
-var
-  Colaborador: TColaborador;
-begin
-  Result := nil;
-  SetUpQuery
-    ('SELECT codigo, nome, matricula, codigo_setor, data_contrato, periodo_aquisitivo, periodo_concessivo, data_cadastro FROM colaboradores WHERE codigo :codigo;');
-  FQuery.Params.ParamByName('codigo').AsInteger := Codigo;
-  FQuery.Open;
-
-  if not FQuery.IsEmpty then
-  begin
-    Colaborador := TColaborador.Create;
-    Colaborador.Codigo := FQuery.Params.ParamByName('codigo').AsInteger;
-    Colaborador.Nome := FQuery.Params.ParamByName('nome').AsString;
-    Colaborador.Matricula := FQuery.Params.ParamByName('matricula').AsString;
-    Colaborador.CodSetor := FQuery.Params.ParamByName('codigo_setor').AsInteger;
-    Colaborador.DataContrato := FQuery.Params.ParamByName
-      ('data_contrato').AsDate;
-    Colaborador.DataCadastro := FQuery.Params.ParamByName
-      ('data_cadastro').AsDate;
-    Colaborador.PeriodoAquisitivo := FQuery.Params.ParamByName
-      ('periodo_aquisitivo').AsDate;
-    Colaborador.PeriodoConsessivo := FQuery.Params.ParamByName
-      ('periodo_concessivo').AsDate;
-    Result := Colaborador;
-
-  end;
-
-end;
-
-constructor TColaboradorRepository.Create;
-begin
-  inherited Create;
-  FQuery := TFDQuery.Create(nil);
-  FQuery.Connection := GerenciadorConexao.fdConn;
-end;
-
-destructor TColaboradorRepository.Destroy;
-begin
-  FQuery.Free;
-  inherited Destroy;
-end;
-
-procedure TColaboradorRepository.SetUpQuery(const SQLText: string);
-begin
-  FQuery.SQL.Text := SQLText;
-end;
-
-procedure TColaboradorRepository.ExecuteSQL;
-begin
-  try
-    FQuery.ExecSQL;
-  except
-    on E: Exception do
-      MsgBox('Erro ao executar operação no banco de dados.', E.Message,
-        False, 2);
-  end;
-end;
+{ TColaboradorRepository }
 
 function TColaboradorRepository.Inserir(const Codigo, CodSetor: Integer;
-  Nome, Matricula: String; DataContrato, DataCadastro, PeriodoAquisitivo,
-  PeriodoConsessivo: TDate; Ativo: Boolean): Boolean;
+  Nome, Matricula: String; DataContrato, PeriodoAquisitivo, PeriodoConcessivo
+  : TDate; Ativo: Boolean): Boolean;
+var
+  Query: TFDQuery;
 begin
   Result := False;
+  Query := TFDQuery.Create(nil);
   try
-    SetUpQuery
-      ('INSERT INTO colaboradores (codigo, nome, matricula, codigo_setor, data_contrato, periodo_aquisitivo, periodo_concessivo, data_cadastro, ativo) '
-      + 'VALUES (:codigo, :nome, :matricula, :codigo_setor, :data_contrato, :periodo_aquisitivo, :periodo_concessivo, :data_cadastro, :ativo)');
-    FQuery.Params.ParamByName('codigo').AsInteger := Codigo;
-    FQuery.Params.ParamByName('nome').AsString := Nome;
-    FQuery.Params.ParamByName('matricula').AsString := Matricula;
-    FQuery.Params.ParamByName('codigo_setor').AsInteger := CodSetor;
-    FQuery.Params.ParamByName('data_contrato').AsDate := DataContrato;
-    FQuery.Params.ParamByName('data_cadastro').AsDate := Now;
-    FQuery.Params.ParamByName('periodo_aquisitivo').AsDate := PeriodoAquisitivo;
-    FQuery.Params.ParamByName('periodo_concessivo').AsDate := PeriodoConsessivo;
-    FQuery.Params.ParamByName('ativo').AsBoolean := Ativo;
-
-    ExecuteSQL;
+    Query.Connection := GerenciadorConexao.fdConn;
+    Query.SQL.Text :=
+      'INSERT INTO colaboradores (codigo, nome, matricula, codigo_setor, data_contrato, periodo_aquisitivo, periodo_concessivo, ativo) '
+      + 'VALUES (:codigo, :nome, :matricula, :codigo_setor, :data_contrato, :periodo_aquisitivo, :periodo_concessivo, :ativo)';
+    Query.Params.ParamByName('codigo').AsInteger := Codigo;
+    Query.Params.ParamByName('nome').AsString := Nome;
+    Query.Params.ParamByName('matricula').AsString := Matricula;
+    Query.Params.ParamByName('codigo_setor').AsInteger := CodSetor;
+    Query.Params.ParamByName('data_contrato').AsDate := DataContrato;
+    Query.Params.ParamByName('periodo_aquisitivo').AsDate := PeriodoAquisitivo;
+    Query.Params.ParamByName('periodo_concessivo').AsDate := PeriodoConcessivo;
+    Query.Params.ParamByName('ativo').AsBoolean := Ativo;
+    Query.ExecSQL;
     Result := True;
   except
     on E: Exception do
-      MsgBox('Erro ao inserir o colaborador.', E.Message, False, 2);
+      MsgBox('Erro ao inserir colaborador.', E.Message + sLineBreak + 'SQL: ' +
+        Query.SQL.Text, False, 2);
   end;
-end;
-
-function TColaboradorRepository.Deletar(const Codigo: Integer): Boolean;
-begin
-  Result := False;
-  try
-    SetUpQuery('DELETE FROM colaboradores WHERE codigo = :codigo');
-    FQuery.Params.ParamByName('codigo').AsInteger := Codigo;
-
-    ExecuteSQL;
-    Result := True;
-  except
-    on E: Exception do
-      MsgBox('Erro ao excluir o colaborador.', E.Message, False, 2);
-  end;
+  Query.Free;
 end;
 
 function TColaboradorRepository.Editar(const Codigo, CodSetor: Integer;
-  Nome, Matricula: String; DataContrato, PeriodoAquisitivo, PeriodoConsessivo
+  Nome, Matricula: String; DataContrato, PeriodoAquisitivo, PeriodoConcessivo
   : TDate; Ativo: Boolean): Boolean;
+var
+  Query: TFDQuery;
 begin
   Result := False;
+  Query := TFDQuery.Create(nil);
   try
-    SetUpQuery
-      ('UPDATE colaboradores SET nome=:nome, matricula=:matricula, codigo_setor=:codigo_setor, '
+    Query.Connection := GerenciadorConexao.fdConn;
+    Query.SQL.Text :=
+      'UPDATE colaboradores SET nome=:nome, matricula=:matricula, codigo_setor=:codigo_setor, '
       + 'data_contrato=:data_contrato, periodo_aquisitivo=:periodo_aquisitivo, periodo_concessivo=:periodo_concessivo, ativo=:ativo '
-      + 'WHERE codigo=:codigo');
-    FQuery.Params.ParamByName('codigo').AsInteger := Codigo;
-    FQuery.Params.ParamByName('nome').AsString := Nome;
-    FQuery.Params.ParamByName('matricula').AsString := Matricula;
-    FQuery.Params.ParamByName('codigo_setor').AsInteger := CodSetor;
-    FQuery.Params.ParamByName('data_contrato').AsDate := DataContrato;
-    FQuery.Params.ParamByName('periodo_aquisitivo').AsDate := PeriodoAquisitivo;
-    FQuery.Params.ParamByName('periodo_concessivo').AsDate := PeriodoConsessivo;
-    FQuery.Params.ParamByName('ativo').AsBoolean := Ativo;
-
-    ExecuteSQL;
+      + 'WHERE codigo=:codigo';
+    Query.Params.ParamByName('codigo').AsInteger := Codigo;
+    Query.Params.ParamByName('nome').AsString := Nome;
+    Query.Params.ParamByName('matricula').AsString := Matricula;
+    Query.Params.ParamByName('codigo_setor').AsInteger := CodSetor;
+    Query.Params.ParamByName('data_contrato').AsDate := DataContrato;
+    Query.Params.ParamByName('periodo_aquisitivo').AsDate := PeriodoAquisitivo;
+    Query.Params.ParamByName('periodo_concessivo').AsDate := PeriodoConcessivo;
+    Query.Params.ParamByName('ativo').AsBoolean := Ativo;
+    Query.ExecSQL;
     Result := True;
   except
     on E: Exception do
-      MsgBox('Erro ao editar o colaborador.', E.Message, False, 2);
+      MsgBox('Erro ao editar colaborador.', E.Message + sLineBreak + 'SQL: ' +
+        Query.SQL.Text, False, 2);
+  end;
+  Query.Free;
+end;
+
+function TColaboradorRepository.CarregarColaborador(const Codigo: Integer)
+  : TColaborador;
+var
+  Query: TFDQuery;
+  Colaborador: TColaborador;
+begin
+  Result := nil;
+  Query := TFDQuery.Create(nil);
+  try
+    Query.Connection := GerenciadorConexao.fdConn;
+    Query.SQL.Text :=
+      'SELECT codigo, nome, matricula, codigo_setor, data_contrato, periodo_aquisitivo, periodo_concessivo, data_cadastro FROM colaboradores WHERE codigo = :codigo;';
+    Query.Params.ParamByName('codigo').AsInteger := Codigo;
+    Query.Open;
+
+    if not Query.IsEmpty then
+    begin
+      Colaborador := TColaborador.Create;
+      Colaborador.Codigo := Query.Params.ParamByName('codigo').AsInteger;
+      Colaborador.Nome := Query.Params.ParamByName('nome').AsString;
+      Colaborador.Matricula := Query.Params.ParamByName('matricula').AsString;
+      Colaborador.CodSetor := Query.Params.ParamByName('codigo_setor')
+        .AsInteger;
+      Colaborador.DataContrato := Query.Params.ParamByName
+        ('data_contrato').AsDate;
+      Colaborador.DataCadastro := Query.Params.ParamByName
+        ('data_cadastro').AsDate;
+      Colaborador.PeriodoAquisitivo := Query.Params.ParamByName
+        ('periodo_aquisitivo').AsDate;
+      Colaborador.PeriodoConsessivo := Query.Params.ParamByName
+        ('periodo_concessivo').AsDate;
+      Result := Colaborador;
+      Result := Colaborador;
+    end;
+  except
+    on E: Exception do
+      MsgBox('Erro ao carregar colaborador.', E.Message, False, 2);
+  end;
+  Query.Free;
+end;
+
+function TColaboradorRepository.Deletar(const Codigo: Integer): Boolean;
+var
+  Query: TFDQuery;
+begin
+  Result := False;
+  Query := TFDQuery.Create(nil);
+  try
+    Query.Connection := GerenciadorConexao.fdConn;
+    Query.SQL.Text := 'DELETE FROM colaboradores WHERE codigo = :codigo';
+    Query.Params.ParamByName('codigo').AsInteger := Codigo;
+    Query.ExecSQL;
+    Result := True;
+  except
+    on E: Exception do
+      MsgBox('Erro ao excluir colaborador.', E.Message, False, 2);
+  end;
+  Query.Free;
+end;
+
+procedure TColaboradorRepository.ListarTodos(ADataSet: TDataSet);
+begin
+  if ADataSet is TFDQuery then
+  begin
+    TFDQuery(ADataSet).Connection := GerenciadorConexao.fdConn;
+    TFDQuery(ADataSet).SQL.Text := 'SELECT * FROM vcolaboradores';
+    TFDQuery(ADataSet).Open;
   end;
 end;
 
@@ -176,48 +174,37 @@ begin
   if ADataSet is TFDQuery then
   begin
     try
-      SetUpQuery('SELECT * FROM public.vcolaboradores WHERE ');
+      TFDQuery(ADataSet).Connection := GerenciadorConexao.fdConn;
+      TFDQuery(ADataSet).SQL.Text := 'SELECT * FROM vcolaboradores WHERE ';
+
       case CriterioIndex of
         CRITERIO_CODIGO:
           begin
-            FQuery.SQL.Add('codigo = :Valor');
-            FQuery.ParamByName('Valor').Value :=
+            TFDQuery(ADataSet).SQL.Add('codigo = :Valor');
+            TFDQuery(ADataSet).ParamByName('Valor').AsInteger :=
               StrToIntDef(VarToStr(Valor), 0);
           end;
         CRITERIO_NOME:
           begin
-            FQuery.SQL.Add('nome ILIKE :Valor');
-            FQuery.ParamByName('Valor').AsString := '%' + VarToStr(Valor) + '%';
+            TFDQuery(ADataSet).SQL.Add('nome ILIKE :Valor');
+            TFDQuery(ADataSet).ParamByName('Valor').AsString :=
+              '%' + VarToStr(Valor) + '%';
           end;
         CRITERIO_MATRICULA:
           begin
-            FQuery.SQL.Add('matricula ILIKE :Valor');
-            FQuery.ParamByName('Valor').AsString := '%' + VarToStr(Valor) + '%';
+            TFDQuery(ADataSet).SQL.Add('matricula ILIKE :Valor');
+            TFDQuery(ADataSet).ParamByName('Valor').AsString :=
+              '%' + VarToStr(Valor) + '%';
           end;
       else
         raise Exception.Create('Critério de pesquisa inválido.');
       end;
 
-      FQuery.Open;
-
-      if FQuery.IsEmpty then
-        raise Exception.Create
-          ('Nenhum usuário encontrado com o critério informado.');
-
+      TFDQuery(ADataSet).Open;
     except
       on E: Exception do
         MsgBox('Erro ao buscar colaborador.', E.Message, False, 2);
     end;
-  end;
-end;
-
-procedure TColaboradorRepository.ListarTodos(ADataSet: TDataSet);
-begin
-  if ADataSet is TFDQuery then
-  begin
-    TFDQuery(ADataSet).SQL.Text :=
-      'SELECT nome, matricula, codigo_setor, data_contrato, periodo_aquisitivo, periodo_concessivo, data_cadastro, ativo FROM vcolaboradores';
-    TFDQuery(ADataSet).Open;
   end;
 end;
 

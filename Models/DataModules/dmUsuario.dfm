@@ -371,40 +371,6 @@ object UsuarioDataModule: TUsuarioDataModule
       end
     end
   end
-  object fdqUsuariosRelatorio: TFDQuery
-    Connection = GerenciadorConexao.fdConn
-    SQL.Strings = (
-      'SELECT * FROM vusuarios'
-      ' ')
-    Left = 128
-    Top = 104
-    object fdqUsuariosRelatoriocodigo: TIntegerField
-      FieldName = 'codigo'
-      Origin = 'codigo'
-    end
-    object fdqUsuariosRelatorionome: TWideStringField
-      FieldName = 'nome'
-      Origin = 'nome'
-      Size = 100
-    end
-    object fdqUsuariosRelatoriologin: TWideStringField
-      FieldName = 'login'
-      Origin = '"login"'
-    end
-    object fdqUsuariosRelatoriodata_cadastro: TDateField
-      FieldName = 'data_cadastro'
-      Origin = 'data_cadastro'
-    end
-    object fdqUsuariosRelatorioativo: TBooleanField
-      FieldName = 'ativo'
-      Origin = 'ativo'
-    end
-  end
-  object dsUsuariosRelatorio: TDataSource
-    DataSet = fdqUsuariosRelatorio
-    Left = 128
-    Top = 48
-  end
   object frxDBUsuarios: TfrxDBDataset
     UserName = 'frxDBUsuarios'
     CloseDataSource = False

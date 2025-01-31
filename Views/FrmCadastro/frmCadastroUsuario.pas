@@ -34,6 +34,7 @@ type
     procedure btnSalvarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     FModoFormulario: TModoFormulario;
     procedure ConfigurarModo;
@@ -70,6 +71,12 @@ end;
 procedure TFrm_Cad_Usuario.ConfigurarModo;
 begin
   AtualizarBotoesCampos(FModoFormulario);
+end;
+
+procedure TFrm_Cad_Usuario.FormCreate(Sender: TObject);
+begin
+  if not Assigned(UsuarioDataModule) then
+    UsuarioDataModule := TUsuarioDataModule.Create(nil);
 end;
 
 procedure TFrm_Cad_Usuario.AlterarModo(Modo: TModoFormulario);

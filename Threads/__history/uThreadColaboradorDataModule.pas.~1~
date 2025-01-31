@@ -1,0 +1,28 @@
+unit uThreadColaboradorDataModule;
+
+interface
+
+uses
+  System.Classes, System.SysUtils, dmUsuario, dmColaborador;
+
+type
+
+  TThreadCriarDataModuleColaborador = class(TThread)
+  protected
+    procedure Execute; override;
+  end;
+
+implementation
+
+var
+
+  ColaboradorDataModule: TColaboradorDataModule;
+
+  { TThreadCriarDataModuleColaborador }
+
+procedure TThreadCriarDataModuleColaborador.Execute;
+begin
+  ColaboradorDataModule := TColaboradorDataModule.Create(nil);
+end;
+
+end.

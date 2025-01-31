@@ -7,7 +7,8 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
   Data.DB, Vcl.Grids, Vcl.DBGrids,
-  Vcl.WinXCtrls, dmColaborador, System.ImageList, Vcl.ImgList, uFuncoes;
+  Vcl.WinXCtrls, dmColaborador, System.ImageList, Vcl.ImgList, uFuncoes,
+  dmGerenciadorConexao, uThreadColaboradorDataModule, frmCadastroColaborador;
 
 type
   TCriterioPesquisa = (cpCodigo, cpNome, cpMatricula);
@@ -40,11 +41,12 @@ type
     procedure AlterarVisibilidadeCamposPesquisa;
     procedure edtPesquisarCodigoExit(Sender: TObject);
     procedure cmbCriteriosdePesquisaSelect(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure edtPesquisarNomeExit(Sender: TObject);
+    procedure edtPesquisarMatriculaExit(Sender: TObject);
+    procedure TratarCampoPesquisa(Sender: TObject; Criterio: TCriterioPesquisa);
+    procedure btnNovoClick(Sender: TObject);
 
-  private
-    { Private declarations }
-  public
-    { Public declarations }
   end;
 
 var
@@ -61,6 +63,12 @@ begin
   edtPesquisarNome.Visible := cmbCriteriosdePesquisa.ItemIndex = Ord(cpNome);
   edtPesquisarMatricula.Visible := cmbCriteriosdePesquisa.ItemIndex = Ord
     (cpMatricula);
+end;
+
+procedure TForm_Loc_Colaborador.btnNovoClick(Sender: TObject);
+begin
+  Application.CreateForm(TForm_Cadastro_Colaborador, Form_Cadastro_Colaborador);
+  Form_Cadastro_Colaborador.Show;
 end;
 
 procedure TForm_Loc_Colaborador.BuscarPorCriterio(const Criterio
@@ -90,14 +98,15 @@ var
   IndiceImagem: Byte;
   CentroX, CentroY: Integer;
 begin
-  if Column.FieldName = 'ativo' then
-  begin
-    IndiceImagem := Byte(Column.Field.AsBoolean);
-    CentroX := Rect.Left + (Rect.Width - imgListAtivo.Width) div 2;
-    CentroY := Rect.Top + (Rect.Height - imgListAtivo.Height) div 2;
-    imgListAtivo.Draw(dbGrid.Canvas, CentroX, CentroY, IndiceImagem);
-    Exit;
-  end;
+  if not dbGrid.DataSource.DataSet.IsEmpty then
+    if Column.FieldName = 'ativo' then
+    begin
+      IndiceImagem := Byte(Column.Field.AsBoolean);
+      CentroX := Rect.Left + (Rect.Width - imgListAtivo.Width) div 2;
+      CentroY := Rect.Top + (Rect.Height - imgListAtivo.Height) div 2;
+      imgListAtivo.Draw(dbGrid.Canvas, CentroX, CentroY, IndiceImagem);
+      Exit;
+    end;
   dbGrid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
@@ -107,17 +116,11 @@ begin
   GerenciarBotoes([btnRelatorio, btnExibir], False);
 end;
 
-procedure TForm_Loc_Colaborador.edtPesquisarCodigoExit(Sender: TObject);
+procedure TForm_Loc_Colaborador.FormShow(Sender: TObject);
 begin
-  if verificarCampoPreenchido(edtPesquisarCodigo) then
-  begin
-    BuscarPorCriterio(cpCodigo, edtPesquisarCodigo.Text);
-    dbGrid.DataSource := ColaboradorDataModule.dsColaborador;
-  end
-  else
-  begin
-    DesativarBotoesELimparGrade;
-  end;
+  if not Assigned(ColaboradorDataModule) then
+    TThreadCriarDataModuleColaborador.Create(False);
+  GerenciarBotoes([btnRelatorio, btnExibir], False);
 end;
 
 procedure TForm_Loc_Colaborador.tgsTodosClick(Sender: TObject);
@@ -132,6 +135,45 @@ begin
   begin
     DesativarBotoesELimparGrade;
   end;
+end;
+
+procedure TForm_Loc_Colaborador.TratarCampoPesquisa(Sender: TObject;
+  Criterio: TCriterioPesquisa);
+var
+  EditField: TEdit;
+begin
+  EditField := TEdit(Sender);
+  if verificarCampoPreenchido(EditField) then
+  begin
+    case Criterio of
+      cpCodigo:
+        BuscarPorCriterio(cpCodigo, edtPesquisarCodigo.Text);
+      cpNome:
+        BuscarPorCriterio(cpNome, edtPesquisarNome.Text);
+      cpMatricula:
+        BuscarPorCriterio(cpMatricula, edtPesquisarMatricula.Text);
+    end;
+    dbGrid.DataSource := ColaboradorDataModule.dsColaborador;
+  end
+  else
+  begin
+    DesativarBotoesELimparGrade;
+  end;
+end;
+
+procedure TForm_Loc_Colaborador.edtPesquisarCodigoExit(Sender: TObject);
+begin
+  TratarCampoPesquisa(Sender, cpCodigo);
+end;
+
+procedure TForm_Loc_Colaborador.edtPesquisarNomeExit(Sender: TObject);
+begin
+  TratarCampoPesquisa(Sender, cpNome);
+end;
+
+procedure TForm_Loc_Colaborador.edtPesquisarMatriculaExit(Sender: TObject);
+begin
+  TratarCampoPesquisa(Sender, cpMatricula);
 end;
 
 end.

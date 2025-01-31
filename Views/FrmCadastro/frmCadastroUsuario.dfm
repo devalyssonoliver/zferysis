@@ -14,6 +14,7 @@ object Frm_Cad_Usuario: TFrm_Cad_Usuario
   Position = poDesktopCenter
   PrintScale = poNone
   Scaled = False
+  OnCreate = FormCreate
   TextHeight = 15
   object pnlCentro: TPanel
     Left = 0

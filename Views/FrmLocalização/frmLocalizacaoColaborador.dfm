@@ -11,8 +11,10 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  KeyPreview = True
   Position = poDesktopCenter
   StyleName = 'Windows'
+  OnShow = FormShow
   TextHeight = 15
   object pnlGrid: TPanel
     Left = 0
@@ -63,6 +65,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
         TabOrder = 2
         TextHint = 'Nome'
         Visible = False
+        OnExit = edtPesquisarNomeExit
       end
       object edtPesquisarMatricula: TEdit
         Left = 160
@@ -80,6 +83,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
         TabOrder = 3
         TextHint = 'Matr'#237'cula'
         Visible = False
+        OnExit = edtPesquisarMatriculaExit
       end
       object cmbCriteriosdePesquisa: TComboBox
         Left = 9
@@ -171,6 +175,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
         Height = 25
         Caption = 'Novo'
         TabOrder = 0
+        OnClick = btnNovoClick
       end
       object btnExibir: TButton
         Left = 97

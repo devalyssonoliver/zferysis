@@ -14,13 +14,6 @@ type
     fdQueryUsuarios: TFDQuery;
     dsUsuarios: TDataSource;
     frxUsuarios: TfrxReport;
-    fdqUsuariosRelatorio: TFDQuery;
-    dsUsuariosRelatorio: TDataSource;
-    fdqUsuariosRelatoriocodigo: TIntegerField;
-    fdqUsuariosRelatorionome: TWideStringField;
-    fdqUsuariosRelatoriologin: TWideStringField;
-    fdqUsuariosRelatoriodata_cadastro: TDateField;
-    fdqUsuariosRelatorioativo: TBooleanField;
     frxDBUsuarios: TfrxDBDataset;
   private
     FUsuarioRepository: IUsuarioRepository;
