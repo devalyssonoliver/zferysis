@@ -85,13 +85,13 @@
     <Transaction>2025/01/29 14:04:47.000.227,=C:\zFeriSys\Project\Unit1.pas</Transaction>
     <Transaction>2025/01/30 17:04:53.000.014,=D:\zFeriSys\Project\Unit1.pas</Transaction>
     <Transaction>2025/01/30 17:30:53.000.581,D:\zFeriSys\Project\Unit1.pas=D:\zFeriSys\Units\uInicializacao.pas</Transaction>
-    <Transaction>2025/01/31 12:44:42.544,=C:\zFeriSys\Project\Unit1.pas</Transaction>
-    <Transaction>2025/01/31 12:49:48.920,C:\zFeriSys\Threads\uThreadUsuarioDataModule.pas=C:\zFeriSys\Project\Unit1.pas</Transaction>
-    <Transaction>2025/01/31 12:50:44.304,=C:\zFeriSys\Project\Unit1.pas</Transaction>
-    <Transaction>2025/01/31 12:52:26.046,C:\zFeriSys\Threads\uThreadColaboradorDataModule.pas=C:\zFeriSys\Project\Unit1.pas</Transaction>
-    <Transaction>2025/01/31 13:24:39.429,=C:\zFeriSys\Project\Unit1.pas</Transaction>
-    <Transaction>2025/01/31 13:59:09.709,C:\zFeriSys\Views\FrmCadastro\frmCadastroColaborador.pas=C:\zFeriSys\Project\Unit1.pas</Transaction>
-    <Transaction>2025/01/31 13:59:09.709,C:\zFeriSys\Views\FrmCadastro\frmCadastroColaborador.dfm=C:\zFeriSys\Project\Unit1.dfm</Transaction>
+    <Transaction>2025/01/31 12:44:42.000.544,=C:\zFeriSys\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/31 12:49:48.000.920,C:\zFeriSys\Threads\uThreadUsuarioDataModule.pas=C:\zFeriSys\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/31 12:50:44.000.304,=C:\zFeriSys\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/31 12:52:26.000.046,C:\zFeriSys\Threads\uThreadColaboradorDataModule.pas=C:\zFeriSys\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/31 13:24:39.000.429,=C:\zFeriSys\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/31 13:59:09.000.709,C:\zFeriSys\Views\FrmCadastro\frmCadastroColaborador.pas=C:\zFeriSys\Project\Unit1.pas</Transaction>
+    <Transaction>2025/01/31 13:59:09.000.709,C:\zFeriSys\Views\FrmCadastro\frmCadastroColaborador.dfm=C:\zFeriSys\Project\Unit1.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="C:\zFeriSys"/>
@@ -113,6 +113,9 @@
     <File Path="..\Models\Repositórios\iUsuarioRepositorio.pas"/>
     <File Path="..\Models\dmGerenciadorConexao.pas"/>
     <File Path="..\Models\dmGerenciadorConexao.dfm"/>
+    <File Path="..\Threads"/>
+    <File Path="..\Threads\uThreadUsuarioDataModule.pas"/>
+    <File Path="..\Threads\uThreadColaboradorDataModule.pas"/>
     <File Path="..\Units"/>
     <File Path="..\Units\uArquivoIni.pas"/>
     <File Path="..\Units\uFuncoes.pas"/>
@@ -134,9 +137,6 @@
     <File Path="..\Views\frmLogin.dfm"/>
     <File Path="..\Views\frmPrincipal.pas"/>
     <File Path="..\Views\frmPrincipal.dfm"/>
-    <File Path="..\Threads"/>
-    <File Path="..\Threads\uThreadUsuarioDataModule.pas"/>
-    <File Path="..\Threads\uThreadColaboradorDataModule.pas"/>
   </ProjectSortOrder>
 	<BT_BuildType>Debug</BT_BuildType>
 </BorlandProject>
