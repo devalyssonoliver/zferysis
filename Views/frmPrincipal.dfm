@@ -10,11 +10,13 @@ object Frm_Principal: TFrm_Principal
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  KeyPreview = True
   Position = poDesktopCenter
   Scaled = False
   WindowState = wsMaximized
   StyleName = 'Windows'
   OnClose = FormClose
+  OnKeyDown = FormKeyDown
   TextHeight = 15
   object Ribbon1: TRibbon
     Left = 0
@@ -22,6 +24,7 @@ object Frm_Principal: TFrm_Principal
     Width = 1076
     Height = 143
     ActionManager = actionManager
+    ApplicationMenu.CommandType = ctCommands
     Caption = 'FerySIS - Sistema de gerenciamento de F'#233'rias.'
     Tabs = <
       item
