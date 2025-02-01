@@ -7,11 +7,11 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,
   System.ImageList, Vcl.ImgList, Vcl.Imaging.pngimage, Vcl.DBCtrls,
-  Vcl.ComCtrls, Vcl.Buttons;
+  Vcl.ComCtrls, Vcl.Buttons, Vcl.WinXCtrls;
 
 type
+ TModoFormulario = (mfNovo, mfEditar, mfExibicao);
   TForm_Cadastro_Colaborador = class(TForm)
-    pnlTopo: TPanel;
     pnlCentro: TPanel;
     lbTitulo: TLabel;
     pnlBotoes: TPanel;
@@ -23,22 +23,45 @@ type
     gbContrato: TGroupBox;
     lblNome: TLabel;
     edtNome: TEdit;
-    Label1: TLabel;
+    lblMatricula: TLabel;
     edtMatricula: TEdit;
-    Label2: TLabel;
+    lblCodSetor: TLabel;
     ImageList: TImageList;
     Edit1: TEdit;
-    SpeedButton1: TSpeedButton;
-    Label3: TLabel;
+    btnAbrirFormSetor: TSpeedButton;
+    lblContrato: TLabel;
     gbPeriodos: TGroupBox;
-    Label4: TLabel;
-    dt: TDateTimePicker;
-    DateTimePicker1: TDateTimePicker;
+    lblAquisitivoInicial: TLabel;
+    dtpConcessivoInicial: TDateTimePicker;
+    dtpContrato: TDateTimePicker;
+    dtpConcessivoFim: TDateTimePicker;
+    lblAquisitivoFim: TLabel;
+    dtpAquisitivoInicial: TDateTimePicker;
+    lblConcessivoInicio: TLabel;
+    lblConcessivoFim: TLabel;
+    dtpAquisitivoFim: TDateTimePicker;
+    pnlStatusFerias: TPanel;
+    tglAtivo: TToggleSwitch;
+    lblAtivo: TLabel;
+    imgFotoUsuario: TImage;
+    btnLocalizarFoto: TSpeedButton;
+    il32: TImageList;
+    btnExcluirFoto: TSpeedButton;
+    lblCodigo: TLabel;
+
+
+
+
 
   private
-    { Private declarations }
+    FModoFormulario: TModoFormulario;
+    procedure ConfigurarModo;
+    procedure AlterarModo(Modo: TModoFormulario);
+    procedure AtualizarBotoesCampos(Modo: TModoFormulario);
+    procedure RealizarAcaoCadastroEdicao;
   public
-    { Public declarations }
+    property ModoFormulario: TModoFormulario read FModoFormulario
+      write AlterarModo;
   end;
 
 var
@@ -46,6 +69,74 @@ var
 
 implementation
 
+uses
+  uFuncoes;
+
 {$R *.dfm}
+
+{ TForm_Cadastro_Colaborador }
+
+
+
+
+{ TForm_Cadastro_Colaborador }
+
+procedure TForm_Cadastro_Colaborador.AlterarModo(
+  Modo: TModoFormulario);
+begin
+  FModoFormulario := Modo;
+  ConfigurarModo;
+end;
+
+
+procedure TForm_Cadastro_Colaborador.AtualizarBotoesCampos(
+  Modo: TModoFormulario);
+begin
+  case Modo of
+    mfNovo:
+      begin
+        gbInformacoesBasicas.Enabled := True;
+        gbContrato.Enabled := True;
+        gbPeriodos.Enabled := True;
+        GerenciarBotoes(btnSalvar, True);
+        GerenciarBotoes(btnEditar, False);
+
+      end;
+    mfEditar:
+      begin
+        gbInformacoesBasicas.Enabled := True;
+        gbContrato.Enabled := True;
+        gbPeriodos.Enabled := True;
+        GerenciarBotoes(btnSalvar, True);
+        GerenciarBotoes(btnEditar, False);
+      end;
+    mfExibicao:
+      begin
+        gbInformacoesBasicas.Enabled := False;
+        gbContrato.Enabled := False;
+        gbPeriodos.Enabled := False;
+        GerenciarBotoes(btnSalvar, False);
+        GerenciarBotoes(btnEditar, True);
+      end;
+  end;
+end;
+
+procedure TForm_Cadastro_Colaborador.ConfigurarModo;
+begin
+  AtualizarBotoesCampos(FModoFormulario);
+end;
+
+procedure TForm_Cadastro_Colaborador.RealizarAcaoCadastroEdicao;
+var
+  Codigo, CodSetor: Integer;
+  Nome, Matricula: String; DataContrato, PeriodoAquisitivo, PeriodoConsessivo
+  : TDate; Ativo: Boolean;
+begin
+  Codigo := StrToIntDef(lblCodigo.Caption, 0);
+  Nome   := edtNome.Text;
+  Matricula  := edtMatricula.Text;
+  DataContrato  := dtpContrato.Date;
+  PeriodoAquisitivo := dtpAquisitivoInicial;
+end;
 
 end.

@@ -97,7 +97,7 @@ object Frm_Cad_Usuario: TFrm_Cad_Usuario
       Height = 40
       Align = alBottom
       BevelOuter = bvNone
-      TabOrder = 0
+      TabOrder = 6
       object btnSalvar: TButton
         Left = 23
         Top = 8
@@ -136,7 +136,7 @@ object Frm_Cad_Usuario: TFrm_Cad_Usuario
       Height = 23
       Color = clInfoBk
       Enabled = False
-      TabOrder = 1
+      TabOrder = 5
     end
     object ckbAtivo: TCheckBox
       Left = 336
@@ -146,21 +146,21 @@ object Frm_Cad_Usuario: TFrm_Cad_Usuario
       Caption = 'Ativo'
       Checked = True
       State = cbChecked
-      TabOrder = 2
+      TabOrder = 1
     end
     object edtNome: TEdit
       Left = 24
       Top = 152
       Width = 369
       Height = 23
-      TabOrder = 3
+      TabOrder = 2
     end
     object edtLogin: TEdit
       Left = 24
       Top = 208
       Width = 369
       Height = 23
-      TabOrder = 4
+      TabOrder = 3
     end
     object edtSenha: TEdit
       Left = 24
@@ -168,7 +168,7 @@ object Frm_Cad_Usuario: TFrm_Cad_Usuario
       Width = 369
       Height = 23
       PasswordChar = '*'
-      TabOrder = 5
+      TabOrder = 4
     end
     object pnlCodigo: TPanel
       Left = 231
@@ -178,7 +178,7 @@ object Frm_Cad_Usuario: TFrm_Cad_Usuario
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
-      TabOrder = 6
+      TabOrder = 0
       object lbCodigo: TLabel
         AlignWithMargins = True
         Left = 174

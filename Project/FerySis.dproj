@@ -1198,6 +1198,9 @@
                 <Platform value="Win64">True</Platform>
             </Platforms>
             <ModelSupport>False</ModelSupport>
+            <UnitTesting>
+                <TestProjectName>D:\zferysis\Project\Test\FerySisTests.dproj</TestProjectName>
+            </UnitTesting>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
