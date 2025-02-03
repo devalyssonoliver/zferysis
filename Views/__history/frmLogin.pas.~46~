@@ -35,6 +35,11 @@
     procedure btnLoginClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 
+
+
+
+
+
     private
       { Private declarations }
       { Public declarations }
@@ -64,21 +69,11 @@ procedure TFrm_Login.FormCreate(Sender: TObject);
   procedure TFrm_Login.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-   if Key = VK_RETURN then
+  if (Key = VK_RETURN) and (ActiveControl = edtSenha) then
   begin
     Key := 0;
-    // Verifique se o foco está no campo edtLogin
-    if ActiveControl = edtLogin then
-    begin
-      edtSenha.SetFocus;  // Mover para o próximo campo (edtSenha)
-    end
-    // Verifique se o foco está no campo edtSenha
-    else if ActiveControl = edtSenha then
-    begin
-      btnLogin.Click;  // Simula o clique no botão SpeedButton
-    end;
-  end;
-
+    btnLogin.Click;
+end;
 end;
 
 procedure TFrm_Login.FormPaint(Sender: TObject);

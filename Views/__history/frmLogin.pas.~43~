@@ -21,7 +21,7 @@
       lblDigiteSeuUsuario: TLabel;
       edtLogin: TEdit;
       edtSenha: TEdit;
-    pnlFakeTab: TPanel;
+    btnFake: TButton;
     shpControlLogin: TShape;
     btnLogin: TSpeedButton;
 
@@ -32,8 +32,10 @@
       procedure ExibirErroLogin;
       procedure FormPaint(Sender: TObject);
     procedure btnFakeClick(Sender: TObject);
-    procedure btnLoginClick(Sender: TObject);
-    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+
+
+
+
 
     private
       { Private declarations }
@@ -55,33 +57,15 @@ uses frmConfigurarBanco;
     Close;
   end;
 
-procedure TFrm_Login.FormCreate(Sender: TObject);
+
+
+  procedure TFrm_Login.FormCreate(Sender: TObject);
   begin
     if not Assigned(UsuarioDataModule) then
       UsuarioDataModule := TUsuarioDataModule.Create(nil);
   end;
 
-  procedure TFrm_Login.FormKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-   if Key = VK_RETURN then
-  begin
-    Key := 0;
-    // Verifique se o foco está no campo edtLogin
-    if ActiveControl = edtLogin then
-    begin
-      edtSenha.SetFocus;  // Mover para o próximo campo (edtSenha)
-    end
-    // Verifique se o foco está no campo edtSenha
-    else if ActiveControl = edtSenha then
-    begin
-      btnLogin.Click;  // Simula o clique no botão SpeedButton
-    end;
-  end;
-
-end;
-
-procedure TFrm_Login.FormPaint(Sender: TObject);
+  procedure TFrm_Login.FormPaint(Sender: TObject);
   var
     Rect: TRect;
   begin
@@ -91,14 +75,9 @@ procedure TFrm_Login.FormPaint(Sender: TObject);
   end;
 
 
-
-procedure TFrm_Login.btnFakeClick(Sender: TObject);
+  procedure TFrm_Login.btnFakeClick(Sender: TObject);
 begin
-  btnLogin.Click;
-end;
-
-procedure TFrm_Login.btnLoginClick(Sender: TObject);
-var
+  var
     LoginValido: Boolean;
   begin
 
@@ -118,6 +97,8 @@ var
     end
     else
       ExibirErroLogin;
+
+  end;
 end;
 
 procedure TFrm_Login.ExibirErroLogin;
@@ -125,5 +106,8 @@ procedure TFrm_Login.ExibirErroLogin;
     MsgBox('Aviso', 'Login ou senha incorretas, verifique.', False, 1);
 
   end;
+
+
+
   end.
 

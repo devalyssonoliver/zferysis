@@ -1,6 +1,6 @@
-  program FerySis;
+program FerySis;
 
-  uses
+uses
   System.SysUtils,
   Controls,
   Vcl.Forms,
@@ -22,32 +22,31 @@
   iColaboradorRepositorio in '..\Models\Repositórios\iColaboradorRepositorio.pas',
   dmColaborador in '..\Models\DataModules\dmColaborador.pas' {ColaboradorDataModule: TDataModule},
   frmLocalizacaoColaborador in '..\Views\FrmLocalização\frmLocalizacaoColaborador.pas' {Form_Loc_Colaborador},
+  uInicializacao in '..\Units\uInicializacao.pas',
   uThreadUsuarioDataModule in '..\Threads\uThreadUsuarioDataModule.pas',
   uThreadColaboradorDataModule in '..\Threads\uThreadColaboradorDataModule.pas',
   frmCadastroColaborador in '..\Views\FrmCadastro\frmCadastroColaborador.pas' {Form_Cadastro_Colaborador};
 
 {$R *.res}
 
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+
+  Application.CreateForm(TGerenciadorConexao, GerenciadorConexao);
+ while not ArquivoIniExiste do
   begin
-    Application.Initialize;
-    Application.MainFormOnTaskbar := True;
-
-    Application.CreateForm(TGerenciadorConexao, GerenciadorConexao);
-  while not ArquivoIniExiste do
-    begin
-       Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);
-       FrmConfigBanco.ShowModal;
-       FreeAndNil(FrmConfigBanco);
-    end;
-    Application.CreateForm(TFrm_Login, Frm_Login);
-    if Frm_Login.ShowModal = mrOk then
-    begin
-      FreeAndNil(Frm_Login);
-      Application.CreateForm(TFrm_Principal, Frm_Principal);
-      Application.Run;
-    end
-    else
-      Application.Terminate;
+    ChamarTelaDeConfigBanco;
+  end;
+  Application.CreateForm(TFrm_Login, Frm_Login);
+  if Frm_Login.ShowModal = mrOk then
+  begin
+    FreeAndNil(Frm_Login);
+    Application.CreateForm(TFrm_Principal, Frm_Principal);
+    Application.Run;
+  end
+  else
+    Application.Terminate;
 
 
-  end.
+end.

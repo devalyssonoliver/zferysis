@@ -170,7 +170,6 @@
             <Form>Form_Loc_Colaborador</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\Units\uInicializacao.pas"/>
         <DCCReference Include="..\Threads\uThreadUsuarioDataModule.pas"/>
         <DCCReference Include="..\Threads\uThreadColaboradorDataModule.pas"/>
         <DCCReference Include="..\Views\FrmCadastro\frmCadastroColaborador.pas">
@@ -233,6 +232,12 @@
                 <DeployFile LocalName="Win64\Debug\FerySis.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win64">
                         <RemoteName>FerySis.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win64\Debug\FerySis.rsm" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win64">
+                        <RemoteName>FerySis.rsm</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

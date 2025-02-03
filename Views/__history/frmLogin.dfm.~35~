@@ -12,12 +12,11 @@ object Frm_Login: TFrm_Login
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  KeyPreview = True
   Position = poDesktopCenter
   PrintScale = poNone
   Scaled = False
+  OnClick = FormClick
   OnCreate = FormCreate
-  OnKeyDown = FormKeyDown
   OnPaint = FormPaint
   DesignSize = (
     326
@@ -4782,6 +4781,41 @@ object Frm_Login: TFrm_Login
     Font.Style = [fsItalic]
     ParentFont = False
   end
+  object shpControlLogin: TShape
+    Left = 40
+    Top = 328
+    Width = 249
+    Height = 29
+    Brush.Color = 16760688
+  end
+  object btnLogin: TSpeedButton
+    Left = 41
+    Top = 328
+    Width = 249
+    Height = 29
+    Caption = 'Login'
+    ImageIndex = 3
+    Flat = True
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Segoe UI Emoji'
+    Font.Style = [fsBold]
+    Layout = blGlyphRight
+    ParentFont = False
+    Spacing = 5
+  end
+  object btnFake: TButton
+    Left = 42
+    Top = 328
+    Width = 248
+    Height = 29
+    Caption = 'btnFake'
+    Default = True
+    TabOrder = 2
+    Visible = False
+    OnClick = btnFakeClick
+  end
   object pnlLogin: TPanel
     Left = 40
     Top = 220
@@ -4863,51 +4897,6 @@ object Frm_Login: TFrm_Login
       TabOrder = 0
       TextHint = 'Senha'
       StyleName = 'Windows'
-    end
-  end
-  object pnlFakeTab: TPanel
-    Left = 41
-    Top = 328
-    Width = 248
-    Height = 31
-    BevelOuter = bvNone
-    Caption = 'pnlFakeTab'
-    TabOrder = 2
-    TabStop = True
-    object shpControlLogin: TShape
-      Left = 0
-      Top = 0
-      Width = 248
-      Height = 31
-      Align = alClient
-      Brush.Color = 16760688
-      ExplicitLeft = -1
-      ExplicitTop = 2
-      ExplicitWidth = 249
-      ExplicitHeight = 29
-    end
-    object btnLogin: TSpeedButton
-      Left = 0
-      Top = 0
-      Width = 248
-      Height = 31
-      Align = alClient
-      Caption = 'Login'
-      ImageIndex = 3
-      Flat = True
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Emoji'
-      Font.Style = [fsBold]
-      Layout = blGlyphRight
-      ParentFont = False
-      Spacing = 5
-      OnClick = btnLoginClick
-      ExplicitLeft = 2
-      ExplicitTop = 2
-      ExplicitWidth = 246
-      ExplicitHeight = 29
     end
   end
 end

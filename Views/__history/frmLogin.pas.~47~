@@ -35,6 +35,11 @@
     procedure btnLoginClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 
+
+
+
+
+
     private
       { Private declarations }
       { Public declarations }
@@ -66,7 +71,8 @@ procedure TFrm_Login.FormCreate(Sender: TObject);
 begin
    if Key = VK_RETURN then
   begin
-    Key := 0;
+    Key := 0;  // Impede o som do sistema
+
     // Verifique se o foco está no campo edtLogin
     if ActiveControl = edtLogin then
     begin

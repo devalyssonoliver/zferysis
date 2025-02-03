@@ -136,7 +136,7 @@ begin
   Nome   := edtNome.Text;
   Matricula  := edtMatricula.Text;
   DataContrato  := dtpContrato.Date;
-  PeriodoAquisitivo := dtpAquisitivoInicial.Date;
+  PeriodoAquisitivo := dtpAquisitivoInicial;
 end;
 
 end.

@@ -36,6 +36,8 @@ var
 
 implementation
 
+uses
+  uInicializacao;
 
 {$R *.dfm}
 
@@ -46,20 +48,22 @@ end;
 
 procedure TFrmConfigBanco.btnSalvarClick(Sender: TObject);
 begin
+
   if not validarCamposObrigatorios([edtBase, edtServidor, edtPorta]) then
+  begin
     Exit;
+  end;
 
   try
     EscreverArquivoIni(edtServidor.Text, edtBase.Text, edtPorta.Text);
+
+    Close;
   except
     on E: Exception do
     begin
       MsgBox('Erro ao salvar configuração:', E.Message, False, 2);
-      Exit;
     end;
   end;
-
-  Close;
 end;
 
 end.

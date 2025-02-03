@@ -8,11 +8,24 @@ procedure ChamarTelaDeConfigBanco;
 
 implementation
 
-
+uses
+frmLogin;
 procedure ChamarTelaDeConfigBanco;
 begin
     Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);
     FrmConfigBanco.ShowModal;
+
+end;
+
+procedure ChamarLogin;
+begin
+  Application.CreateForm(TFrm_Login, Frm_Login);
+  if Frm_Login.ShowModal = mrOk then
+  begin
+    FreeAndNil(Frm_Login);
+  end
+  else
+    Application.Terminate;
 
 end;
 

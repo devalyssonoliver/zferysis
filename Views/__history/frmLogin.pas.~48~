@@ -35,6 +35,11 @@
     procedure btnLoginClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 
+
+
+
+
+
     private
       { Private declarations }
       { Public declarations }

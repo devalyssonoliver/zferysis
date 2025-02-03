@@ -1,0 +1,35 @@
+unit uInicializacao;
+
+interface
+
+uses uArquivoIni, Vcl.Forms, frmConfigurarBanco, System.SysUtils, Controls, frmLogin;
+
+procedure ChamarTelaDeConfigBanco;
+procedure ChamarLogin;
+begin
+
+end;
+
+implementation
+
+
+procedure ChamarTelaDeConfigBanco;
+begin
+    Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);
+    FrmConfigBanco.ShowModal;
+
+end;
+
+procedure ChamarLogin;
+begin
+  Application.CreateForm(TFrm_Login, Frm_Login);
+  if Frm_Login.ShowModal = mrOk then
+  begin
+    FreeAndNil(Frm_Login);
+  end
+  else
+    Application.Terminate;
+
+end;
+
+end.

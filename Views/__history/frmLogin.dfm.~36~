@@ -12,7 +12,6 @@ object Frm_Login: TFrm_Login
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  KeyPreview = True
   Position = poDesktopCenter
   PrintScale = poNone
   Scaled = False
