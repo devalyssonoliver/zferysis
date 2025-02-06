@@ -1,0 +1,10 @@
+object ColaboradorDataModule: TColaboradorDataModule
+  OnCreate = DataModuleCreate
+  Height = 482
+  Width = 537
+  object fdqryColaborador: TFDQuery
+    Connection = GerenciadorConexao.fdConn
+    Left = 304
+    Top = 368
+  end
+end

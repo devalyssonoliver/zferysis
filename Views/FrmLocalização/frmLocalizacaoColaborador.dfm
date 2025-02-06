@@ -50,7 +50,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
-      TabOrder = 0
+      TabOrder = 1
       object edtPesquisarNome: TEdit
         Left = 160
         Top = 21
@@ -80,7 +80,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        TabOrder = 3
+        TabOrder = 4
         TextHint = 'Matr'#237'cula'
         Visible = False
         OnExit = edtPesquisarMatriculaExit
@@ -100,7 +100,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
         ParentFont = False
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 0
+        TabOrder = 1
         TextHint = 'Modo de Busca'
         StyleName = 'Windows'
         OnSelect = cmbCriteriosdePesquisaSelect
@@ -122,7 +122,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
         Font.Style = []
         NumbersOnly = True
         ParentFont = False
-        TabOrder = 1
+        TabOrder = 3
         TextHint = 'C'#243'digo'
         OnExit = edtPesquisarCodigoExit
       end
@@ -132,7 +132,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
         Width = 50
         Height = 44
         BevelOuter = bvNone
-        TabOrder = 4
+        TabOrder = 0
         object Label1: TLabel
           Left = 8
           Top = 8
@@ -167,7 +167,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
       Height = 36
       Align = alBottom
       ParentBackground = False
-      TabOrder = 1
+      TabOrder = 3
       object btnNovo: TButton
         Left = 16
         Top = 6
@@ -333,7 +333,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
       BevelOuter = bvNone
       Color = clHotLight
       ParentBackground = False
-      TabOrder = 3
+      TabOrder = 0
     end
   end
   object imgListAtivo: TImageList

@@ -213,6 +213,8 @@
                     <Excluded_Packages Name="C:\Program Files\Fast Reports VCL\2025.1.4\Trial\LibRS29\FMX\Win32\dclFMXfrxTee29.bpl">FastReport FMX - Tee Components by Fast Reports Inc</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files\Fast Reports VCL\2025.1.4\Trial\LibRS29\FMX\Win32\dclFMXfsIBX29.bpl">FastScript FMX - IBX Components by Fast Reports Inc</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files\Fast Reports VCL\2025.1.4\Trial\LibRS29\FMX\Win32\dclFMXfsTee29.bpl">FastScript FMX - Tee Components by Fast Reports Inc</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\DevExpress\VCL\Library\RS29\dcldxHttpIndyRequestRS29.bpl">Express Cross Platform Library Indy Request Handler by Developer Express Inc.</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\DevExpress\VCL\Library\RS29\dcldxADOServerModeRS29.bpl">ADO Data Source for ExpressDataController Server Mode by Developer Express Inc.</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">

@@ -74,17 +74,17 @@ end;
 procedure TForm_Loc_Colaborador.BuscarPorCriterio(const Criterio
   : TCriterioPesquisa; const Valor: string);
 begin
-  if Trim(Valor) <> '' then
+{  if Trim(Valor) <> '' then
   begin
-    try
-      ColaboradorDataModule.BuscarColaborador(Ord(Criterio), Valor);
-      dbGrid.DataSource := ColaboradorDataModule.dsColaborador;
-      GerenciarBotoes([btnRelatorio, btnExibir], True);
-    except
-      on E: Exception do
-        MsgBox('Erro!', E.Message, False, 2);
-    end;
-  end;
+      try
+            ColaboradorDataModule.BuscarColaborador(Ord(Criterio), Valor);
+                  dbGrid.DataSource := ColaboradorDataModule.dsColaborador;
+                        GerenciarBotoes([btnRelatorio, btnExibir], True);
+                            except
+                                  on E: Exception do
+                                          MsgBox('Erro!', E.Message, False, 2);
+                                              end;
+                                                end;}
 end;
 
 procedure TForm_Loc_Colaborador.cmbCriteriosdePesquisaSelect(Sender: TObject);
@@ -125,16 +125,16 @@ end;
 
 procedure TForm_Loc_Colaborador.tgsTodosClick(Sender: TObject);
 begin
-  if tgsTodos.State = tssOn then
+{  if tgsTodos.State = tssOn then
   begin
-    ColaboradorDataModule.ListarTodos;
-    GerenciarBotoes([btnRelatorio, btnExibir], True);
-    dbGrid.DataSource := ColaboradorDataModule.dsColaborador;
-  end
-  else
-  begin
-    DesativarBotoesELimparGrade;
-  end;
+      ColaboradorDataModule.ListarTodos;
+          GerenciarBotoes([btnRelatorio, btnExibir], True);
+              dbGrid.DataSource := ColaboradorDataModule.dsColaborador;
+                end
+                  else
+                    begin
+                        DesativarBotoesELimparGrade;
+                          end;}
 end;
 
 procedure TForm_Loc_Colaborador.TratarCampoPesquisa(Sender: TObject;
@@ -153,7 +153,7 @@ begin
       cpMatricula:
         BuscarPorCriterio(cpMatricula, edtPesquisarMatricula.Text);
     end;
-    dbGrid.DataSource := ColaboradorDataModule.dsColaborador;
+   { dbGrid.DataSource := ColaboradorDataModule.dsColaborador;  }
   end
   else
   begin

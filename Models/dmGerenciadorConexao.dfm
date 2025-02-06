@@ -11,13 +11,12 @@ object GerenciadorConexao: TGerenciadorConexao
       'Password=postzeus2011'
       'Port=5433'
       'DriverID=pG')
-    ConnectedStoredUsage = [auDesignTime]
     LoginPrompt = False
     Left = 304
     Top = 224
   end
   object pgDriver: TFDPhysPgDriverLink
-    Left = 432
-    Top = 256
+    Left = 440
+    Top = 176
   end
 end

@@ -2,16 +2,11 @@ object ColaboradorDataModule: TColaboradorDataModule
   OnCreate = DataModuleCreate
   Height = 482
   Width = 537
-  object fdQueryColaborador: TFDQuery
+  object fdqryColaborador: TFDQuery
     Connection = GerenciadorConexao.fdConn
     SQL.Strings = (
-      '')
-    Left = 288
-    Top = 280
-  end
-  object dsColaborador: TDataSource
-    DataSet = fdQueryColaborador
+      'select * from colaboradores')
     Left = 304
-    Top = 208
+    Top = 368
   end
 end

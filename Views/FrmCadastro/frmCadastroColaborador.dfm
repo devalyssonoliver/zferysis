@@ -13,6 +13,7 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
   Font.Style = []
   KeyPreview = True
   Position = poDesktopCenter
+  OnShow = FormShow
   TextHeight = 15
   object pnlCentro: TPanel
     Left = 0
@@ -24,7 +25,7 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
     ParentBackground = False
     TabOrder = 0
     StyleName = 'Windows'
-    ExplicitHeight = 468
+    ExplicitLeft = -8
     object lbTitulo: TLabel
       Left = 87
       Top = 22
@@ -175,18 +176,6 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       Images = il32
       Flat = True
     end
-    object lblCodigo: TLabel
-      Left = 543
-      Top = 36
-      Width = 4
-      Height = 21
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clHotLight
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
     object pnlBotoes: TPanel
       Left = 1
       Top = 278
@@ -196,9 +185,8 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       BevelOuter = bvNone
       Color = clSilver
       ParentBackground = False
-      TabOrder = 4
+      TabOrder = 6
       StyleName = 'Windows'
-      ExplicitTop = 427
       object btnSalvar: TButton
         Left = 5
         Top = 8
@@ -207,6 +195,7 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
         Caption = 'Salvar'
         TabOrder = 0
         StyleName = 'Windows'
+        OnClick = btnSalvarClick
       end
       object btnEditar: TButton
         Left = 86
@@ -216,6 +205,7 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
         Caption = 'Editar'
         TabOrder = 1
         StyleName = 'Windows'
+        OnClick = btnEditarClick
       end
       object btnFechar: TButton
         Left = 542
@@ -225,11 +215,12 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
         Caption = 'Fechar'
         TabOrder = 2
         StyleName = 'Windows'
+        OnClick = btnFecharClick
       end
     end
     object gbInformacoesBasicas: TGroupBox
       Left = 150
-      Top = 79
+      Top = 71
       Width = 453
       Height = 74
       Caption = 'Informa'#231#245'es b'#225'sicas'
@@ -239,7 +230,7 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 2
       object lblNome: TLabel
         Left = 3
         Top = 16
@@ -301,58 +292,15 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object edtNome: TEdit
-        Left = 3
-        Top = 36
-        Width = 121
-        Height = 25
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 0
-      end
-      object edtMatricula: TEdit
-        Left = 130
-        Top = 36
-        Width = 121
-        Height = 25
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 1
-      end
-      object Edit1: TEdit
-        Left = 257
-        Top = 36
-        Width = 72
-        Height = 25
-        Margins.Right = 0
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 2
-      end
-      object tglAtivo: TToggleSwitch
+      object tglAtivo: TDBCheckBox
         Left = 368
         Top = 36
-        Width = 50
-        Height = 20
-        Color = clWhite
-        DisabledColor = clBlack
-        FrameColor = clHotLight
-        ShowStateCaption = False
-        StyleName = 'Windows'
-        TabOrder = 3
-        ThumbColor = clHotLight
+        Width = 145
+        Height = 33
+        Caption = 'tglAtivo'
+        DataField = 'ativo'
+        DataSource = dsColaborador
+        TabOrder = 0
       end
     end
     object gbContrato: TGroupBox
@@ -367,7 +315,7 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 4
       object lblContrato: TLabel
         Left = 11
         Top = 20
@@ -381,23 +329,14 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object dtpContrato: TDateTimePicker
+      object dbeContrato: TDBEdit
         Left = 3
-        Top = 38
-        Width = 102
-        Height = 25
-        BevelInner = bvNone
-        BevelOuter = bvNone
-        Date = 45688.000000000000000000
-        Time = 0.638214259262895200
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
+        Top = 39
+        Width = 106
+        Height = 21
+        DataField = 'data_contrato'
+        DataSource = dsColaborador
         TabOrder = 0
-        StyleName = 'Windows'
       end
     end
     object gbPeriodos: TGroupBox
@@ -412,7 +351,7 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 5
       object lblAquisitivoInicial: TLabel
         Left = 3
         Top = 20
@@ -465,77 +404,32 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object dtpConcessivoInicial: TDateTimePicker
-        Left = 220
-        Top = 38
-        Width = 102
-        Height = 25
-        BevelInner = bvNone
-        BevelOuter = bvNone
-        Date = 45688.000000000000000000
-        Time = 0.638214259262895200
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 0
-        StyleName = 'Windows'
-      end
-      object dtpConcessivoFim: TDateTimePicker
-        Left = 336
-        Top = 38
-        Width = 102
-        Height = 25
-        BevelInner = bvNone
-        BevelOuter = bvNone
-        Date = 45688.000000000000000000
-        Time = 0.638214259262895200
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 1
-        StyleName = 'Windows'
-      end
-      object dtpAquisitivoInicial: TDateTimePicker
+      object dbeAqusitivoInicio: TDBEdit
         Left = 3
         Top = 39
-        Width = 102
-        Height = 25
-        BevelInner = bvNone
-        BevelOuter = bvNone
-        Date = 45688.000000000000000000
-        Time = 0.638214259262895200
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 2
-        StyleName = 'Windows'
+        Width = 103
+        Height = 21
+        DataField = 'periodo_aquisitivo'
+        DataSource = dsColaborador
+        TabOrder = 1
       end
-      object dtpAquisitivoFim: TDateTimePicker
+      object dbeAquisitivoFim: TDBEdit
         Left = 112
         Top = 39
-        Width = 102
-        Height = 25
-        BevelInner = bvNone
-        BevelOuter = bvNone
-        Date = 45688.000000000000000000
-        Time = 0.638214259262895200
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 3
-        StyleName = 'Windows'
+        Width = 103
+        Height = 21
+        DataField = 'periodo_concessivo'
+        DataSource = dsColaborador
+        TabOrder = 2
+      end
+      object dbeConcessivoInicio: TDBEdit
+        Left = 221
+        Top = 38
+        Width = 103
+        Height = 21
+        DataField = 'data_cadastro'
+        DataSource = dsColaborador
+        TabOrder = 0
       end
     end
     object pnlStatusFerias: TPanel
@@ -549,6 +443,52 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       ParentBackground = False
       TabOrder = 0
     end
+    object Edit1: TEdit
+      Left = 624
+      Top = 88
+      Width = 121
+      Height = 23
+      TabOrder = 3
+      Text = 'Edit1'
+    end
+    object dbeCodigo: TDBEdit
+      Left = 497
+      Top = 15
+      Width = 121
+      Height = 23
+      BevelOuter = bvNone
+      BorderStyle = bsNone
+      DataField = 'codigo'
+      DataSource = dsColaborador
+      TabOrder = 1
+    end
+  end
+  object dbenome: TDBEdit
+    Left = 153
+    Top = 115
+    Width = 121
+    Height = 23
+    DataField = 'nome'
+    DataSource = dsColaborador
+    TabOrder = 1
+  end
+  object dbeMatricula: TDBEdit
+    Left = 280
+    Top = 115
+    Width = 121
+    Height = 23
+    DataField = 'matricula'
+    DataSource = dsColaborador
+    TabOrder = 2
+  end
+  object dbeCodSetor: TDBEdit
+    Left = 410
+    Top = 115
+    Width = 66
+    Height = 23
+    DataField = 'codigo_setor'
+    DataSource = dsColaborador
+    TabOrder = 3
   end
   object ImageList: TImageList
     ColorDepth = cd32Bit
@@ -1357,5 +1297,10 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       FFFFFFFFFFFFFFFF0000000000000000FFFFFFFFFFFFFFFF0000000000000000
       FFFFFFFFFFFFFFFF000000000000000000000000000000000000000000000000
       000000000000}
+  end
+  object dsColaborador: TDataSource
+    DataSet = ColaboradorDataModule.fdqryColaborador
+    Left = 502
+    Top = 39
   end
 end

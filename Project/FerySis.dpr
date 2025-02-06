@@ -33,6 +33,7 @@
     Application.MainFormOnTaskbar := True;
 
     Application.CreateForm(TGerenciadorConexao, GerenciadorConexao);
+  Application.CreateForm(TColaboradorDataModule, ColaboradorDataModule);
   while not ArquivoIniExiste do
     begin
        Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);
