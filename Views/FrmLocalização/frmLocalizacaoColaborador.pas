@@ -7,8 +7,8 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
   Data.DB, Vcl.Grids, Vcl.DBGrids,
-  Vcl.WinXCtrls, dmColaborador, System.ImageList, Vcl.ImgList, uFuncoes,
-  dmGerenciadorConexao, uThreadColaboradorDataModule, frmCadastroColaborador;
+  Vcl.WinXCtrls, dmColaboradorCad, System.ImageList, Vcl.ImgList, uFuncoes,
+  dmGerenciadorConexao, uThreadColaboradorDataModule, frmColaboradorCad;
 
 type
   TCriterioPesquisa = (cpCodigo, cpNome, cpMatricula);
@@ -69,6 +69,7 @@ procedure TForm_Loc_Colaborador.btnNovoClick(Sender: TObject);
 begin
   Application.CreateForm(TForm_Cadastro_Colaborador, Form_Cadastro_Colaborador);
   Form_Cadastro_Colaborador.Show;
+  Form_Cadastro_Colaborador.AlterarModo(mfNovo);
 end;
 
 procedure TForm_Loc_Colaborador.BuscarPorCriterio(const Criterio

@@ -3,7 +3,7 @@ unit uThreadUsuarioDataModule;
 interface
 
 uses
-  System.Classes, dmUsuario, dmColaborador;
+  System.Classes, dmUsuario, dmColaboradorCad;
 
 type
   TThreadCriarDataModuleUsuario = class(TThread)

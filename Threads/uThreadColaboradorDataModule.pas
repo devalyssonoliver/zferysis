@@ -3,7 +3,7 @@ unit uThreadColaboradorDataModule;
 interface
 
 uses
-  System.Classes, System.SysUtils, dmColaborador;
+  System.Classes, System.SysUtils, dmColaboradorCad;
 
 type
   TThreadCriarDataModuleColaborador = class(TThread)

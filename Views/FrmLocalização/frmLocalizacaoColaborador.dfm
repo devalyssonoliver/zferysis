@@ -210,12 +210,11 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
       Align = alClient
       BorderStyle = bsNone
       Ctl3D = False
-      DataSource = ColaboradorDataModule.dsColaborador
       DefaultDrawing = False
       DrawingStyle = gdsGradient
       FixedColor = clBtnHighlight
-      GradientEndColor = clSlategray
-      GradientStartColor = clSlategray
+      GradientEndColor = clGray
+      GradientStartColor = clGray
       Options = [dgTitles, dgIndicator, dgColumnResize, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
       ParentCtl3D = False
       ReadOnly = True

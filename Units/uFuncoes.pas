@@ -5,7 +5,7 @@ interface
 uses
   Vcl.Forms, Vcl.Controls, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Dialogs,
   Vcl.Graphics,
-  Vcl.ComCtrls, System.SysUtils, System.UITypes;
+  Vcl.ComCtrls, System.SysUtils, System.UITypes, Vcl.DBCtrls;
 
 procedure GerenciarCamposTLabelEdit(const Campos: array of TLabeledEdit;
   Ativo: Boolean);
@@ -17,8 +17,21 @@ function MsgBox(Titulo, Texto: String; Buttons: Boolean; Tipo: Integer)
   : Integer;
 function validarCamposObrigatorios(const Edits: array of TEdit): Boolean;
 function verificarCampoPreenchido(const Edits: array of TEdit): Boolean;
+procedure ConfigurarReadOnlyNosEdits(const Campos: array of TDBEdit;
+  Ativo: Boolean);
 
 implementation
+
+procedure ConfigurarReadOnlyNosEdits(const Campos: array of TDBEdit;
+  Ativo: Boolean);
+var
+  I: Integer;
+begin
+  for i := 0 to High(Campos) do
+  begin
+    Campos[i].ReadOnly := Ativo;
+  end;
+end;
 
 function verificarCampoPreenchido(const Edits: array of TEdit): Boolean;
 var
