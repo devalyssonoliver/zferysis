@@ -3,8 +3,8 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Cadastro de Colaborador'
-  ClientHeight = 319
-  ClientWidth = 628
+  ClientHeight = 406
+  ClientWidth = 513
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,23 +14,26 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
   KeyPreview = True
   Position = poDesktopCenter
   Scaled = False
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyPress = FormKeyPress
   OnShow = FormShow
   TextHeight = 15
   object pnlCentro: TPanel
     Left = 0
     Top = 0
-    Width = 628
-    Height = 319
+    Width = 513
+    Height = 406
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
     StyleName = 'Windows'
-    ExplicitWidth = 624
-    ExplicitHeight = 318
+    ExplicitTop = -8
+    ExplicitWidth = 536
     object lbTitulo: TLabel
       Left = 87
-      Top = 22
+      Top = 28
       Width = 265
       Height = 32
       Caption = 'Cadastro de Colaborador'
@@ -87,110 +90,82 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
         4435753B808F9E16BD7D87F67E9C50214812C46E9204B19B7C3020AF00360F24
         51746C55B20000000049454E44AE426082}
     end
-    object imgFotoUsuario: TImage
-      Left = 50
-      Top = 79
-      Width = 94
-      Height = 74
-      Center = True
-      Picture.Data = {
-        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000280000
-        002808060000008CFEB86D000000097048597300000B1300000B1301009A9C18
-        000007A54944415478DACD987B4C5BD719C0BFEB6BE3076FDBBC0C181C5E4930
-        909040D269DDAA092984868751AB45CDFE98946D5AB769ABB62A0DAF56B480AB
-        2653A444A916759BA22D5AFE68361E09294BABA87B688B481C2089497804135E
-        36D8D8E0C7B5AF7D1F3BBEC45520015FC08AF649968E7DCFB9E777BEEF7C2F63
-        F07F2ED876163756971EC484F851F492D759964D6158881660E0C601BB1F0038
-        1B5572FB4A6B2B302F1DB0A1A67C378EB37F146098561E2793C6482502B10807
-        018E034531409024581D2EB79FA2063C42E1A1339FDFF2BE34C0E6DAF23A1663
-        2FA52A62A5F2D818C4F8E2792CFA4CCFDBBD6EC277B3ADEBCE919702D854BBEF
-        354C20E8DDA152CA2451A2B0F391D961746A9E0E300C8B4E32C932EC0527B974
-        EE5CDF381971C086EA032938CE8C64A729E211DDA6B480F8C0EBF7C382C3E521
-        486A42C890DF69ED1E5A8A2860537DF9F9C468C971953241BC29BA35326B75F8
-        96DDBE2FDBBA6ED7440CF083370FCAA9003D5DA04E910971C176F880453EFD68
-        CAE2A1A8C0B7F45707EE4504B0A976FFF76512F1671A9522763330A49F02A150
-        00B860F5A1E6ED4ECAE6F49C6FEFBCFD4E44005BEACA2EA728E28ECAE3A279C3
-        31485593160704D93293125741123E3F3CB1D8EF7FD4D95F1C19405DF958769A
-        3C572AE6E71C0CC3C08C6D19720A52217825461FCE4106820C6D46D14CD0BB97
-        D13D4C880860B36EBF2D3723451125C4C3CEF5F8489877B8405BAC868A435AEE
-        B7DFFFEE2688311CE2A3A54FB5CB8271728ED27719C2C62A5E808DB5FBFDBB35
-        69A2F5A2B29FA281F0FAC1E5F37179ADB2AA04F277A67DF37C7CCC027D570739
-        53AF689885E14973A0A3FB4E5893F07512FFAE358041332D3ADDE0247C9C19D3
-        33E450B4270BF2F253015FE3E97EE42C674EF5C24E752AF73D800E348AD24C7B
-        D71D4544009B75658EBCCCE40411BE62629AA6C164B143615126941FC801B932
-        26EC3BDA5B3B41BB43C58D9F3A891139893622802DF5E5F7B352E4DA50069977
-        38610772808A43457C963F0768777A50A871FD05011E8B8C06EBCA83C5C1B150
-        98199F5B801FBF5D017171D22D019A9187DB96DDBFD6F718CE44041039C93BA8
-        AC3A8DD21C67E3071373D0F4818E37DC5AC009B3CDEFF691D51F77196E4404F0
-        64CDFE9A58A9E8924695C46512E384191ADEAF050CE397CA83558DFEC36E28DC
-        B1E2D9C3931682A540DB7EB5DF1411C086DAD2576551E29E9C8C242EB08ECD2C
-        C0CF7F7508A4327E819BF09070FEEC0DC8CF4886A7070CF80832F1B75FDEF344
-        04B0A9A6EC584CB4F84256AA9CBB8413161B5BFF463996A549E20538F1781E7A
-        FE6A6035690A6E3FA3C9EC634401B5FEF3416B64007565B7548A84F2C4582937
-        1F5D7090A2AAEBAD1F7C9B17E09F2EFE13280F058AA74E3665B1132E1F192C16
-        4E6C1BB0B1AEECA75102C1A93C75724CE8CED128D78ECF5AA1A2B2084A4B351B
-        AEEFBFFD18BEBE6184BCCC2410602B013C80FA96C7B30B0443339D34CDB6E9AF
-        191E6D09B05157F62301CB9ECD494F46758270D533820CA060BB080545A970F8
-        7029AC6D017CFE00F45EBB0B63C316C84E95C3DA4223981EC7A71650C8A73FD3
-        77DF7D7B4B80CDBA03475996BE102B930815F13132A97805D2475228CD79BC2E
-        2F2955E7CA01930064230D95EC5ED1E6D0B00926A7ADC0FA9039C7ED102B157B
-        83DD9F542C421E0DE02248D66C5BF2B1805DC48BFB7FB1516B1AD6C4EFBDB92F
-        5E44623FC170EC38CDB01C012EC04C28DF5F4C2B88D3577D6F2F0402149866AC
-        30376FE7D6A852E4A0C94802914808D76F0E8079C4D980FAE51F06D7A30D69D4
-        780DD00C751269EE5FE1F6DF56E3FE6963055BF9DD3D1BCEE9FBC720FCACE3AB
-        2DEFB3A98547DEEB510B70419D50283A8A6C955D419F4E7BED602148C42F2EEB
-        7CE89E7E7DCB085FE1EF9A51549F4445C665004157777BE57444017527AE6780
-        183E6159419D522967154AA52C5A268358EB1720337742E9AE345024AC6E5716
-        975C30802A6942550F4EE56120080F58AD8BC4E2A21D0503B6D34F53277A3BAA
-        67B70D58D3785D87EAC04BE9E9E9A2CCCC7411BEA6AA16381FA2DC7501725225
-        50AC89E1DEF870DA0B8FA6DD80ED3C0E74C2EAB683A22998999AF1CFCECE0518
-        9A7EABE7E3EA9E2D03D636F7FD4688E3ADDAC25DD131B1EBD77C1EC72C0C184D
-        108F2F732F5CA2E3A1B45003B2C4F475D7B85C6E301A873D0C4DB574B655AD5B
-        D5AC0B18D41C6A19FFBCB7746FB4441CBE57373E780076C732374E94C783B630
-        6C2D0A7ED20F8681410F13F01FEBEA38D2CD1B3078E7581136B2A7B484BB6B7C
-        C4B9EC84A17BF7B971714931C4C7F16BA1DD6E0F0C0DDDF3302499DF73AA6E8E
-        17605D4BDF65952A55A7C9CEE6FD37074178C160B8CB8DF7EDDB0B329E070B8A
-        C964F2CF992D57BA3E3AFC5C85FD1C603094A030327AF09503627C137F733C79
-        320D535353DC58AD5643565626375E7C7065C3750AED1B5C8F73EBBFFD241660
-        733B3FA99AD910B0A6F1DA2F939393F50505F9FC5580C46018405A24B871507B
-        412D8600F5EF1E7FE19A86D37FE000833232324A58E76D27BBF555E73604AC7F
-        FFEFFFC9CBCB7D45A90CDB117E23CF9A37242133F305B4D916616C6CECDF7FFB
-        B0F2D50D01752D5F5890E7A6482512DE80CF9A37242133F305F47A7D30707770
-        AEB3AD72556C7A81897B8376E2DFAE8591DD89E60D9F0F3BD29EFDEAEDE9787D
-        D5D5DA56B1F032E47F57E53B56771A028C0000000049454E44AE426082}
+    object lblNome: TLabel
+      Left = 31
+      Top = 143
+      Width = 33
+      Height = 15
+      Caption = 'Nome'
+      FocusControl = dbedtNome
     end
-    object btnLocalizarFoto: TSpeedButton
-      Left = 14
-      Top = 79
-      Width = 30
+    object lblMatricula: TLabel
+      Left = 31
+      Top = 193
+      Width = 50
+      Height = 15
+      Caption = 'Matricula'
+      FocusControl = dbedtMatricula
+    end
+    object lblCodigoSetor: TLabel
+      Left = 333
+      Top = 193
+      Width = 85
+      Height = 15
+      Caption = 'C'#243'digo do setor'
+      FocusControl = dbedtcodsetor
+    end
+    object lblDataContrato: TLabel
+      Left = 31
+      Top = 243
+      Width = 74
+      Height = 15
+      Caption = 'Data Contrato'
+      FocusControl = dbedtData_contrato
+    end
+    object lblPeriodoAquisitivo: TLabel
+      Left = 182
+      Top = 243
+      Width = 97
+      Height = 15
+      Caption = 'Periodo Aquisitivo'
+      FocusControl = dbedtPeriodoAquisitivo
+    end
+    object lblPeriodoConcessivo: TLabel
+      Left = 336
+      Top = 243
+      Width = 104
       Height = 30
-      ImageIndex = 0
-      Images = il32
-      Flat = True
-      StyleName = 'Windows'
+      Caption = 'Periodo Concessivo'#13#10
+      FocusControl = dbedtPeriodo_concessivo
     end
-    object btnExcluirFoto: TSpeedButton
-      Left = 14
-      Top = 115
-      Width = 30
-      Height = 25
-      ImageIndex = 1
-      Images = il32
-      Flat = True
+    object lblDataCadastro: TLabel
+      Left = 31
+      Top = 293
+      Width = 74
+      Height = 15
+      Caption = 'Data Cadastro'
+    end
+    object lblCpf: TLabel
+      Left = 182
+      Top = 193
+      Width = 21
+      Height = 15
+      Caption = 'CPF'
+      FocusControl = dbedtCpf
     end
     object pnlBotoes: TPanel
       Left = 1
-      Top = 278
-      Width = 626
+      Top = 365
+      Width = 511
       Height = 40
       Align = alBottom
       BevelOuter = bvNone
       Color = clSilver
       ParentBackground = False
-      TabOrder = 6
+      TabOrder = 11
       StyleName = 'Windows'
-      ExplicitTop = 277
-      ExplicitWidth = 622
+      ExplicitTop = 245
+      ExplicitWidth = 681
       object btnSalvar: TButton
         Left = 86
         Top = 8
@@ -207,17 +182,17 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
         Width = 75
         Height = 25
         Caption = 'Editar'
-        TabOrder = 1
+        TabOrder = 3
         StyleName = 'Windows'
         OnClick = btnEditarClick
       end
       object btnFechar: TButton
-        Left = 542
+        Left = 428
         Top = 8
         Width = 75
         Height = 25
         Caption = 'Fechar'
-        TabOrder = 2
+        TabOrder = 4
         StyleName = 'Windows'
         OnClick = btnFecharClick
       end
@@ -227,307 +202,142 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
         Width = 75
         Height = 25
         Caption = 'Novo'
-        TabOrder = 3
+        TabOrder = 2
         StyleName = 'Windows'
         OnClick = btnNovoClick
       end
-    end
-    object gbInformacoesBasicas: TGroupBox
-      Left = 150
-      Top = 71
-      Width = 453
-      Height = 74
-      Caption = 'Informa'#231#245'es b'#225'sicas'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 2
-      object lblNome: TLabel
-        Left = 3
-        Top = 16
-        Width = 42
-        Height = 14
-        Caption = 'Nome: '
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblMatricula: TLabel
-        Left = 130
-        Top = 16
-        Width = 60
-        Height = 14
-        Caption = 'Matr'#237'cula:'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblCodSetor: TLabel
-        Left = 257
-        Top = 16
-        Width = 105
-        Height = 14
-        Caption = 'C'#243'digo do Setor:'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object btnAbrirFormSetor: TSpeedButton
-        Left = 328
-        Top = 46
-        Width = 30
+      object btnCancelar: TButton
+        Left = 248
+        Top = 7
+        Width = 75
         Height = 25
-        Margins.Left = 1
-        Margins.Right = 1
-        ImageIndex = 0
-        Images = ImageList
-        StyleName = 'Windows'
-      end
-      object lblAtivo: TLabel
-        Left = 368
-        Top = 16
-        Width = 37
-        Height = 14
-        Caption = 'Ativo:'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object tglAtivo: TDBCheckBox
-        Left = 368
-        Top = 36
-        Width = 145
-        Height = 33
-        Caption = 'tglAtivo'
-        DataField = 'ativo'
-        DataSource = dsColaborador
-        TabOrder = 0
-      end
-    end
-    object gbContrato: TGroupBox
-      Left = 16
-      Top = 159
-      Width = 128
-      Height = 74
-      Caption = 'Detalhes do Contrato'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 4
-      object lblContrato: TLabel
-        Left = 11
-        Top = 20
-        Width = 53
-        Height = 13
-        Caption = 'Contrato:'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object dbeContrato: TDBEdit
-        Left = 3
-        Top = 39
-        Width = 106
-        Height = 21
-        AutoSelect = False
-        DataField = 'data_contrato'
-        DataSource = dsColaborador
-        TabOrder = 0
-      end
-    end
-    object gbPeriodos: TGroupBox
-      Left = 150
-      Top = 159
-      Width = 453
-      Height = 74
-      Caption = 'Per'#237'odos'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 5
-      object lblAquisitivoInicial: TLabel
-        Left = 3
-        Top = 20
-        Width = 103
-        Height = 13
-        Caption = 'Aquisitivo (In'#237'cio):'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblAquisitivoFim: TLabel
-        Left = 112
-        Top = 20
-        Width = 92
-        Height = 13
-        Caption = 'Aquisitivo (Fim):'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblConcessivoInicio: TLabel
-        Left = 220
-        Top = 19
-        Width = 110
-        Height = 13
-        Caption = 'Concessivo (In'#237'cio):'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblConcessivoFim: TLabel
-        Left = 336
-        Top = 19
-        Width = 99
-        Height = 13
-        Caption = 'Concessivo (Fim):'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object dbeAqusitivoInicio: TDBEdit
-        Left = 3
-        Top = 39
-        Width = 103
-        Height = 21
-        DataField = 'periodo_aquisitivo'
-        DataSource = dsColaborador
+        Caption = 'Cancelar'
         TabOrder = 1
-      end
-      object dbeAquisitivoFim: TDBEdit
-        Left = 112
-        Top = 39
-        Width = 103
-        Height = 21
-        AutoSelect = False
-        DataField = 'periodo_concessivo'
-        DataSource = dsColaborador
-        TabOrder = 2
-      end
-      object dbeConcessivoInicio: TDBEdit
-        Left = 221
-        Top = 38
-        Width = 103
-        Height = 21
-        AutoSelect = False
-        DataField = 'data_cadastro'
-        DataSource = dsColaborador
-        TabOrder = 0
+        StyleName = 'Windows'
+        OnClick = btnEditarClick
       end
     end
     object pnlStatusFerias: TPanel
       Left = 1
       Top = 1
-      Width = 626
+      Width = 511
       Height = 8
       Align = alTop
       BevelOuter = bvNone
       Color = clBackground
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 622
+      ExplicitWidth = 681
     end
-    object Edit1: TEdit
-      Left = 624
-      Top = 88
-      Width = 121
+    object dbedtCodigo: TDBEdit
+      Left = 391
+      Top = 115
+      Width = 90
       Height = 23
-      TabOrder = 3
-      Text = 'Edit1'
-    end
-    object dbeCodigo: TDBEdit
-      Left = 497
-      Top = 15
-      Width = 121
-      Height = 23
-      BevelOuter = bvNone
+      TabStop = False
+      AutoSelect = False
       BorderStyle = bsNone
       DataField = 'codigo'
       DataSource = dsColaborador
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -19
+      Font.Color = clHighlight
+      Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       TabOrder = 1
     end
-  end
-  object dbenome: TDBEdit
-    Left = 153
-    Top = 115
-    Width = 121
-    Height = 23
-    AutoSelect = False
-    DataField = 'nome'
-    DataSource = dsColaborador
-    TabOrder = 1
-  end
-  object dbeMatricula: TDBEdit
-    Left = 280
-    Top = 115
-    Width = 121
-    Height = 23
-    AutoSelect = False
-    DataField = 'matricula'
-    DataSource = dsColaborador
-    TabOrder = 2
-  end
-  object dbeCodSetor: TDBEdit
-    Left = 410
-    Top = 115
-    Width = 66
-    Height = 23
-    Margins.Left = 1
-    Margins.Right = 1
-    AutoSelect = False
-    DataField = 'codigo_setor'
-    DataSource = dsColaborador
-    TabOrder = 3
+    object dbedtNome: TDBEdit
+      Left = 31
+      Top = 164
+      Width = 450
+      Height = 23
+      DataField = 'nome'
+      DataSource = dsColaborador
+      TabOrder = 3
+    end
+    object dbedtMatricula: TDBEdit
+      Left = 31
+      Top = 214
+      Width = 145
+      Height = 23
+      DataField = 'matricula'
+      DataSource = dsColaborador
+      TabOrder = 4
+    end
+    object dbedtcodsetor: TDBEdit
+      Left = 336
+      Top = 214
+      Width = 145
+      Height = 23
+      DataField = 'codigo_setor'
+      DataSource = dsColaborador
+      TabOrder = 6
+    end
+    object dbedtData_contrato: TDBEdit
+      Left = 31
+      Top = 264
+      Width = 145
+      Height = 23
+      DataField = 'data_contrato'
+      DataSource = dsColaborador
+      TabOrder = 8
+    end
+    object dbedtPeriodoAquisitivo: TDBEdit
+      Left = 336
+      Top = 263
+      Width = 146
+      Height = 23
+      DataField = 'periodo_aquisitivo'
+      DataSource = dsColaborador
+      TabOrder = 7
+    end
+    object dbedtPeriodo_concessivo: TDBEdit
+      Left = 182
+      Top = 264
+      Width = 145
+      Height = 23
+      DataField = 'periodo_concessivo'
+      DataSource = dsColaborador
+      TabOrder = 9
+    end
+    object dbchkAtivo: TDBCheckBox
+      Left = 31
+      Top = 120
+      Width = 97
+      Height = 17
+      Caption = 'Ativo'
+      DataField = 'ativo'
+      DataSource = dsColaborador
+      TabOrder = 2
+    end
+    object dbedtCpf: TDBEdit
+      Left = 182
+      Top = 214
+      Width = 145
+      Height = 23
+      DataField = 'cpf'
+      DataSource = dsColaborador
+      TabOrder = 5
+    end
+    object edtDataCadastro: TEdit
+      Left = 31
+      Top = 314
+      Width = 145
+      Height = 23
+      TabStop = False
+      Color = clLightyellow
+      Enabled = False
+      TabOrder = 10
+    end
   end
   object ImageList: TImageList
     ColorDepth = cd32Bit
     DrawingStyle = dsTransparent
     Height = 22
     Width = 22
-    Left = 376
-    Top = 329
+    Left = 408
+    Top = 145
     Bitmap = {
       494C010103000800040016001600FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000058000000160000000100200000000000401E
@@ -790,8 +600,8 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
     DrawingStyle = dsTransparent
     Height = 32
     Width = 32
-    Left = 480
-    Top = 288
+    Left = 568
+    Top = 280
     Bitmap = {
       494C010102000800040020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000002000000001002000000000000040
@@ -1330,7 +1140,7 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
   end
   object dsColaborador: TDataSource
     DataSet = ColaboradorDataModule.fdqryColaborador
-    Left = 502
-    Top = 39
+    Left = 486
+    Top = 23
   end
 end

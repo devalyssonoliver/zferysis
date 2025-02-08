@@ -4,7 +4,7 @@
         <ProjectVersion>20.1</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win64</Platform>
         <ProjectName Condition="'$(ProjectName)'==''">FerySis</ProjectName>
         <TargetedPlatforms>3</TargetedPlatforms>
@@ -107,6 +107,8 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -125,6 +127,7 @@
         <UWP_DelphiLogo44>..\Assets\Logo.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>..\Assets\Logo.png</UWP_DelphiLogo150>
         <UsePackages>true</UsePackages>
+        <DCC_UsePackage>dxWizardControlRS29;cxADOAdaptersRS29;cxGridEMFRS29;cxGridRS29;cxIBXAdaptersRS29;cxLibraryRS29;cxPageControldxBarPopupMenuRS29;cxPivotGridChartRS29;cxPivotGridOLAPRS29;cxSchedulerGridRS29</DCC_UsePackage>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -195,6 +198,7 @@
                     <Source Name="MainSource">FerySis.dpr</Source>
                 </Source>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\DevExpress\VCL\Library\RS29\dcldxEMFRS29.bpl">File C:\Program Files (x86)\DevExpress\VCL\Library\RS29\dcldxEMFRS29.bpl not found</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k290.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp290.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files\Fast Reports VCL\2025.1.4\Trial\LibRS29\VCL\Win32\dclfcxc29.bpl">FastCube VCL - Charting Components by Fast Reports Inc</Excluded_Packages>
@@ -211,8 +215,6 @@
                     <Excluded_Packages Name="C:\Program Files\Fast Reports VCL\2025.1.4\Trial\LibRS29\FMX\Win32\dclFMXfrxTee29.bpl">FastReport FMX - Tee Components by Fast Reports Inc</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files\Fast Reports VCL\2025.1.4\Trial\LibRS29\FMX\Win32\dclFMXfsIBX29.bpl">FastScript FMX - IBX Components by Fast Reports Inc</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files\Fast Reports VCL\2025.1.4\Trial\LibRS29\FMX\Win32\dclFMXfsTee29.bpl">FastScript FMX - Tee Components by Fast Reports Inc</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\DevExpress\VCL\Library\RS29\dcldxHttpIndyRequestRS29.bpl">Express Cross Platform Library Indy Request Handler by Developer Express Inc.</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\DevExpress\VCL\Library\RS29\dcldxADOServerModeRS29.bpl">ADO Data Source for ExpressDataController Server Mode by Developer Express Inc.</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">
@@ -899,6 +901,9 @@
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="Win64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64x">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>

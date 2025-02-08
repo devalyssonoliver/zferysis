@@ -12,14 +12,24 @@ type
   TColaboradorDataModule = class(TDataModule)
     fdqryColaborador: TFDQuery;
     fdqryAux: TFDQuery;
+    fdqryColaboradorcodigo: TIntegerField;
+    fdqryColaboradornome: TWideStringField;
+    fdqryColaboradormatricula: TWideStringField;
+    fdqryColaboradorcodigo_setor: TIntegerField;
+    fdqryColaboradordata_contrato: TDateField;
+    fdqryColaboradorperiodo_aquisitivo: TDateField;
+    fdqryColaboradorperiodo_concessivo: TDateField;
+    fdqryColaboradordata_cadastro: TDateField;
+    fdqryColaboradorativo: TBooleanField;
+    wdstrngfldColaboradorcpf: TWideStringField;
     procedure DataModuleCreate(Sender: TObject);
 
   public
     procedure Novo;
     procedure Salvar;
-    procedure Excluir;
-    procedure CarregarDados(_Codigo : Integer);
-    function ObterProximoCodigo: Integer;
+    procedure Editar;
+    procedure Cancelar;
+
   end;
 
 var
@@ -40,36 +50,29 @@ end;
 
 procedure TColaboradorDataModule.Salvar;
 begin
-  if fdqryColaborador.State in [dsEdit, dsInsert] then
-    fdqryColaborador.Post;
+  if not (fdqryColaborador.State in [dsEdit, dsInsert]) then
+    fdqryColaborador.Edit;
+
+  if fdqryColaborador.State = dsBrowse then
+    fdqryColaborador.Append;
+
+  fdqryColaborador.Post;
 end;
 
+procedure TColaboradorDataModule.Cancelar;
+begin
+  fdqryColaborador.Cancel;
+end;
 
 procedure TColaboradorDataModule.DataModuleCreate(Sender: TObject);
 begin
-   fdqryColaborador.Connection := GerenciadorConexao.fdConn;
-
+  fdqryColaborador.Connection := GerenciadorConexao.fdConn;
+  fdqryColaborador.Open;
 end;
 
-procedure TColaboradorDataModule.Excluir;
+procedure TColaboradorDataModule.Editar;
 begin
-  if not fdqryColaborador.IsEmpty then
-    fdqryColaborador.Delete;
-end;
-
-procedure TColaboradorDataModule.CarregarDados(_Codigo : Integer);
-begin
-  fdqryColaborador.Locate('codigo', _Codigo, []);
-end;
-
-function TColaboradorDataModule.ObterProximoCodigo: Integer;
-begin
-  Result := 0;
-  fdqryAux.Close;
-  fdqryAux.SQL.Text := 'SELECT nextval(''colaborador_codigo_seq'') AS proximo_codigo';
-  fdqryAux.Open;
-  if not fdqryAux.IsEmpty then
-    Result := fdqryAux.FieldByName('proximo_codigo').AsInteger;
+  fdqryColaborador.Edit;
 end;
 
 end.

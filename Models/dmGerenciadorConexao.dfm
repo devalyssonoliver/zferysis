@@ -16,6 +16,7 @@ object GerenciadorConexao: TGerenciadorConexao
     Top = 224
   end
   object pgDriver: TFDPhysPgDriverLink
+    VendorLib = 'C:\lib\libpq.dll'
     Left = 440
     Top = 176
   end

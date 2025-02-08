@@ -19,48 +19,46 @@ type
     btnEditar: TButton;
     btnFechar: TButton;
     imgLogo: TImage;
-    gbInformacoesBasicas: TGroupBox;
-    gbContrato: TGroupBox;
+    ImageList: TImageList;
+    pnlStatusFerias: TPanel;
+    il32: TImageList;
+    btnNovo: TButton;
+    dsColaborador: TDataSource;
+    dbedtCodigo: TDBEdit;
     lblNome: TLabel;
     lblMatricula: TLabel;
-    lblCodSetor: TLabel;
-    ImageList: TImageList;
-    btnAbrirFormSetor: TSpeedButton;
-    lblContrato: TLabel;
-    gbPeriodos: TGroupBox;
-    lblAquisitivoInicial: TLabel;
-    lblAquisitivoFim: TLabel;
-    lblConcessivoInicio: TLabel;
-    lblConcessivoFim: TLabel;
-    pnlStatusFerias: TPanel;
-    lblAtivo: TLabel;
-    imgFotoUsuario: TImage;
-    btnLocalizarFoto: TSpeedButton;
-    il32: TImageList;
-    btnExcluirFoto: TSpeedButton;
-    dbenome: TDBEdit;
-    dbeMatricula: TDBEdit;
-    dbeCodSetor: TDBEdit;
-    dbeContrato: TDBEdit;
-    dbeAqusitivoInicio: TDBEdit;
-    dbeAquisitivoFim: TDBEdit;
-    dbeConcessivoInicio: TDBEdit;
-    dsColaborador: TDataSource;
-    tglAtivo: TDBCheckBox;
-    Edit1: TEdit;
-    dbeCodigo: TDBEdit;
-    btnNovo: TButton;
+    dbedtMatricula: TDBEdit;
+    lblCodigoSetor: TLabel;
+    dbedtcodsetor: TDBEdit;
+    lblDataContrato: TLabel;
+    dbedtData_contrato: TDBEdit;
+    lblPeriodoAquisitivo: TLabel;
+    dbedtPeriodoAquisitivo: TDBEdit;
+    lblPeriodoConcessivo: TLabel;
+    dbedtPeriodo_concessivo: TDBEdit;
+    lblDataCadastro: TLabel;
+    dbchkAtivo: TDBCheckBox;
+    dbedtNome: TDBEdit;
+    lblCpf: TLabel;
+    dbedtCpf: TDBEdit;
+    edtDataCadastro: TEdit;
+    btnCancelar: TButton;
     procedure btnSalvarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure AlterarModo(Modo: TModoFormulario);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormShow(Sender: TObject);
+
+
 
   private
+    FDmColaborador : TColaboradorDataModule;
     FModoFormulario: TModoFormulario;
     procedure ConfigurarModo;
-    procedure RealizarAcaoCadastroEdicao;
     procedure ConfigurarAtivoNosEdits(Ativo: Boolean);
   public
     property ModoFormulario: TModoFormulario read FModoFormulario write AlterarModo;
@@ -80,8 +78,14 @@ var
   I: Integer;
 begin
   for I := 0 to Self.ComponentCount - 1 do
+  begin
     if Self.Components[I] is TDBEdit then
-      TDBEdit(Self.Components[I]).Enabled := Ativo;
+      TDBEdit(Self.Components[I]).Enabled := Ativo
+    else if Self.Components[I] is TDBCheckBox then
+      TDBCheckBox(Self.Components[I]).Enabled := Ativo
+    else if Self.Components[I] is TDBComboBox then
+      TDBComboBox(Self.Components[I]).Enabled := Ativo;
+  end;
 end;
 procedure TForm_Cadastro_Colaborador.AlterarModo(Modo: TModoFormulario);
 begin
@@ -95,56 +99,69 @@ begin
   case FModoFormulario of
     mfNovo:
       begin
-        dsColaborador.DataSet := ColaboradorDataModule.fdqryColaborador;
-        ColaboradorDataModule.Salvar;
+        FDmColaborador.Novo;
         ConfigurarAtivoNosEdits(True);
         GerenciarBotoes(btnEditar, False);
       end;
     mfEditar:
       begin
-        dsColaborador.DataSet := ColaboradorDataModule.fdqryColaborador;
-        ColaboradorDataModule.Salvar;
+        FDmColaborador.Editar;
         ConfigurarAtivoNosEdits(True);
-        GerenciarBotoes(btnNovo, False);
+        GerenciarBotoes([btnNovo, btnEditar], False);
+        GerenciarBotoes(btnSalvar, True);
       end;
     mfExibicao:
       begin
-        dsColaborador.DataSet := ColaboradorDataModule.fdqryColaborador;
         ConfigurarAtivoNosEdits(False);
-        GerenciarBotoes(btnSalvar, True);
+        GerenciarBotoes(btnSalvar, False);
+        GerenciarBotoes([btnEditar, btnNovo], True);
+
       end;
   end;
 end;
 
+
+procedure TForm_Cadastro_Colaborador.FormCreate(Sender: TObject);
+begin
+
+    FDmColaborador := TColaboradorDataModule.Create(nil);
+    if Assigned(FDmColaborador) then
+        begin
+        dsColaborador.DataSet := FDmColaborador.fdqryColaborador;
+        dsColaborador.DataSet.Active := True;
+        end
+
+end;
+
+procedure TForm_Cadastro_Colaborador.FormDestroy(Sender:
+TObject);
+begin
+  FreeAndNil(FDmColaborador);
+end;
+
+procedure TForm_Cadastro_Colaborador.FormKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    Key := #0;
+    Perform(WM_NEXTDLGCTL,0,0);
+  end;
+
+end;
+
+
 procedure TForm_Cadastro_Colaborador.FormShow(Sender: TObject);
 begin
- dsColaborador.DataSet := ColaboradorDataModule.fdqryColaborador;
-   dsColaborador.DataSet.Active := True;
-
-
+  edtDataCadastro.Text := DateToStr(Now);
 end;
-
 
 procedure TForm_Cadastro_Colaborador.btnSalvarClick(Sender: TObject);
+
 begin
-   RealizarAcaoCadastroEdicao;
-   ColaboradorDataModule.CarregarDados(StrToInt(dbeCodigo.Text));
+   ColaboradorDataModule.Salvar;
    AlterarModo(mfExibicao);
-
 end;
-
-procedure TForm_Cadastro_Colaborador.RealizarAcaoCadastroEdicao;
-begin
-  if FModoFormulario = mfNovo then
-  begin
-    ColaboradorDataModule.Novo;
-  end
-  else if FModoFormulario = mfEditar then
-  begin
-    ColaboradorDataModule.Salvar;
-  end;
-end;
-
 
 procedure TForm_Cadastro_Colaborador.btnEditarClick(Sender: TObject);
 begin
@@ -153,14 +170,14 @@ end;
 
 
 procedure TForm_Cadastro_Colaborador.btnFecharClick(Sender: TObject);
+
 begin
   Close;
 end;
 
 procedure TForm_Cadastro_Colaborador.btnNovoClick(Sender: TObject);
 begin
-
-  AlterarModo(mfNovo);
+   AlterarModo(mfNovo);
 end;
 
 end.

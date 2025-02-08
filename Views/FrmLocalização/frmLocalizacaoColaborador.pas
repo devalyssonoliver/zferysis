@@ -14,6 +14,7 @@ type
   TCriterioPesquisa = (cpCodigo, cpNome, cpMatricula);
 
   TForm_Loc_Colaborador = class(TForm)
+
     pnlGrid: TPanel;
     lbTitulo: TLabel;
     Panel1: TPanel;
@@ -67,9 +68,15 @@ end;
 
 procedure TForm_Loc_Colaborador.btnNovoClick(Sender: TObject);
 begin
-  Application.CreateForm(TForm_Cadastro_Colaborador, Form_Cadastro_Colaborador);
+  Form_Cadastro_Colaborador := TForm_Cadastro_Colaborador.Create(nil);
+  try
   Form_Cadastro_Colaborador.Show;
   Form_Cadastro_Colaborador.AlterarModo(mfNovo);
+
+  finally
+
+  end;
+
 end;
 
 procedure TForm_Loc_Colaborador.BuscarPorCriterio(const Criterio
@@ -119,7 +126,7 @@ end;
 
 procedure TForm_Loc_Colaborador.FormShow(Sender: TObject);
 begin
-  if not Assigned(ColaboradorDataModule) then
+
     TThreadCriarDataModuleColaborador.Create(False);
   GerenciarBotoes([btnRelatorio, btnExibir], False);
 end;

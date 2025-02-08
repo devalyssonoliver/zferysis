@@ -191,7 +191,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
         Width = 75
         Height = 25
         Caption = 'Fechar'
-        TabOrder = 2
+        TabOrder = 3
       end
       object btnRelatorio: TButton
         Left = 776
@@ -199,7 +199,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
         Width = 75
         Height = 25
         Caption = 'Relat'#243'rio'
-        TabOrder = 3
+        TabOrder = 2
       end
     end
     object dbGrid: TDBGrid

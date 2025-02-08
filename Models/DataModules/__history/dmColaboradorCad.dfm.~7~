@@ -1,0 +1,69 @@
+object ColaboradorDataModule: TColaboradorDataModule
+  OnCreate = DataModuleCreate
+  Height = 482
+  Width = 537
+  object fdqryColaborador: TFDQuery
+    Connection = GerenciadorConexao.fdConn
+    UpdateOptions.AssignedValues = [uvFetchGeneratorsPoint, uvGeneratorName]
+    UpdateOptions.FetchGeneratorsPoint = gpImmediate
+    UpdateOptions.GeneratorName = 'SEQUENCE_CODIGO_COLABORADOR'
+    UpdateOptions.AutoIncFields = 'codigo'
+    SQL.Strings = (
+      'select * from colaboradores')
+    Left = 304
+    Top = 368
+    object fdqryColaboradorcodigo: TIntegerField
+      FieldName = 'codigo'
+      Origin = 'codigo'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object fdqryColaboradornome: TWideStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 150
+    end
+    object fdqryColaboradormatricula: TWideStringField
+      FieldName = 'matricula'
+      Origin = 'matricula'
+    end
+    object fdqryColaboradorcodigo_setor: TIntegerField
+      FieldName = 'codigo_setor'
+      Origin = 'codigo_setor'
+      Required = True
+    end
+    object fdqryColaboradordata_contrato: TDateField
+      FieldName = 'data_contrato'
+      Origin = 'data_contrato'
+      EditMask = '!99/99/00;0;_'
+    end
+    object fdqryColaboradorperiodo_aquisitivo: TDateField
+      FieldName = 'periodo_aquisitivo'
+      Origin = 'periodo_aquisitivo'
+      EditMask = '!99/99/00;0;_'
+    end
+    object fdqryColaboradorperiodo_concessivo: TDateField
+      FieldName = 'periodo_concessivo'
+      Origin = 'periodo_concessivo'
+      EditMask = '!99/99/00;0;_'
+    end
+    object fdqryColaboradordata_cadastro: TDateField
+      FieldName = 'data_cadastro'
+      Origin = 'data_cadastro'
+    end
+    object fdqryColaboradorativo: TBooleanField
+      FieldName = 'ativo'
+      Origin = 'ativo'
+    end
+    object wdstrngfldColaboradorcpf: TWideStringField
+      FieldName = 'cpf'
+      Origin = 'cpf'
+      EditMask = '999-000-000-00;_'
+      Size = 11
+    end
+  end
+  object fdqryAux: TFDQuery
+    Connection = GerenciadorConexao.fdConn
+    Left = 280
+    Top = 256
+  end
+end
