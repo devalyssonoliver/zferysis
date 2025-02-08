@@ -7,8 +7,7 @@
     System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
     Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask, Vcl.Imaging.pngimage, System.ImageList,
     Vcl.ImgList, Vcl.Buttons, Usuario, dmUsuario, uFuncoes,
-    dmGerenciadorConexao, System.Types, Vcl.GraphUtil, Vcl.Menus, System.Skia,
-    Vcl.Skia;
+    dmGerenciadorConexao, System.Types, Vcl.GraphUtil, Vcl.Menus;
 
   type
     TFrm_Login = class(TForm)

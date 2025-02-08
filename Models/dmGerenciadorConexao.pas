@@ -53,7 +53,7 @@ begin
   Result := False;
 
   pgDriver.VendorLib := IncludeTrailingPathDelimiter
-    (ExtractFilePath(Application.ExeName)) + 'lib\libpq.dll';
+      (ExtractFilePath(Application.ExeName)) + 'lib\libpq.dll';
   Usuario := 'postgres';
   Senha := 'postzeus2011';
 

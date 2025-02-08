@@ -73,7 +73,7 @@
         <SanitizedProjectName>FerySis</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_UsePackage>vclwinx;fs29;fmx;FMXfrLanguageSlovak29;vclie;DbxCommonDriver;bindengine;IndyIPCommon;VCLRESTComponents;FireDACCommonODBC;FMXfrCoreLibrary29;appanalytics;IndyProtocols;vclx;Skia.Package.RTL;frxADOQueryBuilder29;dbxcds;vcledge;fcxp29;frLanguageSlovak29;frLanguageHungarian29;FMXfrLanguageLatvian29;FMXfrLanguageUkrainian29;FMXfrLanguageDutch29;vclribbon;FireDACSqliteDriver;DbxClientDriver;soapmidas;frLanguageArabic29;frCoreLibrary29;dbexpress;frLanguageCatalon29;frxFDQueryBuilder29;frLanguageBrazil29;frLanguageCzech29;FMXfrxDBX29;FMXfrLanguageSwiss29;inet;vcltouch;fmxdae;FMXfrLanguageTurkish29;CustomIPTransport;FMXfrLanguageBrazil129;FMXfrLanguageCzech29;frLanguageItalian29;FMXfsDB29;frxPDF29;fqbFD29;frLanguageSwiss29;IndySystem;FMXfsADO29;frxe29;frLanguageSwedish29;FMXfrLanguagePolish29;frLanguageUkrainian29;fsDB29;vclFireDAC;FireDACCommon;frLanguageDanish29;bindcompdbx;fcx29;FMXfrLanguageLithuanian29;rtl;FireDACMySQLDriver;FMXfrLanguageGerman29;fqb29;frLanguageLithuanian29;frce;DBXSqliteDriver;frLanguageFrench29;frLanguageRussian29;frxSM29;vclimg;FMXfrLanguageBrazil229;inetdbxpress;FireDAC;xmlrtl;dsnap;frFDDataLibrary29;frLanguageSerbian29;FMXfrLanguageRussian29;frLanguageFarsi29;FMXfrLanguageFrench29;fmxobj;bindcompvclsmp;frx29;FMXfrLanguageHebrew29;FMXfrLanguageCroatian29;frLanguageChinese29;frControlsLibrary29;frxQueryBuilder29;FMXfrxADO29;frxIntIOIndy29;frLanguageHebrew29;fqbADO29;FMXfrLanguageBulgarian29;FMXfrxCDS29;frxDB29;fqbDBX29;frLocalizationLibrary29;FireDACCommonDriver;FMXfcxd29;IndyIPClient;frxHTML29;bindcompvclwinx;frLanguageTaiwan29;FMXfrLanguageArabic29;bindcompfmx;frxDBXQueryBuilder29;frLanguageRomanian29;frLanguageGerman29;inetdb;FMXfrLanguageItalian29;frLanguageIndonesian29;FMXfrLanguageSpanish29;FMXfcxed29;frLanguageBrazil229;vclactnband;FMXfrxDB29;fmxFireDAC;frLanguageCroatian29;DBXMySQLDriver;FMXfs29;fsADO29;VclSmp;FMXfrxFD29;fmxase;FMXfrLanguageFarsi29;FMXfrLanguageTaiwan29;dbrtl;Skia.Package.FMX;FMXfrLanguageChinese29;FMXfrLanguagePortuguese29;FireDACMSAccDriver;frxcs29;FMXfrLanguageJapanese29;frLanguageSlovene29;frADODataLibrary29;frLanguageTurkish29;vcldsnap;DBXInterBaseDriver;fcxe29;frLanguageGreek29;Skia.Package.VCL;frLanguageBrazil129;vcldb;FMXfrLanguageCatalon29;FMXfrLanguageHungarian29;bindcomp;frLanguageLatvian29;IndyCore;RESTBackendComponents;frLanguageSpanish29;frxIntIO29;FMXfrx29;frLanguageJapanese29;frSmartMemo29;FireDACADSDriver;frxFD29;RESTComponents;FMXfrLanguageDanish29;IndyIPServer;vcl;dsnapxml;adortl;dsnapcon;FMXfrLanguageSlovene29;fsFD29;FMXfrLanguageSerbian29;FMXfrxe29;frxADO29;FMXfrLanguageIndonesian29;FMXfrLanguageSwedish29;frLanguageDutch29;FireDACPgDriver;fqbSM29;frLanguagePortuguese29;tethering;frLanguageBulgarian29;frLanguagePolish29;bindcompvcl;frxDBX29;FMXfrLanguageBrazil29;CloudService;FMXfrLanguageGreek29;FMXfcxpd29;FMXfrLocalizationLibrary29;frGraphicsLibrary29;soaprtl;FMXfrLanguageRomanian29;soapserver;FireDACIBDriver;dxSkinBasicRS29;dxSkinBlackRS29;dxSkinBlueprintRS29;dxSkinBlueRS29;dxSkinCaramelRS29;dxSkinCoffeeRS29;dxSkinDarkRoomRS29;dxSkinDarkSideRS29;dxSkinDevExpressDarkStyleRS29;dxSkinDevExpressStyleRS29;dxSkinFoggyRS29;dxSkinGlassOceansRS29;dxSkinHighContrastRS29;dxSkiniMaginaryRS29;dxSkinLilianRS29;dxSkinLiquidSkyRS29;dxSkinLondonLiquidSkyRS29;dxSkinMcSkinRS29;dxSkinMetropolisDarkRS29;dxSkinMetropolisRS29;dxSkinMoneyTwinsRS29;dxSkinOffice2007BlackRS29;dxSkinOffice2007BlueRS29;dxSkinOffice2007GreenRS29;dxSkinOffice2007PinkRS29;dxSkinOffice2007SilverRS29;dxSkinOffice2010BlackRS29;dxSkinOffice2010BlueRS29;dxSkinOffice2010SilverRS29;dxSkinOffice2013DarkGrayRS29;dxSkinOffice2013LightGrayRS29;dxSkinOffice2013WhiteRS29;dxSkinOffice2016ColorfulRS29;dxSkinOffice2016DarkRS29;dxSkinOffice2019BlackRS29;dxSkinOffice2019ColorfulRS29;dxSkinOffice2019DarkGrayRS29;dxSkinOffice2019WhiteRS29;dxSkinPumpkinRS29;dxSkinSevenClassicRS29;dxSkinSevenRS29;dxSkinSharpPlusRS29;dxSkinSharpRS29;dxSkinSilverRS29;dxSkinSpringTimeRS29;dxSkinStardustRS29;dxSkinSummer2008RS29;dxSkinTheAsphaltWorldRS29;dxSkinTheBezierRS29;dxSkinValentineRS29;dxSkinVisualStudio2013BlueRS29;dxSkinVisualStudio2013DarkRS29;dxSkinVisualStudio2013LightRS29;dxSkinVS2010RS29;dxSkinWhiteprintRS29;dxSkinWXIRS29;dxSkinXmas2008BlueRS29;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>vclwinx;fs29;fmx;FMXfrLanguageSlovak29;vclie;DbxCommonDriver;bindengine;IndyIPCommon;VCLRESTComponents;FireDACCommonODBC;FMXfrCoreLibrary29;appanalytics;IndyProtocols;vclx;Skia.Package.RTL;frxADOQueryBuilder29;dbxcds;vcledge;fcxp29;frLanguageSlovak29;frLanguageHungarian29;FMXfrLanguageLatvian29;FMXfrLanguageUkrainian29;FMXfrLanguageDutch29;vclribbon;FireDACSqliteDriver;DbxClientDriver;soapmidas;frLanguageArabic29;frCoreLibrary29;dbexpress;frLanguageCatalon29;frxFDQueryBuilder29;frLanguageBrazil29;frLanguageCzech29;FMXfrxDBX29;FMXfrLanguageSwiss29;inet;vcltouch;fmxdae;FMXfrLanguageTurkish29;CustomIPTransport;FMXfrLanguageBrazil129;FMXfrLanguageCzech29;frLanguageItalian29;FMXfsDB29;frxPDF29;fqbFD29;frLanguageSwiss29;IndySystem;FMXfsADO29;frxe29;frLanguageSwedish29;FMXfrLanguagePolish29;frLanguageUkrainian29;fsDB29;vclFireDAC;FireDACCommon;frLanguageDanish29;bindcompdbx;fcx29;FMXfrLanguageLithuanian29;rtl;FireDACMySQLDriver;FMXfrLanguageGerman29;fqb29;frLanguageLithuanian29;frce;DBXSqliteDriver;frLanguageFrench29;frLanguageRussian29;frxSM29;vclimg;FMXfrLanguageBrazil229;inetdbxpress;FireDAC;xmlrtl;dsnap;frFDDataLibrary29;frLanguageSerbian29;FMXfrLanguageRussian29;frLanguageFarsi29;FMXfrLanguageFrench29;fmxobj;bindcompvclsmp;frx29;FMXfrLanguageHebrew29;FMXfrLanguageCroatian29;frLanguageChinese29;frControlsLibrary29;frxQueryBuilder29;FMXfrxADO29;frxIntIOIndy29;frLanguageHebrew29;fqbADO29;FMXfrLanguageBulgarian29;FMXfrxCDS29;frxDB29;fqbDBX29;frLocalizationLibrary29;FireDACCommonDriver;FMXfcxd29;IndyIPClient;frxHTML29;bindcompvclwinx;frLanguageTaiwan29;FMXfrLanguageArabic29;bindcompfmx;frxDBXQueryBuilder29;frLanguageRomanian29;frLanguageGerman29;inetdb;FMXfrLanguageItalian29;frLanguageIndonesian29;FMXfrLanguageSpanish29;FMXfcxed29;frLanguageBrazil229;vclactnband;FMXfrxDB29;fmxFireDAC;frLanguageCroatian29;DBXMySQLDriver;FMXfs29;fsADO29;VclSmp;FMXfrxFD29;fmxase;FMXfrLanguageFarsi29;FMXfrLanguageTaiwan29;dbrtl;Skia.Package.FMX;FMXfrLanguageChinese29;FMXfrLanguagePortuguese29;FireDACMSAccDriver;frxcs29;FMXfrLanguageJapanese29;frLanguageSlovene29;frADODataLibrary29;frLanguageTurkish29;vcldsnap;DBXInterBaseDriver;fcxe29;frLanguageGreek29;Skia.Package.VCL;frLanguageBrazil129;vcldb;FMXfrLanguageCatalon29;FMXfrLanguageHungarian29;bindcomp;frLanguageLatvian29;IndyCore;RESTBackendComponents;frLanguageSpanish29;frxIntIO29;FMXfrx29;frLanguageJapanese29;frSmartMemo29;FireDACADSDriver;frxFD29;RESTComponents;FMXfrLanguageDanish29;IndyIPServer;vcl;dsnapxml;adortl;dsnapcon;FMXfrLanguageSlovene29;fsFD29;FMXfrLanguageSerbian29;FMXfrxe29;frxADO29;FMXfrLanguageIndonesian29;FMXfrLanguageSwedish29;frLanguageDutch29;FireDACPgDriver;fqbSM29;frLanguagePortuguese29;tethering;frLanguageBulgarian29;frLanguagePolish29;bindcompvcl;frxDBX29;FMXfrLanguageBrazil29;CloudService;FMXfrLanguageGreek29;FMXfcxpd29;FMXfrLocalizationLibrary29;frGraphicsLibrary29;soaprtl;FMXfrLanguageRomanian29;soapserver;FireDACIBDriver;dxSkinBasicRS29;dxSkinBlackRS29;dxSkinBlueprintRS29;dxSkinBlueRS29;dxSkinCaramelRS29;dxSkinCoffeeRS29;dxSkinDarkRoomRS29;dxSkinDarkSideRS29;dxSkinDevExpressDarkStyleRS29;dxSkinDevExpressStyleRS29;dxSkinFoggyRS29;dxSkinGlassOceansRS29;dxSkinHighContrastRS29;dxSkiniMaginaryRS29;dxSkinLilianRS29;dxSkinLiquidSkyRS29;dxSkinLondonLiquidSkyRS29;dxSkinMcSkinRS29;dxSkinMetropolisDarkRS29;dxSkinMetropolisRS29;dxSkinMoneyTwinsRS29;dxSkinOffice2007BlackRS29;dxSkinOffice2007BlueRS29;dxSkinOffice2007GreenRS29;dxSkinOffice2007PinkRS29;dxSkinOffice2007SilverRS29;dxSkinOffice2010BlackRS29;dxSkinOffice2010BlueRS29;dxSkinOffice2010SilverRS29;dxSkinOffice2013DarkGrayRS29;dxSkinOffice2013LightGrayRS29;dxSkinOffice2013WhiteRS29;dxSkinOffice2016ColorfulRS29;dxSkinOffice2016DarkRS29;dxSkinOffice2019BlackRS29;dxSkinOffice2019ColorfulRS29;dxSkinOffice2019DarkGrayRS29;dxSkinOffice2019WhiteRS29;dxSkinPumpkinRS29;dxSkinSevenClassicRS29;dxSkinSevenRS29;dxSkinSharpPlusRS29;dxSkinSharpRS29;dxSkinSilverRS29;dxSkinSpringTimeRS29;dxSkinStardustRS29;dxSkinSummer2008RS29;dxSkinTheAsphaltWorldRS29;dxSkinTheBezierRS29;dxSkinValentineRS29;dxSkinVisualStudio2013BlueRS29;dxSkinVisualStudio2013DarkRS29;dxSkinVisualStudio2013LightRS29;dxSkinVS2010RS29;dxSkinWhiteprintRS29;dxSkinWXIRS29;dxSkinXmas2008BlueRS29;dxSkinBasicRS28;dxSkinBlackRS28;dxSkinBlueprintRS28;dxSkinBlueRS28;dxSkinCaramelRS28;dxSkinCoffeeRS28;dxSkinDarkRoomRS28;dxSkinDarkSideRS28;dxSkinDevExpressDarkStyleRS28;dxSkinDevExpressStyleRS28;dxSkinFoggyRS28;dxSkinGlassOceansRS28;dxSkinHighContrastRS28;dxSkiniMaginaryRS28;dxSkinLilianRS28;dxSkinLiquidSkyRS28;dxSkinLondonLiquidSkyRS28;dxSkinMcSkinRS28;dxSkinMetropolisDarkRS28;dxSkinMetropolisRS28;dxSkinMoneyTwinsRS28;dxSkinOffice2007BlackRS28;dxSkinOffice2007BlueRS28;dxSkinOffice2007GreenRS28;dxSkinOffice2007PinkRS28;dxSkinOffice2007SilverRS28;dxSkinOffice2010BlackRS28;dxSkinOffice2010BlueRS28;dxSkinOffice2010SilverRS28;dxSkinOffice2013DarkGrayRS28;dxSkinOffice2013LightGrayRS28;dxSkinOffice2013WhiteRS28;dxSkinOffice2016ColorfulRS28;dxSkinOffice2016DarkRS28;dxSkinOffice2019BlackRS28;dxSkinOffice2019ColorfulRS28;dxSkinOffice2019DarkGrayRS28;dxSkinOffice2019WhiteRS28;dxSkinPumpkinRS28;dxSkinSevenClassicRS28;dxSkinSevenRS28;dxSkinSharpPlusRS28;dxSkinSharpRS28;dxSkinSilverRS28;dxSkinSpringTimeRS28;dxSkinStardustRS28;dxSkinSummer2008RS28;dxSkinTheAsphaltWorldRS28;dxSkinTheBezierRS28;dxSkinValentineRS28;dxSkinVisualStudio2013BlueRS28;dxSkinVisualStudio2013DarkRS28;dxSkinVisualStudio2013LightRS28;dxSkinVS2010RS28;dxSkinWhiteprintRS28;dxSkinWXIRS28;dxSkinXmas2008BlueRS28;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
@@ -160,9 +160,7 @@
         </DCCReference>
         <DCCReference Include="..\Interfaces\iUsuario.pas"/>
         <DCCReference Include="..\Models\Repositórios\iUsuarioRepositorio.pas"/>
-        <DCCReference Include="..\Interfaces\iColaborador.pas"/>
-        <DCCReference Include="..\Models\Repositórios\iColaboradorRepositorio.pas"/>
-        <DCCReference Include="..\Models\DataModules\dmColaborador.pas">
+        <DCCReference Include="..\Models\DataModules\dmColaboradorCad.pas">
             <Form>ColaboradorDataModule</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
@@ -172,7 +170,7 @@
         </DCCReference>
         <DCCReference Include="..\Threads\uThreadUsuarioDataModule.pas"/>
         <DCCReference Include="..\Threads\uThreadColaboradorDataModule.pas"/>
-        <DCCReference Include="..\Views\FrmCadastro\frmCadastroColaborador.pas">
+        <DCCReference Include="..\Views\FrmCadastro\frmColaboradorCad.pas">
             <Form>Form_Cadastro_Colaborador</Form>
             <FormType>dfm</FormType>
         </DCCReference>
@@ -213,6 +211,8 @@
                     <Excluded_Packages Name="C:\Program Files\Fast Reports VCL\2025.1.4\Trial\LibRS29\FMX\Win32\dclFMXfrxTee29.bpl">FastReport FMX - Tee Components by Fast Reports Inc</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files\Fast Reports VCL\2025.1.4\Trial\LibRS29\FMX\Win32\dclFMXfsIBX29.bpl">FastScript FMX - IBX Components by Fast Reports Inc</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files\Fast Reports VCL\2025.1.4\Trial\LibRS29\FMX\Win32\dclFMXfsTee29.bpl">FastScript FMX - Tee Components by Fast Reports Inc</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\DevExpress\VCL\Library\RS29\dcldxHttpIndyRequestRS29.bpl">Express Cross Platform Library Indy Request Handler by Developer Express Inc.</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\DevExpress\VCL\Library\RS29\dcldxADOServerModeRS29.bpl">ADO Data Source for ExpressDataController Server Mode by Developer Express Inc.</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">
@@ -232,12 +232,6 @@
                 <DeployFile LocalName="Win64\Debug\FerySis.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win64">
                         <RemoteName>FerySis.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Win64\Debug\FerySis.rsm" Configuration="Debug" Class="DebugSymbols">
-                    <Platform Name="Win64">
-                        <RemoteName>FerySis.rsm</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -276,6 +270,12 @@
                     </Platform>
                     <Platform Name="Android64">
                         <RemoteDir>res\xml</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidGDBServer">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -899,9 +899,6 @@
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="Win64">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Win64x">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>

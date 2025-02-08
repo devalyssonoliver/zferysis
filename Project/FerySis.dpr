@@ -18,13 +18,11 @@
   frmLocalizacaoUsuario in '..\Views\FrmLocalização\frmLocalizacaoUsuario.pas' {Form_Loc_Usuarios},
   iUsuario in '..\Interfaces\iUsuario.pas',
   iUsuarioRepositorio in '..\Models\Repositórios\iUsuarioRepositorio.pas',
-  iColaborador in '..\Interfaces\iColaborador.pas',
-  iColaboradorRepositorio in '..\Models\Repositórios\iColaboradorRepositorio.pas',
-  dmColaborador in '..\Models\DataModules\dmColaborador.pas' {ColaboradorDataModule: TDataModule},
+  dmColaboradorCad in '..\Models\DataModules\dmColaboradorCad.pas' {ColaboradorDataModule: TDataModule},
   frmLocalizacaoColaborador in '..\Views\FrmLocalização\frmLocalizacaoColaborador.pas' {Form_Loc_Colaborador},
   uThreadUsuarioDataModule in '..\Threads\uThreadUsuarioDataModule.pas',
   uThreadColaboradorDataModule in '..\Threads\uThreadColaboradorDataModule.pas',
-  frmCadastroColaborador in '..\Views\FrmCadastro\frmCadastroColaborador.pas' {Form_Cadastro_Colaborador};
+  frmColaboradorCad in '..\Views\FrmCadastro\frmColaboradorCad.pas' {Form_Cadastro_Colaborador};
 
 {$R *.res}
 
@@ -33,6 +31,7 @@
     Application.MainFormOnTaskbar := True;
 
     Application.CreateForm(TGerenciadorConexao, GerenciadorConexao);
+  Application.CreateForm(TColaboradorDataModule, ColaboradorDataModule);
   while not ArquivoIniExiste do
     begin
        Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);
