@@ -3,10 +3,10 @@ unit Colaborador;
 interface
 
 uses
-  System.SysUtils, System.DateUtils;
+  System.SysUtils, System.DateUtils, uiColaborador;
 
 type
-  TColaborador = class
+  TColaborador = class(TInterfacedObject, IColaborador)
   private
     FCodigo: Integer;
     FNome: String;
@@ -30,6 +30,9 @@ type
       write FPeriodoConsessivo;
     property Ativo: Boolean read FAtivo write FAtivo;
     property DataCadastro: TDate read FDataCadastro write FDataCadastro;
+   procedure CalcularPeriodoAquisitivo(DataContrato, PeriodoAquisitivo : TDateTime);
+   procedure CalcularPeriodoConcessivo(DataContrato, PeriodoConcessivo : TDateTime);
+
 
   end;
 
@@ -37,4 +40,19 @@ implementation
 
 { TColaborador }
 
+{ TColaborador }
+
+procedure TColaborador.CalcularPeriodoAquisitivo(DataContrato: TDateTime;
+  PeriodoAquisitivo: TDateTime);
+begin
+  PeriodoAquisitivo := IncMonth(DataContrato, 12) - 1;
+  FPeriodoAquisitivo := PeriodoAquisitivo;
+end;
+
+procedure TColaborador.CalcularPeriodoConcessivo(DataContrato: TDateTime;
+  PeriodoConcessivo: TDateTime);
+begin
+  PeriodoConcessivo := IncMonth(FPeriodoAquisitivo + 1, 12) - 1;
+  FPeriodoConsessivo := PeriodoConcessivo;
+end;
 end.

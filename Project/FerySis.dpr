@@ -22,7 +22,8 @@
   frmLocalizacaoColaborador in '..\Views\FrmLocalização\frmLocalizacaoColaborador.pas' {Form_Loc_Colaborador},
   uThreadUsuarioDataModule in '..\Threads\uThreadUsuarioDataModule.pas',
   uThreadColaboradorDataModule in '..\Threads\uThreadColaboradorDataModule.pas',
-  frmColaboradorCad in '..\Views\FrmCadastro\frmColaboradorCad.pas' {Form_Cadastro_Colaborador};
+  frmColaboradorCad in '..\Views\FrmCadastro\frmColaboradorCad.pas' {Form_Cadastro_Colaborador},
+  uiColaborador in '..\Interfaces\uiColaborador.pas';
 
 {$R *.res}
 

@@ -10,10 +10,9 @@ object ColaboradorDataModule: TColaboradorDataModule
     UpdateOptions.AutoIncFields = 'codigo'
     SQL.Strings = (
       'select * from colaboradores')
-    Left = 352
-    Top = 256
+    Left = 384
+    Top = 184
     object fdqryColaboradorcodigo: TIntegerField
-      Alignment = taCenter
       AutoGenerateValue = arAutoInc
       FieldName = 'codigo'
       Origin = 'codigo'
@@ -35,22 +34,25 @@ object ColaboradorDataModule: TColaboradorDataModule
     object fdqryColaboradordata_contrato: TDateField
       FieldName = 'data_contrato'
       Origin = 'data_contrato'
-      EditMask = '!99/99/00;0;_'
+      EditMask = '!99/99/0000;1;_'
     end
     object fdqryColaboradorperiodo_aquisitivo: TDateField
+      AutoGenerateValue = arAutoInc
       FieldName = 'periodo_aquisitivo'
       Origin = 'periodo_aquisitivo'
-      EditMask = '!99/99/00;0;_'
+      EditMask = '!99/99/0000;1;_'
     end
     object fdqryColaboradorperiodo_concessivo: TDateField
+      AutoGenerateValue = arAutoInc
       FieldName = 'periodo_concessivo'
       Origin = 'periodo_concessivo'
-      EditMask = '!99/99/00;0;_'
+      EditMask = '!99/99/0000;1;_'
     end
     object fdqryColaboradordata_cadastro: TDateField
       FieldName = 'data_cadastro'
       Origin = 'data_cadastro'
       ReadOnly = True
+      EditMask = '99/99/9999;1;_'
     end
     object fdqryColaboradorativo: TBooleanField
       FieldName = 'ativo'

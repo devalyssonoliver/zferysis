@@ -50,13 +50,8 @@ end;
 
 procedure TColaboradorDataModule.Salvar;
 begin
-  if not (fdqryColaborador.State in [dsEdit, dsInsert]) then
-    fdqryColaborador.Edit;
-
-  if fdqryColaborador.State = dsBrowse then
-    fdqryColaborador.Append;
-
-  fdqryColaborador.Post;
+  if fdqryColaborador.State in [dsEdit, dsInsert] then
+     fdqryColaborador.Post
 end;
 
 procedure TColaboradorDataModule.Cancelar;
@@ -72,7 +67,7 @@ end;
 
 procedure TColaboradorDataModule.Editar;
 begin
-  fdqryColaborador.Edit;
+    fdqryColaborador.Cancel;
 end;
 
 end.

@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls,
   Vcl.StdCtrls, Vcl.Mask, System.ImageList, Vcl.ImgList, Vcl.Imaging.pngimage,
-  Vcl.DBCtrls, Vcl.ComCtrls, Vcl.Buttons, Vcl.WinXCtrls, dmColaboradorCad, Data.DB;
+  Vcl.DBCtrls, Vcl.ComCtrls, Vcl.Buttons, Vcl.WinXCtrls, dmColaboradorCad, Data.DB, System.DateUtils,
+  uFuncoes, uThreadColaboradorDataModule, Colaborador;
 
 type
   TModoFormulario = (mfNovo, mfEditar, mfExibicao);
@@ -30,8 +31,6 @@ type
     dbedtMatricula: TDBEdit;
     lblCodigoSetor: TLabel;
     dbedtcodsetor: TDBEdit;
-    lblDataContrato: TLabel;
-    dbedtData_contrato: TDBEdit;
     lblPeriodoAquisitivo: TLabel;
     dbedtPeriodoAquisitivo: TDBEdit;
     lblPeriodoConcessivo: TLabel;
@@ -43,6 +42,8 @@ type
     dbedtCpf: TDBEdit;
     edtDataCadastro: TEdit;
     btnCancelar: TButton;
+    dbedtDataContrato: TDBEdit;
+    lblDataContrato: TLabel;
     procedure btnSalvarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
@@ -52,14 +53,13 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
-
-
-
+    procedure dbedtDataContratoExit(Sender: TObject);
   private
     FDmColaborador : TColaboradorDataModule;
     FModoFormulario: TModoFormulario;
     procedure ConfigurarModo;
-    procedure ConfigurarAtivoNosEdits(Ativo: Boolean);
+    procedure ConfigurarAtivoNosCampos(Ativo: Boolean);
+    procedure AtualizarPeriodosColaborador;
   public
     property ModoFormulario: TModoFormulario read FModoFormulario write AlterarModo;
   end;
@@ -69,11 +69,10 @@ var
 
 implementation
 
-uses
-  uFuncoes, uThreadColaboradorDataModule;
+
 
 {$R *.dfm}
-procedure TForm_Cadastro_Colaborador.ConfigurarAtivoNosEdits(Ativo: Boolean);
+procedure TForm_Cadastro_Colaborador.ConfigurarAtivoNosCampos(Ativo: Boolean);
 var
   I: Integer;
 begin
@@ -100,72 +99,95 @@ begin
     mfNovo:
       begin
         FDmColaborador.Novo;
-        ConfigurarAtivoNosEdits(True);
-        GerenciarBotoes(btnEditar, False);
+        ConfigurarAtivoNosCampos(True);
+        GerenciarBotoes([btnNovo, btnEditar], False);
+        GerenciarBotoes(btnSalvar, True);
       end;
     mfEditar:
       begin
         FDmColaborador.Editar;
-        ConfigurarAtivoNosEdits(True);
+        ConfigurarAtivoNosCampos(True);
         GerenciarBotoes([btnNovo, btnEditar], False);
         GerenciarBotoes(btnSalvar, True);
       end;
     mfExibicao:
       begin
-        ConfigurarAtivoNosEdits(False);
-        GerenciarBotoes(btnSalvar, False);
+        ConfigurarAtivoNosCampos(False);
+        GerenciarBotoes([btnCancelar,btnSalvar], False);
         GerenciarBotoes([btnEditar, btnNovo], True);
-
-      end;
+       end;
   end;
 end;
 
+procedure TForm_Cadastro_Colaborador.dbedtDataContratoExit(Sender: TObject);
+begin
+    AtualizarPeriodosColaborador;
+end;
 
 procedure TForm_Cadastro_Colaborador.FormCreate(Sender: TObject);
 begin
-
     FDmColaborador := TColaboradorDataModule.Create(nil);
     if Assigned(FDmColaborador) then
         begin
         dsColaborador.DataSet := FDmColaborador.fdqryColaborador;
         dsColaborador.DataSet.Active := True;
         end
-
 end;
 
 procedure TForm_Cadastro_Colaborador.FormDestroy(Sender:
 TObject);
 begin
-  FreeAndNil(FDmColaborador);
+    FreeAndNil(FDmColaborador);
 end;
 
 procedure TForm_Cadastro_Colaborador.FormKeyPress(Sender: TObject;
   var Key: Char);
 begin
-  if Key = #13 then
-  begin
-    Key := #0;
-    Perform(WM_NEXTDLGCTL,0,0);
-  end;
-
+    if Key = #13 then
+    begin
+      Key := #0;
+      Perform(WM_NEXTDLGCTL,0,0);
+    end;
 end;
 
 
 procedure TForm_Cadastro_Colaborador.FormShow(Sender: TObject);
 begin
-  edtDataCadastro.Text := DateToStr(Now);
+    edtDataCadastro.Text := DateToStr(Now);
 end;
 
 procedure TForm_Cadastro_Colaborador.btnSalvarClick(Sender: TObject);
-
 begin
-   ColaboradorDataModule.Salvar;
-   AlterarModo(mfExibicao);
+     FDmColaborador.Salvar;
+     AlterarModo(mfExibicao);
+end;
+
+
+procedure TForm_Cadastro_Colaborador.AtualizarPeriodosColaborador;
+ var
+ Colaborador : TColaborador;
+begin
+   if Trim(dbedtDataContrato.Text) = '' then
+   Colaborador  := Nil;
+   Colaborador  := TColaborador.Create;
+   try
+    Colaborador.DataContrato  := StrToDate(dbedtDataContrato.Text);
+    Colaborador.CalcularPeriodoAquisitivo(Colaborador.DataContrato, Colaborador.PeriodoAquisitivo);
+    Colaborador.CalcularPeriodoConcessivo(Colaborador.DataContrato, Colaborador.PeriodoConsessivo);
+
+    dbedtPeriodoAquisitivo.Text := DateToStr(Colaborador.PeriodoAquisitivo);
+    dbedtPeriodo_concessivo.Text:= DateToStr(Colaborador.PeriodoConsessivo);
+   finally
+   Colaborador.Free;
+   end;
+
+
 end;
 
 procedure TForm_Cadastro_Colaborador.btnEditarClick(Sender: TObject);
 begin
-  AlterarModo(mfEditar);
+  FDmColaborador.Cancelar;
+  AlterarModo(mfExibicao);
 end;
 
 

@@ -29,8 +29,8 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
     ParentBackground = False
     TabOrder = 0
     StyleName = 'Windows'
-    ExplicitTop = -8
-    ExplicitWidth = 536
+    ExplicitWidth = 509
+    ExplicitHeight = 405
     object lbTitulo: TLabel
       Left = 87
       Top = 28
@@ -114,14 +114,6 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       Caption = 'C'#243'digo do setor'
       FocusControl = dbedtcodsetor
     end
-    object lblDataContrato: TLabel
-      Left = 31
-      Top = 243
-      Width = 74
-      Height = 15
-      Caption = 'Data Contrato'
-      FocusControl = dbedtData_contrato
-    end
     object lblPeriodoAquisitivo: TLabel
       Left = 182
       Top = 243
@@ -153,6 +145,13 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       Caption = 'CPF'
       FocusControl = dbedtCpf
     end
+    object lblDataContrato: TLabel
+      Left = 31
+      Top = 243
+      Width = 74
+      Height = 15
+      Caption = 'Data Contrato'
+    end
     object pnlBotoes: TPanel
       Left = 1
       Top = 365
@@ -164,8 +163,8 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       ParentBackground = False
       TabOrder = 11
       StyleName = 'Windows'
-      ExplicitTop = 245
-      ExplicitWidth = 681
+      ExplicitTop = 364
+      ExplicitWidth = 507
       object btnSalvar: TButton
         Left = 86
         Top = 8
@@ -227,11 +226,11 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       Color = clBackground
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 681
+      ExplicitWidth = 507
     end
     object dbedtCodigo: TDBEdit
-      Left = 391
-      Top = 115
+      Left = 414
+      Top = 83
       Width = 90
       Height = 23
       TabStop = False
@@ -274,29 +273,22 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       DataSource = dsColaborador
       TabOrder = 6
     end
-    object dbedtData_contrato: TDBEdit
-      Left = 31
+    object dbedtPeriodoAquisitivo: TDBEdit
+      Left = 182
       Top = 264
-      Width = 145
+      Width = 146
       Height = 23
-      DataField = 'data_contrato'
+      TabStop = False
+      DataField = 'periodo_aquisitivo'
       DataSource = dsColaborador
       TabOrder = 8
     end
-    object dbedtPeriodoAquisitivo: TDBEdit
-      Left = 336
-      Top = 263
-      Width = 146
-      Height = 23
-      DataField = 'periodo_aquisitivo'
-      DataSource = dsColaborador
-      TabOrder = 7
-    end
     object dbedtPeriodo_concessivo: TDBEdit
-      Left = 182
+      Left = 336
       Top = 264
       Width = 145
       Height = 23
+      TabStop = False
       DataField = 'periodo_concessivo'
       DataSource = dsColaborador
       TabOrder = 9
@@ -326,9 +318,18 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       Width = 145
       Height = 23
       TabStop = False
-      Color = clLightyellow
       Enabled = False
       TabOrder = 10
+    end
+    object dbedtDataContrato: TDBEdit
+      Left = 31
+      Top = 264
+      Width = 145
+      Height = 23
+      DataField = 'data_contrato'
+      DataSource = dsColaborador
+      TabOrder = 7
+      OnExit = dbedtDataContratoExit
     end
   end
   object ImageList: TImageList

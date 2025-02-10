@@ -2,25 +2,13 @@ unit iColaborador;
 
 interface
 
-uses
-  System.SysUtils, System.DateUtils, Colaborador, Data.DB;
+type IColaborador = interface
+     ['{992D3098-71C9-4C20-B5B4-0AC3A2B5E3A1}']
+  procedure CalcularPeriodoAquisitivo(DataCadastro, PeriodoAquisitivo : TDateTime);
+  procedure CalcularPeriodoConcessivo(DataCadastro, PeriodoConcessivo : TDateTime);
 
-type
-  IColaboradorRepository = interface
-    function Inserir(const Codigo, CodSetor: Integer; Nome, Matricula: String;
-      DataContrato, PeriodoAquisitivo, PeriodoConcessivo: TDate;
-      Ativo: Boolean): Boolean;
-    function Editar(const Codigo, CodSetor: Integer; Nome, Matricula: String;
-      DataContrato, PeriodoAquisitivo, PeriodoConcessivo: TDate;
-      Ativo: Boolean): Boolean;
-    function Deletar(const Codigo: Integer): Boolean;
-    function CarregarColaborador(const Codigo: Integer): TColaborador;
-    procedure BuscarColaborador(const CriterioIndex: Integer;
-      const Valor: Variant; ADataSet: TDataSet);
-    procedure ListarTodos(ADataSet: TDataSet);
-
-  end;
-
+end;
 implementation
 
 end.
+
