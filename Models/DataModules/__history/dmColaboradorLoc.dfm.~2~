@@ -1,0 +1,30 @@
+object ColaboradorLocDataModule: TColaboradorLocDataModule
+  Height = 480
+  Width = 640
+  object fdqryColaboradorLoc: TFDQuery
+    Active = True
+    Connection = GerenciadorConexao.fdConn
+    SQL.Strings = (
+      'SELECT codigo, nome, matricula, codigo_setor FROM colaboradores')
+    Left = 288
+    Top = 256
+    object fldColaboradorLoccodigo: TIntegerField
+      FieldName = 'codigo'
+      Origin = 'codigo'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object fldColaboradorLocnome: TWideStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 150
+    end
+    object fldColaboradorLocmatricula: TWideStringField
+      FieldName = 'matricula'
+      Origin = 'matricula'
+    end
+    object fldColaboradorLoccodigo_setor: TIntegerField
+      FieldName = 'codigo_setor'
+      Origin = 'codigo_setor'
+    end
+  end
+end

@@ -33,10 +33,10 @@ type
     btnExibir: TButton;
     btnFechar: TButton;
     btnRelatorio: TButton;
+    dsColaboradorLoc: TDataSource;
     procedure dbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure DesativarBotoesELimparGrade;
-    procedure tgsTodosClick(Sender: TObject);
     procedure BuscarPorCriterio(const Criterio: TCriterioPesquisa;
       const Valor: string);
     procedure AlterarVisibilidadeCamposPesquisa;
@@ -47,6 +47,7 @@ type
     procedure edtPesquisarMatriculaExit(Sender: TObject);
     procedure TratarCampoPesquisa(Sender: TObject; Criterio: TCriterioPesquisa);
     procedure btnNovoClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
 
   end;
 
@@ -54,6 +55,9 @@ var
   Form_Loc_Colaborador: TForm_Loc_Colaborador;
 
 implementation
+
+uses
+  dmColaboradorLoc;
 
 {$R *.dfm}
 
@@ -79,21 +83,45 @@ begin
 
 end;
 
-procedure TForm_Loc_Colaborador.BuscarPorCriterio(const Criterio
-  : TCriterioPesquisa; const Valor: string);
+
+procedure TForm_Loc_Colaborador.BuscarPorCriterio;
+var
+  CampoPesquisa, ValorPesquisa: string;
+  TipoPesquisa: TTipoPesquisa;
 begin
-{  if Trim(Valor) <> '' then
-  begin
-      try
-            ColaboradorDataModule.BuscarColaborador(Ord(Criterio), Valor);
-                  dbGrid.DataSource := ColaboradorDataModule.dsColaborador;
-                        GerenciarBotoes([btnRelatorio, btnExibir], True);
-                            except
-                                  on E: Exception do
-                                          MsgBox('Erro!', E.Message, False, 2);
-                                              end;
-                                                end;}
+  case TCriterioPesquisa(cmbCriteriosdePesquisa.ItemIndex) of
+    cpCodigo:
+      begin
+        CampoPesquisa := 'codigo';
+        ValorPesquisa := edtPesquisarCodigo.Text;
+        TipoPesquisa := tpCodigo;
+      end;
+    cpNome:
+      begin
+        CampoPesquisa := 'nome';
+        ValorPesquisa := edtPesquisarNome.Text;
+        TipoPesquisa := tpNome;
+      end;
+    cpMatricula:
+      begin
+        CampoPesquisa := 'matricula';
+        ValorPesquisa := edtPesquisarMatricula.Text;
+        TipoPesquisa := tpMatricula;
+      end;
+  else
+    raise Exception.Create('Critério de pesquisa inválido.');
+  end;
+
+  try
+    ColaboradorLocDataModule.Buscar(CampoPesquisa, ValorPesquisa, TipoPesquisa);
+    dbGrid.DataSource := ColaboradorLocDataModule.fdqryColaboradorLoc.DataSource;
+  except
+    on E: Exception do
+      ShowMessage('Erro ao buscar colaborador: ' + E.Message);
+  end;
 end;
+
+
 
 procedure TForm_Loc_Colaborador.cmbCriteriosdePesquisaSelect(Sender: TObject);
 begin
@@ -124,25 +152,20 @@ begin
   GerenciarBotoes([btnRelatorio, btnExibir], False);
 end;
 
+
+
+procedure TForm_Loc_Colaborador.FormCreate(Sender: TObject);
+begin
+  ColaboradorLocDataModule := TColaboradorLocDataModule.Create(nil);
+
+
+end;
+
 procedure TForm_Loc_Colaborador.FormShow(Sender: TObject);
 begin
 
     TThreadCriarDataModuleColaborador.Create(False);
   GerenciarBotoes([btnRelatorio, btnExibir], False);
-end;
-
-procedure TForm_Loc_Colaborador.tgsTodosClick(Sender: TObject);
-begin
-{  if tgsTodos.State = tssOn then
-  begin
-      ColaboradorDataModule.ListarTodos;
-          GerenciarBotoes([btnRelatorio, btnExibir], True);
-              dbGrid.DataSource := ColaboradorDataModule.dsColaborador;
-                end
-                  else
-                    begin
-                        DesativarBotoesELimparGrade;
-                          end;}
 end;
 
 procedure TForm_Loc_Colaborador.TratarCampoPesquisa(Sender: TObject;

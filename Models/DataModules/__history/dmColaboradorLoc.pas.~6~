@@ -1,0 +1,52 @@
+unit dmColaboradorLoc;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Data.DB, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TColaboradorLocDataModule = class(TDataModule)
+    fdqryColaboradorLoc: TFDQuery;
+    fldColaboradorLoccodigo: TIntegerField;
+    fldColaboradorLocnome: TWideStringField;
+    fldColaboradorLocmatricula: TWideStringField;
+    fldColaboradorLoccodigo_setor: TIntegerField;
+    procedure DataModuleCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+
+  procedure Buscar(const _ACampo, _AValor: string);
+  end;
+
+var
+  ColaboradorLocDataModule: TColaboradorLocDataModule;
+
+implementation
+
+uses
+  dmGerenciadorConexao, uPesquisaBase;
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+{ TColaboradorLocDataModule }
+
+procedure TColaboradorLocDataModule.Buscar(const _ACampo, _AValor: string);
+begin
+   TPesquisaHelper.Pesquisar(fdqryColaboradorLoc, 'colaboradores', _ACampo, _AValor);
+end;
+
+procedure TColaboradorLocDataModule.DataModuleCreate(Sender: TObject);
+begin
+  fdqryColaboradorLoc.Connection := GerenciadorConexao.fdConn;
+  fdqryColaboradorLoc.Open;
+end;
+
+end.

@@ -23,7 +23,8 @@
   uThreadUsuarioDataModule in '..\Threads\uThreadUsuarioDataModule.pas',
   uThreadColaboradorDataModule in '..\Threads\uThreadColaboradorDataModule.pas',
   frmColaboradorCad in '..\Views\FrmCadastro\frmColaboradorCad.pas' {Form_Cadastro_Colaborador},
-  uiColaborador in '..\Interfaces\uiColaborador.pas';
+  uiColaborador in '..\Interfaces\uiColaborador.pas',
+  dmColaboradorLoc in '..\Models\DataModules\dmColaboradorLoc.pas' {ColaboradorLocDataModule: TDataModule};
 
 {$R *.res}
 
@@ -32,7 +33,6 @@
     Application.MainFormOnTaskbar := True;
 
     Application.CreateForm(TGerenciadorConexao, GerenciadorConexao);
-  Application.CreateForm(TColaboradorDataModule, ColaboradorDataModule);
   while not ArquivoIniExiste do
     begin
        Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);

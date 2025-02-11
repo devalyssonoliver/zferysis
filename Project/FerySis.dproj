@@ -179,6 +179,11 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\Interfaces\uiColaborador.pas"/>
+        <DCCReference Include="..\Models\DataModules\dmColaboradorLoc.pas">
+            <Form>ColaboradorLocDataModule</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -200,7 +205,6 @@
                     <Source Name="MainSource">FerySis.dpr</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\DevExpress\VCL\Library\RS29\dcldxEMFRS29.bpl">File C:\Program Files (x86)\DevExpress\VCL\Library\RS29\dcldxEMFRS29.bpl not found</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k290.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp290.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files\Fast Reports VCL\2025.1.4\Trial\LibRS29\VCL\Win32\dclfcxc29.bpl">FastCube VCL - Charting Components by Fast Reports Inc</Excluded_Packages>
@@ -909,6 +913,9 @@
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="Win64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64x">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>

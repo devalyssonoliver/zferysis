@@ -20,6 +20,7 @@ type
       Senha: String);
     function ValidarConexao: Boolean;
 
+
   private
     { Private declarations }
   public

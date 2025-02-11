@@ -4,7 +4,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Localizar Colaborador'
   ClientHeight = 605
-  ClientWidth = 954
+  ClientWidth = 1046
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,21 +14,22 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
   KeyPreview = True
   Position = poDesktopCenter
   StyleName = 'Windows'
-  OnShow = FormShow
+  OnCreate = FormCreate
   TextHeight = 15
   object pnlGrid: TPanel
     Left = 0
     Top = 0
-    Width = 954
+    Width = 1046
     Height = 605
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 954
     object lbTitulo: TLabel
       Left = 1
       Top = 4
-      Width = 952
+      Width = 1044
       Height = 37
       Align = alTop
       Alignment = taCenter
@@ -44,13 +45,14 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
     object Panel1: TPanel
       Left = 1
       Top = 41
-      Width = 952
+      Width = 1044
       Height = 56
       Align = alTop
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
+      ExplicitWidth = 952
       object edtPesquisarNome: TEdit
         Left = 160
         Top = 21
@@ -156,18 +158,18 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
           StateCaptions.CaptionOff = 'not'
           TabOrder = 0
           ThumbColor = clHotLight
-          OnClick = tgsTodosClick
         end
       end
     end
     object pnlBotoes: TPanel
       Left = 1
       Top = 568
-      Width = 952
+      Width = 1044
       Height = 36
       Align = alBottom
       ParentBackground = False
       TabOrder = 3
+      ExplicitWidth = 952
       object btnNovo: TButton
         Left = 16
         Top = 6
@@ -175,7 +177,6 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
         Height = 25
         Caption = 'Novo'
         TabOrder = 0
-        OnClick = btnNovoClick
       end
       object btnExibir: TButton
         Left = 97
@@ -186,7 +187,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
         TabOrder = 1
       end
       object btnFechar: TButton
-        Left = 857
+        Left = 953
         Top = 6
         Width = 75
         Height = 25
@@ -194,7 +195,7 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
         TabOrder = 3
       end
       object btnRelatorio: TButton
-        Left = 776
+        Left = 872
         Top = 6
         Width = 75
         Height = 25
@@ -205,12 +206,14 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
     object dbGrid: TDBGrid
       Left = 1
       Top = 97
-      Width = 952
+      Width = 1044
       Height = 471
       Align = alClient
       BorderStyle = bsNone
       Ctl3D = False
+      DataSource = dsColaboradorLoc
       DefaultDrawing = False
+      DragMode = dmAutomatic
       DrawingStyle = gdsGradient
       FixedColor = clBtnHighlight
       GradientEndColor = clGray
@@ -225,114 +228,64 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
       StyleName = 'Windows'
-      OnDrawColumnCell = dbGridDrawColumnCell
       Columns = <
         item
           Expanded = False
           FieldName = 'codigo'
-          Title.Caption = 'C'#243'digo'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'nome'
-          Title.Caption = 'Nome'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
-          Width = 325
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'matricula'
-          Title.Caption = 'Matr'#237'cula'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
-          Width = 72
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'codigo_setor'
-          Title.Caption = 'C'#243'd.Setor'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
-          Width = 74
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'data_contrato'
-          Title.Caption = 'Data Contrato'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
-          Width = 105
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'periodo_aquisitivo'
-          Title.Caption = 'Per'#237'odo Aquisitivo'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
-          Width = 125
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'periodo_concessivo'
-          Title.Caption = 'Per'#237'odo Concessivo'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
-          Width = 127
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'data_cadastro'
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'ativo'
-          Title.Caption = 'Ativo'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -12
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
-          Width = 51
           Visible = True
         end>
     end
     object pnlListTop: TPanel
       Left = 1
       Top = 1
-      Width = 952
+      Width = 1044
       Height = 3
       Align = alTop
       BevelOuter = bvNone
       Color = clHotLight
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 952
     end
   end
   object imgListAtivo: TImageList
@@ -517,5 +470,10 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000000000000000000000000000000000000000000000000000}
+  end
+  object dsColaboradorLoc: TDataSource
+    DataSet = ColaboradorLocDataModule.fdqryColaboradorLoc
+    Left = 520
+    Top = 312
   end
 end

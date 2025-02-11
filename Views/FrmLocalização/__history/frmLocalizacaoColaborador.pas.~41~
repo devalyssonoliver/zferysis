@@ -1,0 +1,135 @@
+unit frmLocalizacaoColaborador;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  Vcl.ExtCtrls, Vcl.StdCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.WinXCtrls, dmColaboradorLoc, System.ImageList, Vcl.ImgList, uFuncoes,
+  dmGerenciadorConexao, uThreadColaboradorDataModule, frmColaboradorCad, uPesquisaBase;
+
+type
+  TCriterioPesquisa = (cpCodigo, cpNome, cpMatricula);
+
+  TForm_Loc_Colaborador = class(TForm)
+    pnlGrid: TPanel;
+    lbTitulo: TLabel;
+    Panel1: TPanel;
+    cmbCriteriosdePesquisa: TComboBox;
+    edtPesquisarCodigo: TEdit;
+    edtPesquisarNome: TEdit;
+    edtPesquisarMatricula: TEdit;
+    pnlBotoes: TPanel;
+    dbGrid: TDBGrid;
+    imgListAtivo: TImageList;
+    pnlListTop: TPanel;
+    Panel2: TPanel;
+    Label1: TLabel;
+    tgsTodos: TToggleSwitch;
+    btnNovo: TButton;
+    btnExibir: TButton;
+    btnFechar: TButton;
+    btnRelatorio: TButton;
+    dsColaboradorLoc: TDataSource;
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure BuscarPorCriterio(const Criterio: TCriterioPesquisa; EditControl: TEdit);
+    procedure AlterarVisibilidadeCamposPesquisa;
+    procedure cmbCriteriosdePesquisaSelect(Sender: TObject);
+    procedure edtPesquisarCodigoExit(Sender: TObject);
+    procedure edtPesquisarNomeExit(Sender: TObject);
+    procedure edtPesquisarMatriculaExit(Sender: TObject);
+    procedure TratarCampoPesquisa(EditControl: TEdit; Criterio: TCriterioPesquisa);
+    procedure btnNovoClick(Sender: TObject);
+    procedure tgsTodosClick(Sender: TObject);
+  private
+    FColaboradorLocDM: TColaboradorLocDataModule;
+    procedure DesativarBotoesELimparGrade;
+  end;
+
+var
+  Form_Loc_Colaborador: TForm_Loc_Colaborador;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm_Loc_Colaborador.FormCreate(Sender: TObject);
+begin
+  FColaboradorLocDM := TColaboradorLocDataModule.Create(nil);
+  dsColaboradorLoc.DataSet := FColaboradorLocDM.fdqryColaboradorLoc;
+  dbGrid.DataSource := dsColaboradorLoc;
+end;
+
+procedure TForm_Loc_Colaborador.FormDestroy(Sender: TObject);
+begin
+  FreeAndNil(FColaboradorLocDM);
+end;
+
+procedure TForm_Loc_Colaborador.FormShow(Sender: TObject);
+begin
+  TThreadCriarDataModuleColaborador.Create(False);
+  DesativarBotoesELimparGrade;
+end;
+
+procedure TForm_Loc_Colaborador.AlterarVisibilidadeCamposPesquisa;
+begin
+  edtPesquisarCodigo.Visible := cmbCriteriosdePesquisa.ItemIndex = Ord(cpCodigo);
+  edtPesquisarNome.Visible := cmbCriteriosdePesquisa.ItemIndex = Ord(cpNome);
+  edtPesquisarMatricula.Visible := cmbCriteriosdePesquisa.ItemIndex = Ord(cpMatricula);
+end;
+
+procedure TForm_Loc_Colaborador.cmbCriteriosdePesquisaSelect(Sender: TObject);
+begin
+  AlterarVisibilidadeCamposPesquisa;
+end;
+
+procedure TForm_Loc_Colaborador.BuscarPorCriterio(const Criterio: TCriterioPesquisa; EditControl: TEdit);
+const
+  Campos: array[TCriterioPesquisa] of string = ('codigo::text', 'nome', 'matricula');
+begin
+  if Trim(EditControl.Text) <> '' then
+  begin
+    try
+      FColaboradorLocDM.Buscar(Campos[Criterio], EditControl.Text, tpContem);
+    except
+      on E: Exception do
+        MsgBox('Erro!', E.Message, False, 2);
+    end;
+  end
+  else
+    DesativarBotoesELimparGrade;
+end;
+
+procedure TForm_Loc_Colaborador.TratarCampoPesquisa(EditControl: TEdit; Criterio: TCriterioPesquisa);
+begin
+  if verificarCampoPreenchido(EditControl) then
+    BuscarPorCriterio(Criterio, EditControl)
+  else
+    DesativarBotoesELimparGrade;
+end;
+
+procedure TForm_Loc_Colaborador.edtPesquisarCodigoExit(Sender: TObject);
+begin
+  TratarCampoPesquisa(edtPesquisarCodigo, cpCodigo);
+end;
+
+procedure TForm_Loc_Colaborador.edtPesquisarNomeExit(Sender: TObject);
+begin
+  TratarCampoPesquisa(edtPesquisarNome, cpNome);
+end;
+
+procedure TForm_Loc_Colaborador.edtPesquisarMatriculaExit(Sender: TObject);
+begin
+  TratarCampoPesquisa(edtPesquisarMatricula, cpMatricula);
+end;
+
+procedure TForm_Loc_Colaborador.DesativarBotoesELimparGrade;
+begin
+  dsColaboradorLoc.DataSet.Close;
+end;
+
+end.
+

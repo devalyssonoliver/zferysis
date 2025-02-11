@@ -1,0 +1,59 @@
+unit uPesquisaBase;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Vcl.StdCtrls, FireDAC.Comp.Client, Data.DB, dmGerenciadorConexao;
+
+type
+  TPesquisaBase = class
+  private
+    FComboBox: TComboBox;
+    FQuery: TFDQuery;
+    function GetCampoSelecionado: string;
+  public
+    constructor Create(AComboBox: TComboBox);
+    destructor Destroy; override;
+    function Buscar(const ATabela, AValor: string): TFDQuery;
+  end;
+
+implementation
+
+{ TPesquisaBase }
+
+constructor TPesquisaBase.Create(AComboBox: TComboBox);
+begin
+  FComboBox := AComboBox;
+  FQuery := TFDQuery.Create(nil);
+  FQuery.Connection := GerenciadorConexao.fdConn;
+end;
+
+destructor TPesquisaBase.Destroy;
+begin
+  FQuery.Free;
+  inherited;
+end;
+
+function TPesquisaBase.GetCampoSelecionado: string;
+begin
+  if FComboBox.ItemIndex = -1 then
+    raise Exception.Create('Selecione um critério de pesquisa.');
+  Result := FComboBox.Text;
+end;
+
+function TPesquisaBase.Buscar(const ATabela, AValor: string): TFDQuery;
+var
+  SQL: string;
+begin
+  SQL := Format('SELECT * FROM %s WHERE %s LIKE :Valor', [ATabela, GetCampoSelecionado]);
+
+  FQuery.Close;
+  FQuery.SQL.Text := SQL;
+  FQuery.ParamByName('Valor').AsString := '%' + AValor + '%';
+  FQuery.Open;
+
+  Result := FQuery;
+end;
+
+end.
+

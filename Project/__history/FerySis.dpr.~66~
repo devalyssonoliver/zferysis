@@ -1,0 +1,55 @@
+  program FerySis;
+
+  uses
+  System.SysUtils,
+  Controls,
+  Vcl.Forms,
+  Conexao in '..\Classes\Conexao.pas',
+  frmLogin in '..\Views\frmLogin.pas' {Frm_Login},
+  frmPrincipal in '..\Views\frmPrincipal.pas' {Frm_Principal},
+  dmGerenciadorConexao in '..\Models\dmGerenciadorConexao.pas' {GerenciadorConexao: TDataModule},
+  Usuario in '..\Classes\Usuario.pas',
+  dmUsuario in '..\Models\DataModules\dmUsuario.pas' {UsuarioDataModule: TDataModule},
+  frmConfigurarBanco in '..\Views\frmConfigurarBanco.pas' {FrmConfigBanco},
+  uArquivoIni in '..\Units\uArquivoIni.pas',
+  uFuncoes in '..\Units\uFuncoes.pas',
+  Colaborador in '..\Classes\Colaborador.pas',
+  frmCadastroUsuario in '..\Views\FrmCadastro\frmCadastroUsuario.pas' {Frm_Cad_Usuario},
+  frmLocalizacaoUsuario in '..\Views\FrmLocalização\frmLocalizacaoUsuario.pas' {Form_Loc_Usuarios},
+  iUsuario in '..\Interfaces\iUsuario.pas',
+  iUsuarioRepositorio in '..\Models\Repositórios\iUsuarioRepositorio.pas',
+  dmColaboradorCad in '..\Models\DataModules\dmColaboradorCad.pas' {ColaboradorDataModule: TDataModule},
+  frmLocalizacaoColaborador in '..\Views\FrmLocalização\frmLocalizacaoColaborador.pas' {Form_Loc_Colaborador},
+  uThreadUsuarioDataModule in '..\Threads\uThreadUsuarioDataModule.pas',
+  uThreadColaboradorDataModule in '..\Threads\uThreadColaboradorDataModule.pas',
+  frmColaboradorCad in '..\Views\FrmCadastro\frmColaboradorCad.pas' {Form_Cadastro_Colaborador},
+  uiColaborador in '..\Interfaces\uiColaborador.pas',
+  dmColaboradorLoc in '..\Models\DataModules\dmColaboradorLoc.pas' {ColaboradorLocDataModule: TDataModule};
+
+{$R *.res}
+
+  begin
+    Application.Initialize;
+    Application.MainFormOnTaskbar := True;
+
+    Application.CreateForm(TGerenciadorConexao, GerenciadorConexao);
+  Application.CreateForm(TColaboradorDataModule, ColaboradorDataModule);
+  Application.CreateForm(TColaboradorLocDataModule, ColaboradorLocDataModule);
+  while not ArquivoIniExiste do
+    begin
+       Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);
+       FrmConfigBanco.ShowModal;
+       FreeAndNil(FrmConfigBanco);
+    end;
+    Application.CreateForm(TFrm_Login, Frm_Login);
+    if Frm_Login.ShowModal = mrOk then
+    begin
+      FreeAndNil(Frm_Login);
+      Application.CreateForm(TFrm_Principal, Frm_Principal);
+      Application.Run;
+    end
+    else
+      Application.Terminate;
+
+
+  end.
