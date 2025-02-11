@@ -1,8 +1,0 @@
-object ColaboradorLocDataModule: TColaboradorLocDataModule
-  Height = 480
-  Width = 640
-  object fdqryColaboradorLoc: TFDQuery
-    Left = 288
-    Top = 256
-  end
-end

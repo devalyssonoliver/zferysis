@@ -10,7 +10,7 @@
     uArquivoIni, frmCadastroUsuario, frmLocalizacaoUsuario, System.ImageList,
     Vcl.ImgList, Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls,
     Vcl.Ribbon, System.Actions, Vcl.ActnList, Vcl.RibbonSilverStyleActnCtrls,
-    Vcl.Buttons, frmConfigurarBanco, frmLocalizacaoColaborador, frmLogin;
+    Vcl.Buttons, frmConfigurarBanco, frmLogin,  frmColaboradorLoc;
 
   type
     TFrm_Principal = class(TForm)
@@ -65,8 +65,8 @@
 
   procedure TFrm_Principal.sbtnFormColaboradorClick(Sender: TObject);
   begin
-    Application.CreateForm(TForm_Loc_Colaborador, Form_Loc_Colaborador);
-    Form_Loc_Colaborador.Show;
+    Application.CreateForm(TFrm_Colaborador_Loc, Frm_Colaborador_Loc);
+    Frm_Colaborador_Loc.Show;
   end;
 
   procedure TFrm_Principal.sbtnFormUserClick(Sender: TObject);

@@ -14,7 +14,6 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
   KeyPreview = True
   Position = poDesktopCenter
   StyleName = 'Windows'
-  OnCreate = FormCreate
   TextHeight = 15
   object pnlGrid: TPanel
     Left = 0
@@ -25,7 +24,6 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 954
     object lbTitulo: TLabel
       Left = 1
       Top = 4
@@ -52,7 +50,6 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitWidth = 952
       object edtPesquisarNome: TEdit
         Left = 160
         Top = 21
@@ -169,7 +166,6 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
       Align = alBottom
       ParentBackground = False
       TabOrder = 3
-      ExplicitWidth = 952
       object btnNovo: TButton
         Left = 16
         Top = 6
@@ -212,7 +208,6 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
       BorderStyle = bsNone
       Ctl3D = False
       DataSource = dsColaboradorLoc
-      DefaultDrawing = False
       DragMode = dmAutomatic
       DrawingStyle = gdsGradient
       FixedColor = clBtnHighlight
@@ -242,36 +237,43 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
         item
           Expanded = False
           FieldName = 'matricula'
+          Width = 64
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'codigo_setor'
+          Width = 64
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'data_contrato'
+          Width = 64
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'periodo_aquisitivo'
+          Width = 64
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'periodo_concessivo'
+          Width = 64
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'data_cadastro'
+          Width = 64
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'ativo'
+          Width = 64
           Visible = True
         end>
     end
@@ -285,7 +287,6 @@ object Form_Loc_Colaborador: TForm_Loc_Colaborador
       Color = clHotLight
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 952
     end
   end
   object imgListAtivo: TImageList

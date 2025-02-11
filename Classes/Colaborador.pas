@@ -48,7 +48,6 @@ begin
   PeriodoAquisitivo := IncMonth(DataContrato, 12) - 1;
   FPeriodoAquisitivo := PeriodoAquisitivo;
 end;
-
 procedure TColaborador.CalcularPeriodoConcessivo(DataContrato: TDateTime;
   PeriodoConcessivo: TDateTime);
 begin

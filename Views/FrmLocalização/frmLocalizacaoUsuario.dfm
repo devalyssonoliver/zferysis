@@ -182,12 +182,9 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
       Align = alClient
       BorderStyle = bsNone
       Ctl3D = True
-      DefaultDrawing = False
       DrawingStyle = gdsGradient
       FixedColor = clBtnHighlight
-      GradientEndColor = clSlategray
-      GradientStartColor = clSlategray
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
+      Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
       ParentCtl3D = False
       ReadOnly = True
       TabOrder = 1

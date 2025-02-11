@@ -8,13 +8,16 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
   Data.DB, Vcl.Grids, Vcl.DBGrids,
   Vcl.WinXCtrls, dmColaboradorCad, System.ImageList, Vcl.ImgList, uFuncoes,
-  dmGerenciadorConexao, uThreadColaboradorDataModule, frmColaboradorCad;
+  dmGerenciadorConexao, uThreadColaboradorDataModule, frmColaboradorCad,  dmColaboradorLoc;
 
 type
   TCriterioPesquisa = (cpCodigo, cpNome, cpMatricula);
 
   TForm_Loc_Colaborador = class(TForm)
 
+  private
+  FDMColaborador : TColaboradorLocDataModule;
+  public
     pnlGrid: TPanel;
     lbTitulo: TLabel;
     Panel1: TPanel;
@@ -47,7 +50,6 @@ type
     procedure edtPesquisarMatriculaExit(Sender: TObject);
     procedure TratarCampoPesquisa(Sender: TObject; Criterio: TCriterioPesquisa);
     procedure btnNovoClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
 
   end;
 
@@ -55,9 +57,6 @@ var
   Form_Loc_Colaborador: TForm_Loc_Colaborador;
 
 implementation
-
-uses
-  dmColaboradorLoc;
 
 {$R *.dfm}
 
@@ -83,45 +82,21 @@ begin
 
 end;
 
-
-procedure TForm_Loc_Colaborador.BuscarPorCriterio;
-var
-  CampoPesquisa, ValorPesquisa: string;
-  TipoPesquisa: TTipoPesquisa;
+procedure TForm_Loc_Colaborador.BuscarPorCriterio(const Criterio
+  : TCriterioPesquisa; const Valor: string);
 begin
-  case TCriterioPesquisa(cmbCriteriosdePesquisa.ItemIndex) of
-    cpCodigo:
-      begin
-        CampoPesquisa := 'codigo';
-        ValorPesquisa := edtPesquisarCodigo.Text;
-        TipoPesquisa := tpCodigo;
-      end;
-    cpNome:
-      begin
-        CampoPesquisa := 'nome';
-        ValorPesquisa := edtPesquisarNome.Text;
-        TipoPesquisa := tpNome;
-      end;
-    cpMatricula:
-      begin
-        CampoPesquisa := 'matricula';
-        ValorPesquisa := edtPesquisarMatricula.Text;
-        TipoPesquisa := tpMatricula;
-      end;
-  else
-    raise Exception.Create('Critério de pesquisa inválido.');
-  end;
-
-  try
-    ColaboradorLocDataModule.Buscar(CampoPesquisa, ValorPesquisa, TipoPesquisa);
-    dbGrid.DataSource := ColaboradorLocDataModule.fdqryColaboradorLoc.DataSource;
-  except
-    on E: Exception do
-      ShowMessage('Erro ao buscar colaborador: ' + E.Message);
+ if Trim(Valor) <> '' then
+  begin
+    try
+      FDMColaborador.Buscar(Ord(Criterio), Valor);
+      dbGrid.DataSource := dsColaboradorLoc;
+      GerenciarBotoes([btnRelatorio, btnExibir], True);
+    except
+      on E: Exception do
+        MsgBox('Erro!', E.Message, False, 2);
+    end;
   end;
 end;
-
-
 
 procedure TForm_Loc_Colaborador.cmbCriteriosdePesquisaSelect(Sender: TObject);
 begin
@@ -152,20 +127,10 @@ begin
   GerenciarBotoes([btnRelatorio, btnExibir], False);
 end;
 
-
-
-procedure TForm_Loc_Colaborador.FormCreate(Sender: TObject);
-begin
-  ColaboradorLocDataModule := TColaboradorLocDataModule.Create(nil);
-
-
-end;
-
 procedure TForm_Loc_Colaborador.FormShow(Sender: TObject);
 begin
-
-    TThreadCriarDataModuleColaborador.Create(False);
-  GerenciarBotoes([btnRelatorio, btnExibir], False);
+  TThreadCriarDataModuleColaborador.Create(False);
+ //GerenciarBotoes([btnRelatorio, btnExibir], False);
 end;
 
 procedure TForm_Loc_Colaborador.TratarCampoPesquisa(Sender: TObject;
@@ -184,7 +149,6 @@ begin
       cpMatricula:
         BuscarPorCriterio(cpMatricula, edtPesquisarMatricula.Text);
     end;
-   { dbGrid.DataSource := ColaboradorDataModule.dsColaborador;  }
   end
   else
   begin

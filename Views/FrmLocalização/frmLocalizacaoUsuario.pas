@@ -97,12 +97,18 @@ var
 begin
   if Column.FieldName = 'ativo' then
   begin
+    // Garante que a célula não exiba "True/False"
+    dbGrid.Canvas.FillRect(Rect);
+    // Define o índice da imagem (0 = False, 1 = True)
     IndiceImagem := Byte(Column.Field.AsBoolean);
-    CentroX := Rect.Left + (Rect.Width - imgListAtivo.Width) div 2;
+    // Centraliza a imagem dentro da célula
+    CentroX := Rect.Left + (Column.Width - imgListAtivo.Width) div 2;
     CentroY := Rect.Top + (Rect.Height - imgListAtivo.Height) div 2;
+    // Desenha a imagem sem alterar a largura da coluna
     imgListAtivo.Draw(dbGrid.Canvas, CentroX, CentroY, IndiceImagem);
-    Exit;
+    Exit; // Evita que o DBGrid desenhe o texto "True/False"
   end;
+  // Desenha normalmente as outras colunas
   dbGrid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 

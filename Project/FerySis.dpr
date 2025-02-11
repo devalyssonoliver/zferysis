@@ -19,12 +19,12 @@
   iUsuario in '..\Interfaces\iUsuario.pas',
   iUsuarioRepositorio in '..\Models\Repositórios\iUsuarioRepositorio.pas',
   dmColaboradorCad in '..\Models\DataModules\dmColaboradorCad.pas' {ColaboradorDataModule: TDataModule},
-  frmLocalizacaoColaborador in '..\Views\FrmLocalização\frmLocalizacaoColaborador.pas' {Form_Loc_Colaborador},
   uThreadUsuarioDataModule in '..\Threads\uThreadUsuarioDataModule.pas',
   uThreadColaboradorDataModule in '..\Threads\uThreadColaboradorDataModule.pas',
   frmColaboradorCad in '..\Views\FrmCadastro\frmColaboradorCad.pas' {Form_Cadastro_Colaborador},
   uiColaborador in '..\Interfaces\uiColaborador.pas',
-  dmColaboradorLoc in '..\Models\DataModules\dmColaboradorLoc.pas' {ColaboradorLocDataModule: TDataModule};
+  dmColaboradorLoc in '..\Models\DataModules\dmColaboradorLoc.pas' {ColaboradorLocDataModule: TDataModule},
+  frmColaboradorLoc in '..\Views\FrmLocalização\frmColaboradorLoc.pas' {Frm_Colaborador_Loc};
 
 {$R *.res}
 
@@ -34,20 +34,20 @@
 
     Application.CreateForm(TGerenciadorConexao, GerenciadorConexao);
   while not ArquivoIniExiste do
-    begin
-       Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);
-       FrmConfigBanco.ShowModal;
-       FreeAndNil(FrmConfigBanco);
-    end;
-    Application.CreateForm(TFrm_Login, Frm_Login);
-    if Frm_Login.ShowModal = mrOk then
-    begin
-      FreeAndNil(Frm_Login);
-      Application.CreateForm(TFrm_Principal, Frm_Principal);
-      Application.Run;
-    end
-    else
-      Application.Terminate;
+      begin
+         Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);
+         FrmConfigBanco.ShowModal;
+         FreeAndNil(FrmConfigBanco);
+      end;
+      Application.CreateForm(TFrm_Login, Frm_Login);
+      if Frm_Login.ShowModal = mrOk then
+      begin
+        FreeAndNil(Frm_Login);
+        Application.CreateForm(TFrm_Principal, Frm_Principal);
+        Application.Run;
+      end
+      else
+        Application.Terminate;
 
 
   end.

@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Classes, Data.DB, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.Variants;
 
 type
   TTipoPesquisa = (tpCodigo, tpNome, tpMatricula, tpSetor);
@@ -26,7 +26,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    procedure Buscar(const CampoPesquisa, ValorPesquisa: string; TipoPesquisa: TTipoPesquisa);
+    procedure Buscar(const CriterioIndex: Integer; const Valor: Variant);
   end;
 
 var
@@ -42,41 +42,49 @@ uses
 {$R *.dfm}
 
 const
-  CAMPO_CODIGO = 'codigo';
-  CAMPO_NOME = 'nome';
-  CAMPO_MATRICULA = 'matricula';
-  CAMPO_SETOR = 'codigo_setor';
+  CRITERIO_CODIGO = 0;
+  CRITERIO_NOME = 1;
+  CRITERIO_MATRICULA = 2;
+  CRITERIO_SETOR = 3;
 
 { TColaboradorLocDataModule }
 
-procedure TColaboradorLocDataModule.Buscar(const CampoPesquisa, ValorPesquisa: string; TipoPesquisa: TTipoPesquisa);
+procedure TColaboradorLocDataModule.Buscar(const CriterioIndex: Integer; const Valor: Variant);
 begin
-  if Trim(ValorPesquisa) = '' then
-  begin
-    fdqryColaboradorLoc.Close;
-    Exit;
+  try
+    fdqryColaboradorLoc.SQL.Text := 'SELECT * FROM colaboradores WHERE ';
+
+    case CriterioIndex of
+      CRITERIO_CODIGO:
+        begin
+          fdqryColaboradorLoc.SQL.Add('codigo = :Valor');
+          fdqryColaboradorLoc.ParamByName('Valor').Value := StrToIntDef(VarToStr(Valor), 0);
+        end;
+      CRITERIO_NOME:
+        begin
+          fdqryColaboradorLoc.SQL.Add('nome ILIKE :Valor');
+          fdqryColaboradorLoc.ParamByName('Valor').AsString := '%' + VarToStr(Valor) + '%';
+        end;
+      CRITERIO_MATRICULA:
+        begin
+          fdqryColaboradorLoc.SQL.Add('matricula ILIKE :Valor');
+          fdqryColaboradorLoc.ParamByName('Valor').AsString := '%' + VarToStr(Valor) + '%';
+        end;
+      CRITERIO_SETOR:
+      begin
+        fdqryColaboradorLoc.SQL.Add('codigo_setor = :Valor');
+        fdqryColaboradorLoc.ParamByName('Valor').Value := StrToIntDef(VarToStr(Valor), 0);
+      end;
+    end;
+
+    fdqryColaboradorLoc.Open;
+  finally
   end;
-
-  fdqryColaboradorLoc.Close;
-  fdqryColaboradorLoc.SQL.Text := 'SELECT * FROM public.vcolaboradores WHERE ' + CampoPesquisa + ' = :Valor';
-
-  case TipoPesquisa of
-    tpCodigo, tpSetor:
-      fdqryColaboradorLoc.ParamByName('Valor').AsInteger := StrToIntDef(ValorPesquisa, 0);
-    tpNome, tpMatricula:
-      fdqryColaboradorLoc.ParamByName('Valor').AsString := '%' + ValorPesquisa + '%';
-  else
-    raise Exception.Create('Critério de pesquisa inválido.');
-  end;
-
-  fdqryColaboradorLoc.Open;
-
-  if fdqryColaboradorLoc.IsEmpty then
-    raise Exception.Create('Nenhum colaborador encontrado com o critério informado.');
 end;
 
 procedure TColaboradorLocDataModule.DataModuleCreate(Sender: TObject);
 begin
+  fdqryColaboradorLoc.Connection  := GerenciadorConexao.fdConn;
   fdqryColaboradorLoc.Open;
 end;
 
