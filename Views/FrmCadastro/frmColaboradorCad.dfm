@@ -29,8 +29,6 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
     ParentBackground = False
     TabOrder = 0
     StyleName = 'Windows'
-    ExplicitWidth = 505
-    ExplicitHeight = 404
     object lbTitulo: TLabel
       Left = 87
       Top = 28
@@ -163,15 +161,13 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       ParentBackground = False
       TabOrder = 11
       StyleName = 'Windows'
-      ExplicitTop = 363
-      ExplicitWidth = 503
       object btnSalvar: TButton
         Left = 86
         Top = 8
         Width = 75
         Height = 25
         Caption = 'Salvar'
-        TabOrder = 0
+        TabOrder = 2
         StyleName = 'Windows'
         OnClick = btnSalvarClick
       end
@@ -201,7 +197,7 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
         Width = 75
         Height = 25
         Caption = 'Novo'
-        TabOrder = 2
+        TabOrder = 0
         StyleName = 'Windows'
         OnClick = btnNovoClick
       end
@@ -220,17 +216,16 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       Left = 1
       Top = 1
       Width = 507
-      Height = 8
+      Height = 2
       Align = alTop
       BevelOuter = bvNone
       Color = clBackground
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 503
     end
     object dbedtCodigo: TDBEdit
       Left = 414
-      Top = 83
+      Top = 67
       Width = 90
       Height = 23
       TabStop = False
@@ -240,9 +235,9 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       DataSource = dsColaborador
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clHighlight
-      Font.Height = -13
+      Font.Height = -16
       Font.Name = 'Segoe UI'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 1
     end
@@ -1141,7 +1136,7 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
   end
   object dsColaborador: TDataSource
     DataSet = ColaboradorDataModule.fdqryColaborador
-    Left = 486
+    Left = 398
     Top = 23
   end
 end

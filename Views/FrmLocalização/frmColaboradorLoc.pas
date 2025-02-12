@@ -20,7 +20,6 @@ type
     cmbCriteriosdePesquisa: TComboBox;
     edtPesquisarCodigo: TEdit;
     pnl2: TPanel;
-    lbl1: TLabel;
     tglswtchTodos: TToggleSwitch;
     pnlBotoes: TPanel;
     btnNovo: TButton;
@@ -29,6 +28,7 @@ type
     btnRelatorio: TButton;
     dbGrid: TDBGrid;
     pnlListTop: TPanel;
+    lblTodos: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure DesativarBotoesELimparGrade;
     procedure BuscarPorCriterio(const Criterio: TCriterioPesquisa;
@@ -45,6 +45,7 @@ type
     procedure btnExibirClick(Sender: TObject);
     procedure ExibirColaboradorCad;
     procedure dbGridDblClick(Sender: TObject);
+    procedure tglswtchTodosClick(Sender: TObject);
   private
     { Private declarations }
     FDMColaboradorLoc : TColaboradorLocDataModule;
@@ -132,20 +133,24 @@ var
   CentroX, CentroY: Integer;
 begin
   if not dbGrid.DataSource.DataSet.IsEmpty then
+  begin
     if Column.FieldName = 'ativo' then
     begin
+      dbGrid.Canvas.FillRect(Rect);
+      IndiceImagem := Byte(Column.Field.AsBoolean);
+      CentroX := Rect.Left + (Column.Width - ilListAtivo.Width) div 2;
+      CentroY := Rect.Top + (Rect.Height - ilListAtivo.Height) div 2;
+      ilListAtivo.Draw(dbGrid.Canvas, CentroX, CentroY, IndiceImagem);
 
-    dbGrid.Canvas.FillRect(Rect);
-    IndiceImagem := Byte(Column.Field.AsBoolean);
-    CentroX := Rect.Left + (Column.Width - ilListAtivo.Width) div 2;
-    CentroY := Rect.Top + (Rect.Height - ilListAtivo.Height) div 2;
-    ilListAtivo.Draw(dbGrid.Canvas, CentroX, CentroY, IndiceImagem);
-    Exit;
+
+      Exit;
+    end;
   end;
 
-  dbGrid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 
+  dbGrid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
+
 
 procedure TFrm_Colaborador_Loc.DesativarBotoesELimparGrade;
 begin
@@ -182,6 +187,18 @@ end;
 procedure TFrm_Colaborador_Loc.FormCreate(Sender: TObject);
 begin
     FDMColaboradorLoc := TColaboradorLocDataModule.Create(nil);
+end;
+
+procedure TFrm_Colaborador_Loc.tglswtchTodosClick(Sender: TObject);
+begin
+    if tglswtchTodos.State = tssOn then
+    begin
+    FDMColaboradorLoc.ListarTodos;
+    GerenciarBotoes([btnRelatorio, btnExibir], True);
+    end
+      else
+      dbGrid.DataSource.DataSet.Close;
+      GerenciarBotoes([btnRelatorio, btnExibir], False);
 end;
 
 procedure TFrm_Colaborador_Loc.TratarCampoPesquisa(Sender: TObject;

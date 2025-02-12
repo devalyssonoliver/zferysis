@@ -81,7 +81,7 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
         ParentFont = False
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 0
+        TabOrder = 1
         TextHint = 'Modo de Busca'
         StyleName = 'Windows'
         OnSelect = cmbCriteriosdePesquisaSelect
@@ -102,7 +102,7 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
         Font.Style = []
         NumbersOnly = True
         ParentFont = False
-        TabOrder = 1
+        TabOrder = 4
         TextHint = 'C'#243'digo'
         OnExit = edtPesquisarCodigoExit
       end
@@ -117,7 +117,7 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        TabOrder = 2
+        TabOrder = 3
         TextHint = 'Nome'
         Visible = False
         OnExit = edtPesquisarNomeExit
@@ -135,7 +135,7 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        TabOrder = 3
+        TabOrder = 2
         TextHint = 'Login'
         Visible = False
         OnExit = edtPesquisarLoginExit
@@ -146,7 +146,7 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
         Width = 50
         Height = 44
         BevelOuter = bvNone
-        TabOrder = 4
+        TabOrder = 0
         object Label1: TLabel
           Left = 8
           Top = 8
@@ -240,18 +240,24 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
           Title.Font.Height = -12
           Title.Font.Name = 'Segoe UI'
           Title.Font.Style = [fsBold]
-          Width = 90
+          Width = 104
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'ativo'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           Title.Caption = 'Ativo'
           Title.Font.Charset = DEFAULT_CHARSET
           Title.Font.Color = clWindowText
           Title.Font.Height = -12
           Title.Font.Name = 'Segoe UI'
           Title.Font.Style = [fsBold]
+          Width = 45
           Visible = True
         end>
     end
@@ -287,7 +293,7 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
         Width = 75
         Height = 25
         Caption = 'Fechar'
-        TabOrder = 2
+        TabOrder = 3
         OnClick = btnFecharClick
       end
       object btnRelatorio: TButton
@@ -296,7 +302,7 @@ object Form_Loc_Usuarios: TForm_Loc_Usuarios
         Width = 75
         Height = 25
         Caption = 'Relat'#243'rio'
-        TabOrder = 3
+        TabOrder = 2
         OnClick = btnRelatorioClick
       end
     end

@@ -3,11 +3,15 @@ object ColaboradorLocDataModule: TColaboradorLocDataModule
   Height = 480
   Width = 640
   object fdqryColaboradorLoc: TFDQuery
-    Active = True
     AutoCalcFields = False
     Connection = GerenciadorConexao.fdConn
     SQL.Strings = (
-      'SELECT * FROM colaboradores')
+      
+        'SELECT codigo, nome, matricula, codigo_setor, data_contrato, per' +
+        'iodo_aquisitivo, '
+      '       periodo_concessivo, ativo'
+      '  FROM colaboradores;'
+      '')
     Left = 288
     Top = 256
     object fldColaboradorLoccodigo: TIntegerField

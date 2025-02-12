@@ -27,6 +27,7 @@ type
   public
     { Public declarations }
     procedure Buscar(const CriterioIndex: Integer; const Valor: Variant);
+    procedure ListarTodos;
   end;
 
 var
@@ -76,7 +77,7 @@ begin
         fdqryColaboradorLoc.ParamByName('Valor').Value := StrToIntDef(VarToStr(Valor), 0);
       end;
     end;
-
+    fdqryColaboradorLoc.SQL.Add('LIMIT 50');
     fdqryColaboradorLoc.Open;
   finally
   end;
@@ -85,7 +86,15 @@ end;
 procedure TColaboradorLocDataModule.DataModuleCreate(Sender: TObject);
 begin
   fdqryColaboradorLoc.Connection  := GerenciadorConexao.fdConn;
-  fdqryColaboradorLoc.Open;
+end;
+
+procedure TColaboradorLocDataModule.ListarTodos;
+var
+  listarTodosSQL : String;
+begin
+  fdqryColaboradorLoc.Close;
+  listarTodosSQL := 'SELECT * FROM colaboradores;';
+  fdqryColaboradorLoc.Open(listarTodosSQL);
 end;
 
 end.

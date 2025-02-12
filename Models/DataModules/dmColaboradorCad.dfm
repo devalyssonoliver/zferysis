@@ -9,7 +9,12 @@ object ColaboradorDataModule: TColaboradorDataModule
     UpdateOptions.GeneratorName = 'colaborador_codigo_seq'
     UpdateOptions.AutoIncFields = 'codigo'
     SQL.Strings = (
-      'select * from colaboradores')
+      
+        'SELECT codigo, nome, matricula, codigo_setor, data_contrato, per' +
+        'iodo_aquisitivo, '
+      '       periodo_concessivo, data_cadastro, ativo, cpf'
+      '  FROM colaboradores'
+      '')
     Left = 384
     Top = 184
     object fdqryColaboradorcodigo: TIntegerField

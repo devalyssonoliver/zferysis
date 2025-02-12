@@ -7,7 +7,7 @@
     System.Classes, Vcl.Graphics,
     Vcl.Controls, Vcl.Forms, Vcl.Dialogs, dmGerenciadorConexao, Vcl.StdCtrls,
     Vcl.ExtCtrls,
-    uArquivoIni, frmCadastroUsuario, frmLocalizacaoUsuario, System.ImageList,
+    uArquivoIni, frmUsuarioCad, frmLocalizacaoUsuario, System.ImageList,
     Vcl.ImgList, Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls,
     Vcl.Ribbon, System.Actions, Vcl.ActnList, Vcl.RibbonSilverStyleActnCtrls,
     Vcl.Buttons, frmConfigurarBanco, frmLogin,  frmColaboradorLoc;

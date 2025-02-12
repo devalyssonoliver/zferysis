@@ -7,7 +7,7 @@ uses
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls,
   Vcl.StdCtrls, Vcl.Mask, System.ImageList, Vcl.ImgList, Vcl.Imaging.pngimage,
   Vcl.DBCtrls, Vcl.ComCtrls, Vcl.Buttons, Vcl.WinXCtrls, dmColaboradorCad, Data.DB, System.DateUtils,
-  uFuncoes, uThreadColaboradorDataModule, Colaborador;
+  uFuncoes, Colaborador;
 
 type
   TModoFormulario = (mfNovo, mfEditar, mfExibicao);

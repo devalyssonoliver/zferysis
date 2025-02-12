@@ -6,8 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, uFuncoes,
-  dmUsuario, System.ImageList, Vcl.ImgList, frmCadastroUsuario, Usuario,
-  Vcl.WinXCtrls, uThreadUsuarioDataModule;
+  dmUsuario, System.ImageList, Vcl.ImgList, frmUsuarioCad, Usuario,
+  Vcl.WinXCtrls;
 
 type
   TCriterioPesquisa = (cpCodigo, cpNome, cpLogin);
@@ -95,21 +95,13 @@ var
   IndiceImagem: Byte;
   CentroX, CentroY: Integer;
 begin
-  if Column.FieldName = 'ativo' then
+{  if Column.FieldName = 'ativo' then
   begin
-    // Garante que a célula não exiba "True/False"
-    dbGrid.Canvas.FillRect(Rect);
-    // Define o índice da imagem (0 = False, 1 = True)
-    IndiceImagem := Byte(Column.Field.AsBoolean);
-    // Centraliza a imagem dentro da célula
-    CentroX := Rect.Left + (Column.Width - imgListAtivo.Width) div 2;
-    CentroY := Rect.Top + (Rect.Height - imgListAtivo.Height) div 2;
-    // Desenha a imagem sem alterar a largura da coluna
-    imgListAtivo.Draw(dbGrid.Canvas, CentroX, CentroY, IndiceImagem);
-    Exit; // Evita que o DBGrid desenhe o texto "True/False"
-  end;
-  // Desenha normalmente as outras colunas
-  dbGrid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+      dbGrid.Canvas.FillRect(Rect);
+          imgListAtivo.Draw(TDBGrid(Sender).Canvas, Rect.Left +1,Rect.Top + 1, 0);
+            end;
+              // Desenha normalmente as outras colunas
+                dbGrid.DefaultDrawColumnCell(Rect, DataCol, Column, State);}
 end;
 
 procedure TForm_Loc_Usuarios.DesativarBotoesELimparGrade;
@@ -194,7 +186,7 @@ end;
 procedure TForm_Loc_Usuarios.FormShow(Sender: TObject);
 begin
   if not Assigned(UsuarioDataModule) then
-    TThreadCriarDataModuleUsuario.Create(False);
+  UsuarioDataModule := TUsuarioDataModule.Create(self);
   GerenciarBotoes([btnRelatorio, btnExibir], False);
 
 end;
