@@ -61,13 +61,18 @@ object ColaboradorDataModule: TColaboradorDataModule
     object wdstrngfldColaboradorcpf: TWideStringField
       FieldName = 'cpf'
       Origin = 'cpf'
-      EditMask = '999-000-000-00;_'
-      Size = 11
+      EditMask = '999.999.999-99;1;_'
+      Size = 14
     end
   end
   object fdqryAux: TFDQuery
     Connection = GerenciadorConexao.fdConn
     Left = 280
     Top = 256
+  end
+  object fdTransaction: TFDTransaction
+    Connection = GerenciadorConexao.fdConn
+    Left = 192
+    Top = 368
   end
 end

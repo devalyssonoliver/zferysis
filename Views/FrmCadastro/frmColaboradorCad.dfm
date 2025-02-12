@@ -3,8 +3,8 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Cadastro de Colaborador'
-  ClientHeight = 406
-  ClientWidth = 513
+  ClientHeight = 405
+  ClientWidth = 509
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,15 +22,15 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
   object pnlCentro: TPanel
     Left = 0
     Top = 0
-    Width = 513
-    Height = 406
+    Width = 509
+    Height = 405
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
     StyleName = 'Windows'
-    ExplicitWidth = 509
-    ExplicitHeight = 405
+    ExplicitWidth = 505
+    ExplicitHeight = 404
     object lbTitulo: TLabel
       Left = 87
       Top = 28
@@ -154,8 +154,8 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
     end
     object pnlBotoes: TPanel
       Left = 1
-      Top = 365
-      Width = 511
+      Top = 364
+      Width = 507
       Height = 40
       Align = alBottom
       BevelOuter = bvNone
@@ -163,8 +163,8 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       ParentBackground = False
       TabOrder = 11
       StyleName = 'Windows'
-      ExplicitTop = 364
-      ExplicitWidth = 507
+      ExplicitTop = 363
+      ExplicitWidth = 503
       object btnSalvar: TButton
         Left = 86
         Top = 8
@@ -213,20 +213,20 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
         Caption = 'Cancelar'
         TabOrder = 1
         StyleName = 'Windows'
-        OnClick = btnEditarClick
+        OnClick = btnCancelarClick
       end
     end
     object pnlStatusFerias: TPanel
       Left = 1
       Top = 1
-      Width = 511
+      Width = 507
       Height = 8
       Align = alTop
       BevelOuter = bvNone
       Color = clBackground
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 507
+      ExplicitWidth = 503
     end
     object dbedtCodigo: TDBEdit
       Left = 414

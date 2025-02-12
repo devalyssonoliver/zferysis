@@ -65,8 +65,8 @@
 
   procedure TFrm_Principal.sbtnFormColaboradorClick(Sender: TObject);
   begin
-    Application.CreateForm(TFrm_Colaborador_Loc, Frm_Colaborador_Loc);
-    Frm_Colaborador_Loc.Show;
+    Application.CreateForm(TFrm_Colaborador_Loc, FFrm_Colaborador_Loc);
+    FFrm_Colaborador_Loc.Show;
   end;
 
   procedure TFrm_Principal.sbtnFormUserClick(Sender: TObject);

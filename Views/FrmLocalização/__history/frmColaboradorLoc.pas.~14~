@@ -1,0 +1,212 @@
+unit frmColaboradorLoc;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.ExtCtrls, System.ImageList, Vcl.ImgList, dmColaboradorLoc,  frmColaboradorCad;
+
+type
+  TCriterioPesquisa = (cpCodigo, cpNome, cpMatricula);
+  TFrm_Colaborador_Loc = class(TForm)
+    dsColaboradorLoc: TDataSource;
+    ilListAtivo: TImageList;
+    pnlGrid: TPanel;
+    lblTitulo: TLabel;
+    pnlTop: TPanel;
+    edtPesquisarNome: TEdit;
+    edtPesquisarMatricula: TEdit;
+    cmbCriteriosdePesquisa: TComboBox;
+    edtPesquisarCodigo: TEdit;
+    pnl2: TPanel;
+    lbl1: TLabel;
+    tglswtchTodos: TToggleSwitch;
+    pnlBotoes: TPanel;
+    btnNovo: TButton;
+    btnExibir: TButton;
+    btnFechar: TButton;
+    btnRelatorio: TButton;
+    dbGrid: TDBGrid;
+    pnlListTop: TPanel;
+    procedure FormCreate(Sender: TObject);
+    procedure DesativarBotoesELimparGrade;
+    procedure BuscarPorCriterio(const Criterio: TCriterioPesquisa;
+    const Valor: string);
+    procedure AlterarVisibilidadeCamposPesquisa;
+    procedure cmbCriteriosdePesquisaSelect(Sender: TObject);
+    procedure TratarCampoPesquisa(Sender: TObject; Criterio: TCriterioPesquisa);
+    procedure edtPesquisarCodigoExit(Sender: TObject);
+    procedure edtPesquisarMatriculaExit(Sender: TObject);
+    procedure edtPesquisarNomeExit(Sender: TObject);
+    procedure dbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure btnNovoClick(Sender: TObject);
+    procedure btnExibirClick(Sender: TObject);
+    procedure ExibirColaboradorCad;
+    procedure dbGridDblClick(Sender: TObject);
+  private
+    { Private declarations }
+    FDMColaboradorLoc : TColaboradorLocDataModule;
+    FFormColaboradorCad : TForm_Cadastro_Colaborador;
+    procedure AbrirFormCadastro(CodigoColaborador: Integer = -1);
+  public
+    { Public declarations }
+  end;
+
+var
+  FFrm_Colaborador_Loc: TFrm_Colaborador_Loc;
+
+implementation
+
+uses
+  uFuncoes;
+
+{$R *.dfm}
+procedure TFrm_Colaborador_Loc.AbrirFormCadastro(CodigoColaborador: Integer = -1);
+begin
+  try
+    FFormColaboradorCad := TForm_Cadastro_Colaborador.Create(Self);
+    if CodigoColaborador <> -1 then
+      FFormColaboradorCad.CarregarColaborador(CodigoColaborador);
+      FFormColaboradorCad.Show;
+  finally
+      FreeAndNil(FFormColaboradorCad);
+  end;
+end;
+
+procedure TFrm_Colaborador_Loc.AlterarVisibilidadeCamposPesquisa;
+begin
+  edtPesquisarCodigo.Visible    := cmbCriteriosdePesquisa.ItemIndex = Ord(cpCodigo);
+  edtPesquisarNome.Visible      := cmbCriteriosdePesquisa.ItemIndex = Ord(cpNome);
+  edtPesquisarMatricula.Visible := cmbCriteriosdePesquisa.ItemIndex = Ord(cpMatricula);
+end;
+
+procedure TFrm_Colaborador_Loc.btnExibirClick(Sender: TObject);
+begin
+  ExibirColaboradorCad;
+end;
+
+procedure TFrm_Colaborador_Loc.btnNovoClick(Sender: TObject);
+begin
+    FFormColaboradorCad := TForm_Cadastro_Colaborador.Create(nil);
+    try
+     FFormColaboradorCad.ModoFormulario := mfNovo;
+     FFormColaboradorCad.Show;
+    except
+      on E:Exception do
+      MsgBox('Erro!', E.Message, False, 2);
+    end;
+end;
+
+procedure TFrm_Colaborador_Loc.BuscarPorCriterio(
+  const Criterio: TCriterioPesquisa; const Valor: string);
+begin
+ if Trim(Valor) <> '' then
+  begin
+    try
+      FDMColaboradorLoc.Buscar(Ord(Criterio), Valor);
+      dbGrid.DataSource := dsColaboradorLoc;
+      GerenciarBotoes([btnRelatorio, btnExibir], True);
+    except
+      on E: Exception do
+        MsgBox('Erro!', E.Message, False, 2);
+    end;
+  end;
+end;
+
+procedure TFrm_Colaborador_Loc.cmbCriteriosdePesquisaSelect(Sender: TObject);
+begin
+    AlterarVisibilidadeCamposPesquisa;
+end;
+
+procedure TFrm_Colaborador_Loc.dbGridDblClick(Sender: TObject);
+begin
+  ExibirColaboradorCad;
+end;
+
+procedure TFrm_Colaborador_Loc.dbGridDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+  IndiceImagem: Byte;
+  CentroX, CentroY: Integer;
+begin
+  if not dbGrid.DataSource.DataSet.IsEmpty then
+    if Column.FieldName = 'ativo' then
+    begin
+
+    dbGrid.Canvas.FillRect(Rect);
+    IndiceImagem := Byte(Column.Field.AsBoolean);
+    CentroX := Rect.Left + (Column.Width - ilListAtivo.Width) div 2;
+    CentroY := Rect.Top + (Rect.Height - ilListAtivo.Height) div 2;
+    ilListAtivo.Draw(dbGrid.Canvas, CentroX, CentroY, IndiceImagem);
+    Exit;
+  end;
+
+  dbGrid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+
+end;
+
+procedure TFrm_Colaborador_Loc.DesativarBotoesELimparGrade;
+begin
+    dbGrid.DataSource := nil;
+    GerenciarBotoes([btnRelatorio, btnExibir], False);
+end;
+
+procedure TFrm_Colaborador_Loc.edtPesquisarCodigoExit(Sender: TObject);
+begin
+    TratarCampoPesquisa(Sender, cpCodigo);
+end;
+
+procedure TFrm_Colaborador_Loc.edtPesquisarMatriculaExit(Sender: TObject);
+begin
+    TratarCampoPesquisa(Sender, cpMatricula);
+end;
+
+procedure TFrm_Colaborador_Loc.edtPesquisarNomeExit(Sender: TObject);
+begin
+    TratarCampoPesquisa(Sender, cpNome);
+end;
+
+procedure TFrm_Colaborador_Loc.ExibirColaboradorCad;
+var
+  CodigoColaborador: Integer;
+begin
+  if not (dbGrid.DataSource.DataSet.IsEmpty) then
+  begin
+    CodigoColaborador := dbGrid.DataSource.DataSet.FieldByName('codigo').AsInteger;
+    AbrirFormCadastro(CodigoColaborador);
+  end
+  else
+    ShowMessage('Nenhum colaborador selecionado!');
+end;
+
+procedure TFrm_Colaborador_Loc.FormCreate(Sender: TObject);
+begin
+    FDMColaboradorLoc := TColaboradorLocDataModule.Create(nil);
+end;
+
+procedure TFrm_Colaborador_Loc.TratarCampoPesquisa(Sender: TObject;
+  Criterio: TCriterioPesquisa);
+var
+  EditField: TEdit;
+begin
+  EditField := TEdit(Sender);
+  if verificarCampoPreenchido(EditField) then
+  begin
+    case Criterio of
+      cpCodigo:
+        BuscarPorCriterio(cpCodigo, edtPesquisarCodigo.Text);
+      cpNome:
+        BuscarPorCriterio(cpNome, edtPesquisarNome.Text);
+      cpMatricula:
+        BuscarPorCriterio(cpMatricula, edtPesquisarMatricula.Text);
+    end;
+  end
+  else
+  begin
+    DesativarBotoesELimparGrade;
+  end;
+end;
+
+end.

@@ -45,7 +45,6 @@ type
     dbedtDataContrato: TDBEdit;
     lblDataContrato: TLabel;
     procedure btnSalvarClick(Sender: TObject);
-    procedure btnEditarClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure AlterarModo(Modo: TModoFormulario);
@@ -54,6 +53,8 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
     procedure dbedtDataContratoExit(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
   private
     FDmColaborador : TColaboradorDataModule;
     FModoFormulario: TModoFormulario;
@@ -62,6 +63,7 @@ type
     procedure AtualizarPeriodosColaborador;
   public
     property ModoFormulario: TModoFormulario read FModoFormulario write AlterarModo;
+    procedure CarregarColaborador(_Codigo : Integer);
   end;
 
 var
@@ -72,6 +74,11 @@ implementation
 
 
 {$R *.dfm}
+procedure TForm_Cadastro_Colaborador.CarregarColaborador(_Codigo: Integer);
+begin
+  FDmColaborador.Carregar(_Codigo);
+end;
+
 procedure TForm_Cadastro_Colaborador.ConfigurarAtivoNosCampos(Ativo: Boolean);
 var
   I: Integer;
@@ -101,14 +108,14 @@ begin
         FDmColaborador.Novo;
         ConfigurarAtivoNosCampos(True);
         GerenciarBotoes([btnNovo, btnEditar], False);
-        GerenciarBotoes(btnSalvar, True);
+        GerenciarBotoes([btnSalvar, btnCancelar], True);
       end;
     mfEditar:
       begin
         FDmColaborador.Editar;
         ConfigurarAtivoNosCampos(True);
         GerenciarBotoes([btnNovo, btnEditar], False);
-        GerenciarBotoes(btnSalvar, True);
+        GerenciarBotoes([btnSalvar, btnCancelar], True);
       end;
     mfExibicao:
       begin
@@ -180,16 +187,19 @@ begin
    finally
    Colaborador.Free;
    end;
-
-
 end;
 
-procedure TForm_Cadastro_Colaborador.btnEditarClick(Sender: TObject);
+procedure TForm_Cadastro_Colaborador.btnCancelarClick(Sender: TObject);
 begin
   FDmColaborador.Cancelar;
   AlterarModo(mfExibicao);
 end;
 
+procedure TForm_Cadastro_Colaborador.btnEditarClick(Sender: TObject);
+begin
+   FDmColaborador.Editar;
+   AlterarModo(mfEditar);
+end;
 
 procedure TForm_Cadastro_Colaborador.btnFecharClick(Sender: TObject);
 

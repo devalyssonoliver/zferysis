@@ -24,10 +24,8 @@ object Frm_Colaborador_Loc: TFrm_Colaborador_Loc
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -78
-    ExplicitTop = -11
-    ExplicitWidth = 1046
-    ExplicitHeight = 605
+    ExplicitWidth = 917
+    ExplicitHeight = 618
     object lblTitulo: TLabel
       Left = 1
       Top = 4
@@ -54,7 +52,7 @@ object Frm_Colaborador_Loc: TFrm_Colaborador_Loc
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitWidth = 1044
+      ExplicitWidth = 915
       object edtPesquisarNome: TEdit
         Left = 160
         Top = 21
@@ -172,8 +170,8 @@ object Frm_Colaborador_Loc: TFrm_Colaborador_Loc
       Align = alBottom
       ParentBackground = False
       TabOrder = 3
-      ExplicitTop = 568
-      ExplicitWidth = 1044
+      ExplicitTop = 581
+      ExplicitWidth = 915
       object btnNovo: TButton
         Left = 16
         Top = 6
@@ -181,6 +179,7 @@ object Frm_Colaborador_Loc: TFrm_Colaborador_Loc
         Height = 25
         Caption = 'Novo'
         TabOrder = 0
+        OnClick = btnNovoClick
       end
       object btnExibir: TButton
         Left = 97
@@ -189,6 +188,7 @@ object Frm_Colaborador_Loc: TFrm_Colaborador_Loc
         Height = 25
         Caption = 'Exibir'
         TabOrder = 1
+        OnClick = btnExibirClick
       end
       object btnFechar: TButton
         Left = 833
@@ -232,6 +232,7 @@ object Frm_Colaborador_Loc: TFrm_Colaborador_Loc
       TitleFont.Style = []
       StyleName = 'Windows'
       OnDrawColumnCell = dbGridDrawColumnCell
+      OnDblClick = dbGridDblClick
       Columns = <
         item
           Expanded = False
@@ -338,7 +339,7 @@ object Frm_Colaborador_Loc: TFrm_Colaborador_Loc
       Color = clHotLight
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 1044
+      ExplicitWidth = 915
     end
   end
   object dsColaboradorLoc: TDataSource

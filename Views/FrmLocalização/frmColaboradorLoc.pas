@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
-  Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.ExtCtrls, System.ImageList, Vcl.ImgList, dmColaboradorLoc;
+  Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.ExtCtrls, System.ImageList, Vcl.ImgList, dmColaboradorLoc,  frmColaboradorCad;
 
 type
   TCriterioPesquisa = (cpCodigo, cpNome, cpMatricula);
@@ -41,15 +41,22 @@ type
     procedure edtPesquisarNomeExit(Sender: TObject);
     procedure dbGridDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure btnNovoClick(Sender: TObject);
+    procedure btnExibirClick(Sender: TObject);
+    procedure ExibirColaboradorCad;
+    procedure dbGridDblClick(Sender: TObject);
   private
     { Private declarations }
     FDMColaboradorLoc : TColaboradorLocDataModule;
+    FFormColaboradorCad : TForm_Cadastro_Colaborador;
+    procedure AbrirFormCadastro;
   public
     { Public declarations }
   end;
 
 var
-  Frm_Colaborador_Loc: TFrm_Colaborador_Loc;
+  FFrm_Colaborador_Loc: TFrm_Colaborador_Loc;
+  FCodigoColaborador: Integer;
 
 implementation
 
@@ -57,12 +64,39 @@ uses
   uFuncoes;
 
 {$R *.dfm}
+procedure TFrm_Colaborador_Loc.AbrirFormCadastro;
+begin
+  try
+      FFormColaboradorCad := TForm_Cadastro_Colaborador.Create(Self);
+      FFormColaboradorCad.CarregarColaborador(FCodigoColaborador);
+      FFormColaboradorCad.ModoFormulario := mfExibicao;
+      FFormColaboradorCad.Show;
+  finally
+  end;
+end;
 
 procedure TFrm_Colaborador_Loc.AlterarVisibilidadeCamposPesquisa;
 begin
   edtPesquisarCodigo.Visible    := cmbCriteriosdePesquisa.ItemIndex = Ord(cpCodigo);
   edtPesquisarNome.Visible      := cmbCriteriosdePesquisa.ItemIndex = Ord(cpNome);
   edtPesquisarMatricula.Visible := cmbCriteriosdePesquisa.ItemIndex = Ord(cpMatricula);
+end;
+
+procedure TFrm_Colaborador_Loc.btnExibirClick(Sender: TObject);
+begin
+  ExibirColaboradorCad;
+end;
+
+procedure TFrm_Colaborador_Loc.btnNovoClick(Sender: TObject);
+begin
+    FFormColaboradorCad := TForm_Cadastro_Colaborador.Create(nil);
+    try
+     FFormColaboradorCad.ModoFormulario := mfNovo;
+     FFormColaboradorCad.Show;
+    except
+      on E:Exception do
+      MsgBox('Erro!', E.Message, False, 2);
+    end;
 end;
 
 procedure TFrm_Colaborador_Loc.BuscarPorCriterio(
@@ -84,6 +118,11 @@ end;
 procedure TFrm_Colaborador_Loc.cmbCriteriosdePesquisaSelect(Sender: TObject);
 begin
     AlterarVisibilidadeCamposPesquisa;
+end;
+
+procedure TFrm_Colaborador_Loc.dbGridDblClick(Sender: TObject);
+begin
+  ExibirColaboradorCad;
 end;
 
 procedure TFrm_Colaborador_Loc.dbGridDrawColumnCell(Sender: TObject;
@@ -127,6 +166,17 @@ end;
 procedure TFrm_Colaborador_Loc.edtPesquisarNomeExit(Sender: TObject);
 begin
     TratarCampoPesquisa(Sender, cpNome);
+end;
+
+procedure TFrm_Colaborador_Loc.ExibirColaboradorCad;
+begin
+  if not (dbGrid.DataSource.DataSet.IsEmpty) then
+  begin
+    FCodigoColaborador := FDMColaboradorLoc.fldColaboradorLoccodigo.AsInteger;
+    AbrirFormCadastro;
+  end
+  else
+    ShowMessage('Nenhum colaborador selecionado!');
 end;
 
 procedure TFrm_Colaborador_Loc.FormCreate(Sender: TObject);

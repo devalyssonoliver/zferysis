@@ -22,6 +22,7 @@ type
     fdqryColaboradordata_cadastro: TDateField;
     fdqryColaboradorativo: TBooleanField;
     wdstrngfldColaboradorcpf: TWideStringField;
+    fdTransaction: TFDTransaction;
     procedure DataModuleCreate(Sender: TObject);
 
   public
@@ -29,6 +30,8 @@ type
     procedure Salvar;
     procedure Editar;
     procedure Cancelar;
+    procedure Carregar(_Codigo : Integer);
+
 
   end;
 
@@ -45,18 +48,41 @@ uses
 
 procedure TColaboradorDataModule.Novo;
 begin
-  fdqryColaborador.Append;
+ if not (fdqryColaborador.State in [dsEdit, dsInsert]) then
+ begin
+    fdTransaction.StartTransaction;
+    fdqryColaborador.Insert
+ end;
 end;
 
 procedure TColaboradorDataModule.Salvar;
 begin
   if fdqryColaborador.State in [dsEdit, dsInsert] then
-     fdqryColaborador.Post
+  begin
+     fdqryColaborador.Post;
+     fdTransaction.CommitRetaining;
+  end;
 end;
 
 procedure TColaboradorDataModule.Cancelar;
 begin
-  fdqryColaborador.Cancel;
+   if (fdqryColaborador.State in [dsEdit, dsInsert]) then
+  begin
+    fdqryColaborador.Cancel;
+    fdTransaction.RollbackRetaining;
+  end;
+end;
+
+procedure TColaboradorDataModule.Carregar(_Codigo : Integer);
+begin
+  with fdqryColaborador do
+  begin
+    Close;
+    fdqryColaborador.SQL.Clear;
+    fdqryColaborador.SQL.Add('SELECT * FROM colaboradores WHERE codigo = :codigo');
+    ParamByName('codigo').AsInteger := _Codigo;
+    Open;
+  end;
 end;
 
 procedure TColaboradorDataModule.DataModuleCreate(Sender: TObject);
@@ -67,7 +93,8 @@ end;
 
 procedure TColaboradorDataModule.Editar;
 begin
-    fdqryColaborador.Cancel;
+   fdTransaction.StartTransaction;
+   fdqryColaborador.Edit;
 end;
 
 end.
