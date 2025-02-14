@@ -27,8 +27,7 @@ program FerySis;
   dmSetorCad in '..\Models\DataModules\dmSetorCad.pas' {SetoCadDataModule: TDataModule},
   frmSetorCad in '..\Views\FrmCadastro\frmSetorCad.pas' {Frm_SetorCad},
   frmSetorLoc in '..\Views\FrmLocalização\frmSetorLoc.pas' {Frm_Setor_Loc},
-  dmSetorLoc in '..\Models\DataModules\dmSetorLoc.pas' {SetorLoc_DataModule: TDataModule},
-  frmPrincipalDevExpress in '..\Views\frmPrincipalDevExpress.pas' {Form2};
+  dmSetorLoc in '..\Models\DataModules\dmSetorLoc.pas' {SetorLoc_DataModule: TDataModule};
 
 {$R *.res}
 
@@ -37,7 +36,6 @@ program FerySis;
     Application.MainFormOnTaskbar := True;
 
     Application.CreateForm(TGerenciadorConexao, GerenciadorConexao);
-  Application.CreateForm(TForm2, Form2);
   while not ArquivoIniExiste do
       begin
          Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);
