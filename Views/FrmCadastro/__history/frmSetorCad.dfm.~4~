@@ -13,7 +13,6 @@ object Frm_SetorCad: TFrm_SetorCad
   KeyPreview = True
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
-  OnShow = FormShow
   TextHeight = 15
   object pnlCentro: TPanel
     Left = 0
@@ -221,7 +220,7 @@ object Frm_SetorCad: TFrm_SetorCad
     end
   end
   object dsSetor: TDataSource
-    DataSet = SetoCadDataModule.fdqrySetorCad
+    DataSet = SetoCadrDataModule.fdqrySetorCad
     Left = 480
     Top = 48
   end

@@ -10,7 +10,7 @@
     uArquivoIni, frmUsuarioCad, frmLocalizacaoUsuario, System.ImageList,
     Vcl.ImgList, Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls,
     Vcl.Ribbon, System.Actions, Vcl.ActnList, Vcl.RibbonSilverStyleActnCtrls,
-    Vcl.Buttons, frmConfigurarBanco, frmLogin,  frmColaboradorLoc, frmSetorLoc;
+    Vcl.Buttons, frmConfigurarBanco, frmLogin,  frmColaboradorLoc;
 
   type
     TFrm_Principal = class(TForm)
@@ -21,12 +21,10 @@
       ImageList: TImageList;
       sbtnFormUser: TSpeedButton;
       sbtnFormColaborador: TSpeedButton;
-    btnFormSetor: TSpeedButton;
       procedure sbtnFormUserClick(Sender: TObject);
       procedure FormClose(Sender: TObject; var Action: TCloseAction);
       procedure sbtnFormColaboradorClick(Sender: TObject);
       procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure btnFormSetorClick(Sender: TObject);
 
 
     private
@@ -42,16 +40,12 @@
 
   {$R *.dfm}
 
-procedure TFrm_Principal.btnFormSetorClick(Sender: TObject);
-begin
-    Application.CreateForm(TFrm_Setor_Loc, Frm_Setor_Loc);
-    Frm_Setor_Loc.Show;
-end;
-
-procedure TFrm_Principal.FormClose(Sender: TObject; var Action: TCloseAction);
+  procedure TFrm_Principal.FormClose(Sender: TObject; var Action: TCloseAction);
   begin
     Application.Terminate;
   end;
+
+
 
   procedure TFrm_Principal.FormKeyDown(Sender: TObject; var Key: Word;
     Shift: TShiftState);
@@ -66,6 +60,8 @@ procedure TFrm_Principal.FormClose(Sender: TObject; var Action: TCloseAction);
       Application.Terminate;
 
    end;
+
+
 
   procedure TFrm_Principal.sbtnFormColaboradorClick(Sender: TObject);
   begin

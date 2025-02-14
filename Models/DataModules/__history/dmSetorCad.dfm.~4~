@@ -28,7 +28,6 @@ object SetoCadDataModule: TSetoCadDataModule
     end
   end
   object fdTransaction: TFDTransaction
-    Connection = GerenciadorConexao.fdConn
     Left = 344
     Top = 40
   end

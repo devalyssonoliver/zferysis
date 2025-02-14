@@ -24,10 +24,8 @@ program FerySis;
   dmColaboradorLoc in '..\Models\DataModules\dmColaboradorLoc.pas' {ColaboradorLocDataModule: TDataModule},
   frmColaboradorLoc in '..\Views\FrmLocalização\frmColaboradorLoc.pas' {Frm_Colaborador_Loc},
   Setor in '..\Classes\Setor.pas',
-  dmSetorCad in '..\Models\DataModules\dmSetorCad.pas' {SetoCadDataModule: TDataModule},
-  frmSetorCad in '..\Views\FrmCadastro\frmSetorCad.pas' {Frm_SetorCad},
-  frmSetorLoc in '..\Views\FrmLocalização\frmSetorLoc.pas' {Frm_Setor_Loc},
-  dmSetorLoc in '..\Models\DataModules\dmSetorLoc.pas' {SetorLoc_DataModule: TDataModule};
+  dmSetorCad in '..\Models\DataModules\dmSetorCad.pas' {SetoCadrDataModule: TDataModule},
+  frmSetorCad in '..\Views\FrmCadastro\frmSetorCad.pas' {Frm_SetorCad};
 
 {$R *.res}
 
@@ -36,6 +34,8 @@ program FerySis;
     Application.MainFormOnTaskbar := True;
 
     Application.CreateForm(TGerenciadorConexao, GerenciadorConexao);
+  Application.CreateForm(TSetoCadrDataModule, SetoCadrDataModule);
+  Application.CreateForm(TFrm_SetorCad, Frm_SetorCad);
   while not ArquivoIniExiste do
       begin
          Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);

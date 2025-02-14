@@ -10,157 +10,21 @@ object Frm_Principal: TFrm_Principal
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  KeyPreview = True
   Position = poDesktopCenter
   Scaled = False
   WindowState = wsMaximized
   StyleName = 'Windows'
   OnClose = FormClose
-  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
   TextHeight = 15
-  object StyledToolbar1: TStyledToolbar
-    Left = 0
-    Top = 616
-    Width = 1076
-    Height = 20
-    Align = alBottom
-    Caption = 'StyledToolbar1'
-    Color = clGrayText
-    ParentBackground = False
-    ParentColor = False
-    TabOrder = 0
-    StyleElements = [seFont, seBorder]
-    DrawingStyle = dsGradient
-    StyleClass = 'Emerald'
-    object lbRotuloServidor: TLabel
-      AlignWithMargins = True
-      Left = 3
-      Top = 3
-      Width = 52
-      Height = 17
-      Caption = 'Servidor:'
-      Color = clMenuHighlight
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentColor = False
-      ParentFont = False
-    end
-    object lbServidor: TLabel
-      AlignWithMargins = True
-      Left = 61
-      Top = 3
-      Width = 3
-      Height = 15
-      Color = clMenuHighlight
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -12
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentColor = False
-      ParentFont = False
-    end
-    object lbRotuloBase: TLabel
-      AlignWithMargins = True
-      Left = 70
-      Top = 3
-      Width = 90
-      Height = 17
-      Caption = 'Base de dados:'
-      Color = clMenuHighlight
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentColor = False
-      ParentFont = False
-    end
-    object lbBase: TLabel
-      AlignWithMargins = True
-      Left = 166
-      Top = 3
-      Width = 3
-      Height = 15
-      Color = clMenuHighlight
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -12
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentColor = False
-      ParentFont = False
-    end
-    object lbRotuloPorta: TLabel
-      AlignWithMargins = True
-      Left = 175
-      Top = 3
-      Width = 34
-      Height = 17
-      Caption = 'Porta:'
-      Color = clMenuHighlight
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentColor = False
-      ParentFont = False
-    end
-    object lbPorta: TLabel
-      AlignWithMargins = True
-      Left = 215
-      Top = 3
-      Width = 3
-      Height = 15
-      Color = clMenuHighlight
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -12
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentColor = False
-      ParentFont = False
-    end
-    object lbDataAtual: TLabel
-      AlignWithMargins = True
-      Left = 224
-      Top = 3
-      Width = 4
-      Height = 17
-      Color = clMenuHighlight
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentColor = False
-      ParentFont = False
-    end
-    object lbUsuario: TLabel
-      AlignWithMargins = True
-      Left = 234
-      Top = 3
-      Width = 4
-      Height = 17
-      Color = clMenuHighlight
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWhite
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentColor = False
-      ParentFont = False
-    end
-  end
   object Ribbon1: TRibbon
     Left = 0
     Top = 0
     Width = 1076
     Height = 143
     ActionManager = actionManager
+    ApplicationMenu.CommandType = ctCommands
     Caption = 'FerySIS - Sistema de gerenciamento de F'#233'rias.'
     Tabs = <
       item

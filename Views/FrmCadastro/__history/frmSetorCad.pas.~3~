@@ -35,11 +35,9 @@ TModoFormulario = (mfNovo, mfEditar, mfExibicao);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
-    procedure btnFecharClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
-     FDMSetor : TSetoCadDataModule;
+     FDMSetor : TSetoCadrDataModule;
     FModoFormulario: TModoFormulario;
 
     procedure ConfigurarModo;
@@ -73,12 +71,6 @@ procedure TFrm_SetorCad.btnEditarClick(Sender: TObject);
 begin
   AlterarModo(mfEditar);
   FDMSetor.Editar;
-end;
-
-procedure TFrm_SetorCad.btnFecharClick(Sender: TObject);
-begin
-  if confirmarFechamento then
-  close;
 end;
 
 procedure TFrm_SetorCad.btnNovoClick(Sender: TObject);
@@ -141,12 +133,7 @@ end;
 
 procedure TFrm_SetorCad.FormCreate(Sender: TObject);
 begin
-  FDMSetor := TSetoCadDataModule.Create(NIL);
-  if Assigned(FDMSetor) then
-  begin
-    dsSetor := FDMSetor.fdqrySetorCad.DataSource;
-    dsSetor.DataSet.Active := True;
-  end;
+  dbedtdata_cadastro.Text := DateToStr(Now);
 end;
 
 procedure TFrm_SetorCad.FormKeyPress(Sender: TObject; var Key: Char);
@@ -156,11 +143,6 @@ begin
       Key := #0;
       Perform(WM_NEXTDLGCTL,0,0);
    end;
-end;
-
-procedure TFrm_SetorCad.FormShow(Sender: TObject);
-begin
-  //dbedtdata_cadastro.Text := DateToStr(Now);
 end;
 
 procedure TFrm_SetorCad.AlterarModo(const Modo: TModoFormulario);

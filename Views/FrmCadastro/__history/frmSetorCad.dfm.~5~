@@ -221,7 +221,7 @@ object Frm_SetorCad: TFrm_SetorCad
     end
   end
   object dsSetor: TDataSource
-    DataSet = SetoCadDataModule.fdqrySetorCad
+    DataSet = SetoCadrDataModule.fdqrySetorCad
     Left = 480
     Top = 48
   end

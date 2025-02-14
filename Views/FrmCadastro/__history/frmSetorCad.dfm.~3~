@@ -13,7 +13,6 @@ object Frm_SetorCad: TFrm_SetorCad
   KeyPreview = True
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
-  OnShow = FormShow
   TextHeight = 15
   object pnlCentro: TPanel
     Left = 0
@@ -113,7 +112,6 @@ object Frm_SetorCad: TFrm_SetorCad
         Caption = 'Fechar'
         TabOrder = 4
         StyleName = 'Windows'
-        OnClick = btnFecharClick
       end
       object btnNovo: TButton
         Left = 5
@@ -221,8 +219,8 @@ object Frm_SetorCad: TFrm_SetorCad
     end
   end
   object dsSetor: TDataSource
-    DataSet = SetoCadDataModule.fdqrySetorCad
-    Left = 480
-    Top = 48
+    DataSet = SetoCadrDataModule.fdqrySetorCad
+    Left = 456
+    Top = 24
   end
 end

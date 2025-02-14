@@ -29,6 +29,8 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
     ParentBackground = False
     TabOrder = 0
     StyleName = 'Windows'
+    ExplicitWidth = 505
+    ExplicitHeight = 404
     object lbTitulo: TLabel
       Left = 87
       Top = 28
@@ -161,6 +163,8 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       ParentBackground = False
       TabOrder = 11
       StyleName = 'Windows'
+      ExplicitTop = 363
+      ExplicitWidth = 503
       object btnSalvar: TButton
         Left = 86
         Top = 8
@@ -222,6 +226,7 @@ object Form_Cadastro_Colaborador: TForm_Cadastro_Colaborador
       Color = clBackground
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 503
     end
     object dbedtCodigo: TDBEdit
       Left = 414

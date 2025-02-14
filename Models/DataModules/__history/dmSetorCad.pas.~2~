@@ -9,7 +9,7 @@ uses
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, dmGerenciadorConexao;
 
 type
-  TSetoCadDataModule = class(TDataModule)
+  TSetoCadrDataModule = class(TDataModule)
     fdqrySetorCad: TFDQuery;
     fdTransaction: TFDTransaction;
     intgrfldSetorCadcodigo: TIntegerField;
@@ -24,12 +24,12 @@ type
     procedure Salvar;
     procedure Editar;
     procedure CarregarSetor(_Codigo : Integer);
-    procedure Novo;
+    procedure Inserir;
     procedure Cancelar;
   end;
 
 var
-  SetoCadDataModule: TSetoCadDataModule;
+  SetoCadrDataModule: TSetoCadrDataModule;
 
 implementation
 
@@ -39,7 +39,7 @@ implementation
 
 { TDataModule1 }
 
-procedure TSetoCadDataModule.Cancelar;
+procedure TSetoCadrDataModule.Cancelar;
 begin
   if (fdqrySetorCad.state in [dsEdit, dsInsert]) then
   begin
@@ -49,7 +49,7 @@ begin
 
 end;
 
-procedure TSetoCadDataModule.CarregarSetor(_Codigo: Integer);
+procedure TSetoCadrDataModule.CarregarSetor(_Codigo: Integer);
 begin
   with fdqrySetorCad do
   begin
@@ -60,18 +60,18 @@ begin
   end;
 end;
 
-procedure TSetoCadDataModule.DataModuleCreate(Sender: TObject);
+procedure TSetoCadrDataModule.DataModuleCreate(Sender: TObject);
 begin
   fdqrySetorCad.Connection := GerenciadorConexao.fdConn;
   fdqrySetorCad.Open;
 end;
 
-procedure TSetoCadDataModule.Editar;
+procedure TSetoCadrDataModule.Editar;
 begin
 
 end;
 
-procedure TSetoCadDataModule.Novo;
+procedure TSetoCadrDataModule.Inserir;
 begin
    if not (fdqrySetorCad.State in [dsInsert, dsEdit]) then
    begin
@@ -81,7 +81,7 @@ begin
 
 end;
 
-procedure TSetoCadDataModule.Salvar;
+procedure TSetoCadrDataModule.Salvar;
 begin
     if (fdqrySetorCad.State in [dsInsert, dsEdit]) then
     begin
