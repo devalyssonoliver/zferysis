@@ -11,12 +11,13 @@ object GerenciadorConexao: TGerenciadorConexao
       'Password=postzeus2011'
       'DriverID=pG')
     ConnectedStoredUsage = [auRunTime]
+    Connected = True
     LoginPrompt = False
     Left = 296
     Top = 224
   end
   object pgDriver: TFDPhysPgDriverLink
-    VendorLib = 'C:\lib\libpq.dll'
+    VendorLib = 'C:\Program Files (x86)\PostgreSQL\psqlODBC\bin\libpq.dll'
     Left = 440
     Top = 176
   end

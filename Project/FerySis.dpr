@@ -1,4 +1,4 @@
-  program FerySis;
+program FerySis;
 
   uses
   System.SysUtils,
@@ -22,7 +22,10 @@
   frmColaboradorCad in '..\Views\FrmCadastro\frmColaboradorCad.pas' {Form_Cadastro_Colaborador},
   uiColaborador in '..\Interfaces\uiColaborador.pas',
   dmColaboradorLoc in '..\Models\DataModules\dmColaboradorLoc.pas' {ColaboradorLocDataModule: TDataModule},
-  frmColaboradorLoc in '..\Views\FrmLocalização\frmColaboradorLoc.pas' {Frm_Colaborador_Loc};
+  frmColaboradorLoc in '..\Views\FrmLocalização\frmColaboradorLoc.pas' {Frm_Colaborador_Loc},
+  Setor in '..\Classes\Setor.pas',
+  dmSetorCad in '..\Models\DataModules\dmSetorCad.pas' {SetoCadrDataModule: TDataModule},
+  frmSetorCad in '..\Views\FrmCadastro\frmSetorCad.pas' {Frm_SetorCad};
 
 {$R *.res}
 
@@ -31,6 +34,8 @@
     Application.MainFormOnTaskbar := True;
 
     Application.CreateForm(TGerenciadorConexao, GerenciadorConexao);
+  Application.CreateForm(TSetoCadrDataModule, SetoCadrDataModule);
+  Application.CreateForm(TFrm_SetorCad, Frm_SetorCad);
   while not ArquivoIniExiste do
       begin
          Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);

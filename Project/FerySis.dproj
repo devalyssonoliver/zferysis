@@ -182,6 +182,16 @@
             <Form>Frm_Colaborador_Loc</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\Classes\Setor.pas"/>
+        <DCCReference Include="..\Models\DataModules\dmSetorCad.pas">
+            <Form>SetoCadrDataModule</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\Views\FrmCadastro\frmSetorCad.pas">
+            <Form>Frm_SetorCad</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -1,0 +1,13 @@
+object SetoCadrDataModule: TSetoCadrDataModule
+  OnCreate = DataModuleCreate
+  Height = 316
+  Width = 459
+  object fdqrySetorCad: TFDQuery
+    Left = 216
+    Top = 144
+  end
+  object fdTransaction: TFDTransaction
+    Left = 344
+    Top = 40
+  end
+end
