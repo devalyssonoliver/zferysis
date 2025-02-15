@@ -10,8 +10,6 @@ object GerenciadorConexao: TGerenciadorConexao
       'User_Name=postgres'
       'Password=postzeus2011'
       'DriverID=pG')
-    ConnectedStoredUsage = [auRunTime]
-    Connected = True
     LoginPrompt = False
     Left = 296
     Top = 224

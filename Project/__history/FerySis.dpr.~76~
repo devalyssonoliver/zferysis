@@ -1,4 +1,4 @@
-  program FerySis;
+program FerySis;
 
   uses
   System.SysUtils,
@@ -14,17 +14,22 @@
   uArquivoIni in '..\Units\uArquivoIni.pas',
   uFuncoes in '..\Units\uFuncoes.pas',
   Colaborador in '..\Classes\Colaborador.pas',
-  frmCadastroUsuario in '..\Views\FrmCadastro\frmCadastroUsuario.pas' {Frm_Cad_Usuario},
+  frmUsuarioCad in '..\Views\FrmCadastro\frmUsuarioCad.pas' {Frm_Cad_Usuario},
   frmLocalizacaoUsuario in '..\Views\FrmLocalização\frmLocalizacaoUsuario.pas' {Form_Loc_Usuarios},
   iUsuario in '..\Interfaces\iUsuario.pas',
   iUsuarioRepositorio in '..\Models\Repositórios\iUsuarioRepositorio.pas',
   dmColaboradorCad in '..\Models\DataModules\dmColaboradorCad.pas' {ColaboradorDataModule: TDataModule},
-  frmLocalizacaoColaborador in '..\Views\FrmLocalização\frmLocalizacaoColaborador.pas' {Form_Loc_Colaborador},
-  uThreadUsuarioDataModule in '..\Threads\uThreadUsuarioDataModule.pas',
-  uThreadColaboradorDataModule in '..\Threads\uThreadColaboradorDataModule.pas',
   frmColaboradorCad in '..\Views\FrmCadastro\frmColaboradorCad.pas' {Form_Cadastro_Colaborador},
   uiColaborador in '..\Interfaces\uiColaborador.pas',
-  dmColaboradorLoc in '..\Models\DataModules\dmColaboradorLoc.pas' {ColaboradorLocDataModule: TDataModule};
+  dmColaboradorLoc in '..\Models\DataModules\dmColaboradorLoc.pas' {ColaboradorLocDataModule: TDataModule},
+  frmColaboradorLoc in '..\Views\FrmLocalização\frmColaboradorLoc.pas' {Frm_Colaborador_Loc},
+  Setor in '..\Classes\Setor.pas',
+  dmSetorCad in '..\Models\DataModules\dmSetorCad.pas' {SetoCadDataModule: TDataModule},
+  frmSetorCad in '..\Views\FrmCadastro\frmSetorCad.pas' {Frm_SetorCad},
+  frmSetorLoc in '..\Views\FrmLocalização\frmSetorLoc.pas' {Frm_Setor_Loc},
+  dmSetorLoc in '..\Models\DataModules\dmSetorLoc.pas' {SetorLoc_DataModule: TDataModule},
+  frmPrincipalDevExpress in '..\Views\frmPrincipalDevExpress.pas' {Form2},
+  FerySis.dxSettings in 'FerySis.dxSettings.pas';
 
 {$R *.res}
 
@@ -33,21 +38,22 @@
     Application.MainFormOnTaskbar := True;
 
     Application.CreateForm(TGerenciadorConexao, GerenciadorConexao);
+  Application.CreateForm(TForm2, Form2);
   while not ArquivoIniExiste do
-    begin
-       Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);
-       FrmConfigBanco.ShowModal;
-       FreeAndNil(FrmConfigBanco);
-    end;
-    Application.CreateForm(TFrm_Login, Frm_Login);
-    if Frm_Login.ShowModal = mrOk then
-    begin
-      FreeAndNil(Frm_Login);
-      Application.CreateForm(TFrm_Principal, Frm_Principal);
-      Application.Run;
-    end
-    else
-      Application.Terminate;
+      begin
+         Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);
+         FrmConfigBanco.ShowModal;
+         FreeAndNil(FrmConfigBanco);
+      end;
+      Application.CreateForm(TFrm_Login, Frm_Login);
+      if Frm_Login.ShowModal = mrOk then
+      begin
+        FreeAndNil(Frm_Login);
+        Application.CreateForm(TFrm_Principal, Frm_Principal);
+        Application.Run;
+      end
+      else
+        Application.Terminate;
 
 
   end.

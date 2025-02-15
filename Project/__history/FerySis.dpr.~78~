@@ -1,11 +1,12 @@
 program FerySis;
 
-uses
+  uses
   System.SysUtils,
   Controls,
   Vcl.Forms,
   Conexao in '..\Classes\Conexao.pas',
   frmLogin in '..\Views\frmLogin.pas' {Frm_Login},
+  frmPrincipal in '..\Views\frmPrincipal.pas' {Frm_Principal},
   dmGerenciadorConexao in '..\Models\dmGerenciadorConexao.pas' {GerenciadorConexao: TDataModule},
   Usuario in '..\Classes\Usuario.pas',
   dmUsuario in '..\Models\DataModules\dmUsuario.pas' {UsuarioDataModule: TDataModule},
@@ -27,7 +28,7 @@ uses
   frmSetorCad in '..\Views\FrmCadastro\frmSetorCad.pas' {Frm_SetorCad},
   frmSetorLoc in '..\Views\FrmLocalização\frmSetorLoc.pas' {Frm_Setor_Loc},
   dmSetorLoc in '..\Models\DataModules\dmSetorLoc.pas' {SetorLoc_DataModule: TDataModule},
-  frmPrincipal in '..\Views\frmPrincipal.pas' {Frm_Principal},
+  frmPrincipalDevExpress in '..\Views\frmPrincipalDevExpress.pas' {Form2},
   FerySis.dxSettings in 'FerySis.dxSettings.pas';
 
 {$R *.res}
@@ -36,21 +37,23 @@ uses
     Application.Initialize;
     Application.MainFormOnTaskbar := True;
 
-    Application.CreateForm(TGerenciadorConexao, GerenciadorConexao);
-  while not ArquivoIniExiste do
+    Application.CreateForm(TForm2, Form2);
+      Application.Run;
+{  while not ArquivoIniExiste do
       begin
-         Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);
-         FrmConfigBanco.ShowModal;
-         FreeAndNil(FrmConfigBanco);
-      end;
-      Application.CreateForm(TFrm_Login, Frm_Login);
-      if Frm_Login.ShowModal = mrOk then
-      begin
-        FreeAndNil(Frm_Login);
-        Application.CreateForm(TFrm_Principal, Frm_Principal);
-        Application.Run;
-      end
-      else
-        Application.Terminate;
-end.
+               Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);
+                        FrmConfigBanco.ShowModal;
+                                 FreeAndNil(FrmConfigBanco);
+                                       end;
+                                             Application.CreateForm(TFrm_Login, Frm_Login);
+                                                   if Frm_Login.ShowModal = mrOk then
+                                                         begin
+                                                                 FreeAndNil(Frm_Login);
+                                                                         Application.CreateForm(TFrm_Principal, Frm_Principal);
+                                                                               Application.Run;
+                                                                                       end
+                                                                                             else}
+     //   Application.Terminate;
 
+
+  end.

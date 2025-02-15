@@ -27,30 +27,31 @@ uses
   frmSetorCad in '..\Views\FrmCadastro\frmSetorCad.pas' {Frm_SetorCad},
   frmSetorLoc in '..\Views\FrmLocalização\frmSetorLoc.pas' {Frm_Setor_Loc},
   dmSetorLoc in '..\Models\DataModules\dmSetorLoc.pas' {SetorLoc_DataModule: TDataModule},
-  frmPrincipal in '..\Views\frmPrincipal.pas' {Frm_Principal},
+  frmPrincipal in '..\Views\frmPrincipal.pas' {Form_Principal},
   FerySis.dxSettings in 'FerySis.dxSettings.pas';
 
 {$R *.res}
 
-  begin
-    Application.Initialize;
-    Application.MainFormOnTaskbar := True;
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
 
-    Application.CreateForm(TGerenciadorConexao, GerenciadorConexao);
   while not ArquivoIniExiste do
-      begin
-         Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);
-         FrmConfigBanco.ShowModal;
-         FreeAndNil(FrmConfigBanco);
-      end;
-      Application.CreateForm(TFrm_Login, Frm_Login);
-      if Frm_Login.ShowModal = mrOk then
-      begin
-        FreeAndNil(Frm_Login);
-        Application.CreateForm(TFrm_Principal, Frm_Principal);
-        Application.Run;
-      end
-      else
-        Application.Terminate;
+  begin
+    Application.CreateForm(TGerenciadorConexao, GerenciadorConexao);
+  FrmConfigBanco.ShowModal;
+    FreeAndNil(FrmConfigBanco);
+  end;
+
+  Application.CreateForm(TFrm_Login, Frm_Login);
+
+  if Frm_Login.ShowModal = mrOk then
+  begin
+    FreeAndNil(Frm_Login);
+    Application.CreateForm(TForm_Principal, Form_Principal);
+    Application.Run;
+  end
+  else
+    Application.Terminate;
 end.
 

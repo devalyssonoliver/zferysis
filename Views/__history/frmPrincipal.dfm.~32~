@@ -1,4 +1,4 @@
-object Frm_Principal: TFrm_Principal
+object Form_Principal: TForm_Principal
   Left = 0
   Top = 0
   Caption = 'FrmPrincipal'
@@ -2550,8 +2550,6 @@ object Frm_Principal: TFrm_Principal
     0404040404040404040404FE9AF1EF277CFAAC788282B80000000049454E44AE
     426082}
   KeyPreview = True
-  Position = poDesktopCenter
-  WindowState = wsMaximized
   StyleName = 'Windows'
   OnKeyDown = FormKeyDown
   TextHeight = 15

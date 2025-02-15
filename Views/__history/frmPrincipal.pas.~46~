@@ -14,7 +14,7 @@ uses
   dxSkinsForm, Vcl.ExtCtrls;
 
 type
-  TFrm_Principal = class(TForm)
+  Tfrm_2 = class(TForm)
     dxbrManagerPrincipal: TdxBarManager;
     dxBarManagerBar: TdxBar;
     dxBarManagerPrincipalBarInfoBasic: TdxBar;
@@ -39,7 +39,7 @@ type
   end;
 
 var
-  Frm_Principal: TFrm_Principal;
+  frm_2: Tfrm_2;
 
 implementation
 
@@ -50,7 +50,7 @@ uses
 
 
 
-procedure TFrm_Principal.dxbrlrgbtnbtn1_FormColaboradoresClick(Sender: TObject);
+procedure Tfrm_2.dxbrlrgbtnbtn1_FormColaboradoresClick(Sender: TObject);
 begin
   FFrm_Colaborador_Loc := TFrm_Colaborador_Loc.Create(Self);
   try
@@ -60,7 +60,7 @@ begin
   end;
 end;
 
-procedure TFrm_Principal.dxbrlrgbtnbtn2_FormSetoresClick(Sender: TObject);
+procedure Tfrm_2.dxbrlrgbtnbtn2_FormSetoresClick(Sender: TObject);
 begin
   Frm_Setor_Loc := TFrm_Setor_Loc.Create(Self);
   try
@@ -70,7 +70,7 @@ begin
   end;
 end;
 
-procedure TFrm_Principal.dxbrlrgbtnbtn3_FormUsuariosClick(Sender: TObject);
+procedure Tfrm_2.dxbrlrgbtnbtn3_FormUsuariosClick(Sender: TObject);
 begin
    Form_Loc_Usuarios := TForm_Loc_Usuarios.Create(Self);
    try
@@ -80,7 +80,7 @@ begin
    end;
 end;
 
-procedure TFrm_Principal.FormKeyDown(Sender: TObject; var Key: Word;
+procedure Tfrm_2.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
    Form_Loc_Usuarios := TForm_Loc_Usuarios.Create(Self);
