@@ -141,12 +141,7 @@ end;
 
 procedure TFrm_SetorCad.FormCreate(Sender: TObject);
 begin
-  FDMSetor := TSetoCadDataModule.Create(NIL);
-  if Assigned(FDMSetor) then
-  begin
-    dsSetor := FDMSetor.fdqrySetorCad.DataSource;
-    dsSetor.DataSet.Active := True;
-  end;
+  FDMSetor := TSetoCadDataModule.Create(Self);
 end;
 
 procedure TFrm_SetorCad.FormKeyPress(Sender: TObject; var Key: Char);

@@ -2,7 +2,7 @@ object Frm_Setor_Loc: TFrm_Setor_Loc
   Left = 0
   Top = 0
   ClientHeight = 497
-  ClientWidth = 683
+  ClientWidth = 692
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,24 +11,23 @@ object Frm_Setor_Loc: TFrm_Setor_Loc
   Font.Style = []
   Position = poDesktopCenter
   Scaled = False
+  OnCreate = FormCreate
   TextHeight = 15
   object pnlGrid: TPanel
     Left = 0
     Top = 0
-    Width = 683
+    Width = 692
     Height = 497
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -82
-    ExplicitTop = -23
-    ExplicitWidth = 784
-    ExplicitHeight = 520
+    ExplicitWidth = 679
+    ExplicitHeight = 496
     object lblTitulo: TLabel
       Left = 1
       Top = 1
-      Width = 681
+      Width = 690
       Height = 37
       Align = alTop
       Alignment = taCenter
@@ -44,15 +43,14 @@ object Frm_Setor_Loc: TFrm_Setor_Loc
     object pnl1: TPanel
       Left = 1
       Top = 38
-      Width = 681
+      Width = 690
       Height = 56
       Align = alTop
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      ExplicitTop = 32
-      ExplicitWidth = 786
+      ExplicitWidth = 677
       object cmbCriteriosdePesquisa: TComboBox
         Left = 9
         Top = 21
@@ -138,17 +136,19 @@ object Frm_Setor_Loc: TFrm_Setor_Loc
           StyleName = 'Windows'
           TabOrder = 0
           ThumbColor = clHotLight
+          OnClick = tglswtchTodosClick
         end
       end
     end
     object dbGrid: TDBGrid
       Left = 1
       Top = 94
-      Width = 681
+      Width = 690
       Height = 366
       Align = alClient
       BorderStyle = bsNone
       Ctl3D = True
+      DefaultDrawing = False
       DrawingStyle = gdsGradient
       FixedColor = clBtnHighlight
       GradientEndColor = clGray
@@ -178,8 +178,8 @@ object Frm_Setor_Loc: TFrm_Setor_Loc
         end
         item
           Expanded = False
-          FieldName = 'nome'
-          Title.Caption = 'Nome'
+          FieldName = 'descricao'
+          Title.Caption = 'Descri'#231#227'o'
           Title.Font.Charset = DEFAULT_CHARSET
           Title.Font.Color = clWindowText
           Title.Font.Height = -12
@@ -221,12 +221,14 @@ object Frm_Setor_Loc: TFrm_Setor_Loc
     object pnlBotoes: TPanel
       Left = 1
       Top = 460
-      Width = 681
+      Width = 690
       Height = 36
       Align = alBottom
       Color = clBtnShadow
       ParentBackground = False
       TabOrder = 2
+      ExplicitTop = 459
+      ExplicitWidth = 677
       object btnNovo: TButton
         Left = 16
         Top = 6
@@ -245,7 +247,7 @@ object Frm_Setor_Loc: TFrm_Setor_Loc
         TabOrder = 1
       end
       object btnFechar: TButton
-        Left = 593
+        Left = 609
         Top = 6
         Width = 75
         Height = 25
@@ -253,7 +255,7 @@ object Frm_Setor_Loc: TFrm_Setor_Loc
         TabOrder = 3
       end
       object btnRelatorio: TButton
-        Left = 512
+        Left = 528
         Top = 6
         Width = 75
         Height = 25

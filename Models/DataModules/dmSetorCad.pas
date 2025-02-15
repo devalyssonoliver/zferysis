@@ -62,13 +62,12 @@ end;
 
 procedure TSetoCadDataModule.DataModuleCreate(Sender: TObject);
 begin
-  fdqrySetorCad.Connection := GerenciadorConexao.fdConn;
   fdqrySetorCad.Open;
 end;
 
 procedure TSetoCadDataModule.Editar;
 begin
-
+  fdqrySetorCad.Edit;
 end;
 
 procedure TSetoCadDataModule.Novo;

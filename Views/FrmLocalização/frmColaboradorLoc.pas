@@ -46,6 +46,7 @@ type
     procedure ExibirColaboradorCad;
     procedure dbGridDblClick(Sender: TObject);
     procedure tglswtchTodosClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     FDMColaboradorLoc : TColaboradorLocDataModule;
@@ -184,6 +185,12 @@ begin
     ShowMessage('Nenhum colaborador selecionado!');
 end;
 
+procedure TFrm_Colaborador_Loc.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  FreeAndNil(FDMColaboradorLoc);
+end;
+
 procedure TFrm_Colaborador_Loc.FormCreate(Sender: TObject);
 begin
     FDMColaboradorLoc := TColaboradorLocDataModule.Create(nil);
@@ -197,8 +204,7 @@ begin
     GerenciarBotoes([btnRelatorio, btnExibir], True);
     end
       else
-      dbGrid.DataSource.DataSet.Close;
-      GerenciarBotoes([btnRelatorio, btnExibir], False);
+    DesativarBotoesELimparGrade;
 end;
 
 procedure TFrm_Colaborador_Loc.TratarCampoPesquisa(Sender: TObject;

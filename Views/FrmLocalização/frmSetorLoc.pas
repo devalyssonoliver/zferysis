@@ -34,6 +34,8 @@ TCriterioPesquisa = (cpCodigo, cpNome);
     procedure TratarCampoPesquisa(Sender: TObject; Criterio: TCriterioPesquisa);
     procedure edtPesquisarCodigoExit(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure tglswtchTodosClick(Sender: TObject);
   private
     { Private declarations }
     FDMSetorLoc : TSetorLoc_DataModule;
@@ -127,6 +129,23 @@ end;
 procedure TFrm_Setor_Loc.edtPesquisarNomeExit(Sender: TObject);
 begin
   TratarCampoPesquisa(Sender, cpNome);
+end;
+
+procedure TFrm_Setor_Loc.FormCreate(Sender: TObject);
+begin
+  FDMSetorLoc := TSetorLoc_DataModule.Create(Self);
+end;
+
+procedure TFrm_Setor_Loc.tglswtchTodosClick(Sender: TObject);
+begin
+   if tglswtchTodos.State = tssOn then
+    begin
+    FDMSetorLoc.ListarTodos;
+    dbGrid.DataSource := dsSetorLoc;
+    GerenciarBotoes([btnRelatorio, btnExibir], True);
+    end
+      else
+       DesativarBotoesELimparGrade;
 end;
 
 procedure TFrm_Setor_Loc.TratarCampoPesquisa(Sender: TObject;

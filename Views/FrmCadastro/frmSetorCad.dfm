@@ -1,7 +1,7 @@
 object Frm_SetorCad: TFrm_SetorCad
   Left = 0
   Top = 0
-  Caption = 'Frm_SetorCad'
+  BorderIcons = [biSystemMenu, biMinimize]
   ClientHeight = 360
   ClientWidth = 559
   Color = clBtnFace
@@ -10,7 +10,11 @@ object Frm_SetorCad: TFrm_SetorCad
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  FormStyle = fsStayOnTop
   KeyPreview = True
+  Position = poDesktopCenter
+  Visible = True
+  StyleName = 'Windows'
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
   OnShow = FormShow
@@ -25,8 +29,6 @@ object Frm_SetorCad: TFrm_SetorCad
     ParentBackground = False
     TabOrder = 0
     StyleName = 'Windows'
-    ExplicitWidth = 555
-    ExplicitHeight = 359
     object lblTitulo: TLabel
       Left = 87
       Top = 28
@@ -83,8 +85,6 @@ object Frm_SetorCad: TFrm_SetorCad
       ParentBackground = False
       TabOrder = 1
       StyleName = 'Windows'
-      ExplicitTop = 318
-      ExplicitWidth = 553
       object btnSalvar: TButton
         Left = 86
         Top = 8
@@ -146,7 +146,6 @@ object Frm_SetorCad: TFrm_SetorCad
       Color = clBackground
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 553
     end
     object grpSetorCad: TGroupBox
       Left = 6
@@ -222,7 +221,7 @@ object Frm_SetorCad: TFrm_SetorCad
   end
   object dsSetor: TDataSource
     DataSet = SetoCadDataModule.fdqrySetorCad
-    Left = 480
-    Top = 48
+    Left = 416
+    Top = 104
   end
 end

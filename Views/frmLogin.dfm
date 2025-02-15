@@ -4,7 +4,7 @@ object Frm_Login: TFrm_Login
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Entrar'
-  ClientHeight = 365
+  ClientHeight = 374
   ClientWidth = 326
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,7 +21,7 @@ object Frm_Login: TFrm_Login
   OnPaint = FormPaint
   DesignSize = (
     326
-    365)
+    374)
   TextHeight = 15
   object imgLogo: TImage
     Left = 78

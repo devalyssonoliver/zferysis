@@ -13,6 +13,7 @@ object Frm_Colaborador_Loc: TFrm_Colaborador_Loc
   Position = poDesktopCenter
   PrintScale = poNone
   Scaled = False
+  OnClose = FormClose
   OnCreate = FormCreate
   TextHeight = 15
   object pnlGrid: TPanel
