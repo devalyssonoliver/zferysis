@@ -2617,12 +2617,12 @@ object Frm_Principal: TFrm_Principal
     CapitalizeTabCaptions = bDefault
     Style = rsOffice365
     ColorSchemeAccent = rcsaBlue
-    ColorSchemeName = 'Black'
+    ColorSchemeName = 'Colorful'
     QuickAccessToolbar.Toolbar = dxBarManagerBar
     ShowFormIcon = bTrue
     SupportNonClientDrawing = True
     Contexts = <>
-    TabOrder = 5
+    TabOrder = 1
     TabStop = False
     object dxrbntbCadastros: TdxRibbonTab
       Active = True

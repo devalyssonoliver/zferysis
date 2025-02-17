@@ -36,20 +36,26 @@ TCriterioPesquisa = (cpCodigo, cpNome);
     procedure btnNovoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure tglswtchTodosClick(Sender: TObject);
+    procedure dbGridDblClick(Sender: TObject);
   private
     { Private declarations }
+
     FDMSetorLoc : TSetorLoc_DataModule;
     FFormSetorCad: TFrm_SetorCad;
     procedure DesativarBotoesELimparGrade;
     procedure BuscarPorCriterio(const Criterio: TCriterioPesquisa;
     const Valor: string);
     procedure AlterarVisibilidadeCamposPesquisa;
+   // procedure AbrirFormCadastro;
+    procedure ExibirCadastroDeSetor;
+
   public
     { Public declarations }
   end;
 
 var
   Frm_Setor_Loc: TFrm_Setor_Loc;
+  FCodigoSetor: Integer;
 
 implementation
 
@@ -59,6 +65,21 @@ uses
 {$R *.dfm}
 
 { TForm1 }
+
+procedure TFrm_Setor_Loc.ExibirCadastroDeSetor;
+begin
+  FFormSetorCad	 := TFrm_SetorCad.Create(Self);
+  try
+    FCodigoSetor := dbGrid.Fields[0].AsInteger;
+    FFormSetorCad.CarregarSetor(FCodigoSetor);
+    FFormSetorCad.ModoFormulario := mfExibicao;
+    FFormSetorCad.Show;
+  except
+      Application.MessageBox('Não foi possível abrir o formulário de cadastro.',
+                              'ZFerySIS', MB_ICONWARNING);
+  end;
+end;
+
 
 procedure TFrm_Setor_Loc.AlterarVisibilidadeCamposPesquisa;
 begin
@@ -92,6 +113,11 @@ begin
         MsgBox('Erro!', E.Message, False, 2);
     end;
   end
+end;
+
+procedure TFrm_Setor_Loc.dbGridDblClick(Sender: TObject);
+begin
+  ExibirCadastroDeSetor;
 end;
 
 procedure TFrm_Setor_Loc.dbGridDrawColumnCell(Sender: TObject;

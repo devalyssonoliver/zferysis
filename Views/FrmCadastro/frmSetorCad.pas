@@ -155,7 +155,7 @@ end;
 
 procedure TFrm_SetorCad.FormShow(Sender: TObject);
 begin
-  //dbedtdata_cadastro.Text := DateToStr(Now);
+  dbedtdata_cadastro.Text := DateToStr(Now);
 end;
 
 procedure TFrm_SetorCad.AlterarModo(const Modo: TModoFormulario);

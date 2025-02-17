@@ -22,7 +22,7 @@ object Frm_Setor_Loc: TFrm_Setor_Loc
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 679
+    ExplicitWidth = 688
     ExplicitHeight = 496
     object lblTitulo: TLabel
       Left = 1
@@ -50,7 +50,7 @@ object Frm_Setor_Loc: TFrm_Setor_Loc
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 677
+      ExplicitWidth = 686
       object cmbCriteriosdePesquisa: TComboBox
         Left = 9
         Top = 21
@@ -164,6 +164,7 @@ object Frm_Setor_Loc: TFrm_Setor_Loc
       TitleFont.Style = []
       StyleName = 'Windows'
       OnDrawColumnCell = dbGridDrawColumnCell
+      OnDblClick = dbGridDblClick
       Columns = <
         item
           Expanded = False
@@ -228,7 +229,7 @@ object Frm_Setor_Loc: TFrm_Setor_Loc
       ParentBackground = False
       TabOrder = 2
       ExplicitTop = 459
-      ExplicitWidth = 677
+      ExplicitWidth = 686
       object btnNovo: TButton
         Left = 16
         Top = 6

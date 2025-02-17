@@ -11,6 +11,10 @@ uses
 type
   TSetorLoc_DataModule = class(TDataModule)
     fdqrySetorLoc: TFDQuery;
+    intgrfldSetorLoccodigo: TIntegerField;
+    wdstrngfldSetorLocdescricao: TWideStringField;
+    blnfldSetorLocativo: TBooleanField;
+    dtfldSetorLocdata_cadastro: TDateField;
   private
     { Private declarations }
   public

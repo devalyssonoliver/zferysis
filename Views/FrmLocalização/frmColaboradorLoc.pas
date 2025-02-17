@@ -68,12 +68,14 @@ uses
 {$R *.dfm}
 procedure TFrm_Colaborador_Loc.AbrirFormCadastro;
 begin
+  FFormColaboradorCad := TForm_Cadastro_Colaborador.Create(Self);
   try
-      FFormColaboradorCad := TForm_Cadastro_Colaborador.Create(Self);
       FFormColaboradorCad.CarregarColaborador(FCodigoColaborador);
       FFormColaboradorCad.ModoFormulario := mfExibicao;
       FFormColaboradorCad.Show;
-  finally
+  except
+      Application.MessageBox('Não foi possível abrir o formulário de cadastro.',
+                              'ZFerySIS', MB_ICONWARNING);
   end;
 end;
 
