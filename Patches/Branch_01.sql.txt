@@ -1,0 +1,31 @@
+
+
+
+
+---<Branch_01.sql>----
+CREATE OR REPLACE FUNCTION public.validar_ferias()
+  RETURNS trigger AS
+$BODY$
+BEGIN
+    
+    IF EXISTS (
+        SELECT 1
+        FROM lancamento_ferias
+        WHERE codigo_colaborador = NEW.codigo_colaborador
+          AND (
+              (NEW.data_inicio BETWEEN data_inicio AND data_fim) OR
+              (NEW.data_fim BETWEEN data_inicio AND data_fim) OR
+              (data_inicio BETWEEN NEW.data_inicio AND NEW.data_fim) OR
+              (data_fim BETWEEN NEW.data_inicio AND NEW.data_fim) 
+          ) AND ferias_concedidas IS TRUE
+    ) THEN
+        RAISE EXCEPTION 'O colaborador já tem um lançamento de férias no período informado.';
+    END IF;
+
+    RETURN NEW;
+END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public.validar_ferias()
+  OWNER TO postgres;
