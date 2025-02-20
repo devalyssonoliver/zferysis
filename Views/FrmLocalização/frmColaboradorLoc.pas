@@ -47,6 +47,7 @@ type
     procedure dbGridDblClick(Sender: TObject);
     procedure tglswtchTodosClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnFecharClick(Sender: TObject);
   private
     { Private declarations }
     FDMColaboradorLoc : TColaboradorLocDataModule;
@@ -89,6 +90,11 @@ end;
 procedure TFrm_Colaborador_Loc.btnExibirClick(Sender: TObject);
 begin
   ExibirColaboradorCad;
+end;
+
+procedure TFrm_Colaborador_Loc.btnFecharClick(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TFrm_Colaborador_Loc.btnNovoClick(Sender: TObject);
@@ -198,10 +204,12 @@ begin
     FDMColaboradorLoc := TColaboradorLocDataModule.Create(nil);
 end;
 
+
 procedure TFrm_Colaborador_Loc.tglswtchTodosClick(Sender: TObject);
 begin
     if tglswtchTodos.State = tssOn then
     begin
+    dbGrid.DataSource := dsColaboradorLoc;
     FDMColaboradorLoc.ListarTodos;
     GerenciarBotoes([btnRelatorio, btnExibir], True);
     end

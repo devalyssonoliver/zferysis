@@ -2,8 +2,10 @@ object Frm_Colaborador_Loc: TFrm_Colaborador_Loc
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = 'Windows'
   ClientHeight = 619
-  ClientWidth = 921
+  ClientWidth = 918
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,12 +15,14 @@ object Frm_Colaborador_Loc: TFrm_Colaborador_Loc
   Position = poDesktopCenter
   PrintScale = poNone
   Scaled = False
+  StyleName = 'Windows'
+  OnClose = FormClose
   OnCreate = FormCreate
   TextHeight = 15
   object pnlGrid: TPanel
     Left = 0
     Top = 0
-    Width = 921
+    Width = 918
     Height = 619
     Align = alClient
     Color = clWhite
@@ -27,7 +31,7 @@ object Frm_Colaborador_Loc: TFrm_Colaborador_Loc
     object lblTitulo: TLabel
       Left = 1
       Top = 4
-      Width = 919
+      Width = 916
       Height = 37
       Align = alTop
       Alignment = taCenter
@@ -43,7 +47,7 @@ object Frm_Colaborador_Loc: TFrm_Colaborador_Loc
     object pnlTop: TPanel
       Left = 1
       Top = 41
-      Width = 919
+      Width = 916
       Height = 56
       Align = alTop
       BevelOuter = bvNone
@@ -163,7 +167,7 @@ object Frm_Colaborador_Loc: TFrm_Colaborador_Loc
     object pnlBotoes: TPanel
       Left = 1
       Top = 582
-      Width = 919
+      Width = 916
       Height = 36
       Align = alBottom
       ParentBackground = False
@@ -206,18 +210,23 @@ object Frm_Colaborador_Loc: TFrm_Colaborador_Loc
     object dbGrid: TDBGrid
       Left = 1
       Top = 97
-      Width = 919
+      Width = 916
       Height = 485
+      Cursor = crArrow
       Align = alClient
+      BiDiMode = bdLeftToRight
       BorderStyle = bsNone
+      Color = clWhite
       Ctl3D = False
       DataSource = dsColaboradorLoc
-      DragCursor = crHandPoint
+      DefaultDrawing = False
+      DragCursor = crArrow
       DrawingStyle = gdsGradient
       FixedColor = clBtnHighlight
       GradientEndColor = clGray
       GradientStartColor = clGray
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
+      Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgCancelOnExit]
+      ParentBiDiMode = False
       ParentCtl3D = False
       ReadOnly = True
       TabOrder = 2
@@ -226,6 +235,8 @@ object Frm_Colaborador_Loc: TFrm_Colaborador_Loc
       TitleFont.Height = -12
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
+      Touch.ParentTabletOptions = False
+      Touch.TabletOptions = []
       StyleName = 'Windows'
       OnDrawColumnCell = dbGridDrawColumnCell
       OnDblClick = dbGridDblClick
@@ -310,25 +321,31 @@ object Frm_Colaborador_Loc: TFrm_Colaborador_Loc
           Title.Font.Height = -12
           Title.Font.Name = 'Segoe UI'
           Title.Font.Style = [fsBold]
-          Width = 130
+          Width = 136
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'ativo'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clHighlight
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
           Title.Caption = 'Ativo'
           Title.Font.Charset = DEFAULT_CHARSET
           Title.Font.Color = clWindowText
           Title.Font.Height = -12
           Title.Font.Name = 'Segoe UI'
           Title.Font.Style = [fsBold]
+          Width = 42
           Visible = True
         end>
     end
     object pnlListTop: TPanel
       Left = 1
       Top = 1
-      Width = 919
+      Width = 916
       Height = 3
       Align = alTop
       BevelOuter = bvNone

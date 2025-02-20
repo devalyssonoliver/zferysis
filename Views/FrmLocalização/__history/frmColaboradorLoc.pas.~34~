@@ -46,6 +46,7 @@ type
     procedure ExibirColaboradorCad;
     procedure dbGridDblClick(Sender: TObject);
     procedure tglswtchTodosClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     FDMColaboradorLoc : TColaboradorLocDataModule;
@@ -67,12 +68,14 @@ uses
 {$R *.dfm}
 procedure TFrm_Colaborador_Loc.AbrirFormCadastro;
 begin
+  FFormColaboradorCad := TForm_Cadastro_Colaborador.Create(Self);
   try
-      FFormColaboradorCad := TForm_Cadastro_Colaborador.Create(Self);
       FFormColaboradorCad.CarregarColaborador(FCodigoColaborador);
       FFormColaboradorCad.ModoFormulario := mfExibicao;
       FFormColaboradorCad.Show;
-  finally
+  except
+      Application.MessageBox('Não foi possível abrir o formulário de cadastro.',
+                              'ZFerySIS', MB_ICONWARNING);
   end;
 end;
 
@@ -184,6 +187,12 @@ begin
     ShowMessage('Nenhum colaborador selecionado!');
 end;
 
+procedure TFrm_Colaborador_Loc.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  FreeAndNil(FDMColaboradorLoc);
+end;
+
 procedure TFrm_Colaborador_Loc.FormCreate(Sender: TObject);
 begin
     FDMColaboradorLoc := TColaboradorLocDataModule.Create(nil);
@@ -193,12 +202,12 @@ procedure TFrm_Colaborador_Loc.tglswtchTodosClick(Sender: TObject);
 begin
     if tglswtchTodos.State = tssOn then
     begin
+    dbGrid.DataSource := dsColaboradorLoc;
     FDMColaboradorLoc.ListarTodos;
     GerenciarBotoes([btnRelatorio, btnExibir], True);
     end
       else
-      dbGrid.DataSource.DataSet.Close;
-      GerenciarBotoes([btnRelatorio, btnExibir], False);
+    DesativarBotoesELimparGrade;
 end;
 
 procedure TFrm_Colaborador_Loc.TratarCampoPesquisa(Sender: TObject;
