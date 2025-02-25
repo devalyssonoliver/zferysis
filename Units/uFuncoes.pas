@@ -5,12 +5,13 @@ interface
 uses
   Vcl.Forms, Vcl.Controls, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Dialogs,
   Vcl.Graphics,
-  Vcl.ComCtrls, System.SysUtils, System.UITypes, Vcl.DBCtrls;
+  Vcl.ComCtrls, System.SysUtils, System.UITypes, Vcl.DBCtrls, cxButtons;
 
 procedure GerenciarCamposTLabelEdit(const Campos: array of TLabeledEdit;
   Ativo: Boolean);
 procedure GerenciarCamposEdit(const Campos: array of TEdit; Ativo: Boolean);
 procedure GerenciarBotoes(const Buttons: array of TButton; Ativo: Boolean);
+procedure GerenciarTCXBotoes(const Buttons: array of TcxButton; Ativo: Boolean);
 procedure VisibilidadeTEdit(const Edits: array of TEdit; Ativo: Boolean);
 function confirmarFechamento: Boolean;
 function MsgBox(Titulo, Texto: String; Buttons: Boolean; Tipo: Integer)
@@ -45,6 +46,15 @@ begin
       Result := False;
       Exit;
     end;
+  end;
+end;
+procedure GerenciarTCXBotoes(const Buttons: array of TcxButton; Ativo: Boolean);
+var
+  i: Integer;
+begin
+  for i := 0 to High(Buttons) do
+  begin
+    Buttons[i].Enabled := Ativo;
   end;
 end;
 

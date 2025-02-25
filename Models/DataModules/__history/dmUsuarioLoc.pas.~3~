@@ -1,0 +1,98 @@
+unit dmUsuarioLoc;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, dmGerenciadorConexao,
+  System.Variants, Vcl.Forms, Winapi.Windows;
+
+type
+  TBuscaUsuario = class
+  private
+    FQuery: TFDQuery;
+    procedure ConfigurarQuery(const CriterioIndex: Integer; const Valor: Variant);
+  public
+    constructor Create(AQuery: TFDQuery);
+    procedure Buscar(const CriterioIndex: Integer; const Valor: Variant);
+  end;
+
+  TUsuarioLocDataModule = class(TDataModule)
+    fdqryUsuarioLoc: TFDQuery;
+  public
+    procedure BuscarUsuario(const CriterioIndex: Integer; const Valor: Variant);
+    procedure ListarTodos;
+
+  end;
+
+var
+  UsuarioLocDataModule: TUsuarioLocDataModule;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+{ TBuscaUsuario }
+
+constructor TBuscaUsuario.Create(AQuery: TFDQuery);
+begin
+  FQuery := AQuery;
+end;
+
+procedure TBuscaUsuario.ConfigurarQuery(const CriterioIndex: Integer; const Valor: Variant);
+begin
+  FQuery.SQL.Text := 'SELECT * FROM usuarios WHERE';
+  case CriterioIndex of
+    0: begin
+         FQuery.SQL.Add('codigo = :Valor');
+         FQuery.ParamByName('Valor').AsInteger := StrToIntDef(VarToStr(Valor), 0);
+       end;
+    1: begin
+         FQuery.SQL.Add('nome LIKE :Valor');
+         FQuery.ParamByName('Valor').AsString := '%' + VarToStr(Valor) + '%';
+       end;
+    2: begin
+         FQuery.SQL.Add('login LIKE :Valor');
+         FQuery.ParamByName('Valor').AsString := '%' + VarToStr(Valor) + '%';
+       end;
+  end;
+  FQuery.SQL.Add('LIMIT 50');
+end;
+
+procedure TBuscaUsuario.Buscar(const CriterioIndex: Integer; const Valor: Variant);
+begin
+  ConfigurarQuery(CriterioIndex, Valor);
+  FQuery.Open;
+end;
+
+{ TDataModule1 }
+
+procedure TUsuarioLocDataModule.BuscarUsuario(const CriterioIndex: Integer; const Valor: Variant);
+var
+  BuscaUsuario: TBuscaUsuario;
+begin
+  BuscaUsuario := TBuscaUsuario.Create(fdqryUsuarioLoc);
+  try
+    BuscaUsuario.Buscar(CriterioIndex, Valor);
+  except
+    on E: Exception do
+      Application.MessageBox('Não foi possível consultar com o parâmetro informado',
+       'ZFERYS', MB_OK + MB_ICONERROR);
+  end;
+end;
+
+procedure TUsuarioLocDataModule.ListarTodos;
+var
+  listarTodosSQL : String;
+begin
+  fdqryUsuarioLoc.Close;
+  listarTodosSQL  := 'SELECT * FROM usuarios';
+  fdqryUsuarioLoc.Open(listarTodosSQL);
+end;
+
+end.
+

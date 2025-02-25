@@ -2,6 +2,7 @@ object UsuarioDataModule: TUsuarioDataModule
   Height = 480
   Width = 640
   object fdQueryUsuarios: TFDQuery
+    Active = True
     Connection = GerenciadorConexao.fdConn
     SQL.Strings = (
       'SELECT * FROM vusuarios')

@@ -43,6 +43,7 @@ type
     procedure tgsTodosClick(Sender: TObject);
     procedure btnRelatorioClick(Sender: TObject);
     procedure edtPesquisarNomeExit(Sender: TObject);
+    procedure dbGridDblClick(Sender: TObject);
 
   private
     procedure BuscarUsuarioPorCriterio(const Criterio: TCriterioPesquisa;
@@ -89,19 +90,31 @@ begin
   AlterarVisibilidadeCamposPesquisa;
 end;
 
+procedure TForm_Loc_Usuarios.dbGridDblClick(Sender: TObject);
+begin
+   btnExibirClick(Self);
+end;
+
 procedure TForm_Loc_Usuarios.dbGridDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 var
   IndiceImagem: Byte;
   CentroX, CentroY: Integer;
 begin
-{  if Column.FieldName = 'ativo' then
+  if not dbGrid.DataSource.DataSet.IsEmpty then
   begin
+    if Column.FieldName = 'ativo' then
+    begin
       dbGrid.Canvas.FillRect(Rect);
-          imgListAtivo.Draw(TDBGrid(Sender).Canvas, Rect.Left +1,Rect.Top + 1, 0);
-            end;
-              // Desenha normalmente as outras colunas
-                dbGrid.DefaultDrawColumnCell(Rect, DataCol, Column, State);}
+      IndiceImagem := Byte(Column.Field.AsBoolean);
+      CentroX := Rect.Left + (Column.Width - imgListAtivo.Width) div 2;
+      CentroY := Rect.Top + (Rect.Height - imgListAtivo.Height) div 2;
+      imgListAtivo.Draw(dbGrid.Canvas, CentroX, CentroY, IndiceImagem);
+
+
+      Exit;
+    end;
+end;
 end;
 
 procedure TForm_Loc_Usuarios.DesativarBotoesELimparGrade;
@@ -225,22 +238,22 @@ procedure TForm_Loc_Usuarios.btnRelatorioClick(Sender: TObject);
 var
   CaminhoRelatorio: String;
 begin
-  CaminhoRelatorio := ExtractFilePath(Application.ExeName);
+{  CaminhoRelatorio := ExtractFilePath(Application.ExeName);
   if UsuarioDataModule.frxUsuarios.LoadFromFile
-    (CaminhoRelatorio + '\Relatórios\rUsuarios.fr3') then
-  begin
-    UsuarioDataModule.frxUsuarios.Clear;
+      (CaminhoRelatorio + '\Relatórios\rUsuarios.fr3') then
+        begin
+            UsuarioDataModule.frxUsuarios.Clear;
 
-    UsuarioDataModule.frxUsuarios.LoadFromFile
-      (CaminhoRelatorio + '\Relatórios\rUsuarios.fr3');
-    UsuarioDataModule.frxUsuarios.PrepareReport(True);
-    UsuarioDataModule.frxUsuarios.ShowPreparedReport;
-  end
-  else
-    MsgBox('Atenção!',
-      'Não foi possível visualizar o relatório de listagem de usuários.',
-      False, 1);
-
+                UsuarioDataModule.frxUsuarios.LoadFromFile
+                      (CaminhoRelatorio + '\Relatórios\rUsuarios.fr3');
+                          UsuarioDataModule.frxUsuarios.PrepareReport(True);
+                              UsuarioDataModule.frxUsuarios.ShowPreparedReport;
+                                end
+                                  else
+                                      MsgBox('Atenção!',
+                                            'Não foi possível visualizar o relatório de listagem de usuários.',
+                                                  False, 1);
+                                                  }
 end;
 
 end.

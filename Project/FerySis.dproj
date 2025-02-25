@@ -205,6 +205,20 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="FerySis.dxSettings.pas"/>
+        <DCCReference Include="..\Views\FrmLocalização\frmUsuarioLocNew.pas">
+            <Form>NewLocUser</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Models\DataModules\dmUsuarioLoc.pas">
+            <Form>UsuarioLocDataModule</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\Models\DataModules\dmUsuarioCad.pas">
+            <Form>UsuarioCad_DataModule</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

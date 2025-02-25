@@ -1,8 +1,8 @@
 object GerenciadorConexao: TGerenciadorConexao
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Height = 480
-  Width = 640
+  Height = 376
+  Width = 491
   object fdConn: TFDConnection
     Params.Strings = (
       'Server=localhost'
@@ -10,7 +10,7 @@ object GerenciadorConexao: TGerenciadorConexao
       'User_Name=postgres'
       'Password=postzeus2011'
       'DriverID=pG')
-    ConnectedStoredUsage = [auDesignTime]
+    ConnectedStoredUsage = [auRunTime]
     Connected = True
     LoginPrompt = False
     Left = 296
@@ -18,7 +18,7 @@ object GerenciadorConexao: TGerenciadorConexao
   end
   object pgDriver: TFDPhysPgDriverLink
     VendorLib = 'C:\Program Files (x86)\PostgreSQL\psqlODBC\bin\libpq.dll'
-    Left = 440
-    Top = 176
+    Left = 240
+    Top = 216
   end
 end

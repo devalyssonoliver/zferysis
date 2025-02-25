@@ -13,8 +13,6 @@ type
   TUsuarioDataModule = class(TDataModule)
     fdQueryUsuarios: TFDQuery;
     dsUsuarios: TDataSource;
-    frxUsuarios: TfrxReport;
-    frxDBUsuarios: TfrxDBDataset;
   private
     FUsuarioRepository: IUsuarioRepository;
   public

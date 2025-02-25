@@ -28,7 +28,10 @@ uses
   frmSetorLoc in '..\Views\FrmLocalização\frmSetorLoc.pas' {Frm_Setor_Loc},
   dmSetorLoc in '..\Models\DataModules\dmSetorLoc.pas' {SetorLoc_DataModule: TDataModule},
   frmPrincipal in '..\Views\frmPrincipal.pas' {Frm_Principal},
-  FerySis.dxSettings in 'FerySis.dxSettings.pas';
+  FerySis.dxSettings in 'FerySis.dxSettings.pas',
+  frmUsuarioLocNew in '..\Views\FrmLocalização\frmUsuarioLocNew.pas' {NewLocUser},
+  dmUsuarioLoc in '..\Models\DataModules\dmUsuarioLoc.pas' {UsuarioLocDataModule: TDataModule},
+  dmUsuarioCad in '..\Models\DataModules\dmUsuarioCad.pas' {UsuarioCad_DataModule: TDataModule};
 
 {$R *.res}
 
@@ -37,6 +40,7 @@ uses
     Application.MainFormOnTaskbar := True;
 
     Application.CreateForm(TGerenciadorConexao, GerenciadorConexao);
+  Application.CreateForm(TUsuarioCad_DataModule, UsuarioCad_DataModule);
   while not ArquivoIniExiste do
       begin
          Application.CreateForm(TFrmConfigBanco, FrmConfigBanco);

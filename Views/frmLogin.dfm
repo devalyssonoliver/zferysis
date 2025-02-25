@@ -26,7 +26,7 @@ object Frm_Login: TFrm_Login
   object imgLogo: TImage
     Left = 78
     Top = 1
-    Width = 179
+    Width = 175
     Height = 160
     Anchors = [akLeft, akTop, akRight]
     Picture.Data = {
@@ -4728,6 +4728,7 @@ object Frm_Login: TFrm_Login
       133A83C16030182B0026740683C1603056004CE80C0683C160AC00FE3F99BA3E
       263C8CEDBB0000000049454E44AE426082}
     Proportional = True
+    ExplicitWidth = 179
   end
   object lbLogo: TLabel
     Left = 87

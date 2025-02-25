@@ -11,7 +11,7 @@ uses
   dxRibbonBackstageViewGalleryControl, dxRibbonBackstageView, dxBar,
   cxBarEditItem, Vcl.Buttons, Vcl.StdCtrls, dxRichEdit.Actions, System.Actions,
   Vcl.ActnList, dxActions, System.ImageList, Vcl.ImgList, cxImageList,
-  dxSkinsForm, Vcl.ExtCtrls;
+  dxSkinsForm, Vcl.ExtCtrls, frmUsuarioLocNew;
 
 type
   TFrm_Principal = class(TForm)
@@ -72,12 +72,20 @@ end;
 
 procedure TFrm_Principal.dxbrlrgbtnbtn3_FormUsuariosClick(Sender: TObject);
 begin
-   Form_Loc_Usuarios := TForm_Loc_Usuarios.Create(Self);
+   NewLocUser    := TNewLocUser.Create(Self);
    try
-     Form_Loc_Usuarios.ShowModal;
+    NewLocUser.ShowModal;
    finally
-     Form_Loc_Usuarios.Free;
+    NewLocUser.Free;
    end;
+
+
+{   Form_Loc_Usuarios := TForm_Loc_Usuarios.Create(Self);
+   try
+        Form_Loc_Usuarios.ShowModal;
+           finally
+                Form_Loc_Usuarios.Free;
+                   end;}
 end;
 
 procedure TFrm_Principal.FormKeyDown(Sender: TObject; var Key: Word;

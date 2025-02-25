@@ -1,6 +1,6 @@
 object SetorLoc_DataModule: TSetorLoc_DataModule
-  Height = 393
-  Width = 462
+  Height = 349
+  Width = 413
   object fdqrySetorLoc: TFDQuery
     Connection = GerenciadorConexao.fdConn
     SQL.Strings = (
